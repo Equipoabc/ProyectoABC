@@ -63,13 +63,6 @@ public class DaoOperador {
         String sql_guardar;
         int numFilas=0;
         
-        /*INSERT INTO Operadores (cedula_op, primer_nombre, segundo_nombre, 
-        primer_apellido, segundo_apellido, 
-	fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1010059777', 'Ivan', 'Mauricio', 'Toro', 'Cifuentes', '1998-03-16',
-        'ivan.toro@hotmail.com', '568402', '3164875865',
- 'Activo', '54321', '¿Scorpion?', 'Hanzo Hasashi');*/
-        
         sql_guardar = "INSERT INTO Operadores (cedula_op, primer_nombre, segundo_nombre, " + 
         "primer_apellido, segundo_apellido, " /*fecha_nacimiento*/ + "email, telefono, celular, estado, " + 
         "contrasena, pregunta, respuesta) VALUES ('" + op.getCedula_op() + "', '" +

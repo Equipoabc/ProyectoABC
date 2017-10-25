@@ -31,7 +31,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
         modificarUsuario = new javax.swing.JButton();
         reportes = new javax.swing.JButton();
         crearUsuario = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        CerrarSesion = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,11 +46,15 @@ public class GUI_Administrador extends javax.swing.JFrame {
         modificarUsuario.setFocusPainted(false);
         modificarUsuario.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonModificarPeq.png"))); // NOI18N
         modificarUsuario.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonModificar.png"))); // NOI18N
+        modificarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarUsuarioActionPerformed(evt);
+            }
+        });
         jPanel1.add(modificarUsuario);
         modificarUsuario.setBounds(510, 360, 320, 180);
 
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepMed.png"))); // NOI18N
-        reportes.setText("");
         reportes.setBorder(null);
         reportes.setBorderPainted(false);
         reportes.setContentAreaFilled(false);
@@ -81,15 +85,15 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jPanel1.add(crearUsuario);
         crearUsuario.setBounds(120, 360, 320, 180);
 
-        jLabel1.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
-        jLabel1.setText("Cerrar Sesión");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        CerrarSesion.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
+        CerrarSesion.setText("Cerrar Sesión");
+        CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                CerrarSesionMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(1060, 620, 280, 70);
+        jPanel1.add(CerrarSesion);
+        CerrarSesion.setBounds(1060, 620, 280, 70);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin.png"))); // NOI18N
@@ -119,15 +123,24 @@ public class GUI_Administrador extends javax.swing.JFrame {
         // TODO add your handling code here:
                 GUI_CrearUsuario interfazCrearUsuario = new GUI_CrearUsuario();
                 interfazCrearUsuario.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel1MouseClicked
+        GUI_Login interfazLogin = new GUI_Login();
+        interfazLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_CerrarSesionMouseClicked
 
-       private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
         // TODO add your handling code here:
-    }   
+                GUI_ModificarUsuario interfazModificarUsuario = new GUI_ModificarUsuario();
+                interfazModificarUsuario.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_modificarUsuarioActionPerformed
+
+   
        
   
     /**
@@ -166,8 +179,8 @@ public class GUI_Administrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CerrarSesion;
     private javax.swing.JButton crearUsuario;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificarUsuario;

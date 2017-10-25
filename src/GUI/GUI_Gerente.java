@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
+
 import Controladores.*;
 
 /**
@@ -13,7 +14,7 @@ import Controladores.*;
 public class GUI_Gerente extends javax.swing.JFrame {
 
     /**
-     * Creates new form GUI_Gerente
+     * Creates new form GUI_Admin
      */
     public GUI_Gerente() {
         initComponents();
@@ -30,97 +31,166 @@ public class GUI_Gerente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        modificarSede = new javax.swing.JButton();
+        reportes = new javax.swing.JButton();
+        registrarSede = new javax.swing.JButton();
+        CerrarSesion = new javax.swing.JLabel();
+        crearEvento = new javax.swing.JButton();
+        modificarEvento = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setResizable(false);
 
         jPanel1.setLayout(null);
 
-        jButton1.setText("Reportes y Consultas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        modificarSede.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarSedeMed.png"))); // NOI18N
+        modificarSede.setBorder(null);
+        modificarSede.setBorderPainted(false);
+        modificarSede.setContentAreaFilled(false);
+        modificarSede.setFocusPainted(false);
+        modificarSede.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarSedePeq.png"))); // NOI18N
+        modificarSede.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarSede.png"))); // NOI18N
+        modificarSede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                modificarSedeActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(460, 40, 170, 80);
+        jPanel1.add(modificarSede);
+        modificarSede.setBounds(700, 500, 320, 180);
 
-        jButton2.setText("Crear Evento");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepMed.png"))); // NOI18N
+        reportes.setBorder(null);
+        reportes.setBorderPainted(false);
+        reportes.setContentAreaFilled(false);
+        reportes.setFocusPainted(false);
+        reportes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepPeq.png"))); // NOI18N
+        reportes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepl.png"))); // NOI18N
+        reportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                reportesActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(40, 40, 140, 80);
+        jPanel1.add(reportes);
+        reportes.setBounds(880, 280, 320, 180);
+        reportes.getAccessibleContext().setAccessibleName("Reportes y Consultas");
 
-        jButton3.setText("Modificar Evento");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        registrarSede.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarSedeMed.png"))); // NOI18N
+        registrarSede.setBorder(null);
+        registrarSede.setBorderPainted(false);
+        registrarSede.setContentAreaFilled(false);
+        registrarSede.setFocusPainted(false);
+        registrarSede.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarSedePeq.png"))); // NOI18N
+        registrarSede.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarSede.png"))); // NOI18N
+        registrarSede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                registrarSedeActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(250, 40, 140, 80);
+        jPanel1.add(registrarSede);
+        registrarSede.setBounds(350, 500, 320, 180);
 
-        jButton4.setText("Registrar Sede");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        CerrarSesion.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
+        CerrarSesion.setText("Cerrar Sesión");
+        CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarSesionMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(40, 150, 140, 80);
+        jPanel1.add(CerrarSesion);
+        CerrarSesion.setBounds(1070, 640, 280, 70);
 
-        jButton5.setText("Modificar Sede");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        crearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEventoMed.png"))); // NOI18N
+        crearEvento.setBorder(null);
+        crearEvento.setBorderPainted(false);
+        crearEvento.setContentAreaFilled(false);
+        crearEvento.setFocusPainted(false);
+        crearEvento.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEventoPeq.png"))); // NOI18N
+        crearEvento.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEvento.png"))); // NOI18N
+        crearEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                crearEventoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5);
-        jButton5.setBounds(250, 150, 140, 80);
+        jPanel1.add(crearEvento);
+        crearEvento.setBounds(170, 280, 320, 180);
 
-        jLabel1.setText("Cerrar Sesión");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(560, 250, 120, 14);
+        modificarEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarEventoMed.png"))); // NOI18N
+        modificarEvento.setBorder(null);
+        modificarEvento.setBorderPainted(false);
+        modificarEvento.setContentAreaFilled(false);
+        modificarEvento.setFocusPainted(false);
+        modificarEvento.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarEventoPeq.png"))); // NOI18N
+        modificarEvento.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarEvento.png"))); // NOI18N
+        modificarEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEventoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(modificarEvento);
+        modificarEvento.setBounds(520, 280, 320, 180);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 330));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Gerente.png"))); // NOI18N
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, 0, 1370, 770);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1382, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_reportesActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void registrarSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSedeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+ 
+    }//GEN-LAST:event_registrarSedeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        GUI_Login interfazLogin = new GUI_Login();
+        interfazLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_CerrarSesionMouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void modificarSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarSedeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+   
+    }//GEN-LAST:event_modificarSedeActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        
+                 GUI_CrearEvento interfazCrearEvento = new GUI_CrearEvento();
+                interfazCrearEvento.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_crearEventoActionPerformed
 
+    private void modificarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEventoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarEventoActionPerformed
+
+   
+       
+  
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -133,13 +203,13 @@ public class GUI_Gerente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -152,12 +222,13 @@ public class GUI_Gerente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel CerrarSesion;
+    private javax.swing.JButton crearEvento;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modificarEvento;
+    private javax.swing.JButton modificarSede;
+    private javax.swing.JButton registrarSede;
+    private javax.swing.JButton reportes;
     // End of variables declaration//GEN-END:variables
 }

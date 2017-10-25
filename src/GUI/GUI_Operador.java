@@ -5,17 +5,20 @@
  */
 package GUI;
 
+import Controladores.*;
+
 /**
  *
- * @author USUARIO
+ * @author Jhoan Sebastián
  */
 public class GUI_Operador extends javax.swing.JFrame {
 
     /**
-     * Creates new form GUI_Operador
+     * Creates new form GUI_Admin
      */
     public GUI_Operador() {
         initComponents();
+        
     }
 
     /**
@@ -27,102 +30,183 @@ public class GUI_Operador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jpanel_op = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        reportes = new javax.swing.JButton();
+        registrarPago = new javax.swing.JButton();
+        certificados = new javax.swing.JButton();
+        CerrarSesion = new javax.swing.JLabel();
+        preInscripcion = new javax.swing.JButton();
+        inscripcion = new javax.swing.JButton();
+        escarapelas = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jButton1.setText("Pre-inscripción");
+        jPanel1.setLayout(null);
 
-        jButton2.setText("Inscripción");
+        reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RepoOperMed.png"))); // NOI18N
+        reportes.setBorder(null);
+        reportes.setBorderPainted(false);
+        reportes.setContentAreaFilled(false);
+        reportes.setFocusPainted(false);
+        reportes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RepoOperPeq.png"))); // NOI18N
+        reportes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RepoOper.png"))); // NOI18N
+        reportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(reportes);
+        reportes.setBounds(880, 460, 320, 180);
 
-        jButton3.setText("Registrar Pago");
+        registrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarPagoMed.png"))); // NOI18N
+        registrarPago.setBorder(null);
+        registrarPago.setBorderPainted(false);
+        registrarPago.setContentAreaFilled(false);
+        registrarPago.setFocusPainted(false);
+        registrarPago.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarPagoPeq.png"))); // NOI18N
+        registrarPago.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarPago.png"))); // NOI18N
+        registrarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarPagoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(registrarPago);
+        registrarPago.setBounds(880, 250, 320, 180);
+        registrarPago.getAccessibleContext().setAccessibleName("Reportes y Consultas");
 
-        jButton4.setText("Certificados");
+        certificados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CertificadosMed.png"))); // NOI18N
+        certificados.setBorder(null);
+        certificados.setBorderPainted(false);
+        certificados.setContentAreaFilled(false);
+        certificados.setFocusPainted(false);
+        certificados.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CertificadosPeq.png"))); // NOI18N
+        certificados.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Certificados.png"))); // NOI18N
+        certificados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                certificadosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(certificados);
+        certificados.setBounds(170, 460, 320, 180);
 
-        jButton5.setText("Escarapelas");
+        CerrarSesion.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
+        CerrarSesion.setText("Cerrar Sesión");
+        CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarSesionMouseClicked(evt);
+            }
+        });
+        jPanel1.add(CerrarSesion);
+        CerrarSesion.setBounds(1070, 650, 280, 70);
 
-        jButton6.setText("Reportes y Consultas");
+        preInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PreMed.png"))); // NOI18N
+        preInscripcion.setBorder(null);
+        preInscripcion.setBorderPainted(false);
+        preInscripcion.setContentAreaFilled(false);
+        preInscripcion.setFocusPainted(false);
+        preInscripcion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PrePeq.png"))); // NOI18N
+        preInscripcion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Pre.png"))); // NOI18N
+        preInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preInscripcionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(preInscripcion);
+        preInscripcion.setBounds(170, 250, 320, 180);
 
-        jLabel1.setText("Cerrar Sesión");
+        inscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InscripcionMed.png"))); // NOI18N
+        inscripcion.setBorder(null);
+        inscripcion.setBorderPainted(false);
+        inscripcion.setContentAreaFilled(false);
+        inscripcion.setFocusPainted(false);
+        inscripcion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InscripcionPeq.png"))); // NOI18N
+        inscripcion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Inscripcion.png"))); // NOI18N
+        inscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inscripcionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(inscripcion);
+        inscripcion.setBounds(520, 250, 320, 180);
 
-        javax.swing.GroupLayout jpanel_opLayout = new javax.swing.GroupLayout(jpanel_op);
-        jpanel_op.setLayout(jpanel_opLayout);
-        jpanel_opLayout.setHorizontalGroup(
-            jpanel_opLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanel_opLayout.createSequentialGroup()
-                .addGroup(jpanel_opLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpanel_opLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addGroup(jpanel_opLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jpanel_opLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jpanel_opLayout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpanel_opLayout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanel_opLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        jpanel_opLayout.setVerticalGroup(
-            jpanel_opLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpanel_opLayout.createSequentialGroup()
-                .addGroup(jpanel_opLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpanel_opLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jpanel_opLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpanel_opLayout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpanel_opLayout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
+        escarapelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EscarapelaMed.png"))); // NOI18N
+        escarapelas.setBorder(null);
+        escarapelas.setBorderPainted(false);
+        escarapelas.setContentAreaFilled(false);
+        escarapelas.setFocusPainted(false);
+        escarapelas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EscarapelaPeq.png"))); // NOI18N
+        escarapelas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Escarapelas.png"))); // NOI18N
+        escarapelas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escarapelasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(escarapelas);
+        escarapelas.setBounds(520, 460, 320, 180);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/oper.png"))); // NOI18N
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, 0, 1370, 770);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpanel_op, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1382, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpanel_op, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void registrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registrarPagoActionPerformed
+
+    private void certificadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_certificadosActionPerformed
+        // TODO add your handling code here:
+ 
+    }//GEN-LAST:event_certificadosActionPerformed
+
+    private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
+        // TODO add your handling code here:
+        GUI_Login interfazLogin = new GUI_Login();
+        interfazLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_CerrarSesionMouseClicked
+
+    private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
+        // TODO add your handling code here:
+   
+    }//GEN-LAST:event_reportesActionPerformed
+
+    private void preInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preInscripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_preInscripcionActionPerformed
+
+    private void inscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inscripcionActionPerformed
+
+    private void escarapelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escarapelasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_escarapelasActionPerformed
+
+   
+       
+  
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -135,32 +219,33 @@ public class GUI_Operador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_Operador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_Operador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_Operador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_Operador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_Operador().setVisible(true);
+                new GUI_Gerente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jpanel_op;
+    private javax.swing.JLabel CerrarSesion;
+    private javax.swing.JButton certificados;
+    private javax.swing.JButton escarapelas;
+    private javax.swing.JButton inscripcion;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton preInscripcion;
+    private javax.swing.JButton registrarPago;
+    private javax.swing.JButton reportes;
     // End of variables declaration//GEN-END:variables
 }

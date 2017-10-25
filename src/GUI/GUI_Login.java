@@ -26,6 +26,7 @@ public class GUI_Login extends javax.swing.JFrame {
         controladorAdministrador = new ControladorAdministrador();
         controladorGerente = new ControladorGerente();
         controladorOperador = new ControladorOperador();
+       
     }
 
     /**
@@ -134,10 +135,12 @@ public class GUI_Login extends javax.swing.JFrame {
 
         Operador ope;
         ope = controladorOperador.loginOperador(user);
-
-        if(admin.getUsuario().equals(user)){
+        
+        if((!user.equals("")) && (!cont.equals(""))){
+        if(admin.getUsuario().equals(user) ){
 
             if(admin.getContrasena().equals(cont)){
+                this.dispose();
 
                 System.out.println("Login administrador correcto.");
                 GUI_Administrador interfazAdmin = new GUI_Administrador();
@@ -153,7 +156,7 @@ public class GUI_Login extends javax.swing.JFrame {
         else if(gen.getCedula_ge().equals(user)){
 
             if(gen.getContrasena().equals(cont)){
-
+                this.dispose();
                 System.out.println("Login gerente correcto.");
                 GUI_Gerente interfazGerente = new GUI_Gerente();
                 interfazGerente.setVisible(true);
@@ -168,7 +171,7 @@ public class GUI_Login extends javax.swing.JFrame {
         else if(ope.getCedula_op().equals(user)){
 
             if(ope.getContrasena().equals(cont)){
-
+                this.dispose();
                 System.out.println("Login operador correcto.");
                 GUI_Operador interfazOperador = new GUI_Operador();
                 interfazOperador.setVisible(true);
@@ -182,6 +185,8 @@ public class GUI_Login extends javax.swing.JFrame {
         else {
             JOptionPane.showMessageDialog(null, "El usuario no existe.\nVerifique sus datos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        }
+        
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     /**

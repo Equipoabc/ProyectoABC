@@ -5,10 +5,12 @@
  */
 package GUI;
 import Controladores.*;
+import java.text.DateFormat;
 import javax.swing.JOptionPane;
 
 public class GUI_CrearUsuario extends javax.swing.JFrame { 
     
+    DateFormat df = DateFormat.getDateInstance();
     ControladorOperador controladorOperador;
     ControladorGerente controladorGerente;
 
@@ -41,7 +43,6 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel6 = new javax.swing.JLabel();
         primerNombreLabel5 = new javax.swing.JLabel();
         tipo = new javax.swing.JComboBox<>();
-        fecha = new javax.swing.JTextField();
         primerNombreLabel4 = new javax.swing.JLabel();
         ced = new javax.swing.JTextField();
         primerNombreLabel3 = new javax.swing.JLabel();
@@ -54,6 +55,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel = new javax.swing.JLabel();
         primerNom = new javax.swing.JTextField();
         crearUsuario = new javax.swing.JButton();
+        fecha = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,11 +76,12 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(960, 550, 250, 100);
+        botonCancelar.setBounds(1000, 570, 250, 100);
 
         respuestaSeguridad.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        respuestaSeguridad.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(respuestaSeguridad);
-        respuestaSeguridad.setBounds(880, 450, 150, 28);
+        respuestaSeguridad.setBounds(880, 450, 230, 28);
 
         primerNombreLabel12.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel12.setText("Respuesta:");
@@ -86,17 +89,19 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel12.setBounds(750, 450, 150, 30);
 
         preguntaSeguridad.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        preguntaSeguridad.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(preguntaSeguridad);
-        preguntaSeguridad.setBounds(880, 400, 150, 28);
+        preguntaSeguridad.setBounds(880, 400, 230, 28);
 
         confirmarpass.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        confirmarpass.setSelectionColor(new java.awt.Color(102, 102, 255));
         confirmarpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarpassActionPerformed(evt);
             }
         });
         jPanel1.add(confirmarpass);
-        confirmarpass.setBounds(880, 350, 150, 28);
+        confirmarpass.setBounds(880, 350, 230, 28);
 
         primerNombreLabel11.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel11.setText("Pregunta:");
@@ -109,13 +114,14 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel10.setBounds(750, 350, 150, 30);
 
         pass.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        pass.setSelectionColor(new java.awt.Color(102, 102, 255));
         pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passActionPerformed(evt);
             }
         });
         jPanel1.add(pass);
-        pass.setBounds(880, 300, 150, 28);
+        pass.setBounds(880, 300, 230, 28);
 
         primerNombreLabel9.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel9.setText("Contraseña:");
@@ -123,8 +129,9 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel9.setBounds(750, 300, 160, 30);
 
         correo.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        correo.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(correo);
-        correo.setBounds(460, 550, 150, 28);
+        correo.setBounds(460, 550, 230, 28);
 
         primerNombreLabel8.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel8.setText("Email:");
@@ -132,8 +139,9 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel8.setBounds(260, 550, 120, 30);
 
         cel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        cel.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(cel);
-        cel.setBounds(880, 250, 150, 28);
+        cel.setBounds(880, 250, 230, 28);
 
         primerNombreLabel7.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel7.setText("Celular:");
@@ -141,16 +149,17 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel7.setBounds(750, 250, 130, 30);
 
         tel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        tel.setSelectionColor(new java.awt.Color(102, 102, 255));
         tel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 telActionPerformed(evt);
             }
         });
         jPanel1.add(tel);
-        tel.setBounds(880, 200, 150, 28);
+        tel.setBounds(880, 200, 230, 28);
 
         primerNombreLabel6.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
-        primerNombreLabel6.setText("Telefono:");
+        primerNombreLabel6.setText("Teléfono:");
         jPanel1.add(primerNombreLabel6);
         primerNombreLabel6.setBounds(750, 200, 140, 30);
 
@@ -163,17 +172,14 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         tipo.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         tipo.setForeground(new java.awt.Color(102, 102, 255));
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Gerente" }));
+        tipo.setFocusable(false);
         tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoActionPerformed(evt);
             }
         });
         jPanel1.add(tipo);
-        tipo.setBounds(460, 200, 150, 28);
-
-        fecha.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
-        jPanel1.add(fecha);
-        fecha.setBounds(460, 500, 150, 28);
+        tipo.setBounds(460, 200, 230, 28);
 
         primerNombreLabel4.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel4.setText("Tipo de Usuario:");
@@ -181,8 +187,9 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel4.setBounds(260, 200, 170, 30);
 
         ced.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        ced.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(ced);
-        ced.setBounds(460, 450, 150, 28);
+        ced.setBounds(460, 450, 230, 28);
 
         primerNombreLabel3.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel3.setText("Cédula:");
@@ -190,8 +197,9 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel3.setBounds(260, 450, 130, 30);
 
         segundoAp.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        segundoAp.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(segundoAp);
-        segundoAp.setBounds(460, 400, 150, 28);
+        segundoAp.setBounds(460, 400, 230, 28);
 
         primerNombreLabel2.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel2.setText("Segundo Apellido:");
@@ -199,8 +207,9 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel2.setBounds(260, 400, 180, 30);
 
         primerAp.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        primerAp.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerAp);
-        primerAp.setBounds(460, 350, 150, 28);
+        primerAp.setBounds(460, 350, 230, 28);
 
         primerNombreLabel1.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel1.setText("Primer Apellido:");
@@ -208,8 +217,9 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel1.setBounds(260, 350, 170, 30);
 
         segundoNom.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        segundoNom.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(segundoNom);
-        segundoNom.setBounds(460, 300, 150, 28);
+        segundoNom.setBounds(460, 300, 230, 28);
 
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         segundoNombreLabel.setText("Segundo Nombre:");
@@ -222,8 +232,9 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         primerNombreLabel.setBounds(260, 250, 170, 30);
 
         primerNom.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        primerNom.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerNom);
-        primerNom.setBounds(460, 250, 150, 28);
+        primerNom.setBounds(460, 250, 230, 28);
 
         crearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         crearUsuario.setBorder(null);
@@ -238,12 +249,22 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearUsuario);
-        crearUsuario.setBounds(710, 550, 250, 100);
+        crearUsuario.setBounds(750, 570, 250, 100);
 
-        jLabel2.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        fecha.setBackground(new java.awt.Color(255, 255, 255));
+        fecha.setForeground(new java.awt.Color(102, 102, 255));
+        fecha.setFocusable(false);
+        fecha.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
+        fecha.setRequestFocusEnabled(false);
+        fecha.setVerifyInputWhenFocusTarget(false);
+        jPanel1.add(fecha);
+        fecha.setBounds(460, 500, 230, 28);
+
+        jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearUsuario.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel2.setFocusable(false);
         jPanel1.add(jLabel2);
         jLabel2.setBounds(-10, 0, 1390, 780);
 
@@ -262,7 +283,9 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-       
+        GUI_Administrador adminLogin = new GUI_Administrador();
+        adminLogin.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void confirmarpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarpassActionPerformed
@@ -290,7 +313,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         segundoApellido = segundoAp.getText();
         cedula = ced.getText();
         tipoUsuario = (String) tipo.getSelectedItem();
-        fechaNacimiento = fecha.getText();
+        fechaNacimiento = df.format(fecha.getDate());
         telefono = tel.getText();
         celular = cel.getText();
         email = correo.getText();
@@ -299,8 +322,9 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         pregunta = preguntaSeguridad.getText();
         respuesta = respuestaSeguridad.getText();
         
-       tipoUsuario = "Operador";
+
        if (tipoUsuario.equals("Operador")){
+           
             int numFilas = controladorOperador.insertarOperador(primerNombre, 
                segundoNombre, primerApellido, segundoApellido,
                cedula, fechaNacimiento, telefono, celular, email, 
@@ -320,6 +344,23 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         }
        }
        else if (tipoUsuario.equals("Gerente")){
+            
+            int numFilas = controladorGerente.insertarGerente(primerNombre, 
+               segundoNombre, primerApellido, segundoApellido,
+               cedula, fechaNacimiento, telefono, celular, email, 
+               contrasena, confirmar, pregunta, respuesta);           
+            
+        
+        System.out.println ("Filas "+ numFilas);
+        if (numFilas == 1){
+            JOptionPane.showMessageDialog(null, "Gerente creado exitosamente");
+        }
+        else if (numFilas == 5){
+            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Programa");
+        }         
            
        }  
     }//GEN-LAST:event_crearUsuarioActionPerformed
@@ -371,7 +412,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     private javax.swing.JPasswordField confirmarpass;
     private javax.swing.JTextField correo;
     private javax.swing.JButton crearUsuario;
-    private javax.swing.JTextField fecha;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField pass;

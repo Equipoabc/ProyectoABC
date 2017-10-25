@@ -59,4 +59,38 @@ public class DaoGerente {
         
         conexion.closeConection(conexion.getConnetion());
     }
+    
+     public int guardarGerente(Gerente ge){
+        String sql_guardar;
+        int numFilas=0;      
+     
+        sql_guardar = "INSERT INTO Gerentes (cedula_ge, primer_nombre, segundo_nombre, " + 
+        "primer_apellido, segundo_apellido, " /*fecha_nacimiento*/ + "email, telefono, celular, estado, " + 
+        "contrasena, pregunta, respuesta) VALUES ('" + ge.getCedula_ge() + "', '" +
+        ge.getPrimer_nombre() +  "', '" + ge.getSegundo_nombre() +  "', '" +
+        ge.getPrimer_apellido() +  "', '" + ge.getSegundo_apellido() + "', '" + 
+        /*op.getFecha_nacimiento() + "', '" + */ge.getEmail() +  "', '" + 
+        ge.getTelefono() +  "', '" + ge.getCelular() +  "', '" +        
+        "Activo" +  "', '" + ge.getContrasena() +  "', '" +
+        ge.getPregunta() +  "', '" + ge.getRespuesta() +  "')" ;
+        
+        try{
+            Connection conn= conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+
+            numFilas = sentencia.executeUpdate(sql_guardar);            
+            System.out.println("up " + numFilas);
+            return numFilas;
+            
+        }
+        catch(SQLException e){
+            System.out.println(e); 
+            }
+        catch(Exception e){ 
+            System.out.println(e);
+        }
+        return -1;
+        
+        
+    }
 }
