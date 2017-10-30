@@ -4,18 +4,13 @@
  * and open the template in the editor.
  */
 package Controladores;
+import DAO.*;
+import Logica.*;
 
 /**
  *
  * @author Luis
  */
-import DAO.*;
-import Logica.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ControladorOperador {
   
@@ -26,28 +21,29 @@ public class ControladorOperador {
         daoOperador = new DaoOperador();
     }
     
-      public int  insertarOperador(String primerNombre, 
-               String segundoNombre, String primerApellido, String segundoApellido,
-               String cedula, String fechaNacimiento, String telefono, 
-               String celular, String email, String contrasena, String confirmar, String pregunta, 
-               String respuesta){
+    public int  insertarOperador(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido,
+            String cedula, String fechaNacimiento, String telefono, String celular, String email, String contrasena, 
+            String confirmar, String pregunta, String respuesta){
         
-          if(!contrasena.equals(confirmar)){
-              return 5;
-          }
+        if(!contrasena.equals(confirmar)){
+        
+            return 5;
+        }
           
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        // SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
         
-       Operador op = new Operador();     
+        Operador op = new Operador();     
         
-       
-      /* try {
-             Date date = formatter.parse(fechaNacimiento);
-             op.setFecha_nacimiento(date);
-        } catch (ParseException ex) {
+        /* 
+        try {
+             
+            Date date = formatter.parse(fechaNacimiento);
+            op.setFecha_nacimiento(date);
+        } catch (ParseException ex){
+        
             Logger.getLogger(ControladorOperador.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-       
+        }
+        */
         
         op.setPrimer_nombre(primerNombre);
         op.setSegundo_nombre(segundoNombre);
@@ -60,18 +56,12 @@ public class ControladorOperador {
         op.setContrasena(contrasena);
         op.setRespuesta(respuesta);
         op.setPregunta(pregunta);
-        
-        
-        //Se llama al dao para guardar
-        System.out.println("Se va a insertar un Operador");
-        
-        int result =daoOperador.guardarOperador(op);
 
-        System.out.println("Se  insertó  un  nuevo programa");
+        // System.out.println("Se va a insertar un operador.");
         
+        int result = daoOperador.guardarOperador(op);
         return result;
-
-    }//end
+    }
     
     public Operador loginOperador(String user){
 
@@ -79,5 +69,4 @@ public class ControladorOperador {
         operador = daoOperador.loginOperador(user);
         return operador;
     }
-
 }

@@ -9,10 +9,11 @@ package Logica;
  *
  * @author Iván
  */
+
 public class Participantes_Eventos {
     
-    	private String id_participante;
-	private String id_evento;
+    private String id_participante;
+    private String id_evento;
 
     /**
      * @return the id_participante

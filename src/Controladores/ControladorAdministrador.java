@@ -4,14 +4,13 @@
  * and open the template in the editor.
  */
 package Controladores;
+import DAO.*;
+import Logica.*;
 
 /**
  *
  * @author Luis
  */
-
-import DAO.*;
-import Logica.*;
 
 public class ControladorAdministrador {
     

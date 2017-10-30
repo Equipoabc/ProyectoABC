@@ -5,23 +5,23 @@
  */
 package Logica;
 
-import java.util.Date;
-
 /**
  *
- * @author Luis
+ * @au
+ * thor Luis
  */
+
 public class Evento {
     
-   	private String id_evento;
-	private String nombre_evento;
-	private Date fecha;
-	private int precio;
-	private String lugar;
-	private String duracion; // Falta hacer el parser de Strign to Time.sql. Time no existe en Java.
- 	private String tema;
-	private int cupos;
-	private String cedula_ge; 
+    private String id_evento;
+    private String nombre_evento;
+    private String fecha;
+    private int precio;
+    private String lugar;
+    private String duracion;
+    private String tema;
+    private int cupos;
+    private String cedula_ge; 
 
     /**
      * @return the id_evento
@@ -54,14 +54,14 @@ public class Evento {
     /**
      * @return the fecha
      */
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
     /**
      * @param fecha the fecha to set
      */
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

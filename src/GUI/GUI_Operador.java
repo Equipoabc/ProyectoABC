@@ -5,20 +5,18 @@
  */
 package GUI;
 
-import Controladores.*;
-
 /**
  *
  * @author Jhoan Sebastián
  */
-public class GUI_Operador extends javax.swing.JFrame {
 
+public class GUI_Operador extends javax.swing.JFrame {
     /**
      * Creates new form GUI_Admin
      */
-    public GUI_Operador() {
-        initComponents();
+    public GUI_Operador(){
         
+        initComponents();
     }
 
     /**
@@ -172,11 +170,10 @@ public class GUI_Operador extends javax.swing.JFrame {
 
     private void certificadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_certificadosActionPerformed
         // TODO add your handling code here:
- 
     }//GEN-LAST:event_certificadosActionPerformed
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
-        // TODO add your handling code here:
+    
         GUI_Login interfazLogin = new GUI_Login();
         interfazLogin.setVisible(true);
         this.dispose();
@@ -184,7 +181,6 @@ public class GUI_Operador extends javax.swing.JFrame {
 
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
-   
     }//GEN-LAST:event_reportesActionPerformed
 
     private void preInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preInscripcionActionPerformed
@@ -199,13 +195,10 @@ public class GUI_Operador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_escarapelasActionPerformed
 
-   
-       
-  
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
          /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -230,8 +223,10 @@ public class GUI_Operador extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            
+            public void run(){
+                
                 new GUI_Gerente().setVisible(true);
             }
         });

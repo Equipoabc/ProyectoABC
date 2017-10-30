@@ -5,24 +5,18 @@
  */
 package GUI;
 import Controladores.*;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
+import java.text.*;
+import javax.swing.*;
 
 public class GUI_CrearEvento extends javax.swing.JFrame { 
     
     DateFormat df = DateFormat.getDateInstance();
-    ControladorOperador controladorOperador;
-    ControladorGerente controladorGerente;
+    ControladorEvento controladorEvento;
 
-       public GUI_CrearEvento() {
-        initComponents();
-        controladorOperador = new ControladorOperador();
-        controladorGerente = new ControladorGerente();
+    public GUI_CrearEvento(){
         
+        initComponents();
+        controladorEvento = new ControladorEvento();
     }
 
     @SuppressWarnings("unchecked")
@@ -31,26 +25,27 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         botonCancelar = new javax.swing.JButton();
-        correo = new javax.swing.JTextField();
+        tema = new javax.swing.JTextField();
         primerNombreLabel8 = new javax.swing.JLabel();
         primerNombreLabel6 = new javax.swing.JLabel();
         primerNombreLabel5 = new javax.swing.JLabel();
-        ced = new javax.swing.JTextField();
+        lugar = new javax.swing.JTextField();
         primerNombreLabel3 = new javax.swing.JLabel();
-        segundoAp = new javax.swing.JTextField();
+        precio = new javax.swing.JTextField();
         primerNombreLabel2 = new javax.swing.JLabel();
         primerNombreLabel1 = new javax.swing.JLabel();
-        segundoNom = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
         segundoNombreLabel = new javax.swing.JLabel();
         primerNombreLabel = new javax.swing.JLabel();
-        primerNom = new javax.swing.JTextField();
-        crearUsuario = new javax.swing.JButton();
+        codigo = new javax.swing.JTextField();
+        crearEvento = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
-        Date date = new Date();
-        SpinnerDateModel sm = new SpinnerDateModel(date,null,null,Calendar.HOUR_OF_DAY);
-        jSpinner1 = new javax.swing.JSpinner(sm);
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel2 = new javax.swing.JLabel();
+        cupos = new javax.swing.JSpinner();
+        horas = new javax.swing.JComboBox<>();
+        minutos = new javax.swing.JComboBox<>();
+        horasLabel = new javax.swing.JLabel();
+        primerNombreLabel7 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -72,40 +67,40 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(970, 590, 250, 100);
 
-        correo.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
-        correo.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(correo);
-        correo.setBounds(890, 460, 250, 32);
+        tema.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        tema.setSelectionColor(new java.awt.Color(102, 102, 255));
+        jPanel1.add(tema);
+        tema.setBounds(890, 460, 250, 32);
 
         primerNombreLabel8.setFont(new java.awt.Font("Cambria", 2, 28)); // NOI18N
         primerNombreLabel8.setText("Tema:");
         jPanel1.add(primerNombreLabel8);
         primerNombreLabel8.setBounds(750, 460, 120, 30);
 
-        primerNombreLabel6.setFont(new java.awt.Font("Cambria", 2, 28)); // NOI18N
-        primerNombreLabel6.setText("Cupos:");
+        primerNombreLabel6.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        primerNombreLabel6.setText("Minutos");
         jPanel1.add(primerNombreLabel6);
-        primerNombreLabel6.setBounds(750, 250, 140, 30);
+        primerNombreLabel6.setBounds(1075, 327, 80, 30);
 
         primerNombreLabel5.setFont(new java.awt.Font("Cambria", 2, 28)); // NOI18N
         primerNombreLabel5.setText("Duración:");
         jPanel1.add(primerNombreLabel5);
-        primerNombreLabel5.setBounds(750, 320, 220, 40);
+        primerNombreLabel5.setBounds(750, 320, 120, 40);
 
-        ced.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
-        ced.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(ced);
-        ced.setBounds(890, 390, 250, 32);
+        lugar.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        lugar.setSelectionColor(new java.awt.Color(102, 102, 255));
+        jPanel1.add(lugar);
+        lugar.setBounds(890, 390, 250, 32);
 
         primerNombreLabel3.setFont(new java.awt.Font("Cambria", 2, 28)); // NOI18N
         primerNombreLabel3.setText("Lugar:");
         jPanel1.add(primerNombreLabel3);
-        primerNombreLabel3.setBounds(750, 390, 130, 50);
+        primerNombreLabel3.setBounds(750, 380, 130, 50);
 
-        segundoAp.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
-        segundoAp.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(segundoAp);
-        segundoAp.setBounds(380, 460, 250, 32);
+        precio.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        precio.setSelectionColor(new java.awt.Color(102, 102, 255));
+        jPanel1.add(precio);
+        precio.setBounds(380, 460, 250, 32);
 
         primerNombreLabel2.setFont(new java.awt.Font("Cambria", 2, 28)); // NOI18N
         primerNombreLabel2.setText("Precio:");
@@ -117,10 +112,10 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         jPanel1.add(primerNombreLabel1);
         primerNombreLabel1.setBounds(260, 390, 170, 30);
 
-        segundoNom.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
-        segundoNom.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(segundoNom);
-        segundoNom.setBounds(380, 320, 250, 32);
+        nombre.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        nombre.setSelectionColor(new java.awt.Color(102, 102, 255));
+        jPanel1.add(nombre);
+        nombre.setBounds(380, 320, 250, 32);
 
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 28)); // NOI18N
         segundoNombreLabel.setText("Nombre:");
@@ -132,25 +127,25 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         jPanel1.add(primerNombreLabel);
         primerNombreLabel.setBounds(260, 240, 170, 50);
 
-        primerNom.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
-        primerNom.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(primerNom);
-        primerNom.setBounds(380, 250, 250, 32);
+        codigo.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        codigo.setSelectionColor(new java.awt.Color(102, 102, 255));
+        jPanel1.add(codigo);
+        codigo.setBounds(380, 250, 250, 32);
 
-        crearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
-        crearUsuario.setBorder(null);
-        crearUsuario.setBorderPainted(false);
-        crearUsuario.setContentAreaFilled(false);
-        crearUsuario.setFocusPainted(false);
-        crearUsuario.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarPeq.png"))); // NOI18N
-        crearUsuario.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
-        crearUsuario.addActionListener(new java.awt.event.ActionListener() {
+        crearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
+        crearEvento.setBorder(null);
+        crearEvento.setBorderPainted(false);
+        crearEvento.setContentAreaFilled(false);
+        crearEvento.setFocusPainted(false);
+        crearEvento.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarPeq.png"))); // NOI18N
+        crearEvento.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        crearEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearUsuarioActionPerformed(evt);
+                crearEventoActionPerformed(evt);
             }
         });
-        jPanel1.add(crearUsuario);
-        crearUsuario.setBounds(720, 590, 250, 100);
+        jPanel1.add(crearEvento);
+        crearEvento.setBounds(720, 590, 250, 100);
 
         fecha.setBackground(new java.awt.Color(255, 255, 255));
         fecha.setForeground(new java.awt.Color(102, 102, 255));
@@ -161,27 +156,55 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         jPanel1.add(fecha);
         fecha.setBounds(380, 390, 250, 32);
 
-        JSpinner.DateEditor de = new JSpinner.DateEditor(jSpinner1,"HH:mm");
-        jSpinner1.setEditor(de);
-        jSpinner1.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
-        jSpinner1.setAutoscrolls(true);
-        jSpinner1.setFocusable(false);
-        jPanel1.add(jSpinner1);
-        jSpinner1.setBounds(890, 320, 100, 32);
+        cupos.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        cupos.setAutoscrolls(true);
+        cupos.setFocusable(false);
+        jPanel1.add(cupos);
+        cupos.setBounds(890, 250, 100, 32);
 
-        jSpinner2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
-        jSpinner2.setAutoscrolls(true);
-        jSpinner2.setFocusable(false);
-        jPanel1.add(jSpinner2);
-        jSpinner2.setBounds(890, 250, 100, 32);
+        horas.setBackground(new java.awt.Color(102, 102, 255));
+        horas.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        horas.setForeground(new java.awt.Color(102, 102, 255));
+        horas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        horas.setFocusable(false);
+        horas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(horas);
+        horas.setBounds(890, 327, 60, 28);
 
-        jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEventoFondo.png"))); // NOI18N
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel2.setFocusable(false);
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(-10, 0, 1390, 780);
+        minutos.setBackground(new java.awt.Color(102, 102, 255));
+        minutos.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        minutos.setForeground(new java.awt.Color(102, 102, 255));
+        minutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "15", "30", "45" }));
+        minutos.setFocusable(false);
+        minutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minutosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(minutos);
+        minutos.setBounds(1010, 327, 60, 28);
+
+        horasLabel.setFont(new java.awt.Font("Cambria", 2, 28)); // NOI18N
+        horasLabel.setText("Cupos:");
+        jPanel1.add(horasLabel);
+        horasLabel.setBounds(750, 250, 140, 30);
+
+        primerNombreLabel7.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        primerNombreLabel7.setText("Horas");
+        jPanel1.add(primerNombreLabel7);
+        primerNombreLabel7.setBounds(955, 327, 60, 30);
+
+        fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
+        fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEventoFondo.png"))); // NOI18N
+        fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        fondo.setFocusable(false);
+        jPanel1.add(fondo);
+        fondo.setBounds(-10, 0, 1390, 780);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,23 +221,51 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        GUI_Administrador adminLogin = new GUI_Administrador();
-        adminLogin.setVisible(true);
+        
+        GUI_Gerente gerenteLogin = new GUI_Gerente();
+        gerenteLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
-    private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
-        // TODO add your handling code here:
-  // TODO add your handling code here:
-       
+    private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
 
-    
-    }//GEN-LAST:event_crearUsuarioActionPerformed
+        String nom, cod, date, prec, cupo, lug, tem, dur, hora, min;
+        
+        nom = nombre.getText();
+        cod = codigo.getText();
+        date = df.format(fecha.getDate());
+        prec = precio.getText();
+        cupo = cupos.getValue().toString();
+        hora = (String) horas.getSelectedItem();
+        min = (String) minutos.getSelectedItem();
+        dur = horas + ":" + min;
+        lug = lugar.getText();
+        tem = tema.getText();
+        
+        int numFilas = controladorEvento.insertarEvento(cod, nom, date, prec, cupo, hora, min, dur, lug, tem);
+        
+        if(numFilas == 1){
+            
+            JOptionPane.showMessageDialog(null, "Evento creado exitosamente.");
+        }
+        else {
+            
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el evento.");
+        }      
+    }//GEN-LAST:event_crearEventoActionPerformed
+
+    private void horasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_horasActionPerformed
+
+    private void minutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minutosActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -239,34 +290,38 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            
+            public void run(){
+                
                 new GUI_CrearUsuario().setVisible(true);
             }
         });
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
-    private javax.swing.JTextField ced;
-    private javax.swing.JTextField correo;
-    private javax.swing.JButton crearUsuario;
+    private javax.swing.JTextField codigo;
+    private javax.swing.JButton crearEvento;
+    private javax.swing.JSpinner cupos;
     private com.toedter.calendar.JDateChooser fecha;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JComboBox<String> horas;
+    private javax.swing.JLabel horasLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextField primerNom;
+    private javax.swing.JTextField lugar;
+    private javax.swing.JComboBox<String> minutos;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField precio;
     private javax.swing.JLabel primerNombreLabel;
     private javax.swing.JLabel primerNombreLabel1;
     private javax.swing.JLabel primerNombreLabel2;
     private javax.swing.JLabel primerNombreLabel3;
     private javax.swing.JLabel primerNombreLabel5;
     private javax.swing.JLabel primerNombreLabel6;
+    private javax.swing.JLabel primerNombreLabel7;
     private javax.swing.JLabel primerNombreLabel8;
-    private javax.swing.JTextField segundoAp;
-    private javax.swing.JTextField segundoNom;
     private javax.swing.JLabel segundoNombreLabel;
+    private javax.swing.JTextField tema;
     // End of variables declaration//GEN-END:variables
 }

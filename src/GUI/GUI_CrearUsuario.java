@@ -5,8 +5,8 @@
  */
 package GUI;
 import Controladores.*;
-import java.text.DateFormat;
-import javax.swing.JOptionPane;
+import java.text.*;
+import javax.swing.*;
 
 public class GUI_CrearUsuario extends javax.swing.JFrame { 
     
@@ -14,11 +14,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     ControladorOperador controladorOperador;
     ControladorGerente controladorGerente;
 
-       public GUI_CrearUsuario() {
+    public GUI_CrearUsuario(){
+        
         initComponents();
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -283,6 +283,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        
         GUI_Administrador adminLogin = new GUI_Administrador();
         adminLogin.setVisible(true);
         this.dispose();
@@ -301,19 +302,18 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_telActionPerformed
 
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
-        // TODO add your handling code here:
-  // TODO add your handling code here:
-        String primerNombre, segundoNombre, primerApellido, segundoApellido,
-               cedula, tipoUsuario, fechaNacimiento, telefono, celular, email, contrasena,
-               confirmar, pregunta, respuesta;
+
+        String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipoUsuario, 
+                fechaNacimiento, telefono, celular, email, contrasena, confirmar, pregunta, respuesta;
         
-       primerNombre = primerNom.getText();
-       segundoNombre = segundoNom.getText();
+        primerNombre = primerNom.getText();
+        segundoNombre = segundoNom.getText();
         primerApellido = primerAp.getText();
         segundoApellido = segundoAp.getText();
         cedula = ced.getText();
         tipoUsuario = (String) tipo.getSelectedItem();
         fechaNacimiento = df.format(fecha.getDate());
+        System.out.print(fechaNacimiento);
         telefono = tel.getText();
         celular = cel.getText();
         email = correo.getText();
@@ -321,47 +321,46 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         confirmar = confirmarpass.getText();
         pregunta = preguntaSeguridad.getText();
         respuesta = respuestaSeguridad.getText();
-        
-
-       if (tipoUsuario.equals("Operador")){
+       
+       if(tipoUsuario.equals("Operador")){
            
             int numFilas = controladorOperador.insertarOperador(primerNombre, 
                segundoNombre, primerApellido, segundoApellido,
                cedula, fechaNacimiento, telefono, celular, email, 
                contrasena, confirmar, pregunta, respuesta);
-            
-            
-        
-        System.out.println ("Filas "+ numFilas);
-        if (numFilas == 1){
-            JOptionPane.showMessageDialog(null, "Operador creado exitosamente");
+
+            if(numFilas == 1){
+                
+                JOptionPane.showMessageDialog(null, "Operador creado exitosamente.");
+            }
+            else if (numFilas == 5){
+                
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+            }
+            else {
+                
+                JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el operador.");
+            }
         }
-        else if (numFilas == 5){
-            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Programa");
-        }
-       }
-       else if (tipoUsuario.equals("Gerente")){
+        else if(tipoUsuario.equals("Gerente")){
             
             int numFilas = controladorGerente.insertarGerente(primerNombre, 
                segundoNombre, primerApellido, segundoApellido,
                cedula, fechaNacimiento, telefono, celular, email, 
                contrasena, confirmar, pregunta, respuesta);           
-            
-        
-        System.out.println ("Filas "+ numFilas);
-        if (numFilas == 1){
-            JOptionPane.showMessageDialog(null, "Gerente creado exitosamente");
-        }
-        else if (numFilas == 5){
-            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Programa");
-        }         
-           
+
+            if (numFilas == 1){
+                
+                JOptionPane.showMessageDialog(null, "Gerente creado exitosamente.");
+            }
+            else if (numFilas == 5){
+                
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+            }
+            else {
+                
+                JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
+            }         
        }  
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
@@ -372,7 +371,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -397,12 +396,13 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            
+            public void run(){
+                
                 new GUI_CrearUsuario().setVisible(true);
             }
         });
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

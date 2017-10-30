@@ -4,15 +4,14 @@
  * and open the template in the editor.
  */
 package DAO;
+import java.sql.*;
+import Logica.*;
+import Conexion.*;
 
 /**
  *
  * @author Luis
  */
-
-import java.sql.*;
-import Logica.*;
-import Conexion.*;
 
 public class DaoAdministrador {
     
@@ -30,7 +29,8 @@ public class DaoAdministrador {
 
         sql = "SELECT usuario, contrasena FROM Administradores WHERE usuario = '" + user + "';";
         
-        try{
+        try {
+            
             Connection con = conexion.getConnetion();
             Statement sentencia = con.createStatement();
             ResultSet consulta = sentencia.executeQuery(sql);
@@ -42,21 +42,14 @@ public class DaoAdministrador {
             }
             
             return administrador;
-        }
-        catch(SQLException e){
+        } catch(SQLException e){
             
-            System.out.println("Error: " + e); 
-        }
-        catch(Exception e){ 
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
             
             System.out.println("Error: " + e);
         }
         
         return null;
-    }
-
-    public void cerrarConexionBD(){
-        
-        conexion.closeConection(conexion.getConnetion());
     }
 }

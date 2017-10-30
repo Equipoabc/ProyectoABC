@@ -5,24 +5,23 @@
  */
 package Logica;
 
-import java.util.Date;
-
 /**
  *
  * @author Luis
  */
+
 public class Participante {
     
-    	private String cedula_pa;
-	private String primer_nombre;
-	private String segundo_nombre;
-	private String primer_apellido;
-	private String segundo_apellido;
-	private Date fecha_nacimiento;
-	private String telefono;
-	private String email;
-	private String estado_pago;
-	private String cedula_op;
+    private String cedula_pa;
+    private String primer_nombre;
+    private String segundo_nombre;
+    private String primer_apellido;
+    private String segundo_apellido;
+    private String fecha_nacimiento;
+    private String telefono;
+    private String email;
+    private String estado_pago;
+    private String cedula_op;
 
     /**
      * @return the cedula_pa
@@ -97,14 +96,14 @@ public class Participante {
     /**
      * @return the fecha_nacimiento
      */
-    public Date getFecha_nacimiento() {
+    public String getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
     /**
      * @param fecha_nacimiento the fecha_nacimiento to set
      */
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 

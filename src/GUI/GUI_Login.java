@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package GUI; 
+import Controladores.*;
+import Logica.*;
+import javax.swing.*;
+
 /**
  *
  * @author Jhoan Sebasti�n
  */
 
-import Controladores.*;
-import Logica.*;
-import javax.swing.JOptionPane;
-
 public class GUI_Login extends javax.swing.JFrame {
+    
     /**
      * Creates new form GUI_Login
      */
@@ -21,12 +22,12 @@ public class GUI_Login extends javax.swing.JFrame {
     ControladorGerente controladorGerente;
     ControladorOperador controladorOperador;
     
-    public GUI_Login() {
+    public GUI_Login(){
+        
         initComponents();
         controladorAdministrador = new ControladorAdministrador();
         controladorGerente = new ControladorGerente();
         controladorOperador = new ControladorOperador();
-       
     }
 
     /**
@@ -137,56 +138,51 @@ public class GUI_Login extends javax.swing.JFrame {
         ope = controladorOperador.loginOperador(user);
         
         if((!user.equals("")) && (!cont.equals(""))){
-        if(admin.getUsuario().equals(user) ){
+            
+            if(admin.getUsuario().equals(user) ){
 
-            if(admin.getContrasena().equals(cont)){
-                this.dispose();
+                if(admin.getContrasena().equals(cont)){
+                    
+                    GUI_Administrador interfazAdmin = new GUI_Administrador();
+                    interfazAdmin.setVisible(true);
+                    this.dispose();
+                }
+                else {
 
-                System.out.println("Login administrador correcto.");
-                GUI_Administrador interfazAdmin = new GUI_Administrador();
-                interfazAdmin.setVisible(true);
+                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
+            else if(gen.getCedula_ge().equals(user)){
 
+                if(gen.getContrasena().equals(cont)){
+                  
+                    GUI_Gerente interfazGerente = new GUI_Gerente();
+                    interfazGerente.setVisible(true);
+                    this.dispose();
+                }
+                else {
+
+                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else if(ope.getCedula_op().equals(user)){
+
+                if(ope.getContrasena().equals(cont)){
+                    
+                    GUI_Operador interfazOperador = new GUI_Operador();
+                    interfazOperador.setVisible(true);
+                    this.dispose();
+                }
+                else {
+
+                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
             else {
-
-                JOptionPane.showMessageDialog(null, "Contraseña incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
+                
+                JOptionPane.showMessageDialog(null, "El usuario no existe.\nVerifique sus datos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-        else if(gen.getCedula_ge().equals(user)){
-
-            if(gen.getContrasena().equals(cont)){
-                this.dispose();
-                System.out.println("Login gerente correcto.");
-                GUI_Gerente interfazGerente = new GUI_Gerente();
-                interfazGerente.setVisible(true);
-            }
-
-            else {
-
-                JOptionPane.showMessageDialog(null, "Contraseña incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        else if(ope.getCedula_op().equals(user)){
-
-            if(ope.getContrasena().equals(cont)){
-                this.dispose();
-                System.out.println("Login operador correcto.");
-                GUI_Operador interfazOperador = new GUI_Operador();
-                interfazOperador.setVisible(true);
-            }
-
-            else {
-
-                JOptionPane.showMessageDialog(null, "Contraseña incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "El usuario no existe.\nVerifique sus datos.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        }
-        
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     /**
@@ -217,13 +213,13 @@ public class GUI_Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            
+            public void run(){
+                
                 new GUI_Login().setVisible(true);
             }
         });
-        
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

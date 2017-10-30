@@ -5,8 +5,7 @@
  */
 package GUI;
 import Controladores.*;
-import java.text.DateFormat;
-import javax.swing.JOptionPane;
+import java.text.*;
 
 public class GUI_ModificarUsuario extends javax.swing.JFrame { 
     
@@ -14,11 +13,11 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     ControladorOperador controladorOperador;
     ControladorGerente controladorGerente;
 
-       public GUI_ModificarUsuario() {
+    public GUI_ModificarUsuario(){
+        
         initComponents();
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -272,6 +271,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        
         GUI_Administrador adminLogin = new GUI_Administrador();
         adminLogin.setVisible(true);
         this.dispose();
@@ -282,9 +282,8 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_telActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        // TODO add your handling code here:
-  // TODO add your handling code here:
-      
+        
+        
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoActionPerformed
@@ -292,9 +291,9 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_estadoActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        // TODO add your handling code here:
-          String primerNombre, segundoNombre, primerApellido, segundoApellido,
-               cedula, tipoUsuario, fechaNacimiento, telefono, celular, email;
+       
+        String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipoUsuario, 
+                fechaNacimiento, telefono, celular, email;
         
         primerNombre = consultarLabel.getText();
         segundoNombre = segundoNom.getText();
@@ -315,7 +314,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -340,12 +339,13 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            
+            public void run(){
+                
                 new GUI_CrearUsuario().setVisible(true);
             }
-        });
-        
+        });  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

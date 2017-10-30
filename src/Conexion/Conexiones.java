@@ -4,20 +4,17 @@
  * and open the template in the editor.
  */
 package Conexion;
+import java.sql.*;
 
 /**
  *
  * @author Luis
  */
 
-import java.sql.*;
-
 public class Conexiones {
     
     String url, usuario, password;
-    Connection conexion = null;
-    Statement instruccion;
-    ResultSet tabla;
+    Connection conexion;
     
     public Conexiones(){
     
@@ -29,35 +26,33 @@ public class Conexiones {
     public Connection conectar(){
         
         try {
-            // Se carga el driver.
+            
             Class.forName("org.postgresql.Driver");
-            System.out.println("Driver Cargado.");
+            System.out.println("Driver cargado...");
         } catch(ClassNotFoundException e){
                 
-            System.out.println("No se pudo cargar el driver.");
+            System.out.println("No se pudo cargar el driver: " + e);
         }
 
-        try{
-            // Crear el objeto de conexion a la base de datos.
+        try {
+            
             conexion = DriverManager.getConnection(url, usuario, password);
-            System.out.println("Conexion Abierta");
+            System.out.println("Conexion abierta.");
             return conexion;
-            // Crear objeto Statement para realizar queries a la base de datos.
         } catch(SQLException e){
         
-            System.out.println("No se pudo abrir la bd. Error: " + e);
+            System.out.println("Error en la conexion: " + e);
             return null;
         }
     }
 
     public Connection getConnetion(){
     
-        if (conexion == null) {
+        if (conexion == null){
         
             return this.conectar();
         }
-        
-        else{
+        else {
         
             return conexion;      
         }
@@ -65,7 +60,7 @@ public class Conexiones {
         
     public void closeConection(Connection c){
     
-        try{
+        try {
 
             if (conexion != null){
             
@@ -73,7 +68,7 @@ public class Conexiones {
             }
         } catch(SQLException e){
             
-                System.out.println("No se pudo cerrar. Error: " + e);
+            System.out.println("Error cerrardo la conexion: " + e);
         }
     }
 }

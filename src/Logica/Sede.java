@@ -9,16 +9,17 @@ package Logica;
  *
  * @author Luis
  */
+
 public class Sede {
     
-    	private String id_sede;
-	private String nombre_sede;
-	private String ciudad;
-	private String calle;
-	private String carrera;
-	private String barrio;
-	private String telefono;
-	private String cedula_ge;
+    private String id_sede;
+    private String nombre_sede; 
+    private String ciudad;
+    private String calle;
+    private String carrera;
+    private String barrio;
+    private String telefono;
+    private String cedula_ge;
 
     /**
      * @return the id_sede

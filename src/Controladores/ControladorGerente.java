@@ -4,15 +4,13 @@
  * and open the template in the editor.
  */
 package Controladores;
+import DAO.*;
+import Logica.*;
 
 /**
  *
  * @author Luis
  */
-
-import DAO.*;
-import Logica.*;
-import java.text.SimpleDateFormat;
 
 public class ControladorGerente {
     
@@ -23,28 +21,28 @@ public class ControladorGerente {
         daoGerente = new DaoGerente();
     }
  
-       public int  insertarGerente(String primerNombre, 
-               String segundoNombre, String primerApellido, String segundoApellido,
-               String cedula, String fechaNacimiento, String telefono, 
-               String celular, String email, String contrasena, String confirmar, String pregunta, 
-               String respuesta){
+    public int  insertarGerente(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, 
+            String cedula, String fechaNacimiento, String telefono, String celular, String email, String contrasena, 
+            String confirmar, String pregunta, String respuesta){
         
-          if(!contrasena.equals(confirmar)){
-              return 5;
-          }
+        if(!contrasena.equals(confirmar)){
+        
+            return 5;
+        }
           
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        //SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        Gerente ge = new Gerente();     
         
-       Gerente ge = new Gerente();     
+        /*
+        try {
         
-       
-      /* try {
              Date date = formatter.parse(fechaNacimiento);
              op.setFecha_nacimiento(date);
-        } catch (ParseException ex) {
+        } catch (ParseException ex){
+        
             Logger.getLogger(ControladorOperador.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-       
+        }
+        */
         
         ge.setPrimer_nombre(primerNombre);
         ge.setSegundo_nombre(segundoNombre);
@@ -57,16 +55,12 @@ public class ControladorGerente {
         ge.setContrasena(contrasena);
         ge.setRespuesta(respuesta);
         ge.setPregunta(pregunta);
-        
-        
-        //Se llama al dao para guardar
-        System.out.println("Se va a insertar un Gerente");
-        
-        int result =daoGerente.guardarGerente(ge);        
-        return result;
 
-    }//end   
-    
+        // System.out.println("Se va a insertar un gerente.");
+        
+        int result = daoGerente.guardarGerente(ge);        
+        return result;
+    }
     
     public Gerente loginGerente(String user){
 

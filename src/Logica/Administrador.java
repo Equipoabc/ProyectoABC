@@ -9,6 +9,7 @@ package Logica;
  *
  * @author Ivan
  */
+
 public class Administrador {
     
     private String usuario;

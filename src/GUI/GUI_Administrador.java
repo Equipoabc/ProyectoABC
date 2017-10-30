@@ -9,12 +9,14 @@ package GUI;
  *
  * @author Jhoan Sebastián
  */
+
 public class GUI_Administrador extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI_Admin
      */
-    public GUI_Administrador() {
+    public GUI_Administrador(){
+        
         initComponents();
     }
 
@@ -120,33 +122,30 @@ public class GUI_Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_reportesActionPerformed
 
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
-        // TODO add your handling code here:
-                GUI_CrearUsuario interfazCrearUsuario = new GUI_CrearUsuario();
-                interfazCrearUsuario.setVisible(true);
-                this.dispose();
+
+        GUI_CrearUsuario interfazCrearUsuario = new GUI_CrearUsuario();
+        interfazCrearUsuario.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
-        // TODO add your handling code here:
+   
         GUI_Login interfazLogin = new GUI_Login();
         interfazLogin.setVisible(true);
-        this.dispose();
+         this.dispose();
     }//GEN-LAST:event_CerrarSesionMouseClicked
 
     private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
-        // TODO add your handling code here:
-                GUI_ModificarUsuario interfazModificarUsuario = new GUI_ModificarUsuario();
-                interfazModificarUsuario.setVisible(true);
-                this.dispose();
+     
+        GUI_ModificarUsuario interfazModificarUsuario = new GUI_ModificarUsuario();
+        interfazModificarUsuario.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_modificarUsuarioActionPerformed
 
-   
-       
-  
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
          /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -171,8 +170,10 @@ public class GUI_Administrador extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            
+            public void run(){
+                
                 new GUI_Administrador().setVisible(true);
             }
         });

@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 package DAO;
+import java.sql.*;
+import Logica.*;
+import Conexion.*;
 
 /**
  *
  * @author Luis
  */
-import java.sql.*;
-import Logica.*;
-import Conexion.*;
 
 public class DaoOperador {
     
@@ -26,10 +26,11 @@ public class DaoOperador {
         
         String sql;
         Operador operador = new Operador();
-
+        
         sql = "SELECT cedula_op, contrasena FROM Operadores WHERE cedula_op = '" + user + "';";
         
-        try{
+        try {
+            
             Connection con = conexion.getConnetion();
             Statement sentencia = con.createStatement();
             ResultSet consulta = sentencia.executeQuery(sql);
@@ -41,12 +42,10 @@ public class DaoOperador {
             }
             
             return operador;
-        }
-        catch(SQLException e){
+        } catch(SQLException e){
             
-            System.out.println("Error: " + e); 
-        }
-        catch(Exception e){ 
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
             
             System.out.println("Error: " + e);
         }
@@ -54,42 +53,35 @@ public class DaoOperador {
         return null;
     }
 
-    public void cerrarConexionBD(){
+    public int guardarOperador(Operador op){
         
-        conexion.closeConection(conexion.getConnetion());
-    }
-
-    public int guardarOperador(Operador op) {
         String sql_guardar;
-        int numFilas=0;
+        int numFilas;
         
         sql_guardar = "INSERT INTO Operadores (cedula_op, primer_nombre, segundo_nombre, " + 
-        "primer_apellido, segundo_apellido, " /*fecha_nacimiento*/ + "email, telefono, celular, estado, " + 
-        "contrasena, pregunta, respuesta) VALUES ('" + op.getCedula_op() + "', '" +
-        op.getPrimer_nombre() +  "', '" + op.getSegundo_nombre() +  "', '" +
-        op.getPrimer_apellido() +  "', '" + op.getSegundo_apellido() + "', '" + 
-        /*op.getFecha_nacimiento() + "', '" + */op.getEmail() +  "', '" + 
-        op.getTelefono() +  "', '" + op.getCelular() +  "', '" +        
-        "Activo" +  "', '" + op.getContrasena() +  "', '" +
-        op.getPregunta() +  "', '" + op.getRespuesta() +  "')" ;
+            "primer_apellido, segundo_apellido, " /*+ "fecha_nacimiento"*/ + "email, telefono, celular, estado, " + 
+            "contrasena, pregunta, respuesta) VALUES ('" + op.getCedula_op() + "', '" +
+            op.getPrimer_nombre() +  "', '" + op.getSegundo_nombre() +  "', '" +
+            op.getPrimer_apellido() +  "', '" + op.getSegundo_apellido() + "', '" + 
+            /*op.getFecha_nacimiento() + "', '" + */op.getEmail() +  "', '" + 
+            op.getTelefono() +  "', '" + op.getCelular() +  "', '" +        
+            "Activo" +  "', '" + op.getContrasena() +  "', '" +
+            op.getPregunta() +  "', '" + op.getRespuesta() +  "')" ;
         
-        try{
+        try {
+            
             Connection conn= conexion.getConnetion();
             Statement sentencia = conn.createStatement();
-
-            numFilas = sentencia.executeUpdate(sql_guardar);            
-            System.out.println("up " + numFilas);
+            numFilas = sentencia.executeUpdate(sql_guardar);
             return numFilas;
+        } catch(SQLException e){
             
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error" + e);
         }
-        catch(SQLException e){
-            System.out.println(e); 
-            }
-        catch(Exception e){ 
-            System.out.println(e);
-        }
+        
         return -1;
-        
-        
     }
 }

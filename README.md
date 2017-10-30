@@ -1,38 +1,26 @@
-﻿# Proyecto Eventos Empresa ABC
-    - Usando metodologías ágiles desarrollamos un Software que gestiona eventos.
-    
-# Primer Commit
+# ProyectoEventos
+Proyecto del desarrollo de un software para una empresa que realiza y gestiona eventos.
 
-  - Se crea el archivo inicial con las carpetas y las clases que se van a usar.
+# Commit inicial
+Se actualiza el repositorio con la version mas reciente del proyecto. Domingo, 29-10-2017.
  
 # Como usar el repositorio
-
-Descargan o clonan el repositorio cada vez que vayan a trabajar y guardan los cambios al terminar la sesion
-
-git init
-
-luego añadir las variables del correo y un nombre 
-git config --global user.email "correo" 
-git config --global user.name "nombre"
-
-Para añadir archivos 
-git add . (cuando se va a añadir todo el directorio) 
-git add archivo.extension (cuando se añade un solo archivo)
-
-Antes de hacer el commit es necesario indicar donde se añaden los archivos git remote add origin https://github.com/Equipoabc/ProyectoEventosABC.git
-
-Luego se hace un commit 
-git commit -m "Mensaje descriptivo acerca del cambio"
-
-Luego se hace el push 
-git push git push -u origin master (por primera vez)
-
-Cuando queremos clonar un proyecto por primera vez 
-git clone https://github.com/Equipoabc/ProyectoEventos.git
-
-Cuando ya queremos ver los cambios que han hecho n es necesario clonar sino hace un pull 
-git pull https://github.com/Equipoabc/ProyectoEventos.git
-
-Cuando queremos revertir un cambio 
-git revert <codigo del commit>
-
+1. Configurar el git de su computador con sus datos.  
+Nota: Modificar solo "correo" y "nombre", ingresar los datos sin comillas.   
+  git config --global user.email "correo"  
+  git config --global user.name "nombre"  
+  
+2. Clonar el repositorio.  
+  git clone https://github.com/Equipoabc/ProyectoEventos.git  
+  
+3. Para añadir archivos despues de modificarlos.    
+  git add .                   // Cuando se va a añadir todo el directorio.  
+  git add archivo.extension   // Cuando se añade un solo archivo.  
+  
+4. Realizar commit.  
+  git commit -m "Mensaje descriptivo acerca del cambio"  
+    
+5. Realizar push.    
+  git push    
+    
+Nota: En el repositorio ya estara inicializado el .git, con los datos para realizar los commit sin indicar la url y demas.  

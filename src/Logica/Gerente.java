@@ -5,49 +5,47 @@
  */
 package Logica;
 
-import java.util.Date;
-
 /**
  *
  * @author Luis
  */
+
 public class Gerente {
     
-    	private String cedula_ge;
-	private String primer_nombre;
-	private String segundo_nombre;
-	private String primer_apellido;
-	private String segundo_apellido;
-	private Date fecha_nacimiento;
-	private String email;
-	private String telefono;
-	private String celular;
-	private String estado;
-	private String contrasena;
-	private String pregunta;
-	private String respuesta;
+    private String cedula_ge;
+    private String primer_nombre;
+    private String segundo_nombre;
+    private String primer_apellido;
+    private String segundo_apellido;
+    private String fecha_nacimiento;
+    private String email;
+    private String telefono;
+    private String celular;
+    private String estado;
+    private String contrasena;
+    private String pregunta;
+    private String respuesta;
 
-        
-        public Gerente(){
+    public Gerente(){
             
-            cedula_ge = "";
-            primer_nombre = "";
-            segundo_nombre = "";
-            primer_apellido = "";
-            segundo_apellido = "";
-            fecha_nacimiento = null;
-            email = "";
-            telefono = "";
-            celular = "";
-            estado = "";
-            contrasena = "";
-            pregunta = "";
-            respuesta = "";
-        }
+        cedula_ge = "";
+        primer_nombre = "";
+        segundo_nombre = "";
+        primer_apellido = "";
+        segundo_apellido = "";
+        fecha_nacimiento = "";
+        email = "";
+        telefono = "";
+        celular = "";
+        estado = "";
+        contrasena = "";
+        pregunta = "";
+        respuesta = "";
+    }
+    
     /**
      * @return the cedula_ge
-     */
-        
+     */    
     public String getCedula_ge() {
         return cedula_ge;
     }
@@ -118,14 +116,14 @@ public class Gerente {
     /**
      * @return the fecha_nacimiento
      */
-    public Date getFecha_nacimiento() {
+    public String getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
     /**
      * @param fecha_nacimiento the fecha_nacimiento to set
      */
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 

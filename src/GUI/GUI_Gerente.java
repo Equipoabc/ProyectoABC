@@ -5,20 +5,19 @@
  */
 package GUI;
 
-import Controladores.*;
-
 /**
  *
  * @author Jhoan Sebastián
  */
+
 public class GUI_Gerente extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI_Admin
      */
-    public GUI_Gerente() {
+    public GUI_Gerente(){
+        
         initComponents();
-        ControladorGerente controladorGerente = new ControladorGerente();
     }
 
     /**
@@ -160,7 +159,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarSedeActionPerformed
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
-        // TODO add your handling code here:
+        
         GUI_Login interfazLogin = new GUI_Login();
         interfazLogin.setVisible(true);
         this.dispose();
@@ -172,24 +171,20 @@ public class GUI_Gerente extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarSedeActionPerformed
 
     private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
-        // TODO add your handling code here:
-        
-                 GUI_CrearEvento interfazCrearEvento = new GUI_CrearEvento();
-                interfazCrearEvento.setVisible(true);
-                this.dispose();
+       
+        GUI_CrearEvento interfazCrearEvento = new GUI_CrearEvento();
+        interfazCrearEvento.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_crearEventoActionPerformed
 
     private void modificarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEventoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_modificarEventoActionPerformed
 
-   
-       
-  
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
          /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -214,8 +209,10 @@ public class GUI_Gerente extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            
+            public void run(){
+                
                 new GUI_Gerente().setVisible(true);
             }
         });
