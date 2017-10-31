@@ -18,7 +18,9 @@ public class DaoSede {
     }
 
     public int guardarSede(Sede sede) {
-        String sql_guardar;
+        String sql_guardar, validar;
+        validar = "SELECT id_sede FROM Sedes WHERE id_sede = '" + sede.getId_sede() + "';";        
+
         int numFilas; 
         
         sql_guardar = "INSERT INTO Sedes (id_sede, nombre_sede, ciudad, " + 
@@ -32,8 +34,23 @@ public class DaoSede {
             
             Connection conn = conexion.getConnetion();
             Statement sentencia = conn.createStatement();
-            numFilas = sentencia.executeUpdate(sql_guardar); 
-            return numFilas;
+            ResultSet consulta = sentencia.executeQuery(validar);
+            
+            while(consulta.next()){
+            
+                validar = consulta.getString(1);
+            }
+            
+            if(validar.equals(sede.getId_sede())){
+                
+                return 2;
+            }
+            
+            else {
+            
+                numFilas = sentencia.executeUpdate(sql_guardar);
+                return numFilas;
+            }
         } catch(SQLException e){
             
             System.out.println("SQL error: " + e); 

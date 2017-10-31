@@ -20,6 +20,47 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
         initComponents();
         controladorSede = new ControladorSede();
     }
+    
+    public boolean validarNumero(String str){
+       
+        if (str.matches("[0-9]+"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetrasEspacios(String str){
+       
+        if (str.matches("[A-Za-z ]+"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetras(String str){
+       
+        if (str.matches("[A-Za-z]+"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetrasYNumeros(String str){
+       
+        if (str.matches("[A-Za-z0-9]+"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetrasYNumerosEspacios(String str){
+       
+        if (str.matches("[A-Za-z0-9 ]+"))
+            return true;
+        else
+            return false;
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -202,16 +243,36 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
         bar = barrio.getText();
         cl = calle.getText();
         
-        int numFilas = controladorSede.insertarSede(nom, id, ciu, tel, cra, cl, bar, idGerente);
         
-        if(numFilas == 1){
+        if (nom.equals("") || id.equals("") || ciu.equals("") || cra.equals("") ||
+                bar.equals("") || cl.equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
+        }
+        else if(!validarLetrasYNumerosEspacios(nom)){
+            JOptionPane.showMessageDialog(null, "El campo nombre tiene caracteres invalidos.");
+        }
+        else if(!validarNumero(id) || !validarNumero(tel)){
+            JOptionPane.showMessageDialog(null, "Los campos ID y telefono solo pueden ser números");
+        }
+        else if(!validarLetrasEspacios(ciu) || !validarLetrasYNumeros(cra) || !validarLetrasYNumeros(bar) ||
+                !validarLetrasYNumeros(cl)){
+            JOptionPane.showMessageDialog(null, "Ha ingresado caracteres invalidos.");
+        }
+        else {
+        int numFilas = controladorSede.insertarSede(nom, id, ciu, tel, cra, cl, bar, idGerente);
+        if(numFilas == 2){
+            JOptionPane.showMessageDialog(null, "La sede ya se encuentra registrada en el sistema.");
+        }
+        else if(numFilas == 1){
             
             JOptionPane.showMessageDialog(null, "Sede creada exitosamente.");
         }
         else {
             
             JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar la sede.");
-        }      
+        }
+        }
     }//GEN-LAST:event_registrarSedeActionPerformed
 
     /**
