@@ -10,7 +10,6 @@ import javax.swing.*;
 
 public class GUI_CrearUsuario extends javax.swing.JFrame { 
     
-    DateFormat df = DateFormat.getDateInstance();
     ControladorOperador controladorOperador;
     ControladorGerente controladorGerente;
 
@@ -269,6 +268,30 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
+    public boolean validarNumero(String str){
+       
+        if (str.matches("[0-9]+"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetras(String str){
+       
+        if (str.matches("[A-Za-z]+"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetrasYNumeros(String str){
+       
+        if (str.matches("[A-Za-z0-9]+"))
+            return true;
+        else
+            return false;
+    }
+    
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
 
         String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipoUsuario, 
@@ -294,8 +317,25 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios");            
         }
+        
+        else if(!validarLetras(primerNombre) || !validarLetras(segundoNombre) || !validarLetras(primerApellido) ||
+                !validarLetras(segundoApellido) || !validarLetras(primerNombre)){
+            
+            JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
+        }
+        
+        else if(!validarNumero(cedula) || !validarNumero(telefono) || !validarNumero(celular)){
+            
+            JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y celular deben ser de solo numeros");
+        }
+        
+        else if(!validarLetrasYNumeros(contrasena) || contrasena.length() < 8){
+            
+            JOptionPane.showMessageDialog(null, "El campos contraseña debe tener minimo 8 caracteres validos");
+        }
+        
         else { 
-       if(tipoUsuario.equals("Operador")){
+        if(tipoUsuario.equals("Operador")){
            
             int numFilas = controladorOperador.insertarOperador(primerNombre, 
                segundoNombre, primerApellido, segundoApellido,
@@ -310,6 +350,12 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
             }
+            
+            else if (numFilas == 2){
+                
+                JOptionPane.showMessageDialog(null, "El operador ya se encuentra registrado.");
+            }
+            
             else {
                 
                 JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el operador.");
@@ -329,6 +375,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
             else if (numFilas == 5){
                 
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+            }
+            
+            else if (numFilas == 2){
+                
+                JOptionPane.showMessageDialog(null, "El gerente ya se encuentra registrado.");
             }
             else {
                 

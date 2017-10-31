@@ -55,9 +55,10 @@ public class DaoOperador {
 
     public int guardarOperador(Operador op){
         
-        String sql_guardar;
+        String sql_guardar, validar;
         int numFilas;
         
+        validar = "SELECT cedula_op FROM Operadores WHERE cedula_op = '" + op.getCedula_op() + "';";        
         sql_guardar = "INSERT INTO Operadores (cedula_op, primer_nombre, segundo_nombre, " + 
             "primer_apellido, segundo_apellido, fecha_nacimiento, email, telefono, celular, estado, " + 
             "contrasena, pregunta, respuesta) VALUES ('" + op.getCedula_op() + "', '" +
@@ -72,10 +73,25 @@ public class DaoOperador {
             
             Connection conn= conexion.getConnetion();
             Statement sentencia = conn.createStatement();
-            numFilas = sentencia.executeUpdate(sql_guardar);
-            return numFilas;
-        } catch(SQLException e){
+            ResultSet consulta = sentencia.executeQuery(validar);
             
+            while(consulta.next()){
+            
+                validar = consulta.getString(1);
+            }
+            
+            if(validar.equals(op.getCedula_op())){
+                
+                return 2;
+            }
+            
+            else {
+            
+                numFilas = sentencia.executeUpdate(sql_guardar);
+                return numFilas;
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
             System.out.println("SQL error: " + e); 
         } catch(Exception e){ 
             

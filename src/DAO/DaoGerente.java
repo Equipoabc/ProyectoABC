@@ -50,9 +50,10 @@ public class DaoGerente {
     
     public int guardarGerente(Gerente ge){
         
-        String sql_guardar;
+        String sql_guardar, validar;
         int numFilas;      
      
+        validar = "SELECT cedula_ge FROM Gerentes WHERE cedula_ge = '" + ge.getCedula_ge() + "';";
         sql_guardar = "INSERT INTO Gerentes (cedula_ge, primer_nombre, segundo_nombre, " + 
                 "primer_apellido, segundo_apellido, fecha_nacimiento, email, telefono, celular, estado, " + 
                 "contrasena, pregunta, respuesta) VALUES ('" + ge.getCedula_ge() + "', '" +
@@ -67,8 +68,24 @@ public class DaoGerente {
             
             Connection conn = conexion.getConnetion();
             Statement sentencia = conn.createStatement();
-            numFilas = sentencia.executeUpdate(sql_guardar); 
-            return numFilas;
+            ResultSet consulta = sentencia.executeQuery(validar);
+            
+            while(consulta.next()){
+            
+                validar = consulta.getString(1);
+            }
+            
+            if(validar.equals(ge.getCedula_ge())){
+                
+                return 2;
+            }
+            
+            else {
+            
+                numFilas = sentencia.executeUpdate(sql_guardar);
+                return numFilas;
+            }
+            
         } catch(SQLException e){
             
             System.out.println("SQL error: " + e); 
