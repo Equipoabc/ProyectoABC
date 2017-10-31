@@ -289,6 +289,12 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         pregunta = preguntaSeguridad.getText();
         respuesta = respuestaSeguridad.getText();
        
+        if (primerNombre.equals("") || primerApellido.equals("") || cedula.equals("") || fechaNacimiento.equals("") ||
+            celular.equals("") || contrasena.equals("") || pregunta.equals("") ||  respuesta.equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios");            
+        }
+        else { 
        if(tipoUsuario.equals("Operador")){
            
             int numFilas = controladorOperador.insertarOperador(primerNombre, 
@@ -328,7 +334,8 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
             }         
-       }  
+        }
+        }
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
     /**

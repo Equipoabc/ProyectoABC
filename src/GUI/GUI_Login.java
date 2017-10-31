@@ -113,6 +113,14 @@ public class GUI_Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public int validarNumero(String str){
+       
+        if (str.matches("[0-9]+"))
+            return 1;
+        else
+            return 0;
+    }
+    
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
 
         String user, cont;
@@ -127,6 +135,8 @@ public class GUI_Login extends javax.swing.JFrame {
 
         Operador ope;
         ope = controladorOperador.loginOperador(user);
+        
+        
         
         if((!user.equals("")) && (!cont.equals(""))){
             
@@ -176,12 +186,16 @@ public class GUI_Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El usuario no existe.\nVerifique sus datos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+        else {
+            JOptionPane.showMessageDialog(null, "No ingresaste algún campo.\nVerifique sus datos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
