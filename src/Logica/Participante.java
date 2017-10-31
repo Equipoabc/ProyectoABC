@@ -22,6 +22,7 @@ public class Participante {
     private String email;
     private String estado_pago;
     private String cedula_op;
+  
 
     /**
      * @return the cedula_pa

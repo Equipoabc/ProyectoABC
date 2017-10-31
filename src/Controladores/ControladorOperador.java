@@ -29,21 +29,8 @@ public class ControladorOperador {
         
             return 5;
         }
-          
-        // SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        
+         
         Operador op = new Operador();     
-        
-        /* 
-        try {
-             
-            Date date = formatter.parse(fechaNacimiento);
-            op.setFecha_nacimiento(date);
-        } catch (ParseException ex){
-        
-            Logger.getLogger(ControladorOperador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
         
         op.setPrimer_nombre(primerNombre);
         op.setSegundo_nombre(segundoNombre);
@@ -52,12 +39,12 @@ public class ControladorOperador {
         op.setCedula_op(cedula);
         op.setTelefono(telefono);
         op.setCelular(celular);
+        op.setFecha_nacimiento(fechaNacimiento);
         op.setEmail(email);
         op.setContrasena(contrasena);
         op.setRespuesta(respuesta);
         op.setPregunta(pregunta);
 
-        // System.out.println("Se va a insertar un operador.");
         
         int result = daoOperador.guardarOperador(op);
         return result;

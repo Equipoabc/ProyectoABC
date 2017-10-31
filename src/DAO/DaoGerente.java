@@ -8,11 +8,6 @@ import java.sql.*;
 import Logica.*;
 import Conexion.*;
 
-/**
- *
- * @author Luis
- */
-
 public class DaoGerente {
    
     Conexiones conexion;
@@ -59,11 +54,11 @@ public class DaoGerente {
         int numFilas;      
      
         sql_guardar = "INSERT INTO Gerentes (cedula_ge, primer_nombre, segundo_nombre, " + 
-                "primer_apellido, segundo_apellido, " /*+ "fecha_nacimiento, "*/ + "email, telefono, celular, estado, " + 
+                "primer_apellido, segundo_apellido, fecha_nacimiento, email, telefono, celular, estado, " + 
                 "contrasena, pregunta, respuesta) VALUES ('" + ge.getCedula_ge() + "', '" +
                 ge.getPrimer_nombre() +  "', '" + ge.getSegundo_nombre() +  "', '" +
                 ge.getPrimer_apellido() +  "', '" + ge.getSegundo_apellido() + "', '" + 
-                /*op.getFecha_nacimiento() + "', '" + */ ge.getEmail() +  "', '" + 
+                ge.getFecha_nacimiento() + "', '" + ge.getEmail() +  "', '" + 
                 ge.getTelefono() +  "', '" + ge.getCelular() +  "', '" +        
                 "Activo" +  "', '" + ge.getContrasena() +  "', '" +
                 ge.getPregunta() +  "', '" + ge.getRespuesta() +  "')" ;

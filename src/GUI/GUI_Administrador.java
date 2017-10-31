@@ -12,9 +12,6 @@ package GUI;
 
 public class GUI_Administrador extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUI_Admin
-     */
     public GUI_Administrador(){
         
         initComponents();
@@ -34,7 +31,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
         reportes = new javax.swing.JButton();
         crearUsuario = new javax.swing.JButton();
         CerrarSesion = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -97,11 +94,11 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jPanel1.add(CerrarSesion);
         CerrarSesion.setBounds(1060, 620, 280, 70);
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin.png"))); // NOI18N
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1370, 770);
+        fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin.png"))); // NOI18N
+        fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel1.add(fondo);
+        fondo.setBounds(0, 0, 1370, 770);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,6 +116,9 @@ public class GUI_Administrador extends javax.swing.JFrame {
 
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
+        GUI_ReportesUsuarios interfazReportesUsuarios = new GUI_ReportesUsuarios();
+        interfazReportesUsuarios.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
 
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
@@ -182,7 +182,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JButton crearUsuario;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificarUsuario;
     private javax.swing.JButton reportes;

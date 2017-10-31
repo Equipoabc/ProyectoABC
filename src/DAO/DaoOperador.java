@@ -59,11 +59,11 @@ public class DaoOperador {
         int numFilas;
         
         sql_guardar = "INSERT INTO Operadores (cedula_op, primer_nombre, segundo_nombre, " + 
-            "primer_apellido, segundo_apellido, " /*+ "fecha_nacimiento"*/ + "email, telefono, celular, estado, " + 
+            "primer_apellido, segundo_apellido, fecha_nacimiento, email, telefono, celular, estado, " + 
             "contrasena, pregunta, respuesta) VALUES ('" + op.getCedula_op() + "', '" +
             op.getPrimer_nombre() +  "', '" + op.getSegundo_nombre() +  "', '" +
             op.getPrimer_apellido() +  "', '" + op.getSegundo_apellido() + "', '" + 
-            /*op.getFecha_nacimiento() + "', '" + */op.getEmail() +  "', '" + 
+            op.getFecha_nacimiento() + "', '" + op.getEmail() +  "', '" + 
             op.getTelefono() +  "', '" + op.getCelular() +  "', '" +        
             "Activo" +  "', '" + op.getContrasena() +  "', '" +
             op.getPregunta() +  "', '" + op.getRespuesta() +  "')" ;

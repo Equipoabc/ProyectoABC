@@ -28,7 +28,8 @@ public class DaoReportesUsuarios {
         String sql;
 
         sql = "SELECT cedula_op, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, "
-                + "email, telefono, celular, estado FROM Operadores;";
+                + "email, telefono, celular, estado FROM Operadores UNION SELECT cedula_ge, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, "
+                + "email, telefono, celular, estado FROM Gerentes;";
         
         try {
             
@@ -63,7 +64,9 @@ public class DaoReportesUsuarios {
         String sql;
 
         sql = "SELECT cedula_op, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, "
-                + "email, telefono, celular, estado FROM Operadores WHERE cedula_op = '" + busqueda + "';";
+                + "email, telefono, celular, estado FROM Operadores WHERE cedula_op = '" + busqueda + "' UNION "
+                + "SELECT cedula_ge, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, "
+                + "email, telefono, celular, estado FROM Gerentes WHERE cedula_ge = '" + busqueda + "';";
         
         try {
             

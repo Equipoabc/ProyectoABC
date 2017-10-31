@@ -12,6 +12,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
     
     DateFormat df = DateFormat.getDateInstance();
     ControladorEvento controladorEvento;
+    String id;
 
     public GUI_CrearEvento(){
         
@@ -233,16 +234,16 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         
         nom = nombre.getText();
         cod = codigo.getText();
-        date = df.format(fecha.getDate());
+        date = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
         prec = precio.getText();
         cupo = cupos.getValue().toString();
         hora = (String) horas.getSelectedItem();
         min = (String) minutos.getSelectedItem();
-        dur = horas + ":" + min;
+        dur = hora + ":" + min + ":00";
         lug = lugar.getText();
         tem = tema.getText();
         
-        int numFilas = controladorEvento.insertarEvento(cod, nom, date, prec, cupo, hora, min, dur, lug, tem);
+        int numFilas = controladorEvento.insertarEvento(cod, nom, date, prec, cupo, hora, min, dur, lug, tem, id);
         
         if(numFilas == 1){
             
@@ -324,4 +325,8 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
     private javax.swing.JLabel segundoNombreLabel;
     private javax.swing.JTextField tema;
     // End of variables declaration//GEN-END:variables
+
+    void setId(String idGerente) {
+        this.id = idGerente;
+    }
 }

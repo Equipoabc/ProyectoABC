@@ -46,7 +46,7 @@ public class GUI_Login extends javax.swing.JFrame {
         pass = new javax.swing.JPasswordField();
         botonIniciarSesion = new javax.swing.JButton();
         botonOlvide = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -70,11 +70,6 @@ public class GUI_Login extends javax.swing.JFrame {
         TxtPass.setBounds(890, 340, 200, 70);
 
         pass.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
-        pass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passActionPerformed(evt);
-            }
-        });
         jPanel1.add(pass);
         pass.setBounds(890, 410, 250, 50);
 
@@ -98,11 +93,11 @@ public class GUI_Login extends javax.swing.JFrame {
         jPanel1.add(botonOlvide);
         botonOlvide.setBounds(1040, 600, 240, 60);
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1370, 770);
+        fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
+        fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel1.add(fondo);
+        fondo.setBounds(0, 0, 1370, 770);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,10 +112,6 @@ public class GUI_Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
-        // TODO add your handling code here
-    }//GEN-LAST:event_passActionPerformed
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
 
@@ -157,6 +148,7 @@ public class GUI_Login extends javax.swing.JFrame {
                 if(gen.getContrasena().equals(cont)){
                   
                     GUI_Gerente interfazGerente = new GUI_Gerente();
+                    interfazGerente.setId(gen.getCedula_ge());
                     interfazGerente.setVisible(true);
                     this.dispose();
                 }
@@ -171,6 +163,7 @@ public class GUI_Login extends javax.swing.JFrame {
                     
                     GUI_Operador interfazOperador = new GUI_Operador();
                     interfazOperador.setVisible(true);
+                    interfazOperador.setId(ope.getCedula_op());
                     this.dispose();
                 }
                 else {
@@ -227,7 +220,7 @@ public class GUI_Login extends javax.swing.JFrame {
     private javax.swing.JLabel TxtUsuario;
     private javax.swing.JButton botonIniciarSesion;
     private javax.swing.JLabel botonOlvide;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField usuario;

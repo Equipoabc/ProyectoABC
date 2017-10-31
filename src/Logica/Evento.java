@@ -16,12 +16,32 @@ public class Evento {
     private String id_evento;
     private String nombre_evento;
     private String fecha;
-    private int precio;
+    private String precio;
     private String lugar;
     private String duracion;
     private String tema;
-    private int cupos;
-    private String cedula_ge; 
+    private String cupos;
+    private String cedula_ge;
+    private String horas;
+    private String minutos;
+
+    public String getHoras() {
+        return horas;
+    }
+
+    public String getMinutos() {
+        return minutos;
+    }
+
+    public void setHoras(String horas) {
+        this.horas = horas;
+    }
+
+    public void setMinutos(String minutos) {
+        this.minutos = minutos;
+    }
+    
+    
 
     /**
      * @return the id_evento
@@ -68,14 +88,14 @@ public class Evento {
     /**
      * @return the precio
      */
-    public int getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
     /**
      * @param precio the precio to set
      */
-    public void setPrecio(int precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
@@ -124,14 +144,14 @@ public class Evento {
     /**
      * @return the cupos
      */
-    public int getCupos() {
+    public String getCupos() {
         return cupos;
     }
 
     /**
      * @param cupos the cupos to set
      */
-    public void setCupos(int cupos) {
+    public void setCupos(String cupos) {
         this.cupos = cupos;
     }
 

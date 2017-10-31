@@ -29,20 +29,7 @@ public class ControladorGerente {
         
             return 5;
         }
-          
-        //SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        Gerente ge = new Gerente();     
-        
-        /*
-        try {
-        
-             Date date = formatter.parse(fechaNacimiento);
-             op.setFecha_nacimiento(date);
-        } catch (ParseException ex){
-        
-            Logger.getLogger(ControladorOperador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
+        Gerente ge = new Gerente();    
         
         ge.setPrimer_nombre(primerNombre);
         ge.setSegundo_nombre(segundoNombre);
@@ -52,11 +39,10 @@ public class ControladorGerente {
         ge.setTelefono(telefono);
         ge.setCelular(celular);
         ge.setEmail(email);
+        ge.setFecha_nacimiento(fechaNacimiento);
         ge.setContrasena(contrasena);
         ge.setRespuesta(respuesta);
         ge.setPregunta(pregunta);
-
-        // System.out.println("Se va a insertar un gerente.");
         
         int result = daoGerente.guardarGerente(ge);        
         return result;

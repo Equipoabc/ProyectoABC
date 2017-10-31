@@ -21,14 +21,23 @@ public class ControladorEvento {
         daoEvento = new DaoEvento();
     }
 
-    public int insertarEvento(String cod, String nom, String date, String prec, String cupo, String hora, String min, String dur, String lug, String tem){
+    public int insertarEvento(String cod, String nom, String date, String prec, String cupo, String hora, String min, String dur, String lug, String tem, String idGerente){
         
         Evento evento = new Evento();
         
         evento.setNombre_evento(nom);
         evento.setId_evento(cod);
         evento.setFecha(date);
+        evento.setPrecio(prec);
+        evento.setCupos(cupo);
+        evento.setHoras(hora);
+        evento.setMinutos(min);
+        evento.setDuracion(dur);
+        evento.setLugar(lug);
+        evento.setTema(tem);
+        evento.setCedula_ge(idGerente);
         
-        return 0;
+        int result = daoEvento.guardarEvento(evento);
+        return result;
     }
 }

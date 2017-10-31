@@ -11,11 +11,13 @@ package GUI;
  */
 
 public class GUI_Operador extends javax.swing.JFrame {
+    
+    String cedula;
     /**
      * Creates new form GUI_Admin
      */
     public GUI_Operador(){
-        
+        cedula = "";
         initComponents();
     }
 
@@ -185,6 +187,10 @@ public class GUI_Operador extends javax.swing.JFrame {
 
     private void preInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preInscripcionActionPerformed
         // TODO add your handling code here:
+        GUI_PreInscripcion preInscripcion = new GUI_PreInscripcion();
+        preInscripcion.setIdOperador(cedula);
+        preInscripcion.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_preInscripcionActionPerformed
 
     private void inscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscripcionActionPerformed
@@ -243,4 +249,8 @@ public class GUI_Operador extends javax.swing.JFrame {
     private javax.swing.JButton registrarPago;
     private javax.swing.JButton reportes;
     // End of variables declaration//GEN-END:variables
+
+    void setId(String cedula_op) {
+        cedula = cedula_op;
+    }
 }
