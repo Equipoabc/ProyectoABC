@@ -23,7 +23,7 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
     
     public boolean validarNumero(String str){
        
-        if (str.matches("[0-9]+"))
+        if (str.matches("[0-9]*"))
             return true;
         else
             return false;
@@ -31,23 +31,7 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
     
     public boolean validarLetrasEspacios(String str){
        
-        if (str.matches("[A-Za-z ]+"))
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean validarLetras(String str){
-       
-        if (str.matches("[A-Za-z]+"))
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean validarLetrasYNumeros(String str){
-       
-        if (str.matches("[A-Za-z0-9]+"))
+        if (str.matches("[A-Za-z ]*"))
             return true;
         else
             return false;
@@ -55,7 +39,15 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
     
     public boolean validarLetrasYNumerosEspacios(String str){
        
-        if (str.matches("[A-Za-z0-9 ]+"))
+        if (str.matches("[A-Za-z0-9 ]*"))
+            return true;
+        else
+            return false;
+    }
+    
+     public boolean validarLetrasYNumerosEspaciosSimbolos(String str){
+       
+        if (str.matches("[A-Za-z0-9 .-]*"))
             return true;
         else
             return false;
@@ -255,9 +247,12 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
         else if(!validarNumero(id) || !validarNumero(tel)){
             JOptionPane.showMessageDialog(null, "Los campos ID y telefono solo pueden ser números");
         }
-        else if(!validarLetrasEspacios(ciu) || !validarLetrasYNumeros(cra) || !validarLetrasYNumeros(bar) ||
-                !validarLetrasYNumeros(cl)){
+        else if(!validarLetrasEspacios(ciu) || !validarLetrasYNumerosEspacios(bar)){
             JOptionPane.showMessageDialog(null, "Ha ingresado caracteres invalidos.");
+        }
+        else if(!validarLetrasYNumerosEspaciosSimbolos(cra) || !validarLetrasYNumerosEspaciosSimbolos(cl)){
+            JOptionPane.showMessageDialog(null, "Ha ingresado caracteres invalidos, en carrera y calle solo se "
+                    + "puede usar los caracteres espaciales '.' y '-' .");
         }
         else {
         int numFilas = controladorSede.insertarSede(nom, id, ciu, tel, cra, cl, bar, idGerente);
@@ -266,7 +261,14 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
         }
         else if(numFilas == 1){
             
-            JOptionPane.showMessageDialog(null, "Sede creada exitosamente.");
+        JOptionPane.showMessageDialog(null, "Sede creada exitosamente.");
+        nombre.setText(null);
+        idSede.setText(null);
+        ciudad.setText(null);
+        telefono.setText(null);
+        carrera.setText(null);
+        barrio.setText(null);
+        calle.setText(null);
         }
         else {
             

@@ -10,7 +10,6 @@ import javax.swing.*;
 
 public class GUI_PreInscripcion extends javax.swing.JFrame { 
     
-    DateFormat df = DateFormat.getDateInstance();
     ControladorParticipante controladorParticipante;
     String idOperador;
  
@@ -20,6 +19,46 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         initComponents();
         controladorParticipante = new ControladorParticipante();
        
+    }
+    
+    public boolean validarNumero(String str){
+       
+        if (str.matches("[0-9]*"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetrasEspacios(String str){
+       
+        if (str.matches("[A-Za-z ]*"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetrasYNumerosEspacios(String str){
+       
+        if (str.matches("[A-Za-z0-9 ]*"))
+            return true;
+        else
+            return false;
+    }
+    
+     public boolean validarLetrasYNumerosEspaciosSimbolos(String str){
+       
+        if (str.matches("[A-Za-z0-9 .-]*"))
+            return true;
+        else
+            return false;
+    }
+     
+     public boolean validarLetras(String str){
+       
+        if (str.matches("[A-Za-z]*"))
+            return true;
+        else
+            return false;
     }
 
     @SuppressWarnings("unchecked")
@@ -222,13 +261,28 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         codigoEvento = codEvento.getText();      
         email = correo.getText();
         
-       
-      
-           
-            int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
-                primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento);
-
-            if(numFilas == 2){
+        if (primerNom.equals("") || primerAp.equals("") || ced.equals("") || tel.equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
+        }
+        else if(!validarLetras(primerNom) || !validarLetras(segundoNom) || !validarLetras(primerAp) ||
+                !validarLetras(segundoAp)){
+            
+            JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
+        }
+         else if(!validarNumero(ced) || !validarNumero(tel) || !validarNumero(codigoEvento)){
+            
+            JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y codigoEvento deben ser de solo numeros");
+        }
+        else {
+        int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
+        primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento);
+            
+            if(numFilas == 3){
+                JOptionPane.showMessageDialog(null, "El evento que ingresó no existe.");
+            }
+            
+            else if(numFilas == 2 || numFilas == 5){
                 
                 JOptionPane.showMessageDialog(null, "La pre-inscripción se ha realizado exitosamente.");
                 
@@ -237,7 +291,6 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
                 primerApellido.setText(null);
                 segundoApellido.setText(null);
                 cedula.setText(null);
-                df.format(fecha.getDate());
                 telefono.setText(null);
                 codEvento.setText(null);      
                 correo.setText(null);
@@ -247,7 +300,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ocurrio un problema al realizar la pre-inscripción.");
             }
         
-
+        }
     }//GEN-LAST:event_crearParticipanteActionPerformed
 
     /**

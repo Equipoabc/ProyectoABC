@@ -270,7 +270,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
     public boolean validarNumero(String str){
        
-        if (str.matches("[0-9]+"))
+        if (str.matches("[0-9]*"))
             return true;
         else
             return false;
@@ -278,7 +278,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     
     public boolean validarLetras(String str){
        
-        if (str.matches("[A-Za-z]+"))
+        if (str.matches("[A-Za-z]*"))
             return true;
         else
             return false;
@@ -286,7 +286,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     
     public boolean validarLetrasYNumeros(String str){
        
-        if (str.matches("[A-Za-z0-9]+"))
+        if (str.matches("[A-Za-z0-9]*"))
             return true;
         else
             return false;
@@ -319,7 +319,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         }
         
         else if(!validarLetras(primerNombre) || !validarLetras(segundoNombre) || !validarLetras(primerApellido) ||
-                !validarLetras(segundoApellido) || !validarLetras(primerNombre)){
+                !validarLetras(segundoApellido)){
             
             JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
         }
@@ -343,8 +343,20 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
                contrasena, confirmar, pregunta, respuesta);
 
             if(numFilas == 1){
-                
-                JOptionPane.showMessageDialog(null, "Operador creado exitosamente.");
+               JOptionPane.showMessageDialog(null, "Operador creado exitosamente.");
+               primerNom.setText(null);
+               segundoNom.setText(null);
+               primerAp.setText(null);
+               segundoAp.setText(null);
+               ced.setText(null);
+               tel.setText(null);
+               cel.setText(null);
+               correo.setText(null);
+               pass.setText(null);
+               confirmarpass.setText(null);
+               preguntaSeguridad.setText(null);
+               respuestaSeguridad.setText(null);
+               
             }
             else if (numFilas == 5){
                 

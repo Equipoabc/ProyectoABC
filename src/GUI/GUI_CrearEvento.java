@@ -19,6 +19,38 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         initComponents();
         controladorEvento = new ControladorEvento();
     }
+    
+    public boolean validarNumero(String str){
+       
+        if (str.matches("[0-9]*"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetrasEspacios(String str){
+       
+        if (str.matches("[A-Za-z ]*"))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean validarLetrasYNumerosEspacios(String str){
+       
+        if (str.matches("[A-Za-z0-9 ]*"))
+            return true;
+        else
+            return false;
+    }
+    
+     public boolean validarLetrasYNumerosEspaciosSimbolos(String str){
+       
+        if (str.matches("[A-Za-z0-9 .-]*"))
+            return true;
+        else
+            return false;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -243,16 +275,35 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         lug = lugar.getText();
         tem = tema.getText();
         
+        if (nom.equals("") || cod.equals("") || date.equals("") || prec.equals("") ||
+                lug.equals("")){
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
+        }
+        else if(!validarNumero(cod) || !validarNumero(prec)) {
+            JOptionPane.showMessageDialog(null, "Los campos código y precio deben ser números (sin puntos).");
+        }
+        else if(!validarLetrasYNumerosEspacios(nom) || !validarLetrasYNumerosEspacios(lug) || !validarLetrasYNumerosEspacios(tem)) {
+            JOptionPane.showMessageDialog(null, "Caracteres invalidos.");
+        }
+        else if(validarNumero(nom) || validarNumero(lug) || validarNumero(tem)) {
+            JOptionPane.showMessageDialog(null, "Los campos nombre, lugar y tema no pueden ser solo números.");
+        }
+        else if(cupo.equals("0") || (hora.equals("0") && min.equals("0"))) {
+            JOptionPane.showMessageDialog(null, "Los campos cupo y duración no pueden quedar en 0");
+        }
+        else {
         int numFilas = controladorEvento.insertarEvento(cod, nom, date, prec, cupo, hora, min, dur, lug, tem, id);
-        
-        if(numFilas == 1){
-            
+        if(numFilas == 2){
+            JOptionPane.showMessageDialog(null, "El evento ya se encuentra registrado en el sistema.");
+        }
+        else if (numFilas == 1){
             JOptionPane.showMessageDialog(null, "Evento creado exitosamente.");
         }
         else {
             
             JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el evento.");
-        }      
+        }
+        }
     }//GEN-LAST:event_crearEventoActionPerformed
 
     private void horasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horasActionPerformed

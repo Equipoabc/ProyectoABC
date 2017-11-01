@@ -24,7 +24,8 @@ public class DaoEvento {
     }
 
     public int guardarEvento(Evento evento) {
-        String sql_guardar;
+        String sql_guardar, validar;
+        validar = "SELECT id_evento FROM Eventos WHERE id_evento = '" + evento.getId_evento() + "';";
         int numFilas;  
         
         sql_guardar = "INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, duracion, tema, cupos, cedula_ge) " + 
@@ -36,8 +37,23 @@ public class DaoEvento {
             
             Connection conn = conexion.getConnetion();
             Statement sentencia = conn.createStatement();
-            numFilas = sentencia.executeUpdate(sql_guardar); 
-            return numFilas;
+            ResultSet consulta = sentencia.executeQuery(validar);
+            
+            while(consulta.next()){
+            
+                validar = consulta.getString(1);
+            }
+            
+            if(validar.equals(evento.getId_evento())){
+                
+                return 2;
+            }
+            
+            else {
+            
+                numFilas = sentencia.executeUpdate(sql_guardar);
+                return numFilas;
+            }
         } catch(SQLException e){
             
             System.out.println("SQL error: " + e); 
