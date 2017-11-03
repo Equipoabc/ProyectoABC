@@ -5,10 +5,13 @@
  */
 package GUI;
 import Controladores.*;
+import Logica.Validaciones;
 import java.text.*;
+import javax.swing.JOptionPane;
 
 public class GUI_ModificarUsuario extends javax.swing.JFrame { 
     
+    Validaciones validaciones;
     DateFormat df = DateFormat.getDateInstance();
     ControladorOperador controladorOperador;
     ControladorGerente controladorGerente;
@@ -18,6 +21,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         initComponents();
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
+        validaciones = new Validaciones();
     }
 
     @SuppressWarnings("unchecked")
@@ -47,11 +51,11 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         consultarLabel = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
-        primerNom1 = new javax.swing.JTextField();
+        primerNom = new javax.swing.JTextField();
         primerNombreLabel9 = new javax.swing.JLabel();
         botonAceptar = new javax.swing.JButton();
         primerNombreLabel10 = new javax.swing.JLabel();
-        tipo1 = new javax.swing.JComboBox<>();
+        tipoUsuario = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -206,10 +210,10 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         jPanel1.add(fecha);
         fecha.setBounds(1070, 230, 200, 28);
 
-        primerNom1.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
-        primerNom1.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(primerNom1);
-        primerNom1.setBounds(600, 270, 200, 28);
+        primerNom.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        primerNom.setSelectionColor(new java.awt.Color(102, 102, 255));
+        jPanel1.add(primerNom);
+        primerNom.setBounds(600, 270, 200, 28);
 
         primerNombreLabel9.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         primerNombreLabel9.setText("Tipo de Usuario:");
@@ -236,18 +240,18 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         jPanel1.add(primerNombreLabel10);
         primerNombreLabel10.setBounds(860, 370, 130, 30);
 
-        tipo1.setBackground(new java.awt.Color(102, 102, 255));
-        tipo1.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
-        tipo1.setForeground(new java.awt.Color(102, 102, 255));
-        tipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Gerente" }));
-        tipo1.setFocusable(false);
-        tipo1.addActionListener(new java.awt.event.ActionListener() {
+        tipoUsuario.setBackground(new java.awt.Color(102, 102, 255));
+        tipoUsuario.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        tipoUsuario.setForeground(new java.awt.Color(102, 102, 255));
+        tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Gerente" }));
+        tipoUsuario.setFocusable(false);
+        tipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipo1ActionPerformed(evt);
+                tipoUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(tipo1);
-        tipo1.setBounds(600, 220, 200, 28);
+        jPanel1.add(tipoUsuario);
+        tipoUsuario.setBounds(600, 220, 200, 28);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -283,7 +287,48 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         
+        String cedula = consultarLabel.getText();
         
+        if(cedula.equals("")){
+            
+            JOptionPane.showMessageDialog(null, "El campo cedula de la consulta esta vacio.");
+        }
+        else if(!validaciones.validarNumero(cedula)){
+            
+            JOptionPane.showMessageDialog(null, "El campo debe ser numerico.");
+        }
+        else {
+           
+            int resultado = controladorOperador.consultarDatosOperador(cedula, tipoUsuario, primerNom, segundoNom, primerAp, segundoAp, ced, fecha,
+                    correo, tel, cel, estado);
+            int resultado2 = controladorGerente.consultarDatosGerente(cedula, tipoUsuario, primerNom, segundoNom, primerAp, segundoAp, ced, fecha,
+                        correo, tel, cel, estado);
+
+            if(resultado == 1){
+                
+               JOptionPane.showMessageDialog(null, "Los datos del operador se han cargado exitosamente.");
+               
+            }
+            
+            else if(resultado2 == 2){
+                
+                JOptionPane.showMessageDialog(null, "Los datos del gerente se han cargado exitosamente.");
+               
+            }
+            else {
+                
+                    JOptionPane.showMessageDialog(null, "El usuario no existe.");
+                    
+                    primerNom.setText(null);
+                    segundoNom.setText(null);
+                    primerAp.setText(null);
+                    segundoAp.setText(null);
+                    ced.setText(null);
+                    tel.setText(null);
+                    cel.setText(null);
+                    correo.setText(null);
+                }
+            }
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoActionPerformed
@@ -292,24 +337,11 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
        
-        String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipoUsuario, 
-                fechaNacimiento, telefono, celular, email;
-        
-        primerNombre = consultarLabel.getText();
-        segundoNombre = segundoNom.getText();
-        primerApellido = primerAp.getText();
-        segundoApellido = segundoAp.getText();
-        cedula = ced.getText();
-        tipoUsuario = (String) estado.getSelectedItem();
-        fechaNacimiento = df.format(fecha.getDate());
-        telefono = tel.getText();
-        celular = cel.getText();
-        email = correo.getText();
     }//GEN-LAST:event_botonAceptarActionPerformed
 
-    private void tipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo1ActionPerformed
+    private void tipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tipo1ActionPerformed
+    }//GEN-LAST:event_tipoUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,7 +393,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField primerAp;
-    private javax.swing.JTextField primerNom1;
+    private javax.swing.JTextField primerNom;
     private javax.swing.JLabel primerNombreLabel;
     private javax.swing.JLabel primerNombreLabel1;
     private javax.swing.JLabel primerNombreLabel10;
@@ -377,6 +409,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField segundoNom;
     private javax.swing.JLabel segundoNombreLabel;
     private javax.swing.JTextField tel;
-    private javax.swing.JComboBox<String> tipo1;
+    private javax.swing.JComboBox<String> tipoUsuario;
     // End of variables declaration//GEN-END:variables
 }

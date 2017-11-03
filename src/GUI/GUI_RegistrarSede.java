@@ -5,12 +5,12 @@
  */
 package GUI;
 import Controladores.*;
-import java.text.*;
 import javax.swing.*;
+import Logica.*;
 
 public class GUI_RegistrarSede extends javax.swing.JFrame { 
     
-    DateFormat df = DateFormat.getDateInstance();
+    Validaciones validaciones;
     ControladorSede controladorSede;
     String idGerente;
 
@@ -19,40 +19,8 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
         
         initComponents();
         controladorSede = new ControladorSede();
+        validaciones = new Validaciones();
     }
-    
-    public boolean validarNumero(String str){
-       
-        if (str.matches("[0-9]*"))
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean validarLetrasEspacios(String str){
-       
-        if (str.matches("[A-Za-z ]*"))
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean validarLetrasYNumerosEspacios(String str){
-       
-        if (str.matches("[A-Za-z0-9 ]*"))
-            return true;
-        else
-            return false;
-    }
-    
-     public boolean validarLetrasYNumerosEspaciosSimbolos(String str){
-       
-        if (str.matches("[A-Za-z0-9 .-]*"))
-            return true;
-        else
-            return false;
-    }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -235,75 +203,49 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
         bar = barrio.getText();
         cl = calle.getText();
         
-        
         if (nom.equals("") || id.equals("") || ciu.equals("") || cra.equals("") ||
-                bar.equals("") || cl.equals("")){
-            
+                bar.equals("") || cl.equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
         }
-        else if(!validarLetrasYNumerosEspacios(nom)){
+        else if(!validaciones.validarLetrasYNumerosEspacios(nom)) {
             JOptionPane.showMessageDialog(null, "El campo nombre tiene caracteres invalidos.");
         }
-        else if(!validarNumero(id) || !validarNumero(tel)){
+        else if(!validaciones.validarNumero(id) || !validaciones.validarNumero(tel)) {
             JOptionPane.showMessageDialog(null, "Los campos ID y telefono solo pueden ser números");
         }
-        else if(!validarLetrasEspacios(ciu) || !validarLetrasYNumerosEspacios(bar)){
+        else if(!validaciones.validarLetrasEspacios(ciu) || !validaciones.validarLetrasYNumerosEspacios(bar)) {
             JOptionPane.showMessageDialog(null, "Ha ingresado caracteres invalidos.");
         }
-        else if(!validarLetrasYNumerosEspaciosSimbolos(cra) || !validarLetrasYNumerosEspaciosSimbolos(cl)){
+        else if(!validaciones.validarLetrasYNumerosEspaciosSimbolos(cra) || !validaciones.validarLetrasYNumerosEspaciosSimbolos(cl)) {
             JOptionPane.showMessageDialog(null, "Ha ingresado caracteres invalidos, en carrera y calle solo se "
                     + "puede usar los caracteres espaciales '.' y '-' .");
         }
         else {
+            
         int numFilas = controladorSede.insertarSede(nom, id, ciu, tel, cra, cl, bar, idGerente);
-        if(numFilas == 2){
-            JOptionPane.showMessageDialog(null, "La sede ya se encuentra registrada en el sistema.");
-        }
-        else if(numFilas == 1){
-            
-        JOptionPane.showMessageDialog(null, "Sede creada exitosamente.");
-        nombre.setText(null);
-        idSede.setText(null);
-        ciudad.setText(null);
-        telefono.setText(null);
-        carrera.setText(null);
-        barrio.setText(null);
-        calle.setText(null);
-        }
-        else {
-            
-            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar la sede.");
-        }
+            switch (numFilas) {
+                case 2:
+                    JOptionPane.showMessageDialog(null, "La sede ya se encuentra registrada en el sistema.");
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Sede creada exitosamente.");
+                    nombre.setText(null);
+                    idSede.setText(null);
+                    ciudad.setText(null);
+                    telefono.setText(null);
+                    carrera.setText(null);
+                    barrio.setText(null);
+                    calle.setText(null);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar la sede.");
+                    break;
+            }
         }
     }//GEN-LAST:event_registrarSedeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]){
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+    public static void main(String args[]) {
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             

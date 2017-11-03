@@ -7,49 +7,29 @@ package GUI;
 import Controladores.*;
 import java.text.*;
 import javax.swing.*;
+import Logica.*;
+//import java.util.Date;
 
 public class GUI_CrearEvento extends javax.swing.JFrame { 
-    
-    DateFormat df = DateFormat.getDateInstance();
+   
+    Validaciones validaciones;
     ControladorEvento controladorEvento;
     String id;
+    //Date fechaActual;
+   
+    
 
     public GUI_CrearEvento(){
         
         initComponents();
         controladorEvento = new ControladorEvento();
+        validaciones = new Validaciones();
+        //fechaActual = new Date();
+        //System.out.print (fechaActual);
     }
     
-    public boolean validarNumero(String str){
-       
-        if (str.matches("[0-9]*"))
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean validarLetrasEspacios(String str){
-       
-        if (str.matches("[A-Za-z ]*"))
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean validarLetrasYNumerosEspacios(String str){
-       
-        if (str.matches("[A-Za-z0-9 ]*"))
-            return true;
-        else
-            return false;
-    }
-    
-     public boolean validarLetrasYNumerosEspaciosSimbolos(String str){
-       
-        if (str.matches("[A-Za-z0-9 .-]*"))
-            return true;
-        else
-            return false;
+    void setId(String idGerente) {
+        this.id = idGerente;
     }
 
     @SuppressWarnings("unchecked")
@@ -184,6 +164,8 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         fecha.setForeground(new java.awt.Color(102, 102, 255));
         fecha.setFocusable(false);
         fecha.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
+        fecha.setMaxSelectableDate(new java.util.Date(1509602481000L));
+        fecha.setMinSelectableDate(new java.util.Date(-1262282319000L));
         fecha.setRequestFocusEnabled(false);
         fecha.setVerifyInputWhenFocusTarget(false);
         jPanel1.add(fecha);
@@ -200,11 +182,6 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         horas.setForeground(new java.awt.Color(102, 102, 255));
         horas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         horas.setFocusable(false);
-        horas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                horasActionPerformed(evt);
-            }
-        });
         jPanel1.add(horas);
         horas.setBounds(890, 327, 60, 28);
 
@@ -213,11 +190,6 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         minutos.setForeground(new java.awt.Color(102, 102, 255));
         minutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "15", "30", "45" }));
         minutos.setFocusable(false);
-        minutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                minutosActionPerformed(evt);
-            }
-        });
         jPanel1.add(minutos);
         minutos.setBounds(1010, 327, 60, 28);
 
@@ -279,13 +251,14 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
                 lug.equals("")){
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
         }
-        else if(!validarNumero(cod) || !validarNumero(prec)) {
+        else if(!validaciones.validarNumero(cod) || !validaciones.validarNumero(prec)) {
             JOptionPane.showMessageDialog(null, "Los campos código y precio deben ser números (sin puntos).");
         }
-        else if(!validarLetrasYNumerosEspacios(nom) || !validarLetrasYNumerosEspacios(lug) || !validarLetrasYNumerosEspacios(tem)) {
+        else if(!validaciones.validarLetrasYNumerosEspacios(nom) || !validaciones.validarLetrasYNumerosEspacios(lug) || 
+                !validaciones.validarLetrasYNumerosEspacios(tem)) {
             JOptionPane.showMessageDialog(null, "Caracteres invalidos.");
         }
-        else if(validarNumero(nom) || validarNumero(lug) || validarNumero(tem)) {
+        else if(validaciones.validarNumero(nom) || validaciones.validarNumero(lug) || validaciones.validarNumero(tem)) {
             JOptionPane.showMessageDialog(null, "Los campos nombre, lugar y tema no pueden ser solo números.");
         }
         else if(cupo.equals("0") || (hora.equals("0") && min.equals("0"))) {
@@ -293,54 +266,25 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         }
         else {
         int numFilas = controladorEvento.insertarEvento(cod, nom, date, prec, cupo, hora, min, dur, lug, tem, id);
-        if(numFilas == 2){
-            JOptionPane.showMessageDialog(null, "El evento ya se encuentra registrado en el sistema.");
-        }
-        else if (numFilas == 1){
-            JOptionPane.showMessageDialog(null, "Evento creado exitosamente.");
-        }
-        else {
-            
-            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el evento.");
-        }
+            switch (numFilas) {
+                case 2:
+                    JOptionPane.showMessageDialog(null, "El evento ya se encuentra registrado en el sistema.");
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Evento creado exitosamente.");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el evento.");
+                    break;
+            }
         }
     }//GEN-LAST:event_crearEventoActionPerformed
-
-    private void horasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_horasActionPerformed
-
-    private void minutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_minutosActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]){
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -377,7 +321,4 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
     private javax.swing.JTextField tema;
     // End of variables declaration//GEN-END:variables
 
-    void setId(String idGerente) {
-        this.id = idGerente;
-    }
 }

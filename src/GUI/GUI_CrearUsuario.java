@@ -7,17 +7,23 @@ package GUI;
 import Controladores.*;
 import java.text.*;
 import javax.swing.*;
+import Logica.*;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class GUI_CrearUsuario extends javax.swing.JFrame { 
     
+    Validaciones validaciones;
     ControladorOperador controladorOperador;
     ControladorGerente controladorGerente;
 
     public GUI_CrearUsuario(){
-        
+       
         initComponents();
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
+        validaciones = new Validaciones();
     }
 
     @SuppressWarnings("unchecked")
@@ -94,6 +100,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         confirmarpass.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         confirmarpass.setSelectionColor(new java.awt.Color(102, 102, 255));
+        confirmarpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarpassActionPerformed(evt);
+            }
+        });
         jPanel1.add(confirmarpass);
         confirmarpass.setBounds(880, 350, 230, 28);
 
@@ -234,6 +245,8 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         fecha.setForeground(new java.awt.Color(102, 102, 255));
         fecha.setFocusable(false);
         fecha.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
+        fecha.setMaxSelectableDate(new java.util.Date(1514786511000L));
+        fecha.setMinSelectableDate(new java.util.Date(-2208967313000L));
         fecha.setRequestFocusEnabled(false);
         fecha.setVerifyInputWhenFocusTarget(false);
         jPanel1.add(fecha);
@@ -267,43 +280,32 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         adminLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
-
-    public boolean validarNumero(String str){
-       
-        if (str.matches("[0-9]*"))
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean validarLetras(String str){
-       
-        if (str.matches("[A-Za-z]*"))
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean validarLetrasYNumeros(String str){
-       
-        if (str.matches("[A-Za-z0-9]*"))
-            return true;
-        else
-            return false;
-    }
-    
+  
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
 
         String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipoUsuario, 
-                fechaNacimiento, telefono, celular, email, contrasena, confirmar, pregunta, respuesta;
+               fechaNacimiento, telefono, celular, email, contrasena, confirmar, pregunta, respuesta, validar = "";
         
+        fechaNacimiento = "";
         primerNombre = primerNom.getText();
         segundoNombre = segundoNom.getText();
         primerApellido = primerAp.getText();
         segundoApellido = segundoAp.getText();
         cedula = ced.getText();
         tipoUsuario = (String) tipo.getSelectedItem();
-        fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+        
+        try {
+            
+           fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+        } catch(Exception e){
+            validar = "\nDebe ingresar una fecha válida.";
+        }
+        
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fechaNac = LocalDate.parse(fechaNacimiento, fmt);
+        LocalDate ahora = LocalDate.now();
+        Period periodo = Period.between(fechaNac, ahora);
+        
         telefono = tel.getText();
         celular = cel.getText();
         email = correo.getText();
@@ -313,121 +315,89 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         respuesta = respuestaSeguridad.getText();
        
         if (primerNombre.equals("") || primerApellido.equals("") || cedula.equals("") || fechaNacimiento.equals("") ||
-            celular.equals("") || contrasena.equals("") || pregunta.equals("") ||  respuesta.equals("")){
-            
-            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios");            
+            celular.equals("") || contrasena.equals("") || pregunta.equals("") ||  respuesta.equals("")) {
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios." + validar);            
         }
-        
-        else if(!validarLetras(primerNombre) || !validarLetras(segundoNombre) || !validarLetras(primerApellido) ||
-                !validarLetras(segundoApellido)){
-            
+        else if (periodo.getYears() < 18) {
+            JOptionPane.showMessageDialog(null, "El usuario tiene que ser mayor de edad.");
+        }
+        else if(!validaciones.validarLetras(primerNombre) || !validaciones.validarLetras(segundoNombre) || !validaciones.validarLetras(primerApellido) ||
+                !validaciones.validarLetras(segundoApellido)) {
             JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
         }
-        
-        else if(!validarNumero(cedula) || !validarNumero(telefono) || !validarNumero(celular)){
-            
+        else if(!validaciones.validarNumero(cedula) || !validaciones.validarNumero(telefono) || !validaciones.validarNumero(celular)) {
             JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y celular deben ser de solo numeros");
         }
-        
-        else if(!validarLetrasYNumeros(contrasena) || contrasena.length() < 8){
-            
+        else if(!validaciones.validarLetrasYNumeros(contrasena) || contrasena.length() < 8) {
             JOptionPane.showMessageDialog(null, "El campos contraseña debe tener minimo 8 caracteres validos");
         }
         
         else { 
-        if(tipoUsuario.equals("Operador")){
+        if(tipoUsuario.equals("Operador")) {
            
             int numFilas = controladorOperador.insertarOperador(primerNombre, 
                segundoNombre, primerApellido, segundoApellido,
                cedula, fechaNacimiento, telefono, celular, email, 
                contrasena, confirmar, pregunta, respuesta);
 
-            if(numFilas == 1){
-               JOptionPane.showMessageDialog(null, "Operador creado exitosamente.");
-               primerNom.setText(null);
-               segundoNom.setText(null);
-               primerAp.setText(null);
-               segundoAp.setText(null);
-               ced.setText(null);
-               tel.setText(null);
-               cel.setText(null);
-               correo.setText(null);
-               pass.setText(null);
-               confirmarpass.setText(null);
-               preguntaSeguridad.setText(null);
-               respuestaSeguridad.setText(null);
-               
-            }
-            else if (numFilas == 5){
-                
-                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
-            }
-            
-            else if (numFilas == 2){
-                
-                JOptionPane.showMessageDialog(null, "El operador ya se encuentra registrado.");
-            }
-            
-            else {
-                
-                JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el operador.");
+            switch (numFilas) {
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Operador creado exitosamente.");
+                    primerNom.setText(null);
+                    segundoNom.setText(null);
+                    primerAp.setText(null);
+                    segundoAp.setText(null);
+                    ced.setText(null);
+                    tel.setText(null);
+                    cel.setText(null);
+                    correo.setText(null);
+                    pass.setText(null);
+                    confirmarpass.setText(null);
+                    preguntaSeguridad.setText(null);
+                    respuestaSeguridad.setText(null);
+                    break;
+                case 5:
+                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "El operador ya se encuentra registrado.");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el operador.");
+                    break;
             }
         }
-        else if(tipoUsuario.equals("Gerente")){
+        else if(tipoUsuario.equals("Gerente")) {
             
             int numFilas = controladorGerente.insertarGerente(primerNombre, 
                segundoNombre, primerApellido, segundoApellido,
                cedula, fechaNacimiento, telefono, celular, email, 
                contrasena, confirmar, pregunta, respuesta);           
 
-            if (numFilas == 1){
-                
-                JOptionPane.showMessageDialog(null, "Gerente creado exitosamente.");
+            switch (numFilas) {
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Gerente creado exitosamente.");
+                    break;
+                case 5:
+                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "El gerente ya se encuentra registrado.");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
+                    break;
             }
-            else if (numFilas == 5){
-                
-                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
-            }
-            
-            else if (numFilas == 2){
-                
-                JOptionPane.showMessageDialog(null, "El gerente ya se encuentra registrado.");
-            }
-            else {
-                
-                JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
-            }         
         }
         }
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]){
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void confirmarpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmarpassActionPerformed
 
+    public static void main(String args[]) {
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             

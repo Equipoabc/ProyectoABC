@@ -61,6 +61,10 @@ public class DaoParticipante {
                validarEvento = consultaEvento.getString(1);
             }
             
+            if (validarEvento.equals (codEvento) && validar.equals(pa.getCedula_pa())){
+                return 7;
+            }
+            
             if(!validarEvento.equals(codEvento)) {
                 return 3;
             }

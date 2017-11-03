@@ -8,16 +8,8 @@ import Controladores.*;
 import Logica.*;
 import javax.swing.*;
 
-/**
- *
- * @author Jhoan Sebasti�n
- */
-
 public class GUI_Login extends javax.swing.JFrame {
     
-    /**
-     * Creates new form GUI_Login
-     */
     ControladorAdministrador controladorAdministrador;
     ControladorGerente controladorGerente;
     ControladorOperador controladorOperador;
@@ -143,6 +135,7 @@ public class GUI_Login extends javax.swing.JFrame {
             if(admin.getUsuario().equals(user) ){
 
                 if(admin.getContrasena().equals(cont)){
+                    
                     
                     GUI_Administrador interfazAdmin = new GUI_Administrador();
                     interfazAdmin.setVisible(true);

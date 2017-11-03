@@ -7,9 +7,11 @@ package GUI;
 import Controladores.*;
 import java.text.*;
 import javax.swing.*;
+import Logica.*;
 
 public class GUI_PreInscripcion extends javax.swing.JFrame { 
     
+    Validaciones validaciones;
     ControladorParticipante controladorParticipante;
     String idOperador;
  
@@ -18,49 +20,13 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         
         initComponents();
         controladorParticipante = new ControladorParticipante();
-       
+        validaciones = new Validaciones();
     }
     
-    public boolean validarNumero(String str){
-       
-        if (str.matches("[0-9]*"))
-            return true;
-        else
-            return false;
+    void setIdOperador(String cedula) {
+       idOperador = cedula;
     }
     
-    public boolean validarLetrasEspacios(String str){
-       
-        if (str.matches("[A-Za-z ]*"))
-            return true;
-        else
-            return false;
-    }
-    
-    public boolean validarLetrasYNumerosEspacios(String str){
-       
-        if (str.matches("[A-Za-z0-9 ]*"))
-            return true;
-        else
-            return false;
-    }
-    
-     public boolean validarLetrasYNumerosEspaciosSimbolos(String str){
-       
-        if (str.matches("[A-Za-z0-9 .-]*"))
-            return true;
-        else
-            return false;
-    }
-     
-     public boolean validarLetras(String str){
-       
-        if (str.matches("[A-Za-z]*"))
-            return true;
-        else
-            return false;
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -261,74 +227,48 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         codigoEvento = codEvento.getText();      
         email = correo.getText();
         
-        if (primerNom.equals("") || primerAp.equals("") || ced.equals("") || tel.equals("")){
-            
+        if (primerNom.equals("") || primerAp.equals("") || ced.equals("") || tel.equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
         }
-        else if(!validarLetras(primerNom) || !validarLetras(segundoNom) || !validarLetras(primerAp) ||
-                !validarLetras(segundoAp)){
-            
+        else if(!validaciones.validarLetras(primerNom) || !validaciones.validarLetras(segundoNom) || 
+                !validaciones.validarLetras(primerAp) || !validaciones.validarLetras(segundoAp)) {
             JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
         }
-         else if(!validarNumero(ced) || !validarNumero(tel) || !validarNumero(codigoEvento)){
-            
+        else if(!validaciones.validarNumero(ced) || !validaciones.validarNumero(tel) || !validaciones.validarNumero(codigoEvento)) {
             JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y codigoEvento deben ser de solo numeros");
         }
         else {
-        int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
-        primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento);
-            
-            if(numFilas == 3){
-                JOptionPane.showMessageDialog(null, "El evento que ingresó no existe.");
-            }
-            
-            else if(numFilas == 2 || numFilas == 5){
-                
-                JOptionPane.showMessageDialog(null, "La pre-inscripción se ha realizado exitosamente.");
-                
-                primerNombre.setText(null);
-                segundoNombre.setText(null);
-                primerApellido.setText(null);
-                segundoApellido.setText(null);
-                cedula.setText(null);
-                telefono.setText(null);
-                codEvento.setText(null);      
-                correo.setText(null);
-            }          
-            else {
-                
-                JOptionPane.showMessageDialog(null, "Ocurrio un problema al realizar la pre-inscripción.");
-            }
         
+             int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
+                primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento);
+            
+            switch (numFilas) {
+                case 3:
+                    JOptionPane.showMessageDialog(null, "El evento que ingresó no existe.");
+                    break;
+                case 7:
+                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra registrado en este evento.");
+                    break;
+                case 2:
+                case 5:
+                    JOptionPane.showMessageDialog(null, "La pre-inscripción se ha realizado exitosamente.");
+                    primerNombre.setText(null);
+                    segundoNombre.setText(null);
+                    primerApellido.setText(null);
+                    segundoApellido.setText(null);
+                    cedula.setText(null);
+                    telefono.setText(null);
+                    codEvento.setText(null);
+                    correo.setText(null);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al realizar la pre-inscripción.");
+                    break;
+            }
         }
     }//GEN-LAST:event_crearParticipanteActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]){
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
@@ -365,7 +305,4 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel telefonoLabel;
     // End of variables declaration//GEN-END:variables
 
-    void setIdOperador(String cedula) {
-       idOperador = cedula;
-    }
 }
