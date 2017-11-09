@@ -46,25 +46,26 @@ public class GUI_Login extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         TxtUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        TxtUsuario.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
+        TxtUsuario.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         TxtUsuario.setText("Usuario:");
         jPanel1.add(TxtUsuario);
-        TxtUsuario.setBounds(890, 200, 180, 70);
+        TxtUsuario.setBounds(410, 20, 180, 70);
 
-        usuario.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        usuario.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(usuario);
-        usuario.setBounds(890, 270, 250, 50);
+        usuario.setBounds(410, 90, 250, 30);
 
         TxtPass.setBackground(new java.awt.Color(255, 255, 255));
-        TxtPass.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
+        TxtPass.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         TxtPass.setText("Contraseña:");
         jPanel1.add(TxtPass);
-        TxtPass.setBounds(890, 340, 200, 70);
+        TxtPass.setBounds(410, 100, 200, 70);
 
         pass.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         jPanel1.add(pass);
-        pass.setBounds(890, 410, 250, 50);
+        pass.setBounds(410, 160, 250, 30);
 
+        botonIniciarSesion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botonIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IngresarMed.png"))); // NOI18N
         botonIniciarSesion.setBorder(null);
         botonIniciarSesion.setBorderPainted(false);
@@ -78,28 +79,28 @@ public class GUI_Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonIniciarSesion);
-        botonIniciarSesion.setBounds(890, 470, 240, 120);
+        botonIniciarSesion.setBounds(410, 190, 120, 60);
 
-        botonOlvide.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        botonOlvide.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         botonOlvide.setText("Olvidé mi contraseña");
         jPanel1.add(botonOlvide);
-        botonOlvide.setBounds(1040, 600, 240, 60);
+        botonOlvide.setBounds(410, 260, 240, 30);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(fondo);
-        fondo.setBounds(0, 0, 1370, 770);
+        fondo.setBounds(0, 0, 682, 384);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1382, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
         );
 
         pack();
@@ -217,7 +218,8 @@ public class GUI_Login extends javax.swing.JFrame {
             
             public void run(){
                 
-                new GUI_Login().setVisible(true);
+                GUI_Login ventana = new GUI_Login();
+                ventana.setVisible(true);
             }
         });
     }

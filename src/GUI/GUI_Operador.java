@@ -58,7 +58,7 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reportes);
-        reportes.setBounds(880, 460, 320, 180);
+        reportes.setBounds(510, 260, 170, 110);
 
         registrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarPagoMed.png"))); // NOI18N
         registrarPago.setBorder(null);
@@ -73,7 +73,7 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(registrarPago);
-        registrarPago.setBounds(880, 250, 320, 180);
+        registrarPago.setBounds(510, 140, 170, 110);
         registrarPago.getAccessibleContext().setAccessibleName("Reportes y Consultas");
 
         certificados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CertificadosMed.png"))); // NOI18N
@@ -89,9 +89,9 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(certificados);
-        certificados.setBounds(170, 460, 320, 180);
+        certificados.setBounds(50, 260, 170, 110);
 
-        CerrarSesion.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
+        CerrarSesion.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         CerrarSesion.setText("Cerrar Sesión");
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -99,7 +99,7 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(CerrarSesion);
-        CerrarSesion.setBounds(1070, 650, 280, 70);
+        CerrarSesion.setBounds(620, 380, 120, 50);
 
         preInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PreMed.png"))); // NOI18N
         preInscripcion.setBorder(null);
@@ -114,7 +114,7 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(preInscripcion);
-        preInscripcion.setBounds(170, 250, 320, 180);
+        preInscripcion.setBounds(50, 140, 170, 110);
 
         inscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InscripcionMed.png"))); // NOI18N
         inscripcion.setBorder(null);
@@ -129,7 +129,7 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(inscripcion);
-        inscripcion.setBounds(520, 250, 320, 180);
+        inscripcion.setBounds(280, 140, 170, 110);
 
         escarapelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EscarapelaMed.png"))); // NOI18N
         escarapelas.setBorder(null);
@@ -144,23 +144,23 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(escarapelas);
-        escarapelas.setBounds(520, 460, 320, 180);
+        escarapelas.setBounds(280, 260, 170, 110);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/oper.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1370, 770);
+        jLabel2.setBounds(0, 0, 793, 446);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1382, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
         );
 
         pack();

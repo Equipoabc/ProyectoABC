@@ -51,7 +51,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(modificarUsuario);
-        modificarUsuario.setBounds(510, 360, 320, 180);
+        modificarUsuario.setBounds(240, 140, 190, 140);
 
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepMed.png"))); // NOI18N
         reportes.setBorder(null);
@@ -66,7 +66,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reportes);
-        reportes.setBounds(900, 360, 320, 180);
+        reportes.setBounds(430, 140, 200, 130);
         reportes.getAccessibleContext().setAccessibleName("Reportes y Consultas");
 
         crearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonCrearMed.png"))); // NOI18N
@@ -82,9 +82,9 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearUsuario);
-        crearUsuario.setBounds(120, 360, 320, 180);
+        crearUsuario.setBounds(10, 150, 200, 110);
 
-        CerrarSesion.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
+        CerrarSesion.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         CerrarSesion.setText("Cerrar Sesión");
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,23 +92,25 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(CerrarSesion);
-        CerrarSesion.setBounds(1060, 620, 280, 70);
+        CerrarSesion.setBounds(550, 320, 280, 70);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(fondo);
-        fondo.setBounds(0, 0, 1370, 770);
+        fondo.setBounds(0, 0, 683, 384);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1382, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

@@ -76,29 +76,29 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(890, 560, 250, 100);
+        botonCancelar.setBounds(600, 380, 190, 80);
 
-        correo.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        correo.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         correo.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(correo);
-        correo.setBounds(1070, 270, 200, 28);
+        correo.setBounds(650, 160, 130, 20);
 
-        primerNombreLabel8.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel8.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel8.setText("Email:");
         jPanel1.add(primerNombreLabel8);
-        primerNombreLabel8.setBounds(860, 270, 120, 30);
+        primerNombreLabel8.setBounds(540, 160, 120, 30);
 
-        cel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        cel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         cel.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(cel);
-        cel.setBounds(1070, 370, 200, 28);
+        cel.setBounds(650, 260, 130, 20);
 
-        primerNombreLabel7.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel7.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel7.setText("Estado:");
         jPanel1.add(primerNombreLabel7);
-        primerNombreLabel7.setBounds(860, 420, 130, 30);
+        primerNombreLabel7.setBounds(540, 310, 130, 30);
 
-        tel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        tel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         tel.setSelectionColor(new java.awt.Color(102, 102, 255));
         tel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,20 +106,20 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tel);
-        tel.setBounds(1070, 320, 200, 28);
+        tel.setBounds(650, 210, 130, 20);
 
-        primerNombreLabel6.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel6.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel6.setText("Teléfono:");
         jPanel1.add(primerNombreLabel6);
-        primerNombreLabel6.setBounds(860, 320, 140, 30);
+        primerNombreLabel6.setBounds(540, 210, 140, 30);
 
-        primerNombreLabel5.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel5.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel5.setText("Fecha Nacimiento:");
         jPanel1.add(primerNombreLabel5);
-        primerNombreLabel5.setBounds(860, 220, 220, 40);
+        primerNombreLabel5.setBounds(540, 110, 120, 40);
 
         estado.setBackground(new java.awt.Color(102, 102, 255));
-        estado.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        estado.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         estado.setForeground(new java.awt.Color(102, 102, 255));
         estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         estado.setFocusable(false);
@@ -129,62 +129,62 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(estado);
-        estado.setBounds(1070, 420, 200, 28);
+        estado.setBounds(650, 310, 130, 28);
 
-        primerNombreLabel4.setFont(new java.awt.Font("Cambria", 2, 28)); // NOI18N
+        primerNombreLabel4.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel4.setText("Ingresar Cédula:");
         jPanel1.add(primerNombreLabel4);
-        primerNombreLabel4.setBounds(100, 290, 280, 40);
+        primerNombreLabel4.setBounds(70, 180, 100, 40);
 
-        ced.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        ced.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         ced.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(ced);
-        ced.setBounds(600, 470, 200, 28);
+        ced.setBounds(340, 370, 170, 20);
 
-        primerNombreLabel3.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel3.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel3.setText("Cédula:");
         jPanel1.add(primerNombreLabel3);
-        primerNombreLabel3.setBounds(400, 470, 130, 30);
+        primerNombreLabel3.setBounds(230, 370, 130, 30);
 
-        segundoAp.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        segundoAp.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoAp.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(segundoAp);
-        segundoAp.setBounds(600, 420, 200, 28);
+        segundoAp.setBounds(340, 320, 170, 20);
 
-        primerNombreLabel2.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel2.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel2.setText("Segundo Apellido:");
         jPanel1.add(primerNombreLabel2);
-        primerNombreLabel2.setBounds(400, 420, 180, 30);
+        primerNombreLabel2.setBounds(230, 320, 180, 30);
 
-        primerAp.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        primerAp.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerAp.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerAp);
-        primerAp.setBounds(600, 370, 200, 28);
+        primerAp.setBounds(340, 270, 170, 20);
 
-        primerNombreLabel1.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel1.setText("Primer Apellido:");
         jPanel1.add(primerNombreLabel1);
-        primerNombreLabel1.setBounds(400, 370, 170, 30);
+        primerNombreLabel1.setBounds(230, 270, 170, 30);
 
-        segundoNom.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        segundoNom.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoNom.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(segundoNom);
-        segundoNom.setBounds(600, 320, 200, 28);
+        segundoNom.setBounds(340, 220, 170, 20);
 
-        segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNombreLabel.setText("Segundo Nombre:");
         jPanel1.add(segundoNombreLabel);
-        segundoNombreLabel.setBounds(400, 320, 180, 30);
+        segundoNombreLabel.setBounds(230, 220, 180, 30);
 
-        primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel.setText("Primer Nombre:");
         jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(400, 270, 170, 30);
+        primerNombreLabel.setBounds(230, 170, 170, 30);
 
-        consultarLabel.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(consultarLabel);
-        consultarLabel.setBounds(100, 350, 200, 40);
+        consultarLabel.setBounds(50, 220, 140, 20);
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
         botonConsultar.setBorder(null);
@@ -199,7 +199,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonConsultar);
-        botonConsultar.setBounds(80, 410, 250, 100);
+        botonConsultar.setBounds(40, 250, 160, 70);
 
         fecha.setBackground(new java.awt.Color(255, 255, 255));
         fecha.setForeground(new java.awt.Color(255, 255, 255));
@@ -208,17 +208,17 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         fecha.setRequestFocusEnabled(false);
         fecha.setVerifyInputWhenFocusTarget(false);
         jPanel1.add(fecha);
-        fecha.setBounds(1070, 230, 200, 28);
+        fecha.setBounds(650, 120, 100, 20);
 
-        primerNom.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        primerNom.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerNom.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerNom);
-        primerNom.setBounds(600, 270, 200, 28);
+        primerNom.setBounds(340, 170, 170, 20);
 
-        primerNombreLabel9.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel9.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel9.setText("Tipo de Usuario:");
         jPanel1.add(primerNombreLabel9);
-        primerNombreLabel9.setBounds(400, 220, 170, 30);
+        primerNombreLabel9.setBounds(230, 120, 170, 30);
 
         botonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         botonAceptar.setBorder(null);
@@ -233,15 +233,15 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonAceptar);
-        botonAceptar.setBounds(640, 560, 250, 100);
+        botonAceptar.setBounds(350, 390, 160, 60);
 
-        primerNombreLabel10.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        primerNombreLabel10.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel10.setText("Celular:");
         jPanel1.add(primerNombreLabel10);
-        primerNombreLabel10.setBounds(860, 370, 130, 30);
+        primerNombreLabel10.setBounds(540, 260, 130, 30);
 
         tipoUsuario.setBackground(new java.awt.Color(102, 102, 255));
-        tipoUsuario.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        tipoUsuario.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         tipoUsuario.setForeground(new java.awt.Color(102, 102, 255));
         tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Gerente" }));
         tipoUsuario.setFocusable(false);
@@ -251,24 +251,24 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tipoUsuario);
-        tipoUsuario.setBounds(600, 220, 200, 28);
+        tipoUsuario.setBounds(340, 110, 130, 28);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarUsuario.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(-10, 0, 1390, 780);
+        jLabel2.setBounds(0, 0, 790, 450);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1382, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -51,7 +51,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(modificarSede);
-        modificarSede.setBounds(700, 500, 320, 180);
+        modificarSede.setBounds(430, 280, 180, 110);
 
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepMed.png"))); // NOI18N
         reportes.setBorder(null);
@@ -66,7 +66,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reportes);
-        reportes.setBounds(880, 280, 320, 180);
+        reportes.setBounds(550, 150, 180, 110);
         reportes.getAccessibleContext().setAccessibleName("Reportes y Consultas");
 
         registrarSede.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarSedeMed.png"))); // NOI18N
@@ -82,9 +82,9 @@ public class GUI_Gerente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(registrarSede);
-        registrarSede.setBounds(350, 500, 320, 180);
+        registrarSede.setBounds(170, 280, 180, 110);
 
-        CerrarSesion.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
+        CerrarSesion.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         CerrarSesion.setText("Cerrar Sesión");
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,7 +92,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(CerrarSesion);
-        CerrarSesion.setBounds(1070, 640, 280, 70);
+        CerrarSesion.setBounds(660, 380, 110, 50);
 
         crearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEventoMed.png"))); // NOI18N
         crearEvento.setBorder(null);
@@ -107,7 +107,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearEvento);
-        crearEvento.setBounds(170, 280, 320, 180);
+        crearEvento.setBounds(40, 150, 180, 110);
 
         modificarEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarEventoMed.png"))); // NOI18N
         modificarEvento.setBorder(null);
@@ -122,23 +122,23 @@ public class GUI_Gerente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(modificarEvento);
-        modificarEvento.setBounds(520, 280, 320, 180);
+        modificarEvento.setBounds(290, 150, 180, 110);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Gerente.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1370, 770);
+        jLabel2.setBounds(0, 0, 791, 446);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1382, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
         );
 
         pack();
