@@ -7,11 +7,6 @@ package DAO;
 import java.sql.*;
 import Logica.*;
 import Conexion.*;
-import com.toedter.calendar.JDateChooser;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
 
 /**
  *
@@ -24,7 +19,7 @@ public class DaoOperador {
     
     public DaoOperador(){
         
-        conexion = new Conexiones();
+        conexion = Main.conexion;
     }
     
     public Operador loginOperador(String user){
@@ -106,16 +101,14 @@ public class DaoOperador {
         return -1;
     }
     
-    public int consultarDatosOperador(String cedula, JComboBox<String> tipoUsuario, JTextField primerNom, JTextField segundoNom, JTextField primerAp, 
-            JTextField segundoAp, JTextField ced, JDateChooser fecha, JTextField correo, JTextField tel, JTextField cel, JComboBox<String> estado) {
+    public Operador consultarDatosOperador(String cedula){
         
         String sql, validar;
+        Operador operador = new Operador();
         
         validar = "SELECT cedula_op FROM Operadores WHERE cedula_op = '" + cedula + "';";
         sql = "SELECT primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cedula_op, fecha_nacimiento, email, telefono, "
                 + "celular, estado FROM Operadores WHERE cedula_op = '" + cedula + "';";
-        
-        
         
         try {
             
@@ -130,17 +123,16 @@ public class DaoOperador {
             
             if(!validar.equals(cedula)){
                 
-                return -1;
+                return null;
             }
             
             else {
             
                 ResultSet consulta2 = sentencia.executeQuery(sql);
-                DateFormat format = new SimpleDateFormat("dd/MM/YYYY");
                 
                 while(consulta2.next()){
             
-                    tipoUsuario.setSelectedIndex(0);
+                    /*tipoUsuario.setSelectedIndex(0);
                     primerNom.setText(consulta2.getString(1));
                     segundoNom.setText(consulta2.getString(2));
                     primerAp.setText(consulta2.getString(3));
@@ -150,7 +142,7 @@ public class DaoOperador {
                     correo.setText(consulta2.getString(7));
                     tel.setText(consulta2.getString(8));
                     cel.setText(consulta2.getString(9));
-                       
+                    
                     if(consulta2.getString(10).equals("Activo")){
                         
                         estado.setSelectedIndex(0);
@@ -158,9 +150,89 @@ public class DaoOperador {
                     else {
                         
                        estado.setSelectedIndex(1); 
-                    }
+                    }*/
+                    
+                    operador.setPrimer_nombre(consulta2.getString(1));
+                    operador.setSegundo_nombre(consulta2.getString(2));
+                    operador.setPrimer_apellido(consulta2.getString(3));
+                    operador.setSegundo_apellido(consulta2.getString(4));
+                    operador.setCedula_op(consulta2.getString(5));
+                    operador.setFecha_nacimiento(consulta2.getString(6));
+                    operador.setEmail(consulta2.getString(7));
+                    operador.setTelefono(consulta2.getString(8));
+                    operador.setCelular(consulta2.getString(9));
+                    operador.setEstado(consulta2.getString(10));
                 }
                 
+                return operador;
+            }
+        } catch(SQLException e){
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error" + e);
+        }
+        
+        return null;
+    }
+
+    public int actualizarOperador(String cedulaBusqueda, String primerNombre, String segundoNombre, 
+            String primerApellido, String segundoApellido, String cedula, String telefono, String celular, String email,
+            String estado, String tipo) {
+        
+        String sql_guardar, validar, validar2;
+        int numFilas;
+        
+        // Validar en la tabla de gerentes tambien si existe la nueva cedula,
+        // Si cedulaBusqueda == cedula no hacer comprobacion, solo actualizacion
+        // Si se modifica el tipo de usuario eliminar y meter en nueva tabla
+        
+        validar = "SELECT cedula_op FROM Operadores WHERE cedula_op = '" + cedula + "';";
+        validar2 = "SELECT cedula_ge FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
+        sql_guardar = "UPDATE Operadores SET primer_nombre = '" + primerNombre + "', segundo_nombre = '"
+                + segundoNombre + "', primer_apellido = '" + primerApellido + "', segundo_apellido = '"
+                + segundoApellido + "', cedula_op = '" + cedula + "', telefono = '"
+                + telefono + "', celular = '" + celular + "', email = '" + email + "', estado = '"
+                + estado + "' WHERE cedula_op = '" + cedulaBusqueda + "';";
+        
+        try {
+            
+            Connection conn= conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(validar);
+            
+            
+            while(consulta.next()){
+            
+                validar = consulta.getString(1);
+            }
+            
+            ResultSet consulta2 = sentencia.executeQuery(validar2);
+            
+            while(consulta2.next()){
+            
+                validar2 = consulta2.getString(1);
+            }
+            
+            if(validar.equals(cedula) && !cedula.equals(cedulaBusqueda)){
+                
+                return 2;
+            }
+            
+            else if(validar2.equals(cedula)){
+                
+                return 3;
+            }
+            
+            else if(!validar2.equals(cedula) && tipo.equals("Gerente")){
+                
+                // Crear en gerente y elimar de operador.
+                return 4;
+            }
+            
+            else {
+            
+                sentencia.executeQuery(sql_guardar);
                 return 1;
             }
         } catch(SQLException e){
@@ -173,4 +245,38 @@ public class DaoOperador {
         
         return -1;
     }
+    
+        public int comprobar(String cedula){
+        
+        String sql;        
+        sql = "SELECT cedula_op FROM Operadores WHERE cedula_op = '" + cedula + "';";
+        
+        try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                sql = consulta.getString(1);
+            }
+            
+            if(sql.equals(cedula)){
+                
+                return 1;
+            }
+            return 0;
+            
+        } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error: " + e);
+        }
+        
+        return 0;
+    }
+    
 }

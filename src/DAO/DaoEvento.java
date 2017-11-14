@@ -20,7 +20,7 @@ public class DaoEvento {
     
     public DaoEvento(){
         
-        conexion = new Conexiones();
+        conexion = Main.conexion;
     }
 
     public int guardarEvento(Evento evento) {

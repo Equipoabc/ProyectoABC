@@ -4,20 +4,27 @@
  * and open the template in the editor.
  */
 package GUI;
+
 import Controladores.*;
+import Logica.*;
 import Logica.Validaciones;
 import java.text.*;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
-public class GUI_ModificarUsuario extends javax.swing.JFrame { 
-    
+public class GUI_ModificarUsuario extends javax.swing.JFrame {
+
     Validaciones validaciones;
     DateFormat df = DateFormat.getDateInstance();
     ControladorOperador controladorOperador;
     ControladorGerente controladorGerente;
+    Operador operador;
+    Gerente gerente;
 
-    public GUI_ModificarUsuario(){
-        
+    public GUI_ModificarUsuario() {
+
         initComponents();
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
@@ -275,7 +282,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        
+
         GUI_Administrador adminLogin = new GUI_Administrador();
         adminLogin.setVisible(true);
         this.dispose();
@@ -286,49 +293,80 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_telActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        
-        String cedula = consultarLabel.getText();
-        
-        if(cedula.equals("")){
-            
-            JOptionPane.showMessageDialog(null, "El campo cedula de la consulta esta vacio.");
-        }
-        else if(!validaciones.validarNumero(cedula)){
-            
-            JOptionPane.showMessageDialog(null, "El campo debe ser numerico.");
-        }
-        else {
-           
-            int resultado = controladorOperador.consultarDatosOperador(cedula, tipoUsuario, primerNom, segundoNom, primerAp, segundoAp, ced, fecha,
-                    correo, tel, cel, estado);
-            int resultado2 = controladorGerente.consultarDatosGerente(cedula, tipoUsuario, primerNom, segundoNom, primerAp, segundoAp, ced, fecha,
-                        correo, tel, cel, estado);
 
-            if(resultado == 1){
-                
-               JOptionPane.showMessageDialog(null, "Los datos del operador se han cargado exitosamente.");
-               
-            }
-            
-            else if(resultado2 == 2){
-                
-                JOptionPane.showMessageDialog(null, "Los datos del gerente se han cargado exitosamente.");
-               
-            }
-            else {
-                
-                    JOptionPane.showMessageDialog(null, "El usuario no existe.");
-                    
-                    primerNom.setText(null);
-                    segundoNom.setText(null);
-                    primerAp.setText(null);
-                    segundoAp.setText(null);
-                    ced.setText(null);
-                    tel.setText(null);
-                    cel.setText(null);
-                    correo.setText(null);
+        String cedula = consultarLabel.getText();
+
+        if (cedula.equals("")) {
+
+            JOptionPane.showMessageDialog(null, "El campo cedula de la consulta esta vacio.");
+        } else if (!validaciones.validarNumero(cedula)) {
+
+            JOptionPane.showMessageDialog(null, "El campo debe ser numerico.");
+        } else {
+
+            operador = controladorOperador.consultarDatosOperador(cedula);
+            gerente = controladorGerente.consultarDatosGerente(cedula);
+
+            if (operador != null) {
+
+                tipoUsuario.setSelectedIndex(0);
+                primerNom.setText(operador.getPrimer_nombre());
+                segundoNom.setText(operador.getSegundo_nombre());
+                primerAp.setText(operador.getPrimer_apellido());
+                segundoAp.setText(operador.getSegundo_apellido());
+                ced.setText(operador.getCedula_op());
+                // fecha.setDate(format.parse(consulta2.getString(6))); Validar esta vaina. :'v
+                correo.setText(operador.getEmail());
+                tel.setText(operador.getTelefono());
+                cel.setText(operador.getCelular());
+
+                if (operador.getEstado().equals("Activo")) {
+
+                    estado.setSelectedIndex(0);
+                } else {
+
+                    estado.setSelectedIndex(1);
                 }
+
+                JOptionPane.showMessageDialog(null, "Los datos del operador se han cargado exitosamente.");
+
+            } else if (gerente != null) {
+
+                tipoUsuario.setSelectedIndex(1);
+                primerNom.setText(gerente.getPrimer_nombre());
+                segundoNom.setText(gerente.getSegundo_nombre());
+                primerAp.setText(gerente.getPrimer_apellido());
+                segundoAp.setText(gerente.getSegundo_apellido());
+                ced.setText(gerente.getCedula_ge());
+                // fecha.setDate(format.parse(consulta2.getString(6))); Validar esta vaina. :'v
+                correo.setText(gerente.getEmail());
+                tel.setText(gerente.getTelefono());
+                cel.setText(gerente.getCelular());
+
+                if (gerente.getEstado().equals("Activo")) {
+
+                    estado.setSelectedIndex(0);
+                } else {
+
+                    estado.setSelectedIndex(1);
+                }
+
+                JOptionPane.showMessageDialog(null, "Los datos del gerente se han cargado exitosamente.");
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "El usuario no existe.");
+
+                primerNom.setText(null);
+                segundoNom.setText(null);
+                primerAp.setText(null);
+                segundoAp.setText(null);
+                ced.setText(null);
+                tel.setText(null);
+                cel.setText(null);
+                correo.setText(null);
             }
+        }
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoActionPerformed
@@ -336,7 +374,141 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_estadoActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-       
+
+        String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipo,
+                telefono, celular, email, estadoStr, cedulaBusqueda, validar = "";
+
+        primerNombre = primerNom.getText();
+        segundoNombre = segundoNom.getText();
+        primerApellido = primerAp.getText();
+        segundoApellido = segundoAp.getText();
+        cedula = ced.getText();
+        tipo = (String) tipoUsuario.getSelectedItem();
+        telefono = tel.getText();
+        celular = cel.getText();
+        email = correo.getText();
+        estadoStr = (String) estado.getSelectedItem();
+        cedulaBusqueda = consultarLabel.getText();
+
+        if (primerNombre.equals("") || primerApellido.equals("") || cedula.equals("") || celular.equals("")
+                || cedulaBusqueda.equals("")) {
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios." + validar);
+        } else if (!validaciones.validarLetras(primerNombre) || !validaciones.validarLetras(segundoNombre) || !validaciones.validarLetras(primerApellido)
+                || !validaciones.validarLetras(segundoApellido)) {
+            JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
+        } else if (!validaciones.validarNumero(cedula) || !validaciones.validarNumero(telefono)
+                || !validaciones.validarNumero(cedulaBusqueda) || !validaciones.validarNumero(celular)) {
+            JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y celular deben ser de solo numeros");
+        } else {
+
+            // Operador        
+            if (controladorOperador.comprobar(cedulaBusqueda) == 1) {
+
+                if (primerNombre.equals(operador.getPrimer_nombre()) && segundoNombre.equals(operador.getSegundo_nombre())
+                        && primerApellido.equals(operador.getPrimer_apellido()) && segundoApellido.equals(operador.getSegundo_apellido())
+                        && cedula.equals(operador.getCedula_op()) && telefono.equals(operador.getTelefono())
+                        && celular.equals(operador.getCelular()) && email.equals(operador.getEmail())
+                        && tipo.equals("Operador") && estadoStr.equals(operador.getEstado())) {
+
+                    JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo");
+                } else {
+
+                    int numFilas = controladorOperador.actualizarOperador(cedulaBusqueda, primerNombre,
+                            segundoNombre, primerApellido, segundoApellido,
+                            cedula, telefono, celular, email, estadoStr, tipo);
+
+                    switch (numFilas) {
+                        case 1:
+                            JOptionPane.showMessageDialog(null, "Operador actualizado exitosamente.");
+                            consultarLabel.setText(null);
+                            primerNom.setText(null);
+                            segundoNom.setText(null);
+                            primerAp.setText(null);
+                            segundoAp.setText(null);
+                            ced.setText(null);
+                            tel.setText(null);
+                            cel.setText(null);
+                            correo.setText(null);
+                            break;
+                        case 2:
+                            JOptionPane.showMessageDialog(null, "El usuario ya se encuentra registrado.");
+                            break;
+                        case 3:
+                            JOptionPane.showMessageDialog(null, "La cedula a actualizar corresponde a un gerente registrado.");
+                            break;
+                        case 4:
+                            JOptionPane.showMessageDialog(null, "Pendiente: Crear en gerente y elimar de operador.");
+                            break;
+                        default:
+                            JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el operador.");
+                            break;
+                    }
+                }
+            } else if (controladorGerente.comprobar(cedulaBusqueda) == 1) {
+
+                if (primerNombre.equals(gerente.getPrimer_nombre()) && segundoNombre.equals(gerente.getSegundo_nombre())
+                        && primerApellido.equals(gerente.getPrimer_apellido()) && segundoApellido.equals(gerente.getSegundo_apellido())
+                        && cedula.equals(gerente.getCedula_ge()) && telefono.equals(gerente.getTelefono())
+                        && celular.equals(gerente.getCelular()) && email.equals(gerente.getEmail())
+                        && tipo.equals("Gerente") && estadoStr.equals(gerente.getEstado())) {
+
+                    JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo");
+                } else {
+                    int numFilas = controladorGerente.actualizarOperador(cedulaBusqueda, primerNombre,
+                            segundoNombre, primerApellido, segundoApellido,
+                            cedula, telefono, celular, email, estadoStr, tipo);
+
+                    switch (numFilas) {
+                        case 1:
+                            JOptionPane.showMessageDialog(null, "Gerente actualizado exitosamente.");
+                            consultarLabel.setText(null);
+                            primerNom.setText(null);
+                            segundoNom.setText(null);
+                            primerAp.setText(null);
+                            segundoAp.setText(null);
+                            ced.setText(null);
+                            tel.setText(null);
+                            cel.setText(null);
+                            correo.setText(null);
+                            break;
+                        case 2:
+                            JOptionPane.showMessageDialog(null, "El usuario ya se encuentra registrado.");
+                            break;
+                        case 3:
+                            JOptionPane.showMessageDialog(null, "La cedula a actualizar corresponde a un operador registrado.");
+                            break;
+                        case 4:
+                            JOptionPane.showMessageDialog(null, "Pendiente: Crear en operador y elimar de gerente.");
+                            break;
+                        default:
+                            JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el gerente.");
+                            break;
+                    }
+                }
+            }
+            /*else if(tipoUsuario.equals("Gerente")) {
+            
+            int numFilas = controladorGerente.insertarGerente(primerNombre, 
+               segundoNombre, primerApellido, segundoApellido,
+               cedula, fechaNacimiento, telefono, celular, email, 
+               contrasena, confirmar, pregunta, respuesta);           
+
+            switch (numFilas) {
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Gerente creado exitosamente.");
+                    break;
+                case 5:
+                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "El gerente ya se encuentra registrado.");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
+                    break;
+            }
+        }*/
+        }
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void tipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoUsuarioActionPerformed
@@ -346,7 +518,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]){
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -371,13 +543,13 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable(){
-            
-            public void run(){
-                
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+
                 new GUI_CrearUsuario().setVisible(true);
             }
-        });  
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

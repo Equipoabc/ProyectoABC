@@ -19,7 +19,7 @@ public class DaoAdministrador {
     
     public DaoAdministrador(){
         
-        conexion = new Conexiones();
+        conexion = Main.conexion;
     }
     
     public Administrador loginAdministrador(String user){

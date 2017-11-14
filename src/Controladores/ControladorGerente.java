@@ -6,9 +6,6 @@
 package Controladores;
 import DAO.*;
 import Logica.*;
-import com.toedter.calendar.JDateChooser;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
 
 /**
  *
@@ -58,9 +55,20 @@ public class ControladorGerente {
         return gerente;
     }
     
-    public int consultarDatosGerente(String cedula, JComboBox<String> tipoUsuario, JTextField primerNom, JTextField segundoNom, JTextField primerAp, JTextField segundoAp, JTextField ced, JDateChooser fecha, JTextField correo, JTextField tel, JTextField cel, JComboBox<String> estado) {
+    public Gerente consultarDatosGerente(String cedula) {
         
-        return daoGerente.consultarDatosGerente(cedula, tipoUsuario, primerNom, segundoNom, primerAp, segundoAp, ced, fecha,
-                    correo, tel, cel, estado);
+        return daoGerente.consultarDatosGerente(cedula);
+    }
+    
+    public int actualizarOperador(String cedulaBusqueda, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String cedula, String telefono, String celular, String email, String estado, String tipo) {
+        
+        return daoGerente.actualizarOperador(cedulaBusqueda, primerNombre, 
+               segundoNombre, primerApellido, segundoApellido,
+               cedula, telefono, celular, email, estado, tipo);
+    }
+
+    public int comprobar(String cedula){
+        
+        return daoGerente.comprobar(cedula);
     }
 }

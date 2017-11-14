@@ -19,7 +19,7 @@ public class DaoParticipante {
     
     public DaoParticipante(){
         
-        conexion = new Conexiones();
+        conexion = Main.conexion;
     }
 
     public int guardarParticipante(Participante pa, String codEvento){

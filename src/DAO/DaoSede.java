@@ -14,7 +14,7 @@ public class DaoSede {
     
     public DaoSede(){
         
-        conexion = new Conexiones();
+        conexion = Main.conexion;;
     }
 
     public int guardarSede(Sede sede) {

@@ -5,6 +5,7 @@
  */
 package DAO;
 import Conexion.*;
+import Logica.Main;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.*;
@@ -20,7 +21,7 @@ public class DaoReportesUsuarios {
     
     public DaoReportesUsuarios(){
             
-        conexion = new Conexiones();
+        conexion = Main.conexion;
     }
     
     public void consultarUsuarios(DefaultTableModel modeloTabla, JTable tabla){

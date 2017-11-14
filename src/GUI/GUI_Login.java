@@ -133,7 +133,7 @@ public class GUI_Login extends javax.swing.JFrame {
         
         if((!user.equals("")) && (!cont.equals(""))){
             
-            if(admin.getUsuario().equals(user) ){
+            if(admin.getUsuario().equals(user)){
 
                 if(admin.getContrasena().equals(cont)){
                     
