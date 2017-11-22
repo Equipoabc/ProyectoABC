@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package GUI;
 
 import Controladores.*;
@@ -12,25 +12,53 @@ import java.text.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class GUI_ModificarUsuario extends javax.swing.JFrame {
-
+    
     Validaciones validaciones;
     DateFormat df = DateFormat.getDateInstance();
     ControladorOperador controladorOperador;
     ControladorGerente controladorGerente;
     Operador operador;
     Gerente gerente;
-
+    
     public GUI_ModificarUsuario() {
-
+        
         initComponents();
+        this.setLocationRelativeTo(null);
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
         validaciones = new Validaciones();
+        fecha.setMaxSelectableDate(GetDateNow());
+        fecha.getDateEditor().setEnabled(false);
+        botonAceptar.setEnabled(false);
     }
-
+    
+    private Date GetDateNow() {
+        Calendar currentDate = Calendar.getInstance();
+        return currentDate.getTime();
+    }
+    
+    public static Date parseFecha(String fecha){
+        
+        fecha = fecha.replace("-","/") ;
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+        }
+        catch (ParseException ex)
+        {
+            System.out.println("Error: " + ex);
+        }
+        return fechaDate;
+    }
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,6 +94,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(792, 480));
         setResizable(false);
 
         jPanel1.setLayout(null);
@@ -83,27 +112,27 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(600, 380, 190, 80);
+        botonCancelar.setBounds(510, 370, 190, 80);
 
         correo.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         correo.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(correo);
-        correo.setBounds(650, 160, 130, 20);
+        correo.setBounds(630, 140, 140, 20);
 
         primerNombreLabel8.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel8.setText("Email:");
         jPanel1.add(primerNombreLabel8);
-        primerNombreLabel8.setBounds(540, 160, 120, 30);
+        primerNombreLabel8.setBounds(520, 140, 120, 30);
 
         cel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         cel.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(cel);
-        cel.setBounds(650, 260, 130, 20);
+        cel.setBounds(630, 240, 140, 20);
 
         primerNombreLabel7.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel7.setText("Estado:");
         jPanel1.add(primerNombreLabel7);
-        primerNombreLabel7.setBounds(540, 310, 130, 30);
+        primerNombreLabel7.setBounds(520, 290, 130, 30);
 
         tel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         tel.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -113,30 +142,24 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tel);
-        tel.setBounds(650, 210, 130, 20);
+        tel.setBounds(630, 190, 140, 20);
 
         primerNombreLabel6.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel6.setText("Teléfono:");
         jPanel1.add(primerNombreLabel6);
-        primerNombreLabel6.setBounds(540, 210, 140, 30);
+        primerNombreLabel6.setBounds(520, 190, 140, 30);
 
         primerNombreLabel5.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel5.setText("Fecha Nacimiento:");
         jPanel1.add(primerNombreLabel5);
-        primerNombreLabel5.setBounds(540, 110, 120, 40);
+        primerNombreLabel5.setBounds(520, 90, 120, 40);
 
-        estado.setBackground(new java.awt.Color(102, 102, 255));
         estado.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         estado.setForeground(new java.awt.Color(102, 102, 255));
         estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         estado.setFocusable(false);
-        estado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                estadoActionPerformed(evt);
-            }
-        });
         jPanel1.add(estado);
-        estado.setBounds(650, 310, 130, 28);
+        estado.setBounds(630, 290, 140, 28);
 
         primerNombreLabel4.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel4.setText("Ingresar Cédula:");
@@ -146,47 +169,47 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         ced.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         ced.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(ced);
-        ced.setBounds(340, 370, 170, 20);
+        ced.setBounds(340, 350, 150, 20);
 
         primerNombreLabel3.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel3.setText("Cédula:");
         jPanel1.add(primerNombreLabel3);
-        primerNombreLabel3.setBounds(230, 370, 130, 30);
+        primerNombreLabel3.setBounds(230, 350, 130, 30);
 
         segundoAp.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoAp.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(segundoAp);
-        segundoAp.setBounds(340, 320, 170, 20);
+        segundoAp.setBounds(340, 300, 150, 20);
 
         primerNombreLabel2.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel2.setText("Segundo Apellido:");
         jPanel1.add(primerNombreLabel2);
-        primerNombreLabel2.setBounds(230, 320, 180, 30);
+        primerNombreLabel2.setBounds(230, 300, 180, 30);
 
         primerAp.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerAp.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerAp);
-        primerAp.setBounds(340, 270, 170, 20);
+        primerAp.setBounds(340, 250, 150, 20);
 
         primerNombreLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel1.setText("Primer Apellido:");
         jPanel1.add(primerNombreLabel1);
-        primerNombreLabel1.setBounds(230, 270, 170, 30);
+        primerNombreLabel1.setBounds(230, 250, 170, 30);
 
         segundoNom.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoNom.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(segundoNom);
-        segundoNom.setBounds(340, 220, 170, 20);
+        segundoNom.setBounds(340, 200, 150, 20);
 
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNombreLabel.setText("Segundo Nombre:");
         jPanel1.add(segundoNombreLabel);
-        segundoNombreLabel.setBounds(230, 220, 180, 30);
+        segundoNombreLabel.setBounds(230, 200, 180, 30);
 
         primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel.setText("Primer Nombre:");
         jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(230, 170, 170, 30);
+        primerNombreLabel.setBounds(230, 150, 170, 30);
 
         consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -215,17 +238,17 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         fecha.setRequestFocusEnabled(false);
         fecha.setVerifyInputWhenFocusTarget(false);
         jPanel1.add(fecha);
-        fecha.setBounds(650, 120, 100, 20);
+        fecha.setBounds(630, 100, 140, 20);
 
         primerNom.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerNom.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerNom);
-        primerNom.setBounds(340, 170, 170, 20);
+        primerNom.setBounds(340, 150, 150, 20);
 
         primerNombreLabel9.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel9.setText("Tipo de Usuario:");
         jPanel1.add(primerNombreLabel9);
-        primerNombreLabel9.setBounds(230, 120, 170, 30);
+        primerNombreLabel9.setBounds(230, 100, 170, 30);
 
         botonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         botonAceptar.setBorder(null);
@@ -240,14 +263,13 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonAceptar);
-        botonAceptar.setBounds(350, 390, 160, 60);
+        botonAceptar.setBounds(380, 380, 160, 60);
 
         primerNombreLabel10.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel10.setText("Celular:");
         jPanel1.add(primerNombreLabel10);
-        primerNombreLabel10.setBounds(540, 260, 130, 30);
+        primerNombreLabel10.setBounds(520, 240, 130, 30);
 
-        tipoUsuario.setBackground(new java.awt.Color(102, 102, 255));
         tipoUsuario.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         tipoUsuario.setForeground(new java.awt.Color(102, 102, 255));
         tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Gerente" }));
@@ -258,14 +280,13 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tipoUsuario);
-        tipoUsuario.setBounds(340, 110, 130, 28);
+        tipoUsuario.setBounds(340, 100, 150, 28);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarUsuario.png"))); // NOI18N
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 790, 450);
+        jLabel2.setBounds(0, 0, 792, 440);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -280,83 +301,92 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-
+        
         GUI_Administrador adminLogin = new GUI_Administrador();
         adminLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
-
+    
     private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_telActionPerformed
-
+    
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-
+        
+        botonAceptar.setEnabled(true);
         String cedula = consultarLabel.getText();
-
+        
         if (cedula.equals("")) {
-
+            
             JOptionPane.showMessageDialog(null, "El campo cedula de la consulta esta vacio.");
         } else if (!validaciones.validarNumero(cedula)) {
-
-            JOptionPane.showMessageDialog(null, "El campo debe ser numerico.");
+            
+            JOptionPane.showMessageDialog(null, "El campo cedula de la consulta debe ser numerico.");
         } else {
-
+            
             operador = controladorOperador.consultarDatosOperador(cedula);
             gerente = controladorGerente.consultarDatosGerente(cedula);
-
-            if (operador != null) {
-
+            Boolean comprobante = true;
+            
+            if(operador != null && gerente != null){
+                
+                if(operador.getEstado().equals("Inactivo")){
+                    
+                    comprobante = false;
+                }
+            }
+            if (operador != null && comprobante){
+                
                 tipoUsuario.setSelectedIndex(0);
                 primerNom.setText(operador.getPrimer_nombre());
                 segundoNom.setText(operador.getSegundo_nombre());
                 primerAp.setText(operador.getPrimer_apellido());
                 segundoAp.setText(operador.getSegundo_apellido());
                 ced.setText(operador.getCedula_op());
-                // fecha.setDate(format.parse(consulta2.getString(6))); Validar esta vaina. :'v
+                fecha.setDate(parseFecha(operador.getFecha_nacimiento()));
                 correo.setText(operador.getEmail());
                 tel.setText(operador.getTelefono());
                 cel.setText(operador.getCelular());
-
+                
                 if (operador.getEstado().equals("Activo")) {
-
+                    
                     estado.setSelectedIndex(0);
                 } else {
-
+                    
                     estado.setSelectedIndex(1);
                 }
-
-                JOptionPane.showMessageDialog(null, "Los datos del operador se han cargado exitosamente.");
-
+                
+                JOptionPane.showMessageDialog(null, "Los datos del usuario se han cargado exitosamente.");
+                
             } else if (gerente != null) {
-
+                
                 tipoUsuario.setSelectedIndex(1);
                 primerNom.setText(gerente.getPrimer_nombre());
                 segundoNom.setText(gerente.getSegundo_nombre());
                 primerAp.setText(gerente.getPrimer_apellido());
                 segundoAp.setText(gerente.getSegundo_apellido());
                 ced.setText(gerente.getCedula_ge());
-                // fecha.setDate(format.parse(consulta2.getString(6))); Validar esta vaina. :'v
+                fecha.setDate(parseFecha(gerente.getFecha_nacimiento()));
                 correo.setText(gerente.getEmail());
                 tel.setText(gerente.getTelefono());
                 cel.setText(gerente.getCelular());
-
+                
                 if (gerente.getEstado().equals("Activo")) {
-
+                    
                     estado.setSelectedIndex(0);
                 } else {
-
+                    
                     estado.setSelectedIndex(1);
                 }
-
+                
                 JOptionPane.showMessageDialog(null, "Los datos del gerente se han cargado exitosamente.");
-
+                
             } else {
-
+                
                 JOptionPane.showMessageDialog(null, "El usuario no existe.");
-
+                
                 primerNom.setText(null);
                 segundoNom.setText(null);
                 primerAp.setText(null);
@@ -365,19 +395,17 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                 tel.setText(null);
                 cel.setText(null);
                 correo.setText(null);
+                fecha.setDate(null);
             }
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
-
-    private void estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_estadoActionPerformed
-
+    
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-
+        
+        botonAceptar.setEnabled(false);
         String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipo,
-                telefono, celular, email, estadoStr, cedulaBusqueda, validar = "";
-
+                telefono, celular, email, estadoStr, cedulaBusqueda, fechaNacimiento = "", validar = "";
+        LocalDate fechaNac = LocalDate.now();
         primerNombre = primerNom.getText();
         segundoNombre = segundoNom.getText();
         primerApellido = primerAp.getText();
@@ -389,37 +417,50 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         email = correo.getText();
         estadoStr = (String) estado.getSelectedItem();
         cedulaBusqueda = consultarLabel.getText();
-
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try {
+            fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+            fechaNac = LocalDate.parse(fechaNacimiento, fmt);
+        } catch(Exception e){
+            validar = "\nDebe ingresar una fecha válida.";
+        }
+        
+        LocalDate ahora = LocalDate.now();
+        Period periodo = Period.between(fechaNac, ahora);
+        
         if (primerNombre.equals("") || primerApellido.equals("") || cedula.equals("") || celular.equals("")
-                || cedulaBusqueda.equals("")) {
+                || cedulaBusqueda.equals("") || fechaNacimiento.equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios." + validar);
         } else if (!validaciones.validarLetras(primerNombre) || !validaciones.validarLetras(segundoNombre) || !validaciones.validarLetras(primerApellido)
                 || !validaciones.validarLetras(segundoApellido)) {
-            JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
+            JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras.");
         } else if (!validaciones.validarNumero(cedula) || !validaciones.validarNumero(telefono)
                 || !validaciones.validarNumero(cedulaBusqueda) || !validaciones.validarNumero(celular)) {
-            JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y celular deben ser de solo numeros");
-        } else {
-
-            // Operador        
+            JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y celular deben ser de solo numeros.");
+        } else if (periodo.getYears() < 18) {
+            JOptionPane.showMessageDialog(null, "El usuario tiene que ser mayor de edad.");
+        }
+        else {
+            
+            // Operador
             if (controladorOperador.comprobar(cedulaBusqueda) == 1) {
-
+                
                 if (primerNombre.equals(operador.getPrimer_nombre()) && segundoNombre.equals(operador.getSegundo_nombre())
                         && primerApellido.equals(operador.getPrimer_apellido()) && segundoApellido.equals(operador.getSegundo_apellido())
                         && cedula.equals(operador.getCedula_op()) && telefono.equals(operador.getTelefono())
                         && celular.equals(operador.getCelular()) && email.equals(operador.getEmail())
                         && tipo.equals("Operador") && estadoStr.equals(operador.getEstado())) {
-
+                    
                     JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo");
                 } else {
-
                     int numFilas = controladorOperador.actualizarOperador(cedulaBusqueda, primerNombre,
                             segundoNombre, primerApellido, segundoApellido,
                             cedula, telefono, celular, email, estadoStr, tipo);
-
+                    
+                    
                     switch (numFilas) {
                         case 1:
-                            JOptionPane.showMessageDialog(null, "Operador actualizado exitosamente.");
+                            JOptionPane.showMessageDialog(null, "Los datos se han actualizado.");
                             consultarLabel.setText(null);
                             primerNom.setText(null);
                             segundoNom.setText(null);
@@ -431,13 +472,13 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                             correo.setText(null);
                             break;
                         case 2:
-                            JOptionPane.showMessageDialog(null, "El usuario ya se encuentra registrado.");
+                            JOptionPane.showMessageDialog(null, "La cedula a actualizar corresponde a un usuario registrado.");
                             break;
                         case 3:
-                            JOptionPane.showMessageDialog(null, "La cedula a actualizar corresponde a un gerente registrado.");
+                            JOptionPane.showMessageDialog(null, "La cedula a actualizar corresponde a un usuario registrado.");
                             break;
                         case 4:
-                            JOptionPane.showMessageDialog(null, "Pendiente: Crear en gerente y elimar de operador.");
+                            JOptionPane.showMessageDialog(null, "Los datos se han actualizado.");
                             break;
                         default:
                             JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el operador.");
@@ -445,22 +486,22 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                     }
                 }
             } else if (controladorGerente.comprobar(cedulaBusqueda) == 1) {
-
+                
                 if (primerNombre.equals(gerente.getPrimer_nombre()) && segundoNombre.equals(gerente.getSegundo_nombre())
                         && primerApellido.equals(gerente.getPrimer_apellido()) && segundoApellido.equals(gerente.getSegundo_apellido())
                         && cedula.equals(gerente.getCedula_ge()) && telefono.equals(gerente.getTelefono())
                         && celular.equals(gerente.getCelular()) && email.equals(gerente.getEmail())
                         && tipo.equals("Gerente") && estadoStr.equals(gerente.getEstado())) {
-
+                    
                     JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo");
                 } else {
                     int numFilas = controladorGerente.actualizarOperador(cedulaBusqueda, primerNombre,
                             segundoNombre, primerApellido, segundoApellido,
                             cedula, telefono, celular, email, estadoStr, tipo);
-
+                    
                     switch (numFilas) {
                         case 1:
-                            JOptionPane.showMessageDialog(null, "Gerente actualizado exitosamente.");
+                            JOptionPane.showMessageDialog(null, "Los datos se han actualizado.");
                             consultarLabel.setText(null);
                             primerNom.setText(null);
                             segundoNom.setText(null);
@@ -472,13 +513,13 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                             correo.setText(null);
                             break;
                         case 2:
-                            JOptionPane.showMessageDialog(null, "El usuario ya se encuentra registrado.");
+                            JOptionPane.showMessageDialog(null, "La cedula a actualizar corresponde a un usuario registrado.");
                             break;
                         case 3:
-                            JOptionPane.showMessageDialog(null, "La cedula a actualizar corresponde a un operador registrado.");
+                            JOptionPane.showMessageDialog(null, "La cedula a actualizar corresponde a un usuario registrado.");
                             break;
                         case 4:
-                            JOptionPane.showMessageDialog(null, "Pendiente: Crear en operador y elimar de gerente.");
+                            JOptionPane.showMessageDialog(null, "Los datos se han actualizado.");
                             break;
                         default:
                             JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el gerente.");
@@ -486,35 +527,38 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                     }
                 }
             }
+            else {
+                JOptionPane.showMessageDialog(null, "El operador que quiere actualizar no existe.");
+            }
             /*else if(tipoUsuario.equals("Gerente")) {
             
-            int numFilas = controladorGerente.insertarGerente(primerNombre, 
-               segundoNombre, primerApellido, segundoApellido,
-               cedula, fechaNacimiento, telefono, celular, email, 
-               contrasena, confirmar, pregunta, respuesta);           
-
+            int numFilas = controladorGerente.insertarGerente(primerNombre,
+            segundoNombre, primerApellido, segundoApellido,
+            cedula, fechaNacimiento, telefono, celular, email,
+            contrasena, confirmar, pregunta, respuesta);
+            
             switch (numFilas) {
-                case 1:
-                    JOptionPane.showMessageDialog(null, "Gerente creado exitosamente.");
-                    break;
-                case 5:
-                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
-                    break;
-                case 2:
-                    JOptionPane.showMessageDialog(null, "El gerente ya se encuentra registrado.");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
-                    break;
+            case 1:
+            JOptionPane.showMessageDialog(null, "Gerente creado exitosamente.");
+            break;
+            case 5:
+            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+            break;
+            case 2:
+            JOptionPane.showMessageDialog(null, "El gerente ya se encuentra registrado.");
+            break;
+            default:
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
+            break;
             }
-        }*/
+            }*/
         }
     }//GEN-LAST:event_botonAceptarActionPerformed
-
+    
     private void tipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoUsuarioActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -522,8 +566,8 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -541,17 +585,17 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-
+            
             public void run() {
-
+                
                 new GUI_CrearUsuario().setVisible(true);
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;

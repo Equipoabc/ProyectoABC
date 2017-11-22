@@ -23,11 +23,13 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     public GUI_CrearUsuario(){
        
         initComponents();
+        this.setLocationRelativeTo(null);
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
         validaciones = new Validaciones();
         fecha.setMaxSelectableDate(GetDateNow());
-        fecha.getDateEditor().setEnabled(false);
+        //fecha.getDateEditor().setEnabled(false);
+        ((JTextField) fecha.getDateEditor()).setEditable(false);
     }
 
      private Date GetDateNow() {
@@ -90,22 +92,22 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(400, 310, 150, 70);
+        botonCancelar.setBounds(350, 310, 150, 70);
 
         respuestaSeguridad.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         respuestaSeguridad.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(respuestaSeguridad);
-        respuestaSeguridad.setBounds(440, 240, 180, 20);
+        respuestaSeguridad.setBounds(450, 240, 180, 20);
 
         respuestaLabel12.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         respuestaLabel12.setText("Respuesta:");
         jPanel1.add(respuestaLabel12);
-        respuestaLabel12.setBounds(370, 240, 150, 30);
+        respuestaLabel12.setBounds(370, 240, 150, 20);
 
         preguntaSeguridad.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         preguntaSeguridad.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(preguntaSeguridad);
-        preguntaSeguridad.setBounds(440, 210, 180, 20);
+        preguntaSeguridad.setBounds(450, 210, 180, 20);
 
         confirmarpass.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         confirmarpass.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -115,17 +117,17 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(confirmarpass);
-        confirmarpass.setBounds(440, 180, 180, 20);
+        confirmarpass.setBounds(450, 180, 180, 20);
 
         preguntaLabel11.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         preguntaLabel11.setText("Pregunta:");
         jPanel1.add(preguntaLabel11);
-        preguntaLabel11.setBounds(370, 210, 140, 30);
+        preguntaLabel11.setBounds(370, 210, 140, 20);
 
         confirmarLabel10.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         confirmarLabel10.setText("Confirmar:");
         jPanel1.add(confirmarLabel10);
-        confirmarLabel10.setBounds(370, 180, 150, 30);
+        confirmarLabel10.setBounds(370, 180, 150, 20);
 
         pass.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         pass.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -135,50 +137,54 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         passLabel9.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         passLabel9.setText("Contraseña:");
         jPanel1.add(passLabel9);
-        passLabel9.setBounds(370, 150, 160, 30);
+        passLabel9.setBounds(370, 150, 160, 20);
 
         correo.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         correo.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(correo);
-        correo.setBounds(440, 270, 180, 20);
+        correo.setBounds(450, 270, 180, 20);
 
         emailLabel8.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         emailLabel8.setText("Email:");
         jPanel1.add(emailLabel8);
-        emailLabel8.setBounds(370, 270, 120, 30);
+        emailLabel8.setBounds(370, 270, 120, 20);
 
         cel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cel.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(cel);
-        cel.setBounds(440, 120, 180, 20);
+        cel.setBounds(450, 120, 180, 20);
 
         celLabel7.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         celLabel7.setText("Celular:");
         jPanel1.add(celLabel7);
-        celLabel7.setBounds(370, 120, 130, 30);
+        celLabel7.setBounds(370, 120, 130, 20);
 
         tel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         tel.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(tel);
-        tel.setBounds(440, 90, 180, 20);
+        tel.setBounds(450, 90, 180, 20);
 
         telefonoLabel6.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         telefonoLabel6.setText("Teléfono:");
         jPanel1.add(telefonoLabel6);
-        telefonoLabel6.setBounds(370, 80, 140, 30);
+        telefonoLabel6.setBounds(370, 90, 140, 20);
 
         fechaLabel5.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         fechaLabel5.setText("Fecha Nacimiento:");
         jPanel1.add(fechaLabel5);
         fechaLabel5.setBounds(60, 270, 220, 40);
 
-        tipo.setBackground(new java.awt.Color(102, 102, 255));
         tipo.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         tipo.setForeground(new java.awt.Color(102, 102, 255));
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Gerente" }));
         tipo.setFocusable(false);
+        tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoActionPerformed(evt);
+            }
+        });
         jPanel1.add(tipo);
-        tipo.setBounds(160, 90, 130, 20);
+        tipo.setBounds(170, 85, 130, 20);
 
         tipoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         tipoLabel.setText("Tipo de Usuario:");
@@ -248,7 +254,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearUsuario);
-        crearUsuario.setBounds(150, 310, 160, 70);
+        crearUsuario.setBounds(190, 310, 160, 70);
 
         fecha.setBackground(new java.awt.Color(255, 255, 255));
         fecha.setForeground(new java.awt.Color(102, 102, 255));
@@ -267,7 +273,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         fondo.setFocusable(false);
         jPanel1.add(fondo);
-        fondo.setBounds(0, 0, 680, 384);
+        fondo.setBounds(-10, 0, 710, 384);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -296,7 +302,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipoUsuario, 
                fechaNacimiento, telefono, celular, email, contrasena, confirmar, pregunta, respuesta, validar = "";
-        
+        LocalDate fechaNac = LocalDate.now();
         fechaNacimiento = "";
         primerNombre = primerNom.getText();
         segundoNombre = segundoNom.getText();
@@ -304,16 +310,16 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         segundoApellido = segundoAp.getText();
         cedula = ced.getText();
         tipoUsuario = (String) tipo.getSelectedItem();
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
         try {
             
            fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+           fechaNac = LocalDate.parse(fechaNacimiento, fmt);
         } catch(Exception e){
             validar = "\nDebe ingresar una fecha válida.";
         }
         
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaNac = LocalDate.parse(fechaNacimiento, fmt);
         LocalDate ahora = LocalDate.now();
         Period periodo = Period.between(fechaNac, ahora);
         
@@ -406,6 +412,10 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
     private void confirmarpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarpassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_confirmarpassActionPerformed
+
+    private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoActionPerformed
 
     public static void main(String args[]) {
         

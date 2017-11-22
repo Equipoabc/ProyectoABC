@@ -32,5 +32,18 @@ public class ControladorSede {
         
         
     }
+    // Nuevo.
+    public Sede consultarDatosSede(String codigoConsultar) {
+        
+        return daoSede.consultarDatosSede(codigoConsultar);
+    }
+
+    public int actualizarSede(String codigoConsulta, String codigoS, String nombreS, String ciudadS, String carreraS, String calleS, String barrioS, String telefonoS) {
+        return daoSede.actualizarSede(codigoConsulta, codigoS, nombreS, ciudadS, carreraS, calleS, barrioS, telefonoS);        
+    }
+
+    public int comprobar(String codigoConsulta) {
+        return daoSede.comprobar(codigoConsulta);
+    }
     
 }

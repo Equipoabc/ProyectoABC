@@ -17,6 +17,7 @@ public class GUI_Reportes extends javax.swing.JFrame {
     public GUI_Reportes(){
         
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

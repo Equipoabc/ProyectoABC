@@ -198,7 +198,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/Gerente.png"/>
+              <Image iconType="3" name="/Imagenes/FondoGerente.png"/>
             </Property>
             <Property name="verticalAlignment" type="int" value="1"/>
           </Properties>

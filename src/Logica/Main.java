@@ -24,7 +24,7 @@ public class Main {
         
         conexion = new Conexiones();
         conexion.getConnetion();
-        
+        Reportes.crearCarpetas();
         GUI_Login interfaz = new GUI_Login();
         interfaz.setVisible(true);
     }

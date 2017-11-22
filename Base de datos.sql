@@ -6,7 +6,7 @@ CREATE TABLE Administradores (
 );
 
 INSERT INTO Administradores (usuario, contrasena) 
-VALUES ('admin', '12345');
+VALUES ('admin', '12345678');
 
 
 DROP TABLE IF EXISTS Operadores CASCADE;
@@ -28,34 +28,34 @@ CREATE TABLE Operadores (
 );
 
 INSERT INTO Operadores (cedula_op, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1010059777', 'Ivan', 'Mauricio', 'Toro', 'Cifuentes', '1998-03-16', 'ivan.toro@hotmail.com', '568402', '3164875865', 'Activo', '54321', '¿Scorpion?', 'Hanzo Hasashi');
+VALUES ('1010059777', 'Ivan', 'Mauricio', 'Toro', 'Cifuentes', '1998-03-16', 'ivan.toro@hotmail.com', '568402', '3164875865', 'Activo', '87654321', '¿Scorpion?', 'Hanzo Hasashi');
 
 INSERT INTO Operadores (cedula_op, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, email, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1012034621', 'Jhon', 'Alejandro', 'Orobio', 'Arce', '1990-06-05', 'jhaloraro@gmail.com', '3204759210', 'Activo', '11111', '¿Vivienda?', 'Palmira');
+VALUES ('1012034621', 'Jhon', 'Alejandro', 'Orobio', 'Arce', '1990-06-05', 'jhaloraro@gmail.com', '3204759210', 'Activo', '11111111', '¿Vivienda?', 'Palmira');
 
 INSERT INTO Operadores (cedula_op, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1010059779', 'Andrea', 'Bernal', '1997-11-26', 'andrea@gmail.com', '562035', '3014875400', 'Activo', '67891', '¿Deporte?', 'Voleyball');
+VALUES ('1010059779', 'Andrea', 'Bernal', '1997-11-26', 'andrea@gmail.com', '562035', '3014875400', 'Activo', '67891011', '¿Deporte?', 'Voleyball');
 
 INSERT INTO Operadores (cedula_op, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1011200933', 'Javier', 'Palacios', '1999-09-04', 'palacios@outlook.com', '063489', '3125978043', 'Inactivo', 'apple', '¿Transporte?', 'Uber');
+VALUES ('1011200933', 'Javier', 'Palacios', '1999-09-04', 'palacios@outlook.com', '063489', '3125978043', 'Inactivo', 'apple12345', '¿Transporte?', 'Uber');
 
 INSERT INTO Operadores (cedula_op, primer_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, email, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1010144900', 'Alexandra', 'Lopez', 'Obando', '1997-08-14', 'lopez.obando@hotmail.com', '3157225490', 'Activo', '666', '¿Arbol?', 'Almendro');
+VALUES ('1010144900', 'Alexandra', 'Lopez', 'Obando', '1997-08-14', 'lopez.obando@hotmail.com', '3157225490', 'Activo', '666777888', '¿Arbol?', 'Almendro');
 
 INSERT INTO Operadores (cedula_op, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1020067983', 'Carlos', 'Tovar', '1996-03-17', 'code@gmail.com', '983712', '3208935468', 'Activo', 'code', '¿Alterego?', 'Mickey Mouse');
+VALUES ('1020067983', 'Carlos', 'Tovar', '1996-03-17', 'code@gmail.com', '983712', '3208935468', 'Activo', 'balonbalon', '¿Alterego?', 'Mickey Mouse');
 
 INSERT INTO Operadores (cedula_op, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1019965328', 'Paula', 'Andrea', 'Rodriguez', 'Gutierrez', '1998-05-25', 'paula.rodriguez@gmail.com', '007632', '3153986590', 'Activo', '908070', '¿Universidad?', 'UAO');
+VALUES ('1019965328', 'Paula', 'Andrea', 'Rodriguez', 'Gutierrez', '1998-05-25', 'paula.rodriguez@gmail.com', '007632', '3153986590', 'Activo', '90807060', '¿Universidad?', 'UAO');
 
 INSERT INTO Operadores (cedula_op, primer_nombre, segundo_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1030706620', 'Jhon', 'Hadder', 'Diaz', '1995-12-24', 'hadderinc@outlook.com', '094512', '3214996372', 'Activo', 'xbox', '¿Comida?', 'Combo namber 1');
+VALUES ('1030706620', 'Jhon', 'Hadder', 'Diaz', '1995-12-24', 'hadderinc@outlook.com', '094512', '3214996372', 'Activo', 'xboxhalo', '¿Comida?', 'Combo namber 1');
 
 INSERT INTO Operadores (cedula_op, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1032254856', 'Jose', 'Vargas', '1998-11-18', 'mamian.jose@hotmail.com', '657432', '3085876591', 'Activo', '12321', '¿Dinastia?', 'Mamian');
+VALUES ('1032254856', 'Jose', 'Vargas', '1998-11-18', 'mamian.jose@hotmail.com', '657432', '3085876591', 'Activo', '012343210', '¿Dinastia?', 'Mamian');
 
 INSERT INTO Operadores (cedula_op, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1065482475', 'Fabian', 'Trujillo', '1998-11-18', 'mamian.jose@hotmail.com', '657432', '3085876591', 'Activo', 'motos', '¿Internet?', 'Olx');
+VALUES ('1065482475', 'Fabian', 'Trujillo', '1998-11-18', 'mamian.fabo@hotmail.com', '657432', '3085876591', 'Activo', 'motoscarros', '¿Internet?', 'Olx');
 
 
 DROP TABLE IF EXISTS Gerentes CASCADE;
@@ -77,34 +77,34 @@ CREATE TABLE Gerentes (
 );
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1010059775', 'Daniela', 'Sarria', '1996-10-02', 'sarria.daniela@outlook.com', '325478', '3204355710', 'Activo', '19876', '¿Color?', 'Rojo');
+VALUES ('1010059775', 'Daniela', 'Sarria', '1996-10-02', 'sarria.daniela@outlook.com', '325478', '3204355710', 'Activo', '19876543', '¿Color?', 'Rojo');
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1010059773', 'Claudia', 'Lorena', 'Alzate', 'Lopez', '1999-04-20', 'cllo@gmail.com', '996482', '308254291', 'Activo', '13579', '¿Animal?', 'Gato');
+VALUES ('1010059773', 'Claudia', 'Lorena', 'Alzate', 'Lopez', '1999-04-20', 'cllo@gmail.com', '996482', '308254291', 'Activo', '135791113', '¿Animal?', 'Gato');
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1010059333', 'Sofia', 'Toro', 'Cifuentes', '2010-05-18', 'sofi.toro@gmail.com', '092742', '3205831638', 'Activo', '112233', '¿Hobbie?', 'Bailar');
+VALUES ('1010059333', 'Sofia', 'Toro', 'Cifuentes', '1999-05-18', 'sofi.toro@gmail.com', '092742', '3205831638', 'Activo', '11223344', '¿Hobbie?', 'Bailar');
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, segundo_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1020043972', 'Annie', 'Sofia', 'Bernal', '2000-01-23', 'annie@outlook.com', '963472', '3109234943', 'Activo', '445522', '¿Dia?', 'Sabado');
+VALUES ('1020043972', 'Annie', 'Sofia', 'Rivera', '1995-01-23', 'annie@outlook.com', '963472', '3109234943', 'Activo', '44332211', '¿Dia?', 'Sabado');
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1030145229', 'Sara', 'Rivera', '1995-06-22', 'rivera@gmail.com', '998877', '3201243876', 'Inactivo', '777666', '¿Cabello?', 'Corto');
+VALUES ('1030145229', 'Sara', 'Lopez', '1995-06-22', 'lopezs@gmail.com', '998877', '3201243876', 'Inactivo', '777666555', '¿Cabello?', 'Corto');
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1011059723', 'Mateo', 'Ruiz', '1997-02-17', 'mateoruiz@hotmail.com', '008822', '3213678397', 'Activo', '111111', '¿Color?', 'Amarillo');
+VALUES ('1011059723', 'Mateo', 'Ruiz', '1997-02-17', 'mateoruiz@hotmail.com', '008822', '3213678397', 'Activo', '22222222', '¿Color?', 'Amarillo');
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1056326787', 'Bruno', 'Vasquez', '1995-12-31', 'bruno@gmail.com', '876543', '3213450976', 'Inactivo', '123456', '¿Musica?', 'Pop');
+VALUES ('1056326787', 'Bruno', 'Vasquez', '1995-12-31', 'bruno@gmail.com', '876543', '3213450976', 'Inactivo', '12345678', '¿Musica?', 'Pop');
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1090087543', 'Maria', 'Torres', '1997-10-21', 'torres@outlook.com', '986532', '3109886543', 'Activo', '000999', '¿Ajedrez?', 'Torre');
+VALUES ('1090087543', 'Maria', 'Torres', '1997-10-21', 'torres@outlook.com', '986532', '3109886543', 'Activo', '000999111', '¿Ajedrez?', 'Torre');
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1020076123', 'Paola', 'Alarcon', '1999-03-12', 'alarcon@gmail.com', '986532', '3004543251', 'Inactivo', '987654', '¿Animal?', 'Alcon');
+VALUES ('1020076123', 'Paola', 'Alarcon', '1999-03-12', 'alarcon@gmail.com', '986532', '3004543251', 'Inactivo', '98765432', '¿Animal?', 'Alcon');
 
 INSERT INTO Gerentes (cedula_ge, primer_nombre, primer_apellido, fecha_nacimiento, email, telefono, celular, estado, contrasena, pregunta, respuesta)
-VALUES ('1012087964', 'Alejandra', 'Valencia', '1997-12-12', 'valencia@gmail.com', '112244', '3103465789', 'Activo', '236598', '¿Presidente?', 'Uribe');
+VALUES ('1012087964', 'Alejandra', 'Valencia', '1997-12-12', 'valencia@gmail.com', '112244', '3103465789', 'Activo', '12356790', '¿Presidente?', 'Uribe');
 
 
 DROP TABLE IF EXISTS Eventos CASCADE;
@@ -118,39 +118,38 @@ CREATE TABLE Eventos (
 	duracion VARCHAR(10),
 	tema VARCHAR(30),
 	cupos INTEGER NOT NULL,
-	cedula_ge VARCHAR(10) NOT NULL,
-	FOREIGN KEY (cedula_ge) REFERENCES Gerentes (cedula_ge)
+	cedula_ge VARCHAR(10) NOT NULL
 );
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, duracion, tema, cupos, cedula_ge)
 VALUES ('100', 'Tomorrowland', '2017-12-10', 1000000, 'Bogota', '10:00:00', 'Musica', 1000, '1010059773');
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, duracion, tema, cupos, cedula_ge)
-VALUES ('101', 'CaliDev', '2017-10-27', 0, 'Cali', '10:00:00', 'Programacion', 200, '1010059333');
+VALUES ('101', 'CaliDev', '2017-12-27', 50000, 'Cali', '10:15:00', 'Programacion', 200, '1010059333');
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, cupos, cedula_ge)
 VALUES ('102', 'OktoberFest', '2018-10-01', 20000, 'Popayan', 500, '1020043972');
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, duracion, tema, cupos, cedula_ge)
-VALUES ('103', 'FoodFest', '2018-03-21', 150000, 'Medellin', '24:00:00', 'Comida', 1000, '1056326787');
+VALUES ('103', 'FoodFest', '2018-03-21', 150000, 'Medellin', '15:30:00', 'Comida', 1000, '1056326787');
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, duracion, tema, cupos, cedula_ge)
-VALUES ('104', 'Adopcion de perritos', '2017-11-26', 0, 'Cartagena', '12:00:00', 'Adopcion', 100, '1012087964');
+VALUES ('104', 'Esgrima artistica', '2017-11-26', 10000, 'Cartagena', '05:00:00', 'Arte', 150, '1012087964');
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, cupos, cedula_ge)
-VALUES ('105', 'Comi-con', '2018-06-17', 200000, 'Barranquilla', 2000, '1020076123');
+VALUES ('105', 'Comic plus', '2018-06-17', 200000, 'Barranquilla', 2000, '1020076123');
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, duracion, tema, cupos, cedula_ge)
-VALUES ('106', 'E3', '2018-05-10', 300000, 'San Francisco', '18:00:00', 'Videojuegos', 2000, '1020076123');
+VALUES ('106', 'E3', '2018-05-10', 300000, 'San Francisco', '15:00:00', 'Videojuegos', 2000, '1020076123');
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, cupos, cedula_ge)
-VALUES ('107', 'Feria del aguacate', '2019-01-12', 0, 'New York', 5000, '1010059775');
+VALUES ('107', 'Feria de la salsa', '2019-01-12', 50000, 'New York', 200, '1010059775');
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, cupos, cedula_ge)
-VALUES ('108', 'Google', '2018-07-27', 0, 'San Jose', 500, '1010059773');
+VALUES ('108', 'Google', '2018-07-27', 200000, 'San Jose', 500, '1010059773');
 
 INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, cupos, cedula_ge)
-VALUES ('109', 'Crossfit time', '2018-02-10', 50000, 'Miami', 10000, '1056326787');
+VALUES ('109', 'Crossfit time', '2018-02-10', 40000, 'Miami', 300, '1056326787');
 
 
 DROP TABLE IF EXISTS Sedes CASCADE;
@@ -163,8 +162,7 @@ CREATE TABLE Sedes (
 	carrera  VARCHAR(10) NOT NULL,
 	barrio VARCHAR(20),
 	telefono VARCHAR(10) NOT NULL,
-	cedula_ge VARCHAR(10) NOT NULL,
-	FOREIGN KEY (cedula_ge) REFERENCES Gerentes (cedula_ge)
+	cedula_ge VARCHAR(10) NOT NULL
 );
 
 INSERT INTO Sedes (id_sede, nombre_sede, ciudad, calle, carrera, barrio, telefono, cedula_ge)
@@ -209,7 +207,7 @@ INSERT INTO Participantes (cedula_pa, primer_nombre, segundo_nombre, primer_apel
 VALUES ('0965213478', 'Juan', 'Jose', 'Vargas', 'Vargas', '1999-12-10', '3040725378', 'vargas.vargas@gmail.com');
 
 INSERT INTO Participantes (cedula_pa, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, telefono, email) 
-VALUES ('1020304050', 'Juan', 'David', 'Torres', 'Cañon', '1995-03-12', '3086247619', 'kraken.torres@hotmail.com');
+VALUES ('1020304050', 'Juan', 'David', 'Torres', 'Canon', '1995-03-12', '3086247619', 'kraken.torres@hotmail.com');
 
 INSERT INTO Participantes (cedula_pa, primer_nombre, primer_apellido, fecha_nacimiento, telefono, email) 
 VALUES ('1020301020', 'Diana', 'Garcia', '1997-07-02', '3104985217', 'digar@outlook.com');
@@ -265,9 +263,8 @@ CREATE TABLE Participantes_Eventos (
 	estado_pago VARCHAR(10) NOT NULL,
 	cedula_op VARCHAR(10) NOT NULL,
 	PRIMARY KEY (id_participante, id_evento),
-	FOREIGN KEY (cedula_op) REFERENCES Operadores (cedula_op),
-	FOREIGN KEY (id_participante) REFERENCES Participantes (cedula_pa),
-	FOREIGN KEY (id_evento) REFERENCES Eventos (id_evento)
+	FOREIGN KEY (id_participante) REFERENCES Participantes (cedula_pa) ON UPDATE CASCADE,
+	FOREIGN KEY (id_evento) REFERENCES Eventos (id_evento) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO Participantes_Eventos (id_participante, id_evento, estado_pago, cedula_op)

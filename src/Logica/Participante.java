@@ -22,6 +22,11 @@ public class Participante {
     private String email;
     private String estado_pago;
     private String cedula_op;
+    
+   public Participante(){
+       segundo_nombre = "";
+       segundo_apellido = "";
+    }
   
 
     /**

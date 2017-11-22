@@ -40,4 +40,21 @@ public class ControladorEvento {
         int result = daoEvento.guardarEvento(evento);
         return result;
     }
+
+    public Evento consultarDatosEvento(String id_evento) {
+        return daoEvento.consultarDatosEvento(id_evento);
+    }
+
+    public int eliminarEvento(String id_evento) {
+       return daoEvento.eliminarEvento(id_evento);        
+    }
+
+    public int actualizarEvento(String codigoConsulta, String codigoS, String nombreS, String precioS, String cuposS, 
+            String duracion, String lugarS, String temaS, String fechaS) {
+        return daoEvento.actualizarEvento(codigoConsulta, codigoS, nombreS, precioS, cuposS, duracion, lugarS, temaS, fechaS);
+    }
+
+    public int comprobar(String codigoConsulta) {
+        return daoEvento.comprobar(codigoConsulta);
+    }
 }

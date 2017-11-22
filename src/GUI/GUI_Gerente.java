@@ -18,6 +18,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
     public GUI_Gerente(){
         
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     @SuppressWarnings("unchecked")
@@ -125,7 +126,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
         modificarEvento.setBounds(290, 150, 180, 110);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Gerente.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGerente.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(jLabel2);
         jLabel2.setBounds(0, 0, 791, 446);
@@ -170,6 +171,9 @@ public class GUI_Gerente extends javax.swing.JFrame {
 
     private void modificarSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarSedeActionPerformed
         // TODO add your handling code here:
+        GUI_ModificarSede interfazModificarSede = new GUI_ModificarSede();
+        interfazModificarSede.setVisible(true);
+        this.dispose();
    
     }//GEN-LAST:event_modificarSedeActionPerformed
 
@@ -183,6 +187,9 @@ public class GUI_Gerente extends javax.swing.JFrame {
 
     private void modificarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEventoActionPerformed
         // TODO add your handling code here:
+        GUI_ModificarEvento interfazModificarEvento = new GUI_ModificarEvento();
+        interfazModificarEvento.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_modificarEventoActionPerformed
 
     /**

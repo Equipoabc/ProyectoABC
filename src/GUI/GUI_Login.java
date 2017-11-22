@@ -17,6 +17,7 @@ public class GUI_Login extends javax.swing.JFrame {
     public GUI_Login(){
         
         initComponents();
+        this.setLocationRelativeTo(null);
         controladorAdministrador = new ControladorAdministrador();
         controladorGerente = new ControladorGerente();
         controladorOperador = new ControladorOperador();
@@ -46,24 +47,24 @@ public class GUI_Login extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         TxtUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        TxtUsuario.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        TxtUsuario.setFont(new java.awt.Font("Cambria", 2, 20)); // NOI18N
         TxtUsuario.setText("Usuario:");
         jPanel1.add(TxtUsuario);
-        TxtUsuario.setBounds(410, 20, 180, 70);
+        TxtUsuario.setBounds(420, 70, 120, 40);
 
         usuario.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(usuario);
-        usuario.setBounds(410, 90, 250, 30);
+        usuario.setBounds(420, 110, 200, 25);
 
         TxtPass.setBackground(new java.awt.Color(255, 255, 255));
-        TxtPass.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        TxtPass.setFont(new java.awt.Font("Cambria", 2, 20)); // NOI18N
         TxtPass.setText("Contraseña:");
         jPanel1.add(TxtPass);
-        TxtPass.setBounds(410, 100, 200, 70);
+        TxtPass.setBounds(420, 120, 200, 70);
 
         pass.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
         jPanel1.add(pass);
-        pass.setBounds(410, 160, 250, 30);
+        pass.setBounds(420, 180, 200, 25);
 
         botonIniciarSesion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botonIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IngresarMed.png"))); // NOI18N
@@ -79,12 +80,12 @@ public class GUI_Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonIniciarSesion);
-        botonIniciarSesion.setBounds(410, 190, 120, 60);
+        botonIniciarSesion.setBounds(430, 220, 150, 70);
 
         botonOlvide.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         botonOlvide.setText("Olvidé mi contraseña");
         jPanel1.add(botonOlvide);
-        botonOlvide.setBounds(410, 260, 240, 30);
+        botonOlvide.setBounds(520, 290, 110, 30);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
@@ -218,7 +219,7 @@ public class GUI_Login extends javax.swing.JFrame {
             
             public void run(){
                 
-                GUI_Login ventana = new GUI_Login();
+                GUI_Login ventana = new GUI_Login();               
                 ventana.setVisible(true);
             }
         });

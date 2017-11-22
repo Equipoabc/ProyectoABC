@@ -62,5 +62,127 @@ public class DaoSede {
         return -1;  
         
     }
+    // Nuevo.
+    public Sede consultarDatosSede(String codigoConsultar) {
+        String sql, validar;
+        Sede sede = new Sede();
+
+        validar = "SELECT id_sede FROM Sedes WHERE id_sede = '" + codigoConsultar + "';";
+        sql = "SELECT id_sede, nombre_sede, ciudad, calle, carrera, barrio, telefono "
+                + "FROM Sedes WHERE id_sede = '" + codigoConsultar + "';";
+
+        try {
+
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(validar);
+
+            while (consulta.next()) {
+
+                validar = consulta.getString(1);
+            }
+            
+            if (!validar.equals(codigoConsultar)) {
+
+                return null;
+            } 
+            else {
+
+                ResultSet consulta2 = sentencia.executeQuery(sql);
+
+                while (consulta2.next()) {
+
+                    sede.setId_sede(consulta2.getString(1));
+                    sede.setNombre_sede(consulta2.getString(2));
+                    sede.setCiudad(consulta2.getString(3));
+                    sede.setCalle(consulta2.getString(4));
+                    sede.setCarrera(consulta2.getString(5));
+                    sede.setBarrio(consulta2.getString(6));
+                    sede.setTelefono(consulta2.getString(7));                    
+                }
+
+                return sede;
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL error: " + e);
+        } catch (Exception e) {
+
+            System.out.println("Error" + e);
+        }
+        return null;       
+    }
+
+    public int actualizarSede(String codigoConsulta, String codigoS, String nombreS, String ciudadS, String carreraS, String calleS, String barrioS, String telefonoS) {
+       
+        String sql_guardar, validar;
+
+        validar = "SELECT id_sede FROM Sedes WHERE id_sede = '" + codigoS + "';";
+        sql_guardar = "UPDATE Sedes SET id_sede = '" + codigoS + "', nombre_sede = '"
+                + nombreS + "', ciudad = '" + ciudadS + "', calle = '"
+                + calleS + "', carrera = '" + carreraS + "', barrio = '"
+                + barrioS + "', telefono = '" + telefonoS 
+                + "' WHERE id_sede = '" + codigoConsulta + "';";
+
+        try {
+
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(validar);
+
+            while (consulta.next()) {
+
+                validar = consulta.getString(1);
+            }
+            
+            if (validar.equals(codigoS) && !codigoS.equals(codigoConsulta)) {
+
+                return 2;
+            } else {
+
+                sentencia.executeUpdate(sql_guardar);
+                return 1;
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL error: " + e);
+        } catch (Exception e) {
+
+            System.out.println("Error" + e);
+        }
+
+        return -1;
+    }
     
+    public int comprobar(String id){
+        
+        String sql;        
+        sql = "SELECT id_sede FROM Sedes WHERE id_sede = '" + id + "';";
+        
+        try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                sql = consulta.getString(1);
+            }
+            
+            if(sql.equals(id)){
+                
+                return 1;
+            }
+            return 0;
+            
+        } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error: " + e);
+        }
+        
+        return 0;
+    }
+    //
 }

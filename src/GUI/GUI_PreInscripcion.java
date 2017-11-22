@@ -24,6 +24,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     public GUI_PreInscripcion(){
         
         initComponents();
+        this.setLocationRelativeTo(null);
         controladorParticipante = new ControladorParticipante();
         validaciones = new Validaciones();
         fecha.setMaxSelectableDate(GetDateNow());
@@ -84,7 +85,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(500, 370, 140, 90);
+        botonCancelar.setBounds(570, 350, 140, 90);
 
         correo.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         correo.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -184,7 +185,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearParticipante);
-        crearParticipante.setBounds(250, 370, 140, 90);
+        crearParticipante.setBounds(430, 350, 140, 90);
 
         fecha.setBackground(new java.awt.Color(255, 255, 255));
         fecha.setForeground(new java.awt.Color(102, 102, 255));
@@ -231,22 +232,23 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         String primerNom, segundoNom, primerAp, segundoAp, ced,  
                 fechaNacimiento, tel, email, codigoEvento, validar = "";
         fechaNacimiento = "";
+        LocalDate fechaNac = LocalDate.now();
         
         primerNom = primerNombre.getText();
         segundoNom = segundoNombre.getText();
         primerAp = primerApellido.getText();
         segundoAp = segundoApellido.getText();
         ced = cedula.getText();
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
          try {
             
            fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+           fechaNac = LocalDate.parse(fechaNacimiento, fmt);
         } catch(Exception e){
             validar = "\nDebe ingresar una fecha válida.";
         }
          
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaNac = LocalDate.parse(fechaNacimiento, fmt);
         LocalDate ahora = LocalDate.now();
         Period periodo = Period.between(fechaNac, ahora);
          
@@ -270,16 +272,20 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         else {
         
              int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
-                primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento);
+                primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento, "Invalido");
             
             switch (numFilas) {
                 case 3:
                     JOptionPane.showMessageDialog(null, "El evento que ingresó no existe.");
                     break;
                 case 7:
-                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra registrado en este evento.");
+                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra pre-inscrito en este evento" + "\n" + 
+                            "Debe proceder a pagar para quedar inscrito.");
                     break;
-                case 2:
+                case 8: 
+                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra inscrito en este evento");
+                    break;
+                case 2:    
                 case 5:
                     JOptionPane.showMessageDialog(null, "La pre-inscripción se ha realizado exitosamente.");
                     primerNombre.setText(null);

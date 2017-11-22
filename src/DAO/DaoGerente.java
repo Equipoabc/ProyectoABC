@@ -209,7 +209,36 @@ public class DaoGerente {
                 return 3;
             } else if (!validar2.equals(cedula) && tipo.equals("Operador")) {
 
-                // Crear en gerente y elimar de operador.
+                // Crear en operador y elimar de gerente.
+                // 1. Traer los datos del gerente y crear el operador.
+                String sql;
+                Operador operador = new Operador();
+                sql = "SELECT * FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
+                ResultSet consulta3 = sentencia.executeQuery(sql);
+            
+                while(consulta3.next()){
+            
+                    operador.setCedula_op(consulta3.getString(1));
+                    operador.setPrimer_nombre(consulta3.getString(2));
+                    operador.setSegundo_nombre(consulta3.getString(3));
+                    operador.setPrimer_apellido(consulta3.getString(4));
+                    operador.setSegundo_apellido(consulta3.getString(5));
+                    operador.setFecha_nacimiento(consulta3.getString(6));
+                    operador.setEmail(consulta3.getString(7));
+                    operador.setTelefono(consulta3.getString(8));
+                    operador.setCelular(consulta3.getString(9));
+                    operador.setEstado(consulta3.getString(10));
+                    operador.setContrasena(consulta3.getString(11));
+                    operador.setPregunta(consulta3.getString(12));
+                    operador.setRespuesta(consulta3.getString(13));
+                }
+                
+                DaoOperador daoOperador = new DaoOperador();
+                daoOperador.guardarOperador(operador);
+                
+                // 2. Inhabilitar gerente.
+                sql = "DELETE FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
+                sentencia.executeUpdate(sql);
                 return 4;
             } else {
 

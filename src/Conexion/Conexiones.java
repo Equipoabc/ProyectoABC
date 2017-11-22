@@ -22,9 +22,9 @@ public class Conexiones {
         usuario = "postgres";
         password = "12345";
         
-        //url = "jdbc:postgresql://pgsql2:5432/1533597";
-        //usuario = "1533597";
-        //password = "1533597";
+        /*url = "jdbc:postgresql://pgsql2:5432/1533597";
+        usuario = "1533597";
+        password = "1533597";*/
     }
     
     public Connection conectar(){

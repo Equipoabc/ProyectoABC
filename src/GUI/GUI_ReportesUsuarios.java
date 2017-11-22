@@ -22,6 +22,7 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
     public GUI_ReportesUsuarios(){
         
         initComponents();
+        this.setLocationRelativeTo(null);
         fieldBuscar.setText("");
         controladorRegistros = new ControladorReportesUsuarios();
         modeloTabla = new DefaultTableModel(){

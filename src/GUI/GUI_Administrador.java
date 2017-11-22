@@ -15,6 +15,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
     public GUI_Administrador(){
         
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -34,6 +35,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(683, 420));
         setResizable(false);
 
         jPanel1.setLayout(null);
@@ -51,7 +53,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(modificarUsuario);
-        modificarUsuario.setBounds(240, 140, 190, 140);
+        modificarUsuario.setBounds(240, 150, 190, 140);
 
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepMed.png"))); // NOI18N
         reportes.setBorder(null);
@@ -66,7 +68,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reportes);
-        reportes.setBounds(430, 140, 200, 130);
+        reportes.setBounds(440, 160, 200, 130);
         reportes.getAccessibleContext().setAccessibleName("Reportes y Consultas");
 
         crearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonCrearMed.png"))); // NOI18N
@@ -82,7 +84,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearUsuario);
-        crearUsuario.setBounds(10, 150, 200, 110);
+        crearUsuario.setBounds(40, 160, 200, 110);
 
         CerrarSesion.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         CerrarSesion.setText("Cerrar Sesión");
@@ -92,7 +94,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(CerrarSesion);
-        CerrarSesion.setBounds(550, 320, 280, 70);
+        CerrarSesion.setBounds(530, 310, 280, 70);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin.png"))); // NOI18N

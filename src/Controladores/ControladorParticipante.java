@@ -1,46 +1,67 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controladores;
 import DAO.*;
 import Logica.*;
-
-/**
- *
- * @author Luis
- */
 
 public class ControladorParticipante {
     
     DaoParticipante daoParticipante;
     
-       public ControladorParticipante(){
+    public ControladorParticipante(){
         
         daoParticipante = new DaoParticipante();
     }
-       
-           public int  insertarParticipante(String primerNombre, String segundoNombre, 
-                   String primerApellido, String segundoApellido, String cedula, String fechaNacimiento,
-                   String telefono, String email, String idOperador, String codEvento){
-               
-       
-       Participante pa = new Participante();     
-      
-        pa.setCedula_pa(cedula); 
+    
+    public int  insertarParticipante(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String cedula, String fechaNacimiento, String telefono, String email, String idOperador, String codEvento, String estado_pago){
+                
+        Participante pa = new Participante();
+        
+        pa.setCedula_pa(cedula);
         pa.setFecha_nacimiento(fechaNacimiento);
         pa.setPrimer_nombre(primerNombre);
         pa.setSegundo_nombre(segundoNombre);
         pa.setPrimer_apellido(primerApellido);
-        pa.setSegundo_apellido(segundoApellido);        
+        pa.setSegundo_apellido(segundoApellido);
         pa.setTelefono(telefono);
         pa.setEmail(email);
-        pa.setEstado_pago("Invalido");
+        pa.setEstado_pago(estado_pago);
         pa.setCedula_op(idOperador);
-        
                 
         int result = daoParticipante.guardarParticipante(pa, codEvento);
         return result;
     }
+    
+    public Participante consultarDatosParticipante(String id_participante) {
+        
+        return daoParticipante.consultarDatosParticipante(id_participante);
+    }
+    
+    public Participantes_Eventos consultarPreinscripcion(String id_participante, String id_evento) {
+        
+        return daoParticipante.consultarPreinscripcion(id_participante, id_evento);
+    }
+    
+    public int eliminarPreinscripcion(String id_participante, String id_evento) {
+        
+        return daoParticipante.eliminarPreinscripcion(id_participante, id_evento);
+    }
+    
+    public int realizarPago(String id, String id_evento) {
+        
+        return daoParticipante.realizarPago(id, id_evento);
+    }
+    
+    public Participante consultarDatoParticipante(String cedulaConsulta) {
+        
+        return daoParticipante.consultarDatoParticipante(cedulaConsulta);
+    }
+    
+    public int actualizarParticipante(String codigoConsulta, String cedulaS, String primerNombreS, String segundoNombreS, String primerApellidoS, String segundoApellidoS, String correoS, String telefonoS, String fechaS) {
+        
+        return daoParticipante.actualizarParticipante(codigoConsulta, cedulaS, primerNombreS, segundoNombreS, primerApellidoS, segundoApellidoS, correoS, telefonoS, fechaS);
+    }
+    
+    public int comprobar(String codigoConsulta) {
+        
+        return daoParticipante.comprobar(codigoConsulta);
+    }    
 }

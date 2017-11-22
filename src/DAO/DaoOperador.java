@@ -227,12 +227,41 @@ public class DaoOperador {
             else if(!validar2.equals(cedula) && tipo.equals("Gerente")){
                 
                 // Crear en gerente y elimar de operador.
+                // 1. Traer los datos del operador y crear el gerente.
+                String sql;
+                Gerente gerente = new Gerente();
+                sql = "SELECT * FROM Operadores WHERE cedula_op = '" + cedula + "';";
+                ResultSet consulta3 = sentencia.executeQuery(sql);
+            
+                while(consulta3.next()){
+            
+                    gerente.setCedula_ge(consulta3.getString(1));
+                    gerente.setPrimer_nombre(consulta3.getString(2));
+                    gerente.setSegundo_nombre(consulta3.getString(3));
+                    gerente.setPrimer_apellido(consulta3.getString(4));
+                    gerente.setSegundo_apellido(consulta3.getString(5));
+                    gerente.setFecha_nacimiento(consulta3.getString(6));
+                    gerente.setEmail(consulta3.getString(7));
+                    gerente.setTelefono(consulta3.getString(8));
+                    gerente.setCelular(consulta3.getString(9));
+                    gerente.setEstado(consulta3.getString(10));
+                    gerente.setContrasena(consulta3.getString(11));
+                    gerente.setPregunta(consulta3.getString(12));
+                    gerente.setRespuesta(consulta3.getString(13));
+                }
+                
+                DaoGerente daoGerente = new DaoGerente();
+                daoGerente.guardarGerente(gerente);
+                
+                // 2. Inavilitar operador.
+                sql = "DELETE FROM Operadores WHERE cedula_op = '" + cedula + "';";
+                sentencia.executeUpdate(sql);
                 return 4;
             }
             
             else {
             
-                sentencia.executeQuery(sql_guardar);
+                sentencia.executeUpdate(sql_guardar);
                 return 1;
             }
         } catch(SQLException e){
