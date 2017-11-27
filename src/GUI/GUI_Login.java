@@ -13,7 +13,7 @@ public class GUI_Login extends javax.swing.JFrame {
     
     ControladorAdministrador controladorAdministrador;
     ControladorGerente controladorGerente;
-    ControladorOperador controladorOperador;
+    ControladorOperador controladorOperador;  
     
     public GUI_Login(){
         
@@ -96,7 +96,7 @@ public class GUI_Login extends javax.swing.JFrame {
         botonOlvide.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         botonOlvide.setText("Olvidé mi contraseña");
         jPanel1.add(botonOlvide);
-        botonOlvide.setBounds(520, 290, 110, 30);
+        botonOlvide.setBounds(520, 290, 150, 30);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
