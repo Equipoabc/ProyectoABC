@@ -132,7 +132,7 @@ public class GUI_Login extends javax.swing.JFrame {
         Operador ope;
         ope = controladorOperador.loginOperador(user);
         
-        if((!user.equals("")) && (!cont.equals(""))){
+        if((!user.equals("")) && (!cont.equals(""))){ 
             
             if(admin.getUsuario().equals(user)){
                 
