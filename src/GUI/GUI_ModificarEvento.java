@@ -360,10 +360,10 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botonConsultarActionPerformed
-    
+    vhgvyl
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         String codigoConsulta, codigoS, fechaS = "", nombreS, precioS, cuposS, minutosS, duracion, horasS, lugarS, temaS = "", validar = "";
-        
+        jmhgmnhgjmnhgjhg mnhbvmbjmbgmjb
         codigoS = codigo.getText();
         nombreS = nombre.getText();
         precioS = precio.getText();
