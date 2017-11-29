@@ -40,20 +40,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         fecha.getDateEditor().setEnabled(false);
     }
     
-    private Date GetDateNow() {
-        Calendar currentDate = Calendar.getInstance();
-        return currentDate.getTime();
-    }
-    
-    public static Date parseFecha(String fecha){
-        
-        fecha = fecha.replace("-","/") ;
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-        Date fechaDate = null;
-        try {
-            fechaDate = formato.parse(fecha);
-        }
-        catch (ParseException ex)
+    ion ex)
         {
             System.out.println("Error: " + ex);
         }
