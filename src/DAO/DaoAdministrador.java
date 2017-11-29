@@ -6,7 +6,7 @@
 package DAO;
 import java.sql.*;
 import Logica.*;
-import Conexion.*;
+import Conexion.*; 
 
 /**
  *
