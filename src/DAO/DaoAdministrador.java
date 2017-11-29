@@ -26,6 +26,7 @@ public class DaoAdministrador {
         
         String sql;
         Administrador administrador = new Administrador();
+        System.out.println("a");
 
         sql = "SELECT usuario, contrasena FROM Administradores WHERE usuario = '" + user + "';";
         
