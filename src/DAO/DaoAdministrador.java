@@ -38,7 +38,7 @@ public class DaoAdministrador {
             while(consulta.next()){
                 
                 administrador.setUsuario(consulta.getString(1));
-                administrador.setContrasena(consulta.getString(2));
+                administrador.setContrasena(consulta.getString(1));
             }
             
             return administrador;
