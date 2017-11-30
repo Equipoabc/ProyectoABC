@@ -40,11 +40,24 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         fecha.getDateEditor().setEnabled(false);
     }
     
-    ion ex)
-        {
-            System.out.println("Error: " + ex);
-        }
-        return fechaDate;
+    private Date GetDateNow() {
+        Calendar currentDate = Calendar.getInstance();
+        return currentDate.getTime();
+    }
+    
+    public static Date parseFecha(String fecha){ 
+         
+        fecha = fecha.replace("-","/") ; 
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); 
+        Date fechaDate = null; 
+        try {
+            fechaDate = formato.parse(fecha); 
+        } 
+        catch (ParseException ex) 
+        { 
+            System.out.println("Error: " + ex); 
+        } 
+        return fechaDate; 
     }
     
     public String organizarFecha(String fecha){
@@ -360,10 +373,9 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botonConsultarActionPerformed
-    vhgvyl
+    
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         String codigoConsulta, codigoS, fechaS = "", nombreS, precioS, cuposS, minutosS, duracion, horasS, lugarS, temaS = "", validar = "";
-        jmhgmnhgjmnhgjhg mnhbvmbjmbgmjb
         codigoS = codigo.getText();
         nombreS = nombre.getText();
         precioS = precio.getText();
