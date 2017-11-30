@@ -1,21 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import Controladores.*;
 import javax.swing.*;
 import Logica.*;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 
-public class GUI_RegistrarSede extends javax.swing.JFrame { 
+public class GUI_RegistrarSede extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorSede controladorSede;
     String idGerente;
-
     
     public GUI_RegistrarSede(){
         
@@ -24,7 +16,7 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
         controladorSede = new ControladorSede();
         validaciones = new Validaciones();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -179,12 +171,10 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     
     public void setIdGerente(String idGerente) {
         this.idGerente = idGerente;
     }
-
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
@@ -192,11 +182,10 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
         gerenteLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
-
+    
     private void registrarSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSedeActionPerformed
-
-        String nom, id, ciu, tel, cra, cl, bar;
         
+        String nom, id, ciu, tel, cra, cl, bar;
         nom = nombre.getText();
         id = idSede.getText();
         ciu = ciudad.getText();
@@ -224,7 +213,7 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
         }
         else {
             
-        int numFilas = controladorSede.insertarSede(nom, id, ciu, tel, cra, cl, bar, idGerente);
+            int numFilas = controladorSede.insertarSede(nom, id, ciu, tel, cra, cl, bar, idGerente);
             switch (numFilas) {
                 case 2:
                     JOptionPane.showMessageDialog(null, "La sede ya se encuentra registrada en el sistema.");
@@ -245,7 +234,7 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_registrarSedeActionPerformed
-
+    
     public static void main(String args[]) {
         
         /* Create and display the form */
@@ -254,13 +243,13 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
             public void run(){
                 
                 new GUI_RegistrarSede().setVisible(true);
-        
+                
                 
                 
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField barrio;
     private javax.swing.JLabel barrioLabel;

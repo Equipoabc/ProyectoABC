@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import Controladores.*;
 import java.text.*;
@@ -18,7 +13,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GUI_Inscripcion extends javax.swing.JFrame { 
+public class GUI_Inscripcion extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorParticipante controladorParticipante;
@@ -27,8 +22,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     String id_participante, nombre_participante;
     Evento evento;
     Participante participante;
- 
-
+    
     public GUI_Inscripcion(){
         
         initComponents();
@@ -46,14 +40,14 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         fecha.setMaxSelectableDate(GetDateNow());
         fecha.getDateEditor().setEnabled(false);
     }
-
-     private static Date GetDateNow() {
+    
+    private static Date GetDateNow() {
         Calendar currentDate = Calendar.getInstance();
         return currentDate.getTime();
-     }
+    }
     
     void setIdOperador(String cedula) {
-       idOperador = cedula;
+        idOperador = cedula;
     }
     
     @SuppressWarnings("unchecked")
@@ -304,17 +298,17 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Operador oper = new GUI_Operador();
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
-
+    
     private void crearParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearParticipanteActionPerformed
-
-        String primerNom, segundoNom, primerAp, segundoAp, ced,  
+        
+        String primerNom, segundoNom, primerAp, segundoAp, ced,
                 fechaNacimiento, tel, email, codigoEvento, validar = "";
         fechaNacimiento = "";
         LocalDate fechaNac = LocalDate.now();
@@ -326,25 +320,25 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         ced = cedula.getText();
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
-         try {
+        try {
             
-           fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
-           fechaNac = LocalDate.parse(fechaNacimiento, fmt);
+            fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+            fechaNac = LocalDate.parse(fechaNacimiento, fmt);
         } catch(Exception e){
             validar = "\nDebe ingresar una fecha válida.";
         }
         
-         LocalDate ahora = LocalDate.now();
+        LocalDate ahora = LocalDate.now();
         Period periodo = Period.between(fechaNac, ahora);
-         
+        
         tel = telefono.getText();
-        codigoEvento = codEvento.getText();      
+        codigoEvento = codEvento.getText();
         email = correo.getText();
         
         if (primerNom.equals("") || primerAp.equals("") || ced.equals("") || tel.equals("") || fechaNacimiento.equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios" + validar + ".");
         }
-        else if(!validaciones.validarLetras(primerNom) || !validaciones.validarLetras(segundoNom) || 
+        else if(!validaciones.validarLetras(primerNom) || !validaciones.validarLetras(segundoNom) ||
                 !validaciones.validarLetras(primerAp) || !validaciones.validarLetras(segundoAp)) {
             JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
         }
@@ -355,50 +349,50 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El participante debe ser mínimo de 15 años");
         }
         else {
-        
-             int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
-                primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento, "Valido");
+            
+            int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
+                    primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento, "Valido");
             
             switch (numFilas) {
                 case 3:
                     JOptionPane.showMessageDialog(null, "El evento que ingresó no existe.");
                     break;
                 case 7:
-                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra pre-inscrito en este evento" + "\n" + 
+                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra pre-inscrito en este evento" + "\n" +
                             "Debe proceder a pagar para quedar inscrito.");
                     break;
-                case 8: 
+                case 8:
                     JOptionPane.showMessageDialog(null, "El participante ya se encuentra inscrito en este evento");
                     break;
-                case 2:    
+                case 2:
                 case 5:
                     JOptionPane.showMessageDialog(null, "La inscripción se ha realizado exitosamente.");
                     evento = controladorEvento.consultarDatosEvento(codigoEvento);
-                     nombreEventoEditar.setText(evento.getNombre_evento());
-                     precioLabelEditar.setText(evento.getPrecio());
+                    nombreEventoEditar.setText(evento.getNombre_evento());
+                    precioLabelEditar.setText(evento.getPrecio());
                     
-                     int opcion = 5;
+                    int opcion = 5;
                     opcion = JOptionPane.showConfirmDialog(null, "Desea imprimir un recibo?",
-                        "Imprimir recibo", JOptionPane.OK_CANCEL_OPTION);
-                if(opcion == 0){
-                    id_participante = ced;
-                    dinero.setVisible(true);
-                    dineroLabel.setVisible(true);
-                    cambioLabel.setVisible(true);
-                    cambioLabelEditar.setVisible(true);
-                    continuarBoton.setVisible(true);
-                    
-                }
-                else{
-                    primerNombre.setText(null);
-                    segundoNombre.setText(null);
-                    primerApellido.setText(null);
-                    segundoApellido.setText(null);
-                    cedula.setText(null);
-                    telefono.setText(null);
-                    codEvento.setText(null);
-                    correo.setText(null);
-                }
+                            "Imprimir recibo", JOptionPane.OK_CANCEL_OPTION);
+                    if(opcion == 0){
+                        id_participante = ced;
+                        dinero.setVisible(true);
+                        dineroLabel.setVisible(true);
+                        cambioLabel.setVisible(true);
+                        cambioLabelEditar.setVisible(true);
+                        continuarBoton.setVisible(true);
+                        
+                    }
+                    else{
+                        primerNombre.setText(null);
+                        segundoNombre.setText(null);
+                        primerApellido.setText(null);
+                        segundoApellido.setText(null);
+                        cedula.setText(null);
+                        telefono.setText(null);
+                        codEvento.setText(null);
+                        correo.setText(null);
+                    }
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Ocurrio un problema al realizar la inscripción.");
@@ -406,7 +400,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_crearParticipanteActionPerformed
-
+    
     private void consultarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBotonActionPerformed
         // TODO add your handling code here:
         String id = cedula.getText();
@@ -418,7 +412,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Los campos deben ser numericos.");
         } else {
-           //Nuevo
+            //Nuevo
             evento = controladorEvento.consultarDatosEvento(id_evento);
             //Nuevo
             if(evento != null){
@@ -431,7 +425,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_consultarBotonActionPerformed
-
+    
     private void continuarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarBotonActionPerformed
         // TODO add your handling code here:
         Reportes recibo = new Reportes();
@@ -451,7 +445,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         String money = dinero.getText();
         participante = controladorParticipante.consultarDatosParticipante(id_participante);
         nombre_participante = participante.getPrimer_nombre() + " " + participante.getSegundo_nombre() + " " +
-        participante.getPrimer_apellido() + " " +participante.getSegundo_apellido();
+                participante.getPrimer_apellido() + " " +participante.getSegundo_apellido();
         if(money.equals("")){
             JOptionPane.showMessageDialog(null, "Ingrese dinero");
         }
@@ -502,9 +496,9 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_continuarBotonActionPerformed
-
+    
     public static void main(String args[]){
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -514,7 +508,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JLabel cambioLabel;
@@ -549,5 +543,5 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     private javax.swing.JTextField telefono;
     private javax.swing.JLabel telefonoLabel;
     // End of variables declaration//GEN-END:variables
-
+    
 }

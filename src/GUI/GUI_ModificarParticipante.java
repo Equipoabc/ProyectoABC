@@ -15,7 +15,7 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
     String idOperador;
     DateFormat df = DateFormat.getDateInstance();
     Participante participante;
-            
+    
     public GUI_ModificarParticipante() {
         
         initComponents();
@@ -245,17 +245,17 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
         operador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
-   
+    
     public String organizarFecha(String fecha){
         
         String[] arreglo = fecha.split("/");
-        return arreglo[2] + "-" + arreglo[1] + "-" + arreglo[0];      
+        return arreglo[2] + "-" + arreglo[1] + "-" + arreglo[0];
     }
     
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         
         String codigoConsulta, cedulaS, fechaS = "", primerNombreS, segundoNombreS, primerApellidoS,
-                segundoApellidoS, correoS, telefonoS, validar = "";        
+                segundoApellidoS, correoS, telefonoS, validar = "";
         codigoConsulta = consultarLabel.getText();
         cedulaS = cedula.getText();
         primerNombreS = primerNomb.getText();
@@ -265,26 +265,26 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
         correoS = correo.getText();
         telefonoS = tel.getText();
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fecha = LocalDate.now();        
+        LocalDate fecha = LocalDate.now();
         try {
             
             fechaS = new SimpleDateFormat("dd/MM/YYYY").format(fechaNac.getDate());
-            fecha = LocalDate.parse(fechaS, fmt);            
+            fecha = LocalDate.parse(fechaS, fmt);
         } catch(Exception e){
             
-            validar = "\nDebe ingresar una fecha válida.";            
-        }     
+            validar = "\nDebe ingresar una fecha válida.";
+        }
         LocalDate ahora = LocalDate.now();
         Period periodo = Period.between(fecha, ahora);
         
-        if (cedulaS.equals("") || primerNombreS.equals("") || primerApellidoS.equals("") || telefonoS.equals("") || codigoConsulta.equals("")){               
-            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");            
-        } else if (!validaciones.validarLetras(primerNombreS) || !validaciones.validarLetras(segundoNombreS) || !validaciones.validarLetras(primerApellidoS) || !validaciones.validarLetras(segundoApellidoS)){              
-            JOptionPane.showMessageDialog(null, "Los campos del nombre tema deben ser de solo letras.");            
-        } else if (!validaciones.validarNumero(cedulaS) || !validaciones.validarNumero(codigoConsulta) || !validaciones.validarNumero(telefonoS)) {             
-            JOptionPane.showMessageDialog(null, "Los campos de consulta, cedula y telefono deben ser de solo numeros.");            
-        } else if (periodo.getYears() < 15) {             
-            JOptionPane.showMessageDialog(null, "El participante tiene que ser mayor de 15 años.");            
+        if (cedulaS.equals("") || primerNombreS.equals("") || primerApellidoS.equals("") || telefonoS.equals("") || codigoConsulta.equals("")){
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
+        } else if (!validaciones.validarLetras(primerNombreS) || !validaciones.validarLetras(segundoNombreS) || !validaciones.validarLetras(primerApellidoS) || !validaciones.validarLetras(segundoApellidoS)){
+            JOptionPane.showMessageDialog(null, "Los campos del nombre tema deben ser de solo letras.");
+        } else if (!validaciones.validarNumero(cedulaS) || !validaciones.validarNumero(codigoConsulta) || !validaciones.validarNumero(telefonoS)) {
+            JOptionPane.showMessageDialog(null, "Los campos de consulta, cedula y telefono deben ser de solo numeros.");
+        } else if (periodo.getYears() < 15) {
+            JOptionPane.showMessageDialog(null, "El participante tiene que ser mayor de 15 años.");
         } else {
             
             if(controladorParticipante.comprobar(codigoConsulta) == 1){
@@ -296,7 +296,7 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
                         && segundoApellidoS.equals(participante.getSegundo_apellido()) && correoS.equals(participante.getEmail())
                         && telefonoS.equals(participante.getTelefono()) && fechaS.equals(participante.getFecha_nacimiento())){
                     
-                    JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");                    
+                    JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
                 } else {
                     
                     int resultado = controladorParticipante.actualizarParticipante(codigoConsulta, cedulaS, primerNombreS,
@@ -314,6 +314,7 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
                             fechaNac.setDate(null);
                             correo.setText(null);
                             tel.setText(null);
+                            botonAceptar.setEnabled(false);
                             break;
                             
                         case 2:
@@ -324,14 +325,14 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el evento.");
                             break;
                     }
-                }                
+                }
             } else {
                 
-                JOptionPane.showMessageDialog(null, "El participante que desea modificar no existe.");                
-            }            
+                JOptionPane.showMessageDialog(null, "El participante que desea modificar no existe.");
+            }
         }
     }//GEN-LAST:event_botonAceptarActionPerformed
-
+    
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         
         botonAceptar.setEnabled(true);
@@ -347,7 +348,7 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
             
         } else {
             
-            participante = controladorParticipante.consultarDatoParticipante(cedulaConsulta);
+            participante = controladorParticipante.consultarDatosParticipante(cedulaConsulta);
             
             if (participante != null) {
                 
@@ -377,10 +378,10 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
             }
         }        
     }//GEN-LAST:event_botonConsultarActionPerformed
-
+    
     private void segundoNombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundoNombActionPerformed
     }//GEN-LAST:event_segundoNombActionPerformed
-
+    
     public static void main(String args[]){
         
         java.awt.EventQueue.invokeLater(new Runnable(){
@@ -391,7 +392,7 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;

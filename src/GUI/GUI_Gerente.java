@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
-
-/**
- *
- * @author Jhoan Sebastián
- */
 
 public class GUI_Gerente extends javax.swing.JFrame {
     
     String id;
-
-  
+    
     public GUI_Gerente(){
         
         initComponents();
@@ -144,16 +133,15 @@ public class GUI_Gerente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     public void setId(String id) {
         this.id = id;
     }
     
-      
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_reportesActionPerformed
-
+    
     private void registrarSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSedeActionPerformed
         // TODO add your handling code here:
         GUI_RegistrarSede interfazSede = new GUI_RegistrarSede();
@@ -161,46 +149,46 @@ public class GUI_Gerente extends javax.swing.JFrame {
         interfazSede.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registrarSedeActionPerformed
-
+    
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         
         GUI_Login interfazLogin = new GUI_Login();
         interfazLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_CerrarSesionMouseClicked
-
+    
     private void modificarSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarSedeActionPerformed
         // TODO add your handling code here:
         GUI_ModificarSede interfazModificarSede = new GUI_ModificarSede();
         interfazModificarSede.setVisible(true);
         this.dispose();
-   
+        
     }//GEN-LAST:event_modificarSedeActionPerformed
-
+    
     private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
-       
+        
         GUI_CrearEvento interfazCrearEvento = new GUI_CrearEvento();
         interfazCrearEvento.setId(id);
         interfazCrearEvento.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_crearEventoActionPerformed
-
+    
     private void modificarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEventoActionPerformed
         // TODO add your handling code here:
         GUI_ModificarEvento interfazModificarEvento = new GUI_ModificarEvento();
         interfazModificarEvento.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarEventoActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]){
-         /* Set the Nimbus look and feel */
+        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -218,7 +206,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -228,7 +216,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JButton crearEvento;

@@ -1,27 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
-
-/**
- *
- * @author Jhoan Sebastián
- */
 
 public class GUI_Operador extends javax.swing.JFrame {
     
     String cedula;
-    /**
-     * Creates new form GUI_Admin
-     */
+    
     public GUI_Operador(){
         cedula = "";
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -198,32 +186,32 @@ public class GUI_Operador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void registrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarPagoActionPerformed
         // TODO add your handling code here:
         GUI_RegistrarPago pago = new GUI_RegistrarPago();
         pago.setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_registrarPagoActionPerformed
-
+    
     private void eliminarPreinscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPreinscripcionActionPerformed
         // TODO add your handling code here:
         GUI_EliminarPreins eliminarPre = new GUI_EliminarPreins();
         eliminarPre.setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_eliminarPreinscripcionActionPerformed
-
-    private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
     
+    private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
+        
         GUI_Login interfazLogin = new GUI_Login();
         interfazLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_CerrarSesionMouseClicked
-
+    
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_reportesActionPerformed
-
+    
     private void modificarParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarParticipanteActionPerformed
         // TODO add your handling code here:
         GUI_ModificarParticipante modPreInscripcion = new GUI_ModificarParticipante();
@@ -231,7 +219,7 @@ public class GUI_Operador extends javax.swing.JFrame {
         modPreInscripcion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarParticipanteActionPerformed
-
+    
     private void inscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscripcionActionPerformed
         // TODO add your handling code here:
         GUI_Inscripcion Inscripcion = new GUI_Inscripcion();
@@ -239,38 +227,38 @@ public class GUI_Operador extends javax.swing.JFrame {
         Inscripcion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_inscripcionActionPerformed
-
+    
     private void escarapelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escarapelasActionPerformed
         // TODO add your handling code here:
-       GUI_Escarapelas escarapelas = new GUI_Escarapelas();
-       escarapelas.setVisible(true);
+        GUI_Escarapelas escarapelas = new GUI_Escarapelas();
+        escarapelas.setVisible(true);
         this.dispose();          
     }//GEN-LAST:event_escarapelasActionPerformed
-
+    
     private void preInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preInscripcionActionPerformed
         // TODO add your handling code here:
-       GUI_PreInscripcion preInscripcion = new GUI_PreInscripcion();
+        GUI_PreInscripcion preInscripcion = new GUI_PreInscripcion();
         preInscripcion.setIdOperador(cedula);
         preInscripcion.setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_preInscripcionActionPerformed
-
+    
     private void certificadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_certificadosActionPerformed
         // TODO add your handling code here:
-       GUI_Certificados certificados = new GUI_Certificados();
+        GUI_Certificados certificados = new GUI_Certificados();
         certificados.setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_certificadosActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]){
-         /* Set the Nimbus look and feel */
+        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -288,7 +276,7 @@ public class GUI_Operador extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -298,7 +286,7 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JButton certificados;
@@ -312,7 +300,7 @@ public class GUI_Operador extends javax.swing.JFrame {
     private javax.swing.JButton registrarPago;
     private javax.swing.JButton reportes;
     // End of variables declaration//GEN-END:variables
-
+    
     void setId(String cedula_op) {
         cedula = cedula_op;
     }

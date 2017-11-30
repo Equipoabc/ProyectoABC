@@ -18,13 +18,13 @@ public class Conexiones {
     
     public Conexiones(){
     
-        url = "jdbc:postgresql://localhost:5432/ProyectoEventosABC";
+        /*url = "jdbc:postgresql://localhost:5432/ProyectoEventosABC";
         usuario = "postgres";
-        password = "12345";
+        password = "12345";*/
         
-        /*url = "jdbc:postgresql://pgsql2:5432/1533597";
+        url = "jdbc:postgresql://pgsql2:5432/1533597";
         usuario = "1533597";
-        password = "1533597";*/
+        password = "1533597";
     }
     
     public Connection conectar(){

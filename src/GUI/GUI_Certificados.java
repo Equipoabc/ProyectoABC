@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI;
 import Controladores.*;
-import java.text.*;
 import javax.swing.*;
 import Logica.*;
 import com.itextpdf.text.DocumentException;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,8 +17,6 @@ public class GUI_Certificados extends javax.swing.JFrame {
     Participante participante;
     Evento evento;
     
- 
-
     public GUI_Certificados(){
         
         initComponents();
@@ -40,9 +28,6 @@ public class GUI_Certificados extends javax.swing.JFrame {
         evento = new Evento();
         validaciones = new Validaciones();
     }
-    
-    
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -132,7 +117,7 @@ public class GUI_Certificados extends javax.swing.JFrame {
 
         nombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(nombreLabel);
-        nombreLabel.setBounds(170, 260, 140, 30);
+        nombreLabel.setBounds(120, 260, 230, 30);
 
         fecha.setFont(new java.awt.Font("Cambria", 2, 8)); // NOI18N
         jPanel1.add(fecha);
@@ -166,7 +151,7 @@ public class GUI_Certificados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarActionPerformed
-        // TODO add your handling code here:
+        
         String id_participante = cedula.getText();
         String id_evento = codEvento.getText();
         String nombre = "";
@@ -239,8 +224,9 @@ public class GUI_Certificados extends javax.swing.JFrame {
             evento = controladorEvento.consultarDatosEvento(id_evento);
 
             if (participanteEvento != null) {
-                              
-                nombreLabel.setText(participante.getPrimer_nombre()+ " "+ participante.getPrimer_apellido());
+                
+                nombreLabel.setText(participante.getPrimer_nombre()+ " "+ participante.getSegundo_nombre() + " " +
+                        participante.getPrimer_apellido() + " " + participante.getSegundo_apellido());
                 fecha.setText(evento.getFecha());
                 eventoLabel.setText(evento.getNombre_evento());
  

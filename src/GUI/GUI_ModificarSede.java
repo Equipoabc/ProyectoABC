@@ -321,6 +321,7 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
                         barrio.setText(null);
                         telefono.setText(null);
                         consultarLabel.setText(null);
+                        botonAceptar.setEnabled(false);
                         break;
                     case 2:
                         JOptionPane.showMessageDialog(null, "El codigo de la sede ha actualizar ya se encuentra registrado.");

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import Controladores.*;
 import java.text.*;
@@ -14,14 +9,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
-public class GUI_CrearUsuario extends javax.swing.JFrame { 
+public class GUI_CrearUsuario extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorOperador controladorOperador;
     ControladorGerente controladorGerente;
-
+    
     public GUI_CrearUsuario(){
-       
+        
         initComponents();
         this.setLocationRelativeTo(null);
         controladorOperador = new ControladorOperador();
@@ -31,12 +26,12 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         //fecha.getDateEditor().setEnabled(false);
         ((JTextField) fecha.getDateEditor()).setEditable(false);
     }
-
-     private Date GetDateNow() {
+    
+    private Date GetDateNow() {
         Calendar currentDate = Calendar.getInstance();
         return currentDate.getTime();
-     }
-
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -111,11 +106,6 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         confirmarpass.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         confirmarpass.setSelectionColor(new java.awt.Color(102, 102, 255));
-        confirmarpass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmarpassActionPerformed(evt);
-            }
-        });
         jPanel1.add(confirmarpass);
         confirmarpass.setBounds(450, 180, 180, 20);
 
@@ -178,11 +168,6 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         tipo.setForeground(new java.awt.Color(102, 102, 255));
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Gerente" }));
         tipo.setFocusable(false);
-        tipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoActionPerformed(evt);
-            }
-        });
         jPanel1.add(tipo);
         tipo.setBounds(170, 85, 130, 20);
 
@@ -290,18 +275,18 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Administrador adminLogin = new GUI_Administrador();
         adminLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
-  
+    
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
-
-        String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipoUsuario, 
-               fechaNacimiento, telefono, celular, email, contrasena, confirmar, pregunta, respuesta, validar = "";
+        
+        String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipoUsuario,
+                fechaNacimiento, telefono, celular, email, contrasena, confirmar, pregunta, respuesta, validar = "";
         LocalDate fechaNac = LocalDate.now();
         fechaNacimiento = "";
         primerNombre = primerNom.getText();
@@ -314,8 +299,8 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         
         try {
             
-           fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
-           fechaNac = LocalDate.parse(fechaNacimiento, fmt);
+            fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+            fechaNac = LocalDate.parse(fechaNacimiento, fmt);
         } catch(Exception e){
             validar = "\nDebe ingresar una fecha válida.";
         }
@@ -330,10 +315,10 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         confirmar = confirmarpass.getText();
         pregunta = preguntaSeguridad.getText();
         respuesta = respuestaSeguridad.getText();
-       
+        
         if (primerNombre.equals("") || primerApellido.equals("") || cedula.equals("") || fechaNacimiento.equals("") ||
-            celular.equals("") || contrasena.equals("") || pregunta.equals("") ||  respuesta.equals("")) {
-            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios." + validar);            
+                celular.equals("") || contrasena.equals("") || pregunta.equals("") ||  respuesta.equals("")) {
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios." + validar);
         }
         else if(!validaciones.validarLetras(primerNombre) || !validaciones.validarLetras(segundoNombre) || !validaciones.validarLetras(primerApellido) ||
                 !validaciones.validarLetras(segundoApellido)) {
@@ -349,74 +334,66 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El usuario tiene que ser mayor de edad.");
         }
         
-        else { 
-        if(tipoUsuario.equals("Operador")) {
-           
-            int numFilas = controladorOperador.insertarOperador(primerNombre, 
-               segundoNombre, primerApellido, segundoApellido,
-               cedula, fechaNacimiento, telefono, celular, email, 
-               contrasena, confirmar, pregunta, respuesta);
-
-            switch (numFilas) {
-                case 1:
-                    JOptionPane.showMessageDialog(null, "Operador creado exitosamente.");
-                    primerNom.setText(null);
-                    segundoNom.setText(null);
-                    primerAp.setText(null);
-                    segundoAp.setText(null);
-                    ced.setText(null);
-                    tel.setText(null);
-                    cel.setText(null);
-                    correo.setText(null);
-                    pass.setText(null);
-                    confirmarpass.setText(null);
-                    preguntaSeguridad.setText(null);
-                    respuestaSeguridad.setText(null);
-                    break;
-                case 5:
-                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
-                    break;
-                case 2:
-                    JOptionPane.showMessageDialog(null, "El operador ya se encuentra registrado.");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el operador.");
-                    break;
+        else {
+            if(tipoUsuario.equals("Operador")) {
+                
+                int numFilas = controladorOperador.insertarOperador(primerNombre,
+                        segundoNombre, primerApellido, segundoApellido,
+                        cedula, fechaNacimiento, telefono, celular, email,
+                        contrasena, confirmar, pregunta, respuesta);
+                
+                switch (numFilas) {
+                    case 1:
+                        JOptionPane.showMessageDialog(null, "Operador creado exitosamente.");
+                        primerNom.setText(null);
+                        segundoNom.setText(null);
+                        primerAp.setText(null);
+                        segundoAp.setText(null);
+                        ced.setText(null);
+                        tel.setText(null);
+                        cel.setText(null);
+                        correo.setText(null);
+                        pass.setText(null);
+                        confirmarpass.setText(null);
+                        preguntaSeguridad.setText(null);
+                        respuestaSeguridad.setText(null);
+                        break;
+                    case 5:
+                        JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+                        break;
+                    case 2:
+                        JOptionPane.showMessageDialog(null, "El operador ya se encuentra registrado.");
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el operador.");
+                        break;
+                }
             }
-        }
-        else if(tipoUsuario.equals("Gerente")) {
-            
-            int numFilas = controladorGerente.insertarGerente(primerNombre, 
-               segundoNombre, primerApellido, segundoApellido,
-               cedula, fechaNacimiento, telefono, celular, email, 
-               contrasena, confirmar, pregunta, respuesta);           
-
-            switch (numFilas) {
-                case 1:
-                    JOptionPane.showMessageDialog(null, "Gerente creado exitosamente.");
-                    break;
-                case 5:
-                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
-                    break;
-                case 2:
-                    JOptionPane.showMessageDialog(null, "El gerente ya se encuentra registrado.");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
-                    break;
+            else if(tipoUsuario.equals("Gerente")) {
+                
+                int numFilas = controladorGerente.insertarGerente(primerNombre,
+                        segundoNombre, primerApellido, segundoApellido,
+                        cedula, fechaNacimiento, telefono, celular, email,
+                        contrasena, confirmar, pregunta, respuesta);
+                
+                switch (numFilas) {
+                    case 1:
+                        JOptionPane.showMessageDialog(null, "Gerente creado exitosamente.");
+                        break;
+                    case 5:
+                        JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+                        break;
+                    case 2:
+                        JOptionPane.showMessageDialog(null, "El gerente ya se encuentra registrado.");
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
+                        break;
+                }
             }
-        }
         }
     }//GEN-LAST:event_crearUsuarioActionPerformed
-
-    private void confirmarpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarpassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_confirmarpassActionPerformed
-
-    private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipoActionPerformed
-
+            
     public static void main(String args[]) {
         
         /* Create and display the form */
@@ -428,7 +405,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JTextField ced;

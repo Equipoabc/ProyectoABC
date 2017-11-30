@@ -1,23 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI;
 
-/**
- *
- * @author Jhoan Sebastián
- */
-
 public class GUI_Administrador extends javax.swing.JFrame {
-
+    
     public GUI_Administrador(){
         
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -117,44 +108,44 @@ public class GUI_Administrador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
-        // TODO add your handling code here:
+        
         GUI_ReportesUsuarios interfazReportesUsuarios = new GUI_ReportesUsuarios();
         interfazReportesUsuarios.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
-
+    
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
-
+        
         GUI_CrearUsuario interfazCrearUsuario = new GUI_CrearUsuario();
         interfazCrearUsuario.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_crearUsuarioActionPerformed
-
+    
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
-   
+        
         GUI_Login interfazLogin = new GUI_Login();
         interfazLogin.setVisible(true);
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_CerrarSesionMouseClicked
-
+    
     private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
-     
+        
         GUI_ModificarUsuario interfazModificarUsuario = new GUI_ModificarUsuario();
         interfazModificarUsuario.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarUsuarioActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]){
-         /* Set the Nimbus look and feel */
+        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -172,7 +163,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -182,7 +173,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JButton crearUsuario;

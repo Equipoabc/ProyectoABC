@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI;
 import Controladores.*;
 import java.text.*;
@@ -12,15 +8,12 @@ import java.util.Calendar;
 import java.util.Date;
 //import java.util.Date;
 
-public class GUI_CrearEvento extends javax.swing.JFrame { 
-   
+public class GUI_CrearEvento extends javax.swing.JFrame {
+    
     Validaciones validaciones;
     ControladorEvento controladorEvento;
     String id;
-    //Date fechaActual;
-   
     
-
     public GUI_CrearEvento(){
         
         initComponents();
@@ -30,16 +23,16 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         fecha.setMinSelectableDate(GetDateNow());
         fecha.getDateEditor().setEnabled(false);
     }
-
-     private Date GetDateNow() {
+    
+    private Date GetDateNow() {
         Calendar currentDate = Calendar.getInstance();
         return currentDate.getTime();
-     }
-     
+    }
+    
     void setId(String idGerente) {
         this.id = idGerente;
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -190,14 +183,14 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         horas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         horas.setFocusable(false);
         jPanel1.add(horas);
-        horas.setBounds(400, 150, 60, 20);
+        horas.setBounds(400, 140, 60, 30);
 
         minutos.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         minutos.setForeground(new java.awt.Color(102, 102, 255));
         minutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "15", "30", "45" }));
         minutos.setFocusable(false);
         jPanel1.add(minutos);
-        minutos.setBounds(520, 150, 53, 20);
+        minutos.setBounds(520, 140, 50, 30);
 
         horasLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         horasLabel.setText("Cupos:");
@@ -230,27 +223,26 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Gerente gerenteLogin = new GUI_Gerente();
         gerenteLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
-
+    
     private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
-
-        String nom, cod, date = "", prec, cupo, lug, tem, dur, hora, min, validar = "";
         
+        String nom, cod, date = "", prec, cupo, lug, tem, dur, hora, min, validar = "";
         nom = nombre.getText();
         cod = codigo.getText();
         
-         try {
-           date = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+        try {
+            date = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
         } catch(Exception e){
             validar = "\nDebe ingresar una fecha válida.";
         }
-         
+        
         prec = precio.getText();
         cupo = cupos.getValue().toString();
         hora = (String) horas.getSelectedItem();
@@ -266,7 +258,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         else if(!validaciones.validarNumero(cod) || !validaciones.validarNumero(prec)) {
             JOptionPane.showMessageDialog(null, "Los campos código y precio deben ser números (sin puntos).");
         }
-        else if(!validaciones.validarLetrasYNumerosEspacios(nom) || !validaciones.validarLetrasYNumerosEspacios(lug) || 
+        else if(!validaciones.validarLetrasYNumerosEspacios(nom) || !validaciones.validarLetrasYNumerosEspacios(lug) ||
                 !validaciones.validarLetrasYNumerosEspacios(tem)) {
             JOptionPane.showMessageDialog(null, "Caracteres invalidos.");
         }
@@ -277,7 +269,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Los campos cupo y duración no pueden quedar en 0");
         }
         else {
-        int numFilas = controladorEvento.insertarEvento(cod, nom, date, prec, cupo, hora, min, dur, lug, tem, id);
+            int numFilas = controladorEvento.insertarEvento(cod, nom, date, prec, cupo, hora, min, dur, lug, tem, id);
             switch (numFilas) {
                 case 2:
                     JOptionPane.showMessageDialog(null, "El evento ya se encuentra registrado en el sistema.");
@@ -291,7 +283,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_crearEventoActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -306,7 +298,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JTextField codigo;
@@ -332,5 +324,5 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
     private javax.swing.JLabel segundoNombreLabel;
     private javax.swing.JTextField tema;
     // End of variables declaration//GEN-END:variables
-
+    
 }

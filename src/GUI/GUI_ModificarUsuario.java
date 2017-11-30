@@ -470,6 +470,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                             tel.setText(null);
                             cel.setText(null);
                             correo.setText(null);
+                            botonAceptar.setEnabled(false);
                             break;
                         case 2:
                             JOptionPane.showMessageDialog(null, "La cedula a actualizar corresponde a un usuario registrado.");

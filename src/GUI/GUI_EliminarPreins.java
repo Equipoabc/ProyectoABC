@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import Controladores.*;
-import java.text.*;
 import javax.swing.*;
 import Logica.*;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 
-public class GUI_EliminarPreins extends javax.swing.JFrame { 
+public class GUI_EliminarPreins extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorParticipante controladorParticipante;
@@ -22,8 +11,7 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
     Participantes_Eventos participanteEvento;
     Participante participante;
     Evento evento;
-
-
+    
     public GUI_EliminarPreins(){
         
         initComponents();
@@ -35,8 +23,7 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
         participante = new Participante();
         evento = new Evento();
     }
-
-   
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -126,14 +113,14 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         
         GUI_Operador oper = new GUI_Operador();
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
-
+    
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         
         String id_evento = codEvento.getText();
@@ -148,7 +135,7 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
         }
         else {
             participanteEvento = controladorParticipante.consultarPreinscripcion(id_participante, id_evento);
-            participante = controladorParticipante.consultarDatoParticipante(id_participante);
+            participante = controladorParticipante.consultarDatosParticipante(id_participante);
             evento = controladorEvento.consultarDatosEvento(id_evento);
             if (participante == null){
                 JOptionPane.showMessageDialog(null, "El participante " + id_participante + " no existe.");
@@ -158,20 +145,20 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
             }
             else if(participanteEvento != null){
                 if(participanteEvento.getEstado_pago().equals("Invalido")){
-                int opcion = 5;
-                opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar la pre-inscripción "
-                        + "del participante " + id_participante + " al evento " + id_evento + "?",
-                        "Confirmar eliminación", JOptionPane.OK_CANCEL_OPTION);
-                if(opcion == 0){
-                    int numFilas;
-                    numFilas = controladorParticipante.eliminarPreinscripcion(id_participante, id_evento);
-                    if (numFilas == 1){
-                        JOptionPane.showMessageDialog(null, "La pre-inscripción ha sido eliminada.");
+                    int opcion = 5;
+                    opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar la pre-inscripción "
+                            + "del participante " + id_participante + " al evento " + id_evento + "?",
+                            "Confirmar eliminación", JOptionPane.OK_CANCEL_OPTION);
+                    if(opcion == 0){
+                        int numFilas;
+                        numFilas = controladorParticipante.eliminarPreinscripcion(id_participante, id_evento);
+                        if (numFilas == 1){
+                            JOptionPane.showMessageDialog(null, "La pre-inscripción ha sido eliminada.");
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Hubo un error eliminando la pre-inscripción.");
+                        }
                     }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Hubo un error eliminando la pre-inscripción.");
-                    }
-                }
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "El participante ya pagó la inscripción, no se puede eliminar.");
@@ -183,9 +170,9 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_eliminarActionPerformed
-
+    
     public static void main(String args[]){
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -195,7 +182,7 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;
     private javax.swing.JTextField cedula;
@@ -206,5 +193,5 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
+    
 }

@@ -46,7 +46,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     }
     
     public static Date parseFecha(String fecha){ 
-         
+        
         fecha = fecha.replace("-","/") ; 
         SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); 
         Date fechaDate = null; 
@@ -432,6 +432,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
                             lugar.setText(null);
                             tema.setText(null);
                             fecha.setDate(null);
+                            botonAceptar.setEnabled(false);
                             break;
                         case 2:
                             JOptionPane.showMessageDialog(null, "El codigo del evento ha actualizar ya se encuentra registrado.");

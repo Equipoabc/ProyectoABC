@@ -1,21 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import Controladores.*;
 import javax.swing.table.*;
 
-/**
- *
- * @author Iván
- */
-
 public class GUI_ReportesUsuarios extends javax.swing.JFrame {
-    /**
-     * Creates new form GUI_ReportesUsuarios
-     */
+    
     DefaultTableModel modeloTabla;
     ControladorReportesUsuarios controladorRegistros;
     
@@ -29,7 +17,7 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
             
             @Override
             public boolean isCellEditable(int fila, int columna){
-                   
+                
                 return false;
             }
         };
@@ -49,7 +37,7 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
         
         tableDatos.getTableHeader().setReorderingAllowed(false);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -139,9 +127,9 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
-       
+        
         String busqueda;
         busqueda = fieldBuscar.getText();
         
@@ -149,21 +137,21 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
             
             modeloTabla.removeRow(0);
         }
-       
+        
         if(busqueda.equals("")){
             
-            controladorRegistros.consultarUsuarios(modeloTabla, tableDatos); 
+            controladorRegistros.consultarUsuarios(modeloTabla, tableDatos);
         }
         else {
             
-            controladorRegistros.consultarUsuario(modeloTabla, tableDatos, busqueda); 
+            controladorRegistros.consultarUsuario(modeloTabla, tableDatos, busqueda);
         }
     }//GEN-LAST:event_buttonBuscarActionPerformed
-
+    
     private void fieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldBuscarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_fieldBuscarActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -171,8 +159,8 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -190,7 +178,7 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI_ReportesUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -200,7 +188,7 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBuscar;
     private javax.swing.JTextField fieldBuscar;

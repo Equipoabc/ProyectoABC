@@ -50,11 +50,6 @@ public class ControladorParticipante {
         return daoParticipante.realizarPago(id, id_evento);
     }
     
-    public Participante consultarDatoParticipante(String cedulaConsulta) {
-        
-        return daoParticipante.consultarDatoParticipante(cedulaConsulta);
-    }
-    
     public int actualizarParticipante(String codigoConsulta, String cedulaS, String primerNombreS, String segundoNombreS, String primerApellidoS, String segundoApellidoS, String correoS, String telefonoS, String fechaS) {
         
         return daoParticipante.actualizarParticipante(codigoConsulta, cedulaS, primerNombreS, segundoNombreS, primerApellidoS, segundoApellidoS, correoS, telefonoS, fechaS);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import Controladores.*;
 import java.text.*;
@@ -10,26 +5,21 @@ import javax.swing.*;
 import Logica.*;
 import com.itextpdf.text.DocumentException;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GUI_RegistrarPago extends javax.swing.JFrame { 
+public class GUI_RegistrarPago extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorParticipante controladorParticipante;
     ControladorEvento controladorEvento;
-    //Nuevo
     Evento evento;
     String id_participante, nombre_participante;
     Participante participante;
-    //
-
-
+    
     public GUI_RegistrarPago(){
         
         initComponents();
@@ -41,19 +31,17 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         continuarBoton.setVisible(false);
         controladorParticipante = new ControladorParticipante();
         controladorEvento = new ControladorEvento();
-        //Nuevo
         evento = new Evento();
         participante = new Participante();
-        //Nuevo
         validaciones = new Validaciones();
         
     }
-
-        private static Date GetDateNow() {
-            Calendar currentDate = Calendar.getInstance();
-            return currentDate.getTime();
+    
+    private static Date GetDateNow() {
+        Calendar currentDate = Calendar.getInstance();
+        return currentDate.getTime();
     }
-   
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -212,14 +200,14 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Operador oper = new GUI_Operador();
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
-
+    
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         
         String id = cedula.getText();
@@ -231,9 +219,8 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Los campos deben ser numericos.");
         } else {
-           //Nuevo
+            
             evento = controladorEvento.consultarDatosEvento(id_evento);
-            //Nuevo
             if(evento != null){
                 nombreLabelEditar.setText(evento.getNombre_evento());
                 precioNumeroLabel.setText(evento.getPrecio());
@@ -245,9 +232,9 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botonConsultarActionPerformed
-//Nuevo
+    
     private void pagarEvento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarEvento1ActionPerformed
-        // TODO add your handling code here:
+        
         String id = cedula.getText();
         String id_evento = codEvento.getText();
         if (id_evento.equals("") || id.equals("")) {
@@ -257,9 +244,8 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Los campos deben ser numericos.");
         } else {
-            //Nuevo
+            
             evento = controladorEvento.consultarDatosEvento(id_evento);
-            //Nuevo
             int numFilas = controladorParticipante.realizarPago(id, id_evento);
             if(evento != null){
                 nombreLabelEditar.setText(evento.getNombre_evento());
@@ -277,27 +263,26 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "El participante no existe");
                     break;
                 case 3:
-                case 2:    
+                case 2:
                 case 1:
                     JOptionPane.showMessageDialog(null, "El pago ha sido realizado.");
                     int opcion = 5;
                     opcion = JOptionPane.showConfirmDialog(null, "Desea imprimir un recibo?",
-                        "Imprimir recibo", JOptionPane.OK_CANCEL_OPTION);
-                if(opcion == 0){
-                    dinero.setVisible(true);
-                    dineroLabel.setVisible(true);
-                    cambioLabel1.setVisible(true);
-                    cambioLabel2.setVisible(true);
-                    continuarBoton.setVisible(true);
-                    participante = controladorParticipante.consultarDatosParticipante(id);
-                    
-                    
-                }
-                else{
-                    cedula.setText("");
-                    codEvento.setText("");
-                }
-                   break;
+                            "Imprimir recibo", JOptionPane.OK_CANCEL_OPTION);
+                    if(opcion == 0){
+                        dinero.setVisible(true);
+                        dineroLabel.setVisible(true);
+                        cambioLabel1.setVisible(true);
+                        cambioLabel2.setVisible(true);
+                        continuarBoton.setVisible(true);
+                        participante = controladorParticipante.consultarDatosParticipante(id);
+                        
+                    }
+                    else{
+                        cedula.setText("");
+                        codEvento.setText("");
+                    }
+                    break;
                 case 6:
                     JOptionPane.showMessageDialog(null, "El participante no se encuentra registrado en este evento.");
                     break;
@@ -307,13 +292,12 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             }
             
         }
-
+        
         
     }//GEN-LAST:event_pagarEvento1ActionPerformed
-//Nuevo
- //Nuevo   
+    
     private void continuarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarBotonActionPerformed
-        // TODO add your handling code here:
+        
         Reportes recibo = new Reportes();
         String cod_evento = evento.getId_evento();
         String nombre_evento = evento.getNombre_evento();
@@ -330,7 +314,7 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         String precio = evento.getPrecio();
         String money = dinero.getText();
         nombre_participante = participante.getPrimer_nombre() + " " + participante.getSegundo_nombre() + " " +
-                              participante.getPrimer_apellido() + " " +participante.getSegundo_apellido();
+                participante.getPrimer_apellido() + " " +participante.getSegundo_apellido();
         id_participante = participante.getCedula_pa();
         if(money.equals("")){
             JOptionPane.showMessageDialog(null, "Ingrese dinero");
@@ -371,9 +355,9 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_continuarBotonActionPerformed
-//Nuevo
+    
     public static void main(String args[]){
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -383,7 +367,7 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;

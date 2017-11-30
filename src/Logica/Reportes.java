@@ -1,42 +1,16 @@
-/**
- * author: Luis Granja
- */
 package Logica;
  
 //Librerias para exportar en PDF
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.ColumnText;
-import com.itextpdf.text.pdf.FontSelector;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
 
 //Librerias para exportar en Excel
-import  org.apache.poi.hssf.usermodel.HSSFSheet;
-import  org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import  org.apache.poi.hssf.usermodel.HSSFRow;
-import  org.apache.poi.hssf.usermodel.HSSFCell;
+import  org.apache.poi.hssf.usermodel.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.io.File;
+import java.util.*;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
-
-
 
 public class Reportes{
     
@@ -52,34 +26,34 @@ public class Reportes{
         File certificados = new File(rutaRaiz+"\\Certificados");
         File escarapelas = new File(rutaRaiz+"\\Escarapelas");
         File recibos = new File(rutaRaiz+"\\Recibos");
-
+        
         carpetaRaiz.mkdir();
         reportes.mkdir();
         certificados.mkdir();
         escarapelas.mkdir();
         recibos.mkdir();
     }
-     /**
-     * 
+    /**
+     *
      * @param cabecera Son los datos epecificos del reporte, ejemplo: nombre, cedula, telefono
      * @param datos  Es un arreglo de arreglos con los datos especificos del reporte
      * @param nombre Nombre del archivo excel que e genera
      */
     public static void generarReporte(ArrayList<String> cabecera , ArrayList<ArrayList<String>> datos, String nombre){
-    
+        
         try {
             
             //Se crea el archivo
             String archivo = rutaRaiz+"\\Reportes\\"+nombre+".xls" ;
             HSSFWorkbook libro = new HSSFWorkbook();
-            HSSFSheet hoja = libro.createSheet("Reporte Usuarios");  
+            HSSFSheet hoja = libro.createSheet("Reporte Usuarios");
             
             //Se crean fuentes para las cabeceras
             HSSFCellStyle estilo = libro.createCellStyle();
             HSSFFont fuente=libro.createFont();
             fuente.setBold(true);
             estilo.setFont(fuente);
-
+            
             //Se crean las cabeceras
             HSSFRow rowhead = hoja.createRow((short)0);
             for (int i = 0; i < cabecera.size(); i++) {
@@ -90,7 +64,7 @@ public class Reportes{
                 //Se le cambia el formato de texto a la celda
                 rowhead.getCell(i).setCellStyle(estilo);
             }
-	
+            
             //Se insertan datos
             for(int i = 1; i<datos.size(); i++){
                 
@@ -105,28 +79,28 @@ public class Reportes{
                 libro.write(salida);
             }
             System.out.println("Archivo generado");
-
+            
         } catch ( IOException ex ) {
             System.out.println(ex);
         }
-    
+        
     }
     
     /**
-     * 
+     *
      * @param nombre Nombre del participante
      * @param cedula Cedula del participante
      * @param nomEvento Nombre del evento
      * @param fecha Fecha del evento
      * @throws FileNotFoundException
      * @throws IOException
-     * @throws DocumentException 
+     * @throws DocumentException
      */
-    public static void imprimirCertificado(String nombre,String cedula, String nomEvento, String fecha) throws FileNotFoundException, IOException, DocumentException{
-    
+    public void imprimirCertificado(String nombre,String cedula, String nomEvento, String fecha) throws FileNotFoundException, IOException, DocumentException{
+        
         //base.pdf es el archivo PDF que se usa como plantilla
         PdfReader reader = new PdfReader("src/plantillas/base.pdf");
-        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(rutaRaiz+"\\Certificados\\"+cedula+".pdf"));
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(rutaRaiz+"\\Certificados\\"+cedula+"-"+nomEvento+".pdf"));
         PdfContentByte over = stamper.getOverContent(1);
         
         //Crea los diferentes tamanos de la fuente
@@ -156,7 +130,7 @@ public class Reportes{
     }
     
     /**
-     * 
+     *
      * @param nombre Nombre del participante
      * @param cedula Cedula del participante
      * @param codEvento Codifo del evento
@@ -166,11 +140,11 @@ public class Reportes{
      * @param dinero Dinero que entrega el parcipante para pagar
      * @param cambio Dinero que se debe devolver al participante
      * @throws IOException
-     * @throws DocumentException 
+     * @throws DocumentException
      */
-    public void imprimirRecibo(String nombre, String cedula, String codEvento, String nomEvento, 
+    public void imprimirRecibo(String nombre, String cedula, String codEvento, String nomEvento,
             String precio, String fecha, String dinero, String cambio) throws IOException, DocumentException{
-    
+        
         //baseRecibo.pdf es el archivo PDF que se usa como plantilla
         PdfReader reader = new PdfReader("src/plantillas/baseRecibo.pdf");
         PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(rutaRaiz+"\\Recibos\\"+cedula+".pdf"));
@@ -224,16 +198,16 @@ public class Reportes{
         
         //Se cierra el archivo base y se cierra el archivo nuevo
         stamper.close();
-        reader.close();  
+        reader.close();
     }
     
     /**
-     * 
+     *
      * @param nombre Nombre del participante
      * @param cedula Cedula del participante
      * @param evento Nombre del evento
      * @throws IOException
-     * @throws DocumentException 
+     * @throws DocumentException
      */
     public static void imprimirEscarapela(String nombre, String cedula, String evento) throws IOException, DocumentException{
         //baseEscarapela.pdf es el archivo PDF que se usa como plantilla
@@ -266,60 +240,4 @@ public class Reportes{
         reader.close();
         
     }
-    
-
-   /* public static void main(String arg[]) throws FileNotFoundException, DocumentException, BadElementException, IOException{
-       
-        crearCarpetas();
-        //Pruebas para el archivo excel
-        ArrayList<String> cabecera = new ArrayList<>();
-        cabecera.add("Nombre");
-        cabecera.add("Apellidos");
-        cabecera.add("Cedula");
-        cabecera.add("Telefono");
-        cabecera.add("Fecha nacimiento");
-        cabecera.add("Correo");
-        
-        ArrayList<ArrayList<String>> data = new ArrayList<>();
-        data.add(cabecera);
-        data.add(cabecera);
-        
-        generarReporte(cabecera,data,"test2");
-        
-        //Prueba para certificado
-        imprimirCertificado( "Luis Granja","1144091237", "Semana de la Ingeniería II", "20-12-17");
-        
-        //Prueba para recibo
-        imprimirRecibo("Luis Granja",  "1144091237", "11CU", "Capacitacion sistema", 
-            "$100.000", "20-12-17", "$150.000", "$50.000");
-        
-        //Prueba para escarapela
-        imprimirEscarapela("Luis Granja", "1144091237", "Innova");
-        
-        
-        
-        /*
-        //--------------Parte para cerar PDF base---------------//
-        //Creacion del documento
-        Document d = new Document(PageSize.LETTER.rotate());
-        PdfWriter writer = PdfWriter.getInstance(d, new FileOutputStream ("baseEscarapela.pdf"));
-        writer.setStrictImageSequence(true);
-        
-        
-         //Tamano de la pagina
-        Rectangle size = new Rectangle(426,586);
-        d.setPageSize(size);
-        d.setMargins(0, 0, 0, 0);
-        
-        d.open();
-
-        //Se agrega imagen
-        Image img = Image.getInstance("escarapela.png");
-        img.setAbsolutePosition(0, 0);
-        d.add(img);
-        d.close();
-        
-        
-    }
-*/
 }

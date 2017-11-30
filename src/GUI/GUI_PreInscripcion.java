@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import Controladores.*;
 import java.text.*;
@@ -14,13 +9,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
-public class GUI_PreInscripcion extends javax.swing.JFrame { 
+public class GUI_PreInscripcion extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorParticipante controladorParticipante;
     String idOperador;
- 
-
+    
     public GUI_PreInscripcion(){
         
         initComponents();
@@ -30,14 +24,15 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         fecha.setMaxSelectableDate(GetDateNow());
         fecha.getDateEditor().setEnabled(false);
     }
-
-     private Date GetDateNow() {
+    
+    private Date GetDateNow() {
+        
         Calendar currentDate = Calendar.getInstance();
         return currentDate.getTime();
-     }
+    }
     
     void setIdOperador(String cedula) {
-       idOperador = cedula;
+        idOperador = cedula;
     }
     
     @SuppressWarnings("unchecked")
@@ -219,17 +214,17 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Operador oper = new GUI_Operador();
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
-
+    
     private void crearParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearParticipanteActionPerformed
-
-        String primerNom, segundoNom, primerAp, segundoAp, ced,  
+        
+        String primerNom, segundoNom, primerAp, segundoAp, ced,
                 fechaNacimiento, tel, email, codigoEvento, validar = "";
         fechaNacimiento = "";
         LocalDate fechaNac = LocalDate.now();
@@ -241,25 +236,25 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         ced = cedula.getText();
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
-         try {
+        try {
             
-           fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
-           fechaNac = LocalDate.parse(fechaNacimiento, fmt);
+            fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+            fechaNac = LocalDate.parse(fechaNacimiento, fmt);
         } catch(Exception e){
             validar = "\nDebe ingresar una fecha válida.";
         }
-         
+        
         LocalDate ahora = LocalDate.now();
         Period periodo = Period.between(fechaNac, ahora);
-         
+        
         tel = telefono.getText();
-        codigoEvento = codEvento.getText();      
+        codigoEvento = codEvento.getText();
         email = correo.getText();
         
         if (primerNom.equals("") || primerAp.equals("") || ced.equals("") || tel.equals("") || fechaNacimiento.equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios" + validar + ".");
         }
-        else if(!validaciones.validarLetras(primerNom) || !validaciones.validarLetras(segundoNom) || 
+        else if(!validaciones.validarLetras(primerNom) || !validaciones.validarLetras(segundoNom) ||
                 !validaciones.validarLetras(primerAp) || !validaciones.validarLetras(segundoAp)) {
             JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
         }
@@ -270,22 +265,22 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El participante debe ser mínimo de 15 años");
         }
         else {
-        
-             int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
-                primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento, "Invalido");
+            
+            int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
+                    primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento, "Invalido");
             
             switch (numFilas) {
                 case 3:
                     JOptionPane.showMessageDialog(null, "El evento que ingresó no existe.");
                     break;
                 case 7:
-                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra pre-inscrito en este evento" + "\n" + 
+                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra pre-inscrito en este evento" + "\n" +
                             "Debe proceder a pagar para quedar inscrito.");
                     break;
-                case 8: 
+                case 8:
                     JOptionPane.showMessageDialog(null, "El participante ya se encuentra inscrito en este evento");
                     break;
-                case 2:    
+                case 2:
                 case 5:
                     JOptionPane.showMessageDialog(null, "La pre-inscripción se ha realizado exitosamente.");
                     primerNombre.setText(null);
@@ -303,9 +298,9 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_crearParticipanteActionPerformed
-
+    
     public static void main(String args[]){
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -315,7 +310,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JTextField cedula;
@@ -340,5 +335,5 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     private javax.swing.JTextField telefono;
     private javax.swing.JLabel telefonoLabel;
     // End of variables declaration//GEN-END:variables
-
+    
 }

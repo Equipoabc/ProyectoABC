@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import Controladores.*;
-import java.text.*;
 import javax.swing.*;
 import Logica.*;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 
-public class GUI_Escarapelas extends javax.swing.JFrame { 
+public class GUI_Escarapelas extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorParticipante controladorParticipante;
@@ -22,9 +11,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
     Participantes_Eventos participanteEvento;
     Participante participante;
     Evento evento;
- 
- 
-
+    
     public GUI_Escarapelas(){
         
         initComponents();
@@ -36,8 +23,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
         evento = new Evento();
         validaciones = new Validaciones();
     }
-
-   
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -176,63 +162,63 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarActionPerformed
-
+        
     }//GEN-LAST:event_descargarActionPerformed
-
+    
     private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed
         // TODO add your handling code here:
         String id_participante = cedula.getText();
         String id_evento = codEvento.getText();
         
         if (id_evento.equals("")) {
-
+            
             JOptionPane.showMessageDialog(null, "El campo cédula se encuentra vacío.");
         } else if (!validaciones.validarNumero(id_evento)) {
-
+            
             JOptionPane.showMessageDialog(null, "El campo debe ser numérico.");
         } else if (id_participante.equals("")) {
-
+            
             JOptionPane.showMessageDialog(null, "El campo cédula se encuentra vacío.");
         } else if (!validaciones.validarNumero(id_participante)) {
-
+            
             JOptionPane.showMessageDialog(null, "El campo debe ser numérico.");
         } else {
-
+            
             participanteEvento = controladorParticipante.consultarPreinscripcion(id_participante, id_evento);
             participante = controladorParticipante.consultarDatosParticipante(id_participante);
             evento = controladorEvento.consultarDatosEvento(id_evento);
-
+            
             if (participanteEvento != null) {
-                              
+                
                 nombreLabel.setText(participante.getPrimer_nombre()+ " "+ participante.getPrimer_apellido());
                 cedulaLabel.setText(participanteEvento.getId_participante());
                 eventoLabel.setText(evento.getNombre_evento());
- 
+                
             } else if (participante != null){
-
-                    JOptionPane.showMessageDialog(null, "El participante "+ id_participante +" no se"
-                    + " encuentra inscrito en el evento "+ id_evento+"."); 
-                    
+                
+                JOptionPane.showMessageDialog(null, "El participante "+ id_participante +" no se"
+                        + " encuentra inscrito en el evento "+ id_evento+".");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "El participante no existe.");
-            
+                
                 cedula.setText(null);
-                codEvento.setText(null);   
+                codEvento.setText(null);
             }
         }
     }//GEN-LAST:event_generarActionPerformed
-
+    
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
         GUI_Operador oper = new GUI_Operador();
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
-
+    
     public static void main(String args[]){
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable(){
             
@@ -242,7 +228,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;
     private javax.swing.JTextField cedula;
@@ -260,5 +246,5 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombreLabel;
     // End of variables declaration//GEN-END:variables
-
+    
 }
