@@ -180,11 +180,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
 
         consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
-        consultarLabel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                consultarLabelKeyPressed(evt);
-            }
-        });
         jPanel1.add(consultarLabel);
         consultarLabel.setBounds(50, 220, 140, 20);
 
@@ -198,11 +193,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConsultarActionPerformed(evt);
-            }
-        });
-        botonConsultar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                botonConsultarKeyPressed(evt);
             }
         });
         jPanel1.add(botonConsultar);
@@ -264,6 +254,11 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         minutos.setForeground(new java.awt.Color(102, 102, 255));
         minutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "15", "30", "45" }));
         minutos.setFocusable(false);
+        minutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minutosActionPerformed(evt);
+            }
+        });
         jPanel1.add(minutos);
         minutos.setBounds(680, 210, 50, 20);
 
@@ -494,13 +489,9 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_botonEliminarActionPerformed
 
-    private void botonConsultarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botonConsultarKeyPressed
+    private void minutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonConsultarKeyPressed
-
-    private void consultarLabelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_consultarLabelKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_consultarLabelKeyPressed
+    }//GEN-LAST:event_minutosActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

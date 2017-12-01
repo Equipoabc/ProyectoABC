@@ -71,4 +71,7 @@ public class ControladorGerente {
         
         return daoGerente.comprobar(cedula);
     }
+    public int actualizarContrasena(String cedula, String contrasena) {        
+        return daoGerente.actualizarContrasena(cedula,contrasena);
+    }     
 }

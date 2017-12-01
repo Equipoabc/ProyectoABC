@@ -68,6 +68,9 @@ public class ControladorOperador {
                segundoNombre, primerApellido, segundoApellido,
                cedula, telefono, celular, email, estado, tipo);
     }
+    public int actualizarContrasena(String cedula, String contrasena) {        
+        return daoOperador.actualizarContrasena(cedula, contrasena);
+    }    
     
     public int comprobar(String cedula){
         

@@ -88,10 +88,15 @@ public class GUI_Login extends javax.swing.JFrame {
         jPanel1.add(botonIniciarSesion);
         botonIniciarSesion.setBounds(430, 220, 150, 70);
 
-        botonOlvide.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
+        botonOlvide.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         botonOlvide.setText("Olvidé mi contraseña");
+        botonOlvide.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonOlvideMouseClicked(evt);
+            }
+        });
         jPanel1.add(botonOlvide);
-        botonOlvide.setBounds(510, 290, 160, 30);
+        botonOlvide.setBounds(500, 300, 160, 30);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
@@ -202,6 +207,13 @@ public class GUI_Login extends javax.swing.JFrame {
             iniciarSesion();
         }
     }//GEN-LAST:event_usuarioKeyPressed
+
+    private void botonOlvideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonOlvideMouseClicked
+        // TODO add your handling code here:
+        GUI_CambiarContrasena cambiarC = new GUI_CambiarContrasena();
+        cambiarC.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonOlvideMouseClicked
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable(){

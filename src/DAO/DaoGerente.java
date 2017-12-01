@@ -103,7 +103,7 @@ public class DaoGerente {
 
         validar = "SELECT cedula_ge FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
         sql = "SELECT primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cedula_ge, fecha_nacimiento, email, telefono, "
-                + "celular, estado FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
+                + "celular, estado, pregunta, respuesta FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
 
         try {
 
@@ -135,6 +135,8 @@ public class DaoGerente {
                     gerente.setTelefono(consulta2.getString(8));
                     gerente.setCelular(consulta2.getString(9));
                     gerente.setEstado(consulta2.getString(10));
+                    gerente.setPregunta(consulta2.getString(11));
+                    gerente.setRespuesta(consulta2.getString(12));
 
                     /*tipoUsuario.setSelectedIndex(1);
                     primerNom.setText(consulta2.getString(1));
@@ -168,6 +170,45 @@ public class DaoGerente {
 
         return null;
     }
+    
+     public int actualizarContrasena(String cedula, String contrasena) {
+        
+        String sql_guardar, validar;
+        
+        validar = "SELECT cedula_ge FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
+        sql_guardar = "UPDATE Gerentes SET contrasena = '" + contrasena +  "' WHERE cedula_ge = '" + cedula + "';";
+        
+        try {
+            
+            Connection conn= conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(validar);
+            
+            
+            while(consulta.next()){
+            
+                validar = consulta.getString(1);
+            }  
+            
+            if(validar.equals(cedula)){  
+                sentencia.executeUpdate(sql_guardar);
+                return 1;
+                
+            }            
+            else {                
+                return 2;
+            }
+
+        } catch(SQLException e){
+            e.printStackTrace();
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error" + e);
+        }
+        
+        return -1;
+    }    
 
     public int actualizarOperador(String cedulaBusqueda, String primerNombre, String segundoNombre,
             String primerApellido, String segundoApellido, String cedula, String telefono, String celular, String email,

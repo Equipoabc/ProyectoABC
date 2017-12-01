@@ -108,7 +108,7 @@ public class DaoOperador {
         
         validar = "SELECT cedula_op FROM Operadores WHERE cedula_op = '" + cedula + "';";
         sql = "SELECT primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cedula_op, fecha_nacimiento, email, telefono, "
-                + "celular, estado FROM Operadores WHERE cedula_op = '" + cedula + "';";
+                + "celular, estado, pregunta, contrasena FROM Operadores WHERE cedula_op = '" + cedula + "';";
         
         try {
             
@@ -162,6 +162,8 @@ public class DaoOperador {
                     operador.setTelefono(consulta2.getString(8));
                     operador.setCelular(consulta2.getString(9));
                     operador.setEstado(consulta2.getString(10));
+                    operador.setPregunta(consulta2.getString(11));
+                    operador.setContrasena(consulta2.getString(12));
                 }
                 
                 return operador;
@@ -307,5 +309,41 @@ public class DaoOperador {
         
         return 0;
     }
-    
+    public int actualizarContrasena(String cedula, String contrasena) {
+        
+        String sql_guardar, validar;
+        
+        validar = "SELECT cedula_op FROM Operadores WHERE cedula_op = '" + cedula + "';";
+        sql_guardar = "UPDATE Operadores SET contrasena = '" + contrasena +  "' WHERE cedula_op = '" + cedula + "';";
+        
+        try {
+            
+            Connection conn= conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(validar);
+            
+            
+            while(consulta.next()){
+            
+                validar = consulta.getString(1);
+            }  
+            
+            if(validar.equals(cedula)){
+                sentencia.executeUpdate(sql_guardar);                
+                return 1;
+            }            
+            else {                 
+                return 2;
+            }
+
+        } catch(SQLException e){
+            e.printStackTrace();
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error" + e);
+        }
+        
+        return -1;
+    }    
 }
