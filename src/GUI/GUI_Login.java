@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import Controladores.*;
 import Logica.*;
@@ -132,7 +127,7 @@ public class GUI_Login extends javax.swing.JFrame {
         Operador ope;
         ope = controladorOperador.loginOperador(user);
         
-        if((!user.equals("")) && (!cont.equals(""))){
+        if((!user.equals("")) && (!cont.equals(""))){ 
             
             if(admin.getUsuario().equals(user)){
                 

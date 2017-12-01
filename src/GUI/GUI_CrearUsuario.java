@@ -3,6 +3,7 @@ import Controladores.*;
 import java.text.*;
 import javax.swing.*;
 import Logica.*;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -91,6 +92,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         respuestaSeguridad.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         respuestaSeguridad.setSelectionColor(new java.awt.Color(102, 102, 255));
+        respuestaSeguridad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                respuestaSeguridadKeyPressed(evt);
+            }
+        });
         jPanel1.add(respuestaSeguridad);
         respuestaSeguridad.setBounds(450, 240, 180, 20);
 
@@ -101,11 +107,21 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         preguntaSeguridad.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         preguntaSeguridad.setSelectionColor(new java.awt.Color(102, 102, 255));
+        preguntaSeguridad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                preguntaSeguridadKeyPressed(evt);
+            }
+        });
         jPanel1.add(preguntaSeguridad);
         preguntaSeguridad.setBounds(450, 210, 180, 20);
 
         confirmarpass.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         confirmarpass.setSelectionColor(new java.awt.Color(102, 102, 255));
+        confirmarpass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                confirmarpassKeyPressed(evt);
+            }
+        });
         jPanel1.add(confirmarpass);
         confirmarpass.setBounds(450, 180, 180, 20);
 
@@ -121,6 +137,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         pass.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         pass.setSelectionColor(new java.awt.Color(102, 102, 255));
+        pass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passKeyPressed(evt);
+            }
+        });
         jPanel1.add(pass);
         pass.setBounds(450, 150, 180, 20);
 
@@ -131,6 +152,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         correo.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         correo.setSelectionColor(new java.awt.Color(102, 102, 255));
+        correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                correoKeyPressed(evt);
+            }
+        });
         jPanel1.add(correo);
         correo.setBounds(450, 270, 180, 20);
 
@@ -141,6 +167,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         cel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cel.setSelectionColor(new java.awt.Color(102, 102, 255));
+        cel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                celKeyPressed(evt);
+            }
+        });
         jPanel1.add(cel);
         cel.setBounds(450, 120, 180, 20);
 
@@ -151,6 +182,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         tel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         tel.setSelectionColor(new java.awt.Color(102, 102, 255));
+        tel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                telKeyPressed(evt);
+            }
+        });
         jPanel1.add(tel);
         tel.setBounds(450, 90, 180, 20);
 
@@ -178,6 +214,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         ced.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         ced.setSelectionColor(new java.awt.Color(102, 102, 255));
+        ced.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cedKeyPressed(evt);
+            }
+        });
         jPanel1.add(ced);
         ced.setBounds(170, 240, 180, 20);
 
@@ -188,6 +229,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         segundoAp.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoAp.setSelectionColor(new java.awt.Color(102, 102, 255));
+        segundoAp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                segundoApKeyPressed(evt);
+            }
+        });
         jPanel1.add(segundoAp);
         segundoAp.setBounds(170, 210, 180, 20);
 
@@ -198,6 +244,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         primerAp.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerAp.setSelectionColor(new java.awt.Color(102, 102, 255));
+        primerAp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                primerApKeyPressed(evt);
+            }
+        });
         jPanel1.add(primerAp);
         primerAp.setBounds(170, 180, 180, 20);
 
@@ -208,6 +259,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         segundoNom.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNom.setSelectionColor(new java.awt.Color(102, 102, 255));
+        segundoNom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                segundoNomKeyPressed(evt);
+            }
+        });
         jPanel1.add(segundoNom);
         segundoNom.setBounds(170, 150, 180, 20);
 
@@ -223,6 +279,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
 
         primerNom.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNom.setSelectionColor(new java.awt.Color(102, 102, 255));
+        primerNom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                primerNomKeyPressed(evt);
+            }
+        });
         jPanel1.add(primerNom);
         primerNom.setBounds(170, 120, 180, 20);
 
@@ -238,6 +299,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
                 crearUsuarioActionPerformed(evt);
             }
         });
+        crearUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                crearUsuarioKeyPressed(evt);
+            }
+        });
         jPanel1.add(crearUsuario);
         crearUsuario.setBounds(190, 310, 160, 70);
 
@@ -249,6 +315,11 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         fecha.setMinSelectableDate(new java.util.Date(-1577901489000L));
         fecha.setRequestFocusEnabled(false);
         fecha.setVerifyInputWhenFocusTarget(false);
+        fecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fechaKeyPressed(evt);
+            }
+        });
         jPanel1.add(fecha);
         fecha.setBounds(170, 280, 180, 20);
 
@@ -283,8 +354,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
-    private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
-        
+    private void crearUsuario(){
         String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipoUsuario,
                 fechaNacimiento, telefono, celular, email, contrasena, confirmar, pregunta, respuesta, validar = "";
         LocalDate fechaNac = LocalDate.now();
@@ -392,8 +462,80 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
                 }
             }
         }
+    }
+    //Inicio escuchas
+    private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
+        crearUsuario();
+        
     }//GEN-LAST:event_crearUsuarioActionPerformed
-            
+
+    private void primerNomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_primerNomKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearUsuario();
+        }
+    }//GEN-LAST:event_primerNomKeyPressed
+
+    private void segundoNomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_segundoNomKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearUsuario();
+        }
+    }//GEN-LAST:event_segundoNomKeyPressed
+
+    private void primerApKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_primerApKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearUsuario();
+        }
+    }//GEN-LAST:event_primerApKeyPressed
+
+    private void segundoApKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_segundoApKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearUsuario();
+        }
+    }//GEN-LAST:event_segundoApKeyPressed
+
+    private void cedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearUsuario();
+        }
+    }//GEN-LAST:event_cedKeyPressed
+
+    private void fechaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearUsuario();}
+    }//GEN-LAST:event_fechaKeyPressed
+
+    private void telKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearUsuario();}
+    }//GEN-LAST:event_telKeyPressed
+
+    private void celKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_celKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearUsuario();}
+    }//GEN-LAST:event_celKeyPressed
+
+    private void passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearUsuario();}
+    }//GEN-LAST:event_passKeyPressed
+
+    private void confirmarpassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_confirmarpassKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearUsuario();}
+    }//GEN-LAST:event_confirmarpassKeyPressed
+
+    private void preguntaSeguridadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_preguntaSeguridadKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearUsuario();}
+    }//GEN-LAST:event_preguntaSeguridadKeyPressed
+
+    private void respuestaSeguridadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_respuestaSeguridadKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearUsuario();}
+    }//GEN-LAST:event_respuestaSeguridadKeyPressed
+
+    private void correoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correoKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearUsuario();}
+    }//GEN-LAST:event_correoKeyPressed
+
+    private void crearUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crearUsuarioKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearUsuario();}
+    }//GEN-LAST:event_crearUsuarioKeyPressed
+    //Fin escuchas
+    
     public static void main(String args[]) {
         
         /* Create and display the form */

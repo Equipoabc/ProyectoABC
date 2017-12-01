@@ -4,6 +4,7 @@ import java.text.*;
 import javax.swing.*;
 import Logica.*;
 import com.itextpdf.text.DocumentException;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
@@ -109,6 +110,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
 
         correo.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         correo.setSelectionColor(new java.awt.Color(102, 102, 255));
+        correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                correoKeyPressed(evt);
+            }
+        });
         jPanel1.add(correo);
         correo.setBounds(510, 180, 210, 20);
 
@@ -119,6 +125,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
 
         codEvento.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         codEvento.setSelectionColor(new java.awt.Color(102, 102, 255));
+        codEvento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                codEventoKeyPressed(evt);
+            }
+        });
         jPanel1.add(codEvento);
         codEvento.setBounds(510, 300, 70, 20);
 
@@ -129,6 +140,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
 
         telefono.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         telefono.setSelectionColor(new java.awt.Color(102, 102, 255));
+        telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                telefonoKeyPressed(evt);
+            }
+        });
         jPanel1.add(telefono);
         telefono.setBounds(510, 240, 210, 20);
 
@@ -144,6 +160,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
 
         cedula.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         cedula.setSelectionColor(new java.awt.Color(102, 102, 255));
+        cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cedulaKeyPressed(evt);
+            }
+        });
         jPanel1.add(cedula);
         cedula.setBounds(160, 280, 210, 20);
 
@@ -154,6 +175,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
 
         segundoApellido.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoApellido.setSelectionColor(new java.awt.Color(102, 102, 255));
+        segundoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                segundoApellidoKeyPressed(evt);
+            }
+        });
         jPanel1.add(segundoApellido);
         segundoApellido.setBounds(160, 230, 210, 20);
 
@@ -164,6 +190,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
 
         primerApellido.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerApellido.setSelectionColor(new java.awt.Color(102, 102, 255));
+        primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                primerApellidoKeyPressed(evt);
+            }
+        });
         jPanel1.add(primerApellido);
         primerApellido.setBounds(160, 190, 210, 20);
 
@@ -174,6 +205,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
 
         segundoNombre.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoNombre.setSelectionColor(new java.awt.Color(102, 102, 255));
+        segundoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                segundoNombreKeyPressed(evt);
+            }
+        });
         jPanel1.add(segundoNombre);
         segundoNombre.setBounds(160, 150, 210, 20);
 
@@ -189,6 +225,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
 
         primerNombre.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerNombre.setSelectionColor(new java.awt.Color(102, 102, 255));
+        primerNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                primerNombreKeyPressed(evt);
+            }
+        });
         jPanel1.add(primerNombre);
         primerNombre.setBounds(160, 110, 210, 20);
 
@@ -204,6 +245,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                 crearParticipanteActionPerformed(evt);
             }
         });
+        crearParticipante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                crearParticipanteKeyPressed(evt);
+            }
+        });
         jPanel1.add(crearParticipante);
         crearParticipante.setBounds(500, 350, 140, 90);
 
@@ -215,6 +261,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         fecha.setMinSelectableDate(new java.util.Date(-1577901492000L));
         fecha.setRequestFocusEnabled(false);
         fecha.setVerifyInputWhenFocusTarget(false);
+        fecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fechaKeyPressed(evt);
+            }
+        });
         jPanel1.add(fecha);
         fecha.setBounds(510, 120, 210, 20);
 
@@ -229,24 +280,30 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         precioLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         precioLabel1.setText("Precio:");
         jPanel1.add(precioLabel1);
-        precioLabel1.setBounds(80, 350, 110, 18);
+        precioLabel1.setBounds(80, 350, 110, 17);
 
         nombreEventoLabel2.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         nombreEventoLabel2.setText("Nombre Evento:");
         jPanel1.add(nombreEventoLabel2);
-        nombreEventoLabel2.setBounds(30, 320, 110, 18);
+        nombreEventoLabel2.setBounds(30, 320, 110, 17);
 
         dineroLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         dineroLabel.setText("Dinero:");
         jPanel1.add(dineroLabel);
-        dineroLabel.setBounds(80, 380, 50, 18);
+        dineroLabel.setBounds(80, 380, 50, 17);
 
         cambioLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cambioLabel.setText("Cambio:");
         jPanel1.add(cambioLabel);
-        cambioLabel.setBounds(80, 410, 50, 18);
+        cambioLabel.setBounds(80, 410, 50, 17);
+
+        dinero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dineroKeyPressed(evt);
+            }
+        });
         jPanel1.add(dinero);
-        dinero.setBounds(140, 380, 220, 20);
+        dinero.setBounds(140, 380, 220, 19);
 
         cambioLabelEditar.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(cambioLabelEditar);
@@ -261,8 +318,13 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                 consultarBotonActionPerformed(evt);
             }
         });
+        consultarBoton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                consultarBotonKeyPressed(evt);
+            }
+        });
         jPanel1.add(consultarBoton);
-        consultarBoton.setBounds(620, 290, 111, 45);
+        consultarBoton.setBounds(620, 290, 110, 44);
 
         continuarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         continuarBoton.setBorder(null);
@@ -272,6 +334,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         continuarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 continuarBotonActionPerformed(evt);
+            }
+        });
+        continuarBoton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                continuarBotonKeyPressed(evt);
             }
         });
         jPanel1.add(continuarBoton);
@@ -306,8 +373,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
-    private void crearParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearParticipanteActionPerformed
-        
+    private void crearParticipante(){
         String primerNom, segundoNom, primerAp, segundoAp, ced,
                 fechaNacimiento, tel, email, codigoEvento, validar = "";
         fechaNacimiento = "";
@@ -381,6 +447,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                         cambioLabel.setVisible(true);
                         cambioLabelEditar.setVisible(true);
                         continuarBoton.setVisible(true);
+                        crearParticipante.setEnabled(false);
                         
                     }
                     else{
@@ -399,10 +466,14 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                     break;
             }
         }
+    }
+    
+    private void crearParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearParticipanteActionPerformed
+        
+        crearParticipante();
     }//GEN-LAST:event_crearParticipanteActionPerformed
     
-    private void consultarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBotonActionPerformed
-        // TODO add your handling code here:
+    private void consultar() {
         String id = cedula.getText();
         String id_evento = codEvento.getText();
         if (id_evento.equals("")) {
@@ -424,10 +495,14 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
             
         }
+    }
+    
+    private void consultarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBotonActionPerformed
+
+        consultar();
     }//GEN-LAST:event_consultarBotonActionPerformed
     
-    private void continuarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarBotonActionPerformed
-        // TODO add your handling code here:
+    private void continuar(){
         Reportes recibo = new Reportes();
         String cod_evento = evento.getId_evento();
         String nombre_evento = evento.getNombre_evento();
@@ -472,6 +547,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                     cambioLabelEditar.setText("");
                     cedula.setText("");
                     codEvento.setText("");
+                    crearParticipante.setEnabled(true);
                     
                 } catch (IOException ex) {
                     Logger.getLogger(GUI_RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
@@ -495,7 +571,62 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
             
         }
+    }
+    private void continuarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarBotonActionPerformed
+        continuar();
     }//GEN-LAST:event_continuarBotonActionPerformed
+
+    private void codEventoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codEventoKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){consultar();}
+    }//GEN-LAST:event_codEventoKeyPressed
+
+    private void primerNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_primerNombreKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
+    }//GEN-LAST:event_primerNombreKeyPressed
+
+    private void continuarBotonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_continuarBotonKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){continuar();}
+    }//GEN-LAST:event_continuarBotonKeyPressed
+
+    private void dineroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dineroKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){continuar();}
+    }//GEN-LAST:event_dineroKeyPressed
+
+    private void consultarBotonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_consultarBotonKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){consultar();}
+    }//GEN-LAST:event_consultarBotonKeyPressed
+
+    private void segundoNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_segundoNombreKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
+    }//GEN-LAST:event_segundoNombreKeyPressed
+
+    private void primerApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_primerApellidoKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
+    }//GEN-LAST:event_primerApellidoKeyPressed
+
+    private void segundoApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_segundoApellidoKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
+    }//GEN-LAST:event_segundoApellidoKeyPressed
+
+    private void cedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
+    }//GEN-LAST:event_cedulaKeyPressed
+
+    private void fechaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
+    }//GEN-LAST:event_fechaKeyPressed
+
+    private void correoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correoKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
+    }//GEN-LAST:event_correoKeyPressed
+
+    private void telefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
+    }//GEN-LAST:event_telefonoKeyPressed
+
+    private void crearParticipanteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crearParticipanteKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
+    }//GEN-LAST:event_crearParticipanteKeyPressed
     
     public static void main(String args[]){
         
@@ -543,5 +674,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     private javax.swing.JTextField telefono;
     private javax.swing.JLabel telefonoLabel;
     // End of variables declaration//GEN-END:variables
+
+    
     
 }

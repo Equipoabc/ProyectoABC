@@ -4,6 +4,7 @@ import Controladores.*;
 import java.text.*;
 import javax.swing.*;
 import Logica.*;
+import java.awt.event.KeyEvent;
 import java.util.Calendar;
 import java.util.Date;
 //import java.util.Date;
@@ -83,6 +84,11 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
 
         tema.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         tema.setSelectionColor(new java.awt.Color(102, 102, 255));
+        tema.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                temaKeyPressed(evt);
+            }
+        });
         jPanel1.add(tema);
         tema.setBounds(400, 250, 180, 20);
 
@@ -103,6 +109,11 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
 
         lugar.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         lugar.setSelectionColor(new java.awt.Color(102, 102, 255));
+        lugar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lugarKeyPressed(evt);
+            }
+        });
         jPanel1.add(lugar);
         lugar.setBounds(400, 200, 180, 20);
 
@@ -113,6 +124,11 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
 
         precio.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         precio.setSelectionColor(new java.awt.Color(102, 102, 255));
+        precio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                precioKeyPressed(evt);
+            }
+        });
         jPanel1.add(precio);
         precio.setBounds(110, 250, 180, 20);
 
@@ -128,6 +144,11 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
 
         nombre.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         nombre.setSelectionColor(new java.awt.Color(102, 102, 255));
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nombreKeyPressed(evt);
+            }
+        });
         jPanel1.add(nombre);
         nombre.setBounds(110, 150, 180, 20);
 
@@ -143,6 +164,11 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
 
         codigo.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         codigo.setSelectionColor(new java.awt.Color(102, 102, 255));
+        codigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                codigoKeyPressed(evt);
+            }
+        });
         jPanel1.add(codigo);
         codigo.setBounds(110, 100, 90, 20);
 
@@ -158,6 +184,11 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
                 crearEventoActionPerformed(evt);
             }
         });
+        crearEvento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                crearEventoKeyPressed(evt);
+            }
+        });
         jPanel1.add(crearEvento);
         crearEvento.setBounds(170, 290, 160, 70);
 
@@ -169,12 +200,22 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         fecha.setMinSelectableDate(new java.util.Date(-1262282319000L));
         fecha.setRequestFocusEnabled(false);
         fecha.setVerifyInputWhenFocusTarget(false);
+        fecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fechaKeyPressed(evt);
+            }
+        });
         jPanel1.add(fecha);
         fecha.setBounds(110, 200, 180, 20);
 
         cupos.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         cupos.setAutoscrolls(true);
         cupos.setFocusable(false);
+        cupos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cuposKeyPressed(evt);
+            }
+        });
         jPanel1.add(cupos);
         cupos.setBounds(400, 100, 60, 30);
 
@@ -182,6 +223,11 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         horas.setForeground(new java.awt.Color(102, 102, 255));
         horas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         horas.setFocusable(false);
+        horas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                horasKeyPressed(evt);
+            }
+        });
         jPanel1.add(horas);
         horas.setBounds(400, 140, 60, 30);
 
@@ -189,6 +235,11 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         minutos.setForeground(new java.awt.Color(102, 102, 255));
         minutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "15", "30", "45" }));
         minutos.setFocusable(false);
+        minutos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                minutosKeyPressed(evt);
+            }
+        });
         jPanel1.add(minutos);
         minutos.setBounds(520, 140, 50, 30);
 
@@ -231,8 +282,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
-    private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
-        
+    private void crearEvento(){
         String nom, cod, date = "", prec, cupo, lug, tem, dur, hora, min, validar = "";
         nom = nombre.getText();
         cod = codigo.getText();
@@ -282,8 +332,73 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
                     break;
             }
         }
+    }
+    private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
+        
+        crearEvento();
     }//GEN-LAST:event_crearEventoActionPerformed
-    
+
+    //Inicio eventos del teclado
+    private void crearEventoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crearEventoKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_crearEventoKeyPressed
+
+    private void codigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_codigoKeyPressed
+
+    private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_nombreKeyPressed
+
+    private void precioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_precioKeyPressed
+
+    private void fechaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_fechaKeyPressed
+
+    private void horasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_horasKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_horasKeyPressed
+
+    private void minutosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_minutosKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_minutosKeyPressed
+
+    private void lugarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lugarKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_lugarKeyPressed
+
+    private void temaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_temaKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_temaKeyPressed
+
+    private void cuposKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuposKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            crearEvento();
+        }
+    }//GEN-LAST:event_cuposKeyPressed
+    //Fin eventos del teclado
     /**
      * @param args the command line arguments
      */

@@ -2,6 +2,7 @@ package GUI;
 import Controladores.*;
 import javax.swing.*;
 import Logica.*;
+import java.awt.event.KeyEvent;
 
 public class GUI_EliminarPreins extends javax.swing.JFrame {
     
@@ -59,6 +60,11 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
 
         codEvento.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         codEvento.setSelectionColor(new java.awt.Color(102, 102, 255));
+        codEvento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                codEventoKeyPressed(evt);
+            }
+        });
         jPanel1.add(codEvento);
         codEvento.setBounds(300, 280, 150, 30);
 
@@ -69,6 +75,11 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
 
         cedula.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         cedula.setSelectionColor(new java.awt.Color(102, 102, 255));
+        cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cedulaKeyPressed(evt);
+            }
+        });
         jPanel1.add(cedula);
         cedula.setBounds(300, 180, 150, 30);
 
@@ -87,6 +98,11 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarActionPerformed(evt);
+            }
+        });
+        eliminar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                eliminarKeyPressed(evt);
             }
         });
         jPanel1.add(eliminar);
@@ -121,8 +137,7 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
     
-    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        
+    private void eliminar(){
         String id_evento = codEvento.getText();
         String id_participante = cedula.getText();
         
@@ -169,7 +184,23 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El participante " + id_participante + " no se encuentra pre-inscrito al evento " + id_evento + ".");
             }
         }
+    }
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        
+        eliminar();
     }//GEN-LAST:event_eliminarActionPerformed
+
+    private void cedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){eliminar();}
+    }//GEN-LAST:event_cedulaKeyPressed
+
+    private void codEventoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codEventoKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){eliminar();}
+    }//GEN-LAST:event_codEventoKeyPressed
+
+    private void eliminarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eliminarKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){eliminar();}
+    }//GEN-LAST:event_eliminarKeyPressed
     
     public static void main(String args[]){
         

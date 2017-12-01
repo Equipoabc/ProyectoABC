@@ -4,11 +4,12 @@ import Controladores.*;
 import javax.swing.*;
 import Logica.*;
 import com.itextpdf.text.DocumentException;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GUI_Certificados extends javax.swing.JFrame { 
+public class GUI_Certificados extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorParticipante controladorParticipante;
@@ -77,6 +78,11 @@ public class GUI_Certificados extends javax.swing.JFrame {
                 descargarActionPerformed(evt);
             }
         });
+        descargar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                descargarKeyPressed(evt);
+            }
+        });
         jPanel1.add(descargar);
         descargar.setBounds(480, 350, 140, 90);
 
@@ -90,6 +96,11 @@ public class GUI_Certificados extends javax.swing.JFrame {
         generar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generarActionPerformed(evt);
+            }
+        });
+        generar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                generarKeyPressed(evt);
             }
         });
         jPanel1.add(generar);
@@ -117,7 +128,7 @@ public class GUI_Certificados extends javax.swing.JFrame {
 
         nombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(nombreLabel);
-        nombreLabel.setBounds(120, 260, 230, 30);
+        nombreLabel.setBounds(140, 260, 230, 30);
 
         fecha.setFont(new java.awt.Font("Cambria", 2, 8)); // NOI18N
         jPanel1.add(fecha);
@@ -149,8 +160,8 @@ public class GUI_Certificados extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarActionPerformed
+    
+    private void descargarCertificado(){
         
         String id_participante = cedula.getText();
         String id_evento = codEvento.getText();
@@ -161,19 +172,19 @@ public class GUI_Certificados extends javax.swing.JFrame {
         Reportes certificado = new Reportes();
         
         if (id_evento.equals("") || id_participante.equals("")) {
-
+            
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
         } else if (!validaciones.validarNumero(id_evento) || !validaciones.validarNumero(id_participante)) {
-
+            
             JOptionPane.showMessageDialog(null, "Los campos deben ser númericos.");
         } else {
-          
+            
             participanteEvento = controladorParticipante.consultarPreinscripcion(id_participante, id_evento);
             participante = controladorParticipante.consultarDatosParticipante(id_participante);
             evento = controladorEvento.consultarDatosEvento(id_evento);
             
             if (participante == null) {
-                JOptionPane.showMessageDialog(null, "El participante no existe.");    
+                JOptionPane.showMessageDialog(null, "El participante no existe.");
             }
             else if (evento == null){
                 JOptionPane.showMessageDialog(null, "El evento no existe.");
@@ -182,16 +193,16 @@ public class GUI_Certificados extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El participante no ha realizado el pago.");
             }
             else if (participanteEvento == null){
-                nombre = participante.getPrimer_nombre()+" "+ participante.getSegundo_nombre() 
-                    + " "+participante.getPrimer_apellido() + " "+ participante.getSegundo_apellido();
+                nombre = participante.getPrimer_nombre()+" "+ participante.getSegundo_nombre()
+                        + " "+participante.getPrimer_apellido() + " "+ participante.getSegundo_apellido();
                 JOptionPane.showMessageDialog(null, "El participante "+ nombre +" no se"
                         + " encuentra inscrito en el evento "+ evento.getNombre_evento() +".");
             }
             
             else {
-                nombre = participante.getPrimer_nombre()+" "+ participante.getSegundo_nombre() 
-                    + " "+participante.getPrimer_apellido() + " "+ participante.getSegundo_apellido();
-                ced = participante.getCedula_op();
+                nombre = participante.getPrimer_nombre()+" "+ participante.getSegundo_nombre()
+                        + " "+participante.getPrimer_apellido() + " "+ participante.getSegundo_apellido();
+                ced = participante.getCedula_pa();
                 evento = controladorEvento.consultarDatosEvento(id_evento);
                 nombreEvento = evento.getNombre_evento();
                 fec = evento.getFecha();
@@ -202,58 +213,81 @@ public class GUI_Certificados extends javax.swing.JFrame {
                     Logger.getLogger(GUI_Certificados.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-                    
+            
         }
+    }
+    
+    private void descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarActionPerformed
+        
+        descargarCertificado();        
     }//GEN-LAST:event_descargarActionPerformed
-
-    private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed
-        // TODO add your handling code here:
+    
+    private void generarVistaPrevia(){
+        
         String id_participante = cedula.getText();
         String id_evento = codEvento.getText();
         
         if (id_evento.equals("") || id_participante.equals("")) {
-
+            
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
         } else if (!validaciones.validarNumero(id_evento) || !validaciones.validarNumero(id_participante)) {
-
+            
             JOptionPane.showMessageDialog(null, "Los campos deben ser númericos.");
         } else {
-
+            
             participanteEvento = controladorParticipante.consultarPreinscripcion(id_participante, id_evento);
             participante = controladorParticipante.consultarDatosParticipante(id_participante);
             evento = controladorEvento.consultarDatosEvento(id_evento);
-
+            
             if (participanteEvento != null) {
                 
                 nombreLabel.setText(participante.getPrimer_nombre()+ " "+ participante.getSegundo_nombre() + " " +
                         participante.getPrimer_apellido() + " " + participante.getSegundo_apellido());
                 fecha.setText(evento.getFecha());
                 eventoLabel.setText(evento.getNombre_evento());
- 
+                
             } else if (participante != null){
-
-                    JOptionPane.showMessageDialog(null, "El participante "+ id_participante +" no se"
-                    + " encuentra inscrito en el evento "+ id_evento+"."); 
-                    
+                
+                JOptionPane.showMessageDialog(null, "El participante "+ id_participante +" no se"
+                        + " encuentra inscrito en el evento "+ id_evento+".");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "El participante no existe.");
-            
+                
                 cedula.setText(null);
-                codEvento.setText(null);   
+                codEvento.setText(null);
             }
-        }        
+        }
+    }
+    
+    private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed
+        
+        generarVistaPrevia();
     }//GEN-LAST:event_generarActionPerformed
-
+    
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        // TODO add your handling code here:
+        
         GUI_Operador oper = new GUI_Operador();
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
-
+    
+    private void generarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_generarKeyPressed
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            generarVistaPrevia();
+        }
+    }//GEN-LAST:event_generarKeyPressed
+    
+    private void descargarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descargarKeyPressed
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            descargarCertificado();
+        }
+    }//GEN-LAST:event_descargarKeyPressed
+    
     public static void main(String args[]){
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable(){
             
             public void run(){
