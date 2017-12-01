@@ -6,7 +6,7 @@
 package DAO;
 import java.sql.*;
 import Logica.*;
-import Conexion.*;
+import Conexion.*; 
 
 /**
  *
@@ -26,6 +26,7 @@ public class DaoAdministrador {
         
         String sql;
         Administrador administrador = new Administrador();
+        System.out.println("a");
 
         sql = "SELECT usuario, contrasena FROM Administradores WHERE usuario = '" + user + "';";
         
