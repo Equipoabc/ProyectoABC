@@ -180,6 +180,11 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
 
         consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
+        consultarLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                consultarLabelKeyPressed(evt);
+            }
+        });
         jPanel1.add(consultarLabel);
         consultarLabel.setBounds(50, 220, 140, 20);
 
@@ -492,6 +497,10 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     private void botonConsultarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botonConsultarKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonConsultarKeyPressed
+
+    private void consultarLabelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_consultarLabelKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_consultarLabelKeyPressed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
