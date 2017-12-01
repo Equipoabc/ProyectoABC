@@ -195,6 +195,11 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
                 botonConsultarActionPerformed(evt);
             }
         });
+        botonConsultar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                botonConsultarKeyPressed(evt);
+            }
+        });
         jPanel1.add(botonConsultar);
         botonConsultar.setBounds(40, 250, 160, 70);
 
@@ -254,11 +259,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         minutos.setForeground(new java.awt.Color(102, 102, 255));
         minutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "15", "30", "45" }));
         minutos.setFocusable(false);
-        minutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                minutosActionPerformed(evt);
-            }
-        });
         jPanel1.add(minutos);
         minutos.setBounds(680, 210, 50, 20);
 
@@ -489,9 +489,9 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_botonEliminarActionPerformed
 
-    private void minutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutosActionPerformed
+    private void botonConsultarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botonConsultarKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_minutosActionPerformed
+    }//GEN-LAST:event_botonConsultarKeyPressed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
