@@ -32,8 +32,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
         validaciones = new Validaciones();
-        fecha.setMaxSelectableDate(GetDateNow());
-        fecha.getDateEditor().setEnabled(false);
         botonAceptar.setEnabled(false);
     }
     
@@ -42,22 +40,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         return currentDate.getTime();
     }
     
-    public static Date parseFecha(String fecha){
-        
-        fecha = fecha.replace("-","/") ;
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-        Date fechaDate = null;
-        try {
-            fechaDate = formato.parse(fecha);
-        }
-        catch (ParseException ex)
-        {
-            System.out.println("Error: " + ex);
-        }
-        return fechaDate;
-    }
-    
-    
+ 
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -71,11 +54,8 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         primerNombreLabel7 = new javax.swing.JLabel();
         tel = new javax.swing.JTextField();
         primerNombreLabel6 = new javax.swing.JLabel();
-        primerNombreLabel5 = new javax.swing.JLabel();
         estado = new javax.swing.JComboBox<>();
         primerNombreLabel4 = new javax.swing.JLabel();
-        ced = new javax.swing.JTextField();
-        primerNombreLabel3 = new javax.swing.JLabel();
         segundoAp = new javax.swing.JTextField();
         primerNombreLabel2 = new javax.swing.JLabel();
         primerAp = new javax.swing.JTextField();
@@ -85,7 +65,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         primerNombreLabel = new javax.swing.JLabel();
         consultarLabel = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
-        fecha = new com.toedter.calendar.JDateChooser();
         primerNom = new javax.swing.JTextField();
         primerNombreLabel9 = new javax.swing.JLabel();
         botonAceptar = new javax.swing.JButton();
@@ -149,11 +128,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         jPanel1.add(primerNombreLabel6);
         primerNombreLabel6.setBounds(520, 190, 140, 30);
 
-        primerNombreLabel5.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel5.setText("Fecha Nacimiento:");
-        jPanel1.add(primerNombreLabel5);
-        primerNombreLabel5.setBounds(520, 90, 120, 40);
-
         estado.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         estado.setForeground(new java.awt.Color(102, 102, 255));
         estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
@@ -165,16 +139,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         primerNombreLabel4.setText("Ingresar Cédula:");
         jPanel1.add(primerNombreLabel4);
         primerNombreLabel4.setBounds(70, 180, 100, 40);
-
-        ced.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        ced.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(ced);
-        ced.setBounds(340, 350, 150, 20);
-
-        primerNombreLabel3.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel3.setText("Cédula:");
-        jPanel1.add(primerNombreLabel3);
-        primerNombreLabel3.setBounds(230, 350, 130, 30);
 
         segundoAp.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoAp.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -230,15 +194,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(botonConsultar);
         botonConsultar.setBounds(40, 250, 160, 70);
-
-        fecha.setBackground(new java.awt.Color(255, 255, 255));
-        fecha.setForeground(new java.awt.Color(255, 255, 255));
-        fecha.setFocusable(false);
-        fecha.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
-        fecha.setRequestFocusEnabled(false);
-        fecha.setVerifyInputWhenFocusTarget(false);
-        jPanel1.add(fecha);
-        fecha.setBounds(630, 100, 140, 20);
 
         primerNom.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerNom.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -344,8 +299,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                 segundoNom.setText(operador.getSegundo_nombre());
                 primerAp.setText(operador.getPrimer_apellido());
                 segundoAp.setText(operador.getSegundo_apellido());
-                ced.setText(operador.getCedula_op());
-                fecha.setDate(parseFecha(operador.getFecha_nacimiento()));
                 correo.setText(operador.getEmail());
                 tel.setText(operador.getTelefono());
                 cel.setText(operador.getCelular());
@@ -358,8 +311,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                     estado.setSelectedIndex(1);
                 }
                 
-                JOptionPane.showMessageDialog(null, "Los datos del usuario se han cargado exitosamente.");
-                
             } else if (gerente != null) {
                 
                 tipoUsuario.setSelectedIndex(1);
@@ -367,8 +318,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                 segundoNom.setText(gerente.getSegundo_nombre());
                 primerAp.setText(gerente.getPrimer_apellido());
                 segundoAp.setText(gerente.getSegundo_apellido());
-                ced.setText(gerente.getCedula_ge());
-                fecha.setDate(parseFecha(gerente.getFecha_nacimiento()));
                 correo.setText(gerente.getEmail());
                 tel.setText(gerente.getTelefono());
                 cel.setText(gerente.getCelular());
@@ -391,11 +340,9 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                 segundoNom.setText(null);
                 primerAp.setText(null);
                 segundoAp.setText(null);
-                ced.setText(null);
                 tel.setText(null);
                 cel.setText(null);
                 correo.setText(null);
-                fecha.setDate(null);
             }
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
@@ -404,41 +351,27 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
         
         botonAceptar.setEnabled(false);
         String primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, tipo,
-                telefono, celular, email, estadoStr, cedulaBusqueda, fechaNacimiento = "", validar = "";
-        LocalDate fechaNac = LocalDate.now();
+                telefono, celular, email, estadoStr, cedulaBusqueda,  validar = "";     
         primerNombre = primerNom.getText();
         segundoNombre = segundoNom.getText();
         primerApellido = primerAp.getText();
         segundoApellido = segundoAp.getText();
-        cedula = ced.getText();
         tipo = (String) tipoUsuario.getSelectedItem();
         telefono = tel.getText();
         celular = cel.getText();
         email = correo.getText();
         estadoStr = (String) estado.getSelectedItem();
         cedulaBusqueda = consultarLabel.getText();
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        try {
-            fechaNacimiento = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
-            fechaNac = LocalDate.parse(fechaNacimiento, fmt);
-        } catch(Exception e){
-            validar = "\nDebe ingresar una fecha válida.";
-        }
         
-        LocalDate ahora = LocalDate.now();
-        Period periodo = Period.between(fechaNac, ahora);
-        
-        if (primerNombre.equals("") || primerApellido.equals("") || cedula.equals("") || celular.equals("")
-                || cedulaBusqueda.equals("") || fechaNacimiento.equals("")) {
+        if (primerNombre.equals("") || primerApellido.equals("") ||  celular.equals("")
+                || cedulaBusqueda.equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios." + validar);
         } else if (!validaciones.validarLetras(primerNombre) || !validaciones.validarLetras(segundoNombre) || !validaciones.validarLetras(primerApellido)
                 || !validaciones.validarLetras(segundoApellido)) {
             JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras.");
-        } else if (!validaciones.validarNumero(cedula) || !validaciones.validarNumero(telefono)
+        } else if ( !validaciones.validarNumero(telefono)
                 || !validaciones.validarNumero(cedulaBusqueda) || !validaciones.validarNumero(celular)) {
             JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y celular deben ser de solo numeros.");
-        } else if (periodo.getYears() < 18) {
-            JOptionPane.showMessageDialog(null, "El usuario tiene que ser mayor de edad.");
         }
         else {
             
@@ -447,15 +380,16 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                 
                 if (primerNombre.equals(operador.getPrimer_nombre()) && segundoNombre.equals(operador.getSegundo_nombre())
                         && primerApellido.equals(operador.getPrimer_apellido()) && segundoApellido.equals(operador.getSegundo_apellido())
-                        && cedula.equals(operador.getCedula_op()) && telefono.equals(operador.getTelefono())
+                         && telefono.equals(operador.getTelefono())
                         && celular.equals(operador.getCelular()) && email.equals(operador.getEmail())
                         && tipo.equals("Operador") && estadoStr.equals(operador.getEstado())) {
                     
+                  
                     JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo");
                 } else {
                     int numFilas = controladorOperador.actualizarOperador(cedulaBusqueda, primerNombre,
                             segundoNombre, primerApellido, segundoApellido,
-                            cedula, telefono, celular, email, estadoStr, tipo);
+                            telefono, celular, email, estadoStr, tipo);
                     
                     
                     switch (numFilas) {
@@ -466,7 +400,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                             segundoNom.setText(null);
                             primerAp.setText(null);
                             segundoAp.setText(null);
-                            ced.setText(null);
                             tel.setText(null);
                             cel.setText(null);
                             correo.setText(null);
@@ -490,15 +423,15 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                 
                 if (primerNombre.equals(gerente.getPrimer_nombre()) && segundoNombre.equals(gerente.getSegundo_nombre())
                         && primerApellido.equals(gerente.getPrimer_apellido()) && segundoApellido.equals(gerente.getSegundo_apellido())
-                        && cedula.equals(gerente.getCedula_ge()) && telefono.equals(gerente.getTelefono())
+                        && telefono.equals(gerente.getTelefono())
                         && celular.equals(gerente.getCelular()) && email.equals(gerente.getEmail())
                         && tipo.equals("Gerente") && estadoStr.equals(gerente.getEstado())) {
                     
                     JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo");
                 } else {
-                    int numFilas = controladorGerente.actualizarOperador(cedulaBusqueda, primerNombre,
+                    int numFilas = controladorGerente.actualizarGerente(cedulaBusqueda, primerNombre,
                             segundoNombre, primerApellido, segundoApellido,
-                            cedula, telefono, celular, email, estadoStr, tipo);
+                             telefono, celular, email, estadoStr, tipo);
                     
                     switch (numFilas) {
                         case 1:
@@ -508,7 +441,6 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
                             segundoNom.setText(null);
                             primerAp.setText(null);
                             segundoAp.setText(null);
-                            ced.setText(null);
                             tel.setText(null);
                             cel.setText(null);
                             correo.setText(null);
@@ -601,12 +533,10 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
-    private javax.swing.JTextField ced;
     private javax.swing.JTextField cel;
     private javax.swing.JTextField consultarLabel;
     private javax.swing.JTextField correo;
     private javax.swing.JComboBox<String> estado;
-    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField primerAp;
@@ -615,9 +545,7 @@ public class GUI_ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel primerNombreLabel1;
     private javax.swing.JLabel primerNombreLabel10;
     private javax.swing.JLabel primerNombreLabel2;
-    private javax.swing.JLabel primerNombreLabel3;
     private javax.swing.JLabel primerNombreLabel4;
-    private javax.swing.JLabel primerNombreLabel5;
     private javax.swing.JLabel primerNombreLabel6;
     private javax.swing.JLabel primerNombreLabel7;
     private javax.swing.JLabel primerNombreLabel8;

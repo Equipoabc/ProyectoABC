@@ -83,11 +83,9 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         primerNombreLabel1 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         segundoNombreLabel = new javax.swing.JLabel();
-        primerNombreLabel = new javax.swing.JLabel();
         consultarLabel = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
-        codigo = new javax.swing.JTextField();
         botonAceptar = new javax.swing.JButton();
         primerNombreLabel10 = new javax.swing.JLabel();
         cupos = new javax.swing.JSpinner();
@@ -146,12 +144,12 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         precio.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         precio.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(precio);
-        precio.setBounds(320, 310, 150, 20);
+        precio.setBounds(320, 270, 150, 20);
 
         primerNombreLabel2.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel2.setText("Precio:");
         jPanel1.add(primerNombreLabel2);
-        primerNombreLabel2.setBounds(260, 310, 100, 30);
+        primerNombreLabel2.setBounds(260, 270, 100, 30);
 
         tema.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         tema.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -161,22 +159,17 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         primerNombreLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel1.setText("Fecha:");
         jPanel1.add(primerNombreLabel1);
-        primerNombreLabel1.setBounds(260, 260, 100, 30);
+        primerNombreLabel1.setBounds(260, 220, 100, 30);
 
         nombre.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         nombre.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(nombre);
-        nombre.setBounds(320, 210, 150, 20);
+        nombre.setBounds(320, 170, 150, 20);
 
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNombreLabel.setText("Nombre:");
         jPanel1.add(segundoNombreLabel);
-        segundoNombreLabel.setBounds(260, 210, 100, 30);
-
-        primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel.setText("Código:");
-        jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(260, 160, 100, 30);
+        segundoNombreLabel.setBounds(260, 170, 100, 30);
 
         consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -205,12 +198,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         fecha.setRequestFocusEnabled(false);
         fecha.setVerifyInputWhenFocusTarget(false);
         jPanel1.add(fecha);
-        fecha.setBounds(320, 260, 150, 20);
-
-        codigo.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        codigo.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(codigo);
-        codigo.setBounds(320, 160, 150, 20);
+        fecha.setBounds(320, 220, 150, 20);
 
         botonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         botonAceptar.setBorder(null);
@@ -325,7 +313,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
             
             if (evento != null) {
                 
-                codigo.setText(evento.getId_evento());
                 nombre.setText(evento.getNombre_evento());
                 fecha.setDate(parseFecha(evento.getFecha()));
                 precio.setText(evento.getPrecio());
@@ -361,7 +348,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null, "El evento no existe.");
                 
-                codigo.setText(null);
                 nombre.setText(null);
                 precio.setText(null);
                 cupos.setValue(0);
@@ -375,8 +361,8 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_botonConsultarActionPerformed
     
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        String codigoConsulta, codigoS, fechaS = "", nombreS, precioS, cuposS, minutosS, duracion, horasS, lugarS, temaS = "", validar = "";
-        codigoS = codigo.getText();
+        String codigoConsulta, fechaS = "", nombreS, precioS, cuposS, minutosS, duracion, horasS, lugarS, temaS = "", validar = "";
+        
         nombreS = nombre.getText();
         precioS = precio.getText();
         cuposS = cupos.getValue().toString();
@@ -393,7 +379,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         temaS = tema.getText();
         codigoConsulta = consultarLabel.getText();
         
-        if (codigoS.equals("") || nombreS.equals("") || fechaS.equals("") || precioS.equals("") || lugarS.equals("")
+        if ( nombreS.equals("") || fechaS.equals("") || precioS.equals("") || lugarS.equals("")
                 || codigoConsulta.equals("")){
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios." + validar);
         } else if(Integer.parseInt(cuposS) < 0){
@@ -402,7 +388,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El campo tema deben ser de solo letras.");
         } else if(!validaciones.validarLetrasYNumerosEspacios(nombreS)){
             JOptionPane.showMessageDialog(null, "El campo nombre deben ser de solo letras, numeros y espacios.");
-        } else if (!validaciones.validarNumero(codigoS) || !validaciones.validarNumero(codigoConsulta)
+        } else if ( !validaciones.validarNumero(codigoConsulta)
                 || !validaciones.validarNumero(precioS) || !validaciones.validarNumero(cuposS)) {
             JOptionPane.showMessageDialog(null, "Los campos de codigo, precio y cupos deben ser de solo numeros.");
         } else {
@@ -410,20 +396,19 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
             if(controladorEvento.comprobar(codigoConsulta) == 1){
                 fechaS = organizarFecha(fechaS);
                 
-                if (nombreS.equals(evento.getNombre_evento()) && codigoS.equals(evento.getId_evento())
+                if (nombreS.equals(evento.getNombre_evento()) 
                         && precioS.equals(evento.getPrecio()) && cuposS.equals(evento.getCupos())
                         && duracion.equals(evento.getDuracion()) && lugarS.equals(evento.getLugar())
                         && temaS.equals(evento.getTema()) && fechaS.equals(evento.getFecha())){
                     JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
                 } else {
-                    int numFilas = controladorEvento.actualizarEvento(codigoConsulta, codigoS, nombreS, precioS, cuposS,
+                    int numFilas = controladorEvento.actualizarEvento(codigoConsulta, nombreS, precioS, cuposS,
                             duracion, lugarS, temaS, fechaS);
                     
                     switch (numFilas) {
                         case 1:
                             JOptionPane.showMessageDialog(null, "Los datos del evento se han modificado exitosamente.");
-                            consultarLabel.setText(null);
-                            codigo.setText(null);
+                            consultarLabel.setText(null);                            
                             nombre.setText(null);
                             precio.setText(null);
                             cupos.setValue(0);
@@ -433,9 +418,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
                             tema.setText(null);
                             fecha.setDate(null);
                             botonAceptar.setEnabled(false);
-                            break;
-                        case 2:
-                            JOptionPane.showMessageDialog(null, "El codigo del evento ha actualizar ya se encuentra registrado.");
                             break;
                         default:
                             JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el evento.");
@@ -532,7 +514,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JButton botonEliminar;
-    private javax.swing.JTextField codigo;
     private javax.swing.JTextField consultarLabel;
     private javax.swing.JSpinner cupos;
     private com.toedter.calendar.JDateChooser fecha;
@@ -543,7 +524,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> minutos;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField precio;
-    private javax.swing.JLabel primerNombreLabel;
     private javax.swing.JLabel primerNombreLabel1;
     private javax.swing.JLabel primerNombreLabel10;
     private javax.swing.JLabel primerNombreLabel11;

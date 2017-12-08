@@ -210,17 +210,17 @@ public class DaoGerente {
         return -1;
     }    
 
-    public int actualizarOperador(String cedulaBusqueda, String primerNombre, String segundoNombre,
-            String primerApellido, String segundoApellido, String cedula, String telefono, String celular, String email,
+    public int actualizarGerente(String cedulaBusqueda, String primerNombre, String segundoNombre,
+            String primerApellido, String segundoApellido, String telefono, String celular, String email,
             String estado, String tipo) {
 
         String sql_guardar, validar, validar2;
 
-        validar = "SELECT cedula_ge FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
-        validar2 = "SELECT cedula_op FROM Operadores WHERE cedula_op = '" + cedula + "';";
+        validar = "SELECT cedula_ge FROM Gerentes WHERE cedula_ge = '" + cedulaBusqueda + "';";
+        validar2 = "SELECT cedula_op FROM Operadores WHERE cedula_op = '" + cedulaBusqueda + "';";
         sql_guardar = "UPDATE Gerentes SET primer_nombre = '" + primerNombre + "', segundo_nombre = '"
                 + segundoNombre + "', primer_apellido = '" + primerApellido + "', segundo_apellido = '"
-                + segundoApellido + "', cedula_ge = '" + cedula + "', telefono = '"
+                + segundoApellido + "', telefono = '"
                 + telefono + "', celular = '" + celular + "', email = '" + email + "', estado = '"
                 + estado + "' WHERE cedula_ge = '" + cedulaBusqueda + "';";
 
@@ -242,19 +242,19 @@ public class DaoGerente {
                 validar2 = consulta2.getString(1);
             }
 
-            if (validar.equals(cedula) && !cedula.equals(cedulaBusqueda)) {
+            /*if (validar.equals(cedula) && !cedula.equals(cedulaBusqueda)) {
 
                 return 2;
             } else if (validar2.equals(cedula)) {
 
                 return 3;
-            } else if (!validar2.equals(cedula) && tipo.equals("Operador")) {
+            } else */if (!validar2.equals(cedulaBusqueda) && tipo.equals("Operador")) {
 
                 // Crear en operador y elimar de gerente.
                 // 1. Traer los datos del gerente y crear el operador.
                 String sql;
                 Operador operador = new Operador();
-                sql = "SELECT * FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
+                sql = "SELECT * FROM Gerentes WHERE cedula_ge = '" + cedulaBusqueda + "';";
                 ResultSet consulta3 = sentencia.executeQuery(sql);
             
                 while(consulta3.next()){
@@ -278,7 +278,7 @@ public class DaoGerente {
                 daoOperador.guardarOperador(operador);
                 
                 // 2. Inhabilitar gerente.
-                sql = "DELETE FROM Gerentes WHERE cedula_ge = '" + cedula + "';";
+                sql = "DELETE FROM Gerentes WHERE cedula_ge = '" + cedulaBusqueda + "';";
                 sentencia.executeUpdate(sql);
                 return 4;
             } else {

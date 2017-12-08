@@ -38,8 +38,8 @@ public class ControladorSede {
         return daoSede.consultarDatosSede(codigoConsultar);
     }
 
-    public int actualizarSede(String codigoConsulta, String codigoS, String nombreS, String ciudadS, String carreraS, String calleS, String barrioS, String telefonoS) {
-        return daoSede.actualizarSede(codigoConsulta, codigoS, nombreS, ciudadS, carreraS, calleS, barrioS, telefonoS);        
+    public int actualizarSede(String codigoConsulta, String nombreS, String ciudadS, String carreraS, String calleS, String barrioS, String telefonoS) {
+        return daoSede.actualizarSede(codigoConsulta, nombreS, ciudadS, carreraS, calleS, barrioS, telefonoS);        
     }
 
     public int comprobar(String codigoConsulta) {

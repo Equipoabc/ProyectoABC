@@ -18,17 +18,16 @@ public class DaoParticipante {
     }
     
     
-    public int actualizarParticipante(String codigoConsulta, String cedulaS, String primerNombreS,
+    public int actualizarParticipante(String codigoConsulta, String primerNombreS,
             String segundoNombreS, String primerApellidoS, String segundoApellidoS, String correoS,
-            String telefonoS, String fechaS) {
+            String telefonoS) {
         
         String sql_guardar, validar;
         
-        validar = "SELECT cedula_pa FROM Participantes WHERE cedula_pa = '" + cedulaS + "';";
-        sql_guardar = "UPDATE Participantes SET cedula_pa = '" + cedulaS + "', primer_nombre = '"
+        validar = "SELECT cedula_pa FROM Participantes WHERE cedula_pa = '" + codigoConsulta + "';";
+        sql_guardar = "UPDATE Participantes SET primer_nombre = '"
                 + primerNombreS + "', segundo_nombre = '" + segundoNombreS + "', primer_apellido = '"
-                + primerApellidoS + "', segundo_apellido = '" + segundoApellidoS + "', fecha_nacimiento = '"
-                + fechaS + "', telefono = '" + telefonoS + "', email = '"
+                + primerApellidoS + "', segundo_apellido = '" + segundoApellidoS +  "', telefono = '" + telefonoS + "', email = '"
                 + correoS + "' WHERE cedula_pa = '" + codigoConsulta + "';";
         
         try {
@@ -41,15 +40,9 @@ public class DaoParticipante {
                 
                 validar = consulta.getString(1);
             }
-            
-            if (validar.equals(cedulaS) && !cedulaS.equals(codigoConsulta)) {
-                
-                return 2;
-            } else {
-                
-                sentencia.executeUpdate(sql_guardar);
-                return 1;
-            }
+            int numFilas = sentencia.executeUpdate(sql_guardar);
+                return numFilas;
+          
         } catch (SQLException e) {
             System.out.println("SQL error: " + e);
         } catch (Exception e) {
@@ -74,11 +67,11 @@ public class DaoParticipante {
         
         // instrucción sql para ingresar una tupla en participantes
         sql_guardar = "INSERT INTO Participantes (cedula_pa, primer_nombre, segundo_nombre, " +
-                "primer_apellido, segundo_apellido, fecha_nacimiento, email, telefono)  " +
+                "primer_apellido, segundo_apellido, email, telefono)  " +
                 " VALUES ('" + pa.getCedula_pa() + "', '" +
                 pa.getPrimer_nombre() +  "', '" + pa.getSegundo_nombre() +  "', '" +
-                pa.getPrimer_apellido() +  "', '" + pa.getSegundo_apellido() + "', '" +
-                pa.getFecha_nacimiento() + "', '" + pa.getEmail() +  "', '" +
+                pa.getPrimer_apellido() +  "', '" + pa.getSegundo_apellido() + "', '" 
+                + "', '" + pa.getEmail() +  "', '" +
                 pa.getTelefono() +   "')" ;
         
         // instrucción sql para ingresar una tupla en Participantes_eventos

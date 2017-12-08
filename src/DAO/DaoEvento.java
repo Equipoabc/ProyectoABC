@@ -138,13 +138,13 @@ public class DaoEvento {
         return -1;
     }
 
-    public int actualizarEvento(String codigoConsulta, String codigoS, String nombreS, String precioS, String cuposS, 
+    public int actualizarEvento(String codigoConsulta,String nombreS, String precioS, String cuposS, 
             String duracion, String lugarS, String temaS, String fechaS) {
 
         String sql_guardar, validar;
 
-        validar = "SELECT id_evento FROM Eventos WHERE id_evento = '" + codigoS + "';";
-        sql_guardar = "UPDATE Eventos SET id_evento = '" + codigoS + "', nombre_evento = '"
+        validar = "SELECT id_evento FROM Eventos WHERE id_evento = '" + codigoConsulta + "';";
+        sql_guardar = "UPDATE Eventos SET nombre_evento = '"
                 + nombreS + "', precio = '" + precioS + "', lugar = '"
                 + lugarS + "', duracion = '" + duracion + "', tema = '"
                 + temaS + "', cupos = '" + cuposS + "', fecha = '"
@@ -161,14 +161,9 @@ public class DaoEvento {
                 validar = consulta.getString(1);
             }
             
-            if (validar.equals(codigoS) && !codigoS.equals(codigoConsulta)) {
-
-                return 2;
-            } else {
-
-                sentencia.executeUpdate(sql_guardar);
-                return 1;
-            }
+            int numFilas = sentencia.executeUpdate(sql_guardar);
+            return numFilas;
+            
         } catch (SQLException e) {
             System.out.println("SQL error: " + e);
         } catch (Exception e) {

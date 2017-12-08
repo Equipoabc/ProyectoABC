@@ -62,11 +62,11 @@ public class ControladorOperador {
         return daoOperador.consultarDatosOperador(cedula);
     }
 
-    public int actualizarOperador(String cedulaBusqueda, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String cedula, String telefono, String celular, String email, String estado, String tipo) {
+    public int actualizarOperador(String cedulaBusqueda, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String telefono, String celular, String email, String estado, String tipo) {
         
         return daoOperador.actualizarOperador(cedulaBusqueda, primerNombre, 
                segundoNombre, primerApellido, segundoApellido,
-               cedula, telefono, celular, email, estado, tipo);
+               telefono, celular, email, estado, tipo);
     }
     public int actualizarContrasena(String cedula, String contrasena) {        
         return daoOperador.actualizarContrasena(cedula, contrasena);

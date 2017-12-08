@@ -112,12 +112,12 @@ public class DaoSede {
         return null;       
     }
 
-    public int actualizarSede(String codigoConsulta, String codigoS, String nombreS, String ciudadS, String carreraS, String calleS, String barrioS, String telefonoS) {
+    public int actualizarSede(String codigoConsulta, String nombreS, String ciudadS, String carreraS, String calleS, String barrioS, String telefonoS) {
        
         String sql_guardar, validar;
 
-        validar = "SELECT id_sede FROM Sedes WHERE id_sede = '" + codigoS + "';";
-        sql_guardar = "UPDATE Sedes SET id_sede = '" + codigoS + "', nombre_sede = '"
+        validar = "SELECT id_sede FROM Sedes WHERE id_sede = '" + codigoConsulta + "';";
+        sql_guardar = "UPDATE Sedes SET id_sede = '" + codigoConsulta + "', nombre_sede = '"
                 + nombreS + "', ciudad = '" + ciudadS + "', calle = '"
                 + calleS + "', carrera = '" + carreraS + "', barrio = '"
                 + barrioS + "', telefono = '" + telefonoS 
@@ -134,14 +134,9 @@ public class DaoSede {
                 validar = consulta.getString(1);
             }
             
-            if (validar.equals(codigoS) && !codigoS.equals(codigoConsulta)) {
-
-                return 2;
-            } else {
-
-                sentencia.executeUpdate(sql_guardar);
-                return 1;
-            }
+                int numFilas = sentencia.executeUpdate(sql_guardar);
+                return numFilas;
+           
         } catch (SQLException e) {
             System.out.println("SQL error: " + e);
         } catch (Exception e) {

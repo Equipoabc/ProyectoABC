@@ -49,8 +49,6 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         barrioLabel = new javax.swing.JLabel();
         ciudad = new javax.swing.JTextField();
         ciudadLabel1 = new javax.swing.JLabel();
-        codigo = new javax.swing.JTextField();
-        codigoLabel = new javax.swing.JLabel();
         primerNombreLabel = new javax.swing.JLabel();
         consultarLabel = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
@@ -121,16 +119,6 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         ciudadLabel1.setText("Ciudad:");
         jPanel1.add(ciudadLabel1);
         ciudadLabel1.setBounds(340, 180, 170, 30);
-
-        codigo.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        codigo.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(codigo);
-        codigo.setBounds(450, 140, 170, 20);
-
-        codigoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        codigoLabel.setText("Código:");
-        jPanel1.add(codigoLabel);
-        codigoLabel.setBounds(340, 140, 180, 30);
 
         primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel.setText("Nombre:");
@@ -244,8 +232,7 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
             sede = controladorSede.consultarDatosSede(codigoConsultar);
             
             if (sede != null) {
-                
-                codigo.setText(sede.getId_sede());
+
                 nombre.setText(sede.getNombre_sede());
                 ciudad.setText(sede.getCiudad());
                 carrera.setText(sede.getCarrera());
@@ -253,13 +240,11 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
                 barrio.setText(sede.getBarrio()); 
                 telefono.setText(sede.getTelefono());
                 
-                JOptionPane.showMessageDialog(null, "Los datos de la sede se han cargado exitosamente.");
                 
             } else {
                 
                 JOptionPane.showMessageDialog(null, "La sede no existe.");
                 
-                codigo.setText(null);
                 nombre.setText(null);
                 ciudad.setText(null);
                 carrera.setText(null);
@@ -274,7 +259,6 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
 
         String codigoConsulta, codigoS, nombreS, ciudadS, carreraS, calleS, barrioS, telefonoS;
         
-        codigoS = codigo.getText();
         nombreS = nombre.getText();
         ciudadS = ciudad.getText();
         carreraS = carrera.getText();
@@ -283,13 +267,13 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         telefonoS = telefono.getText();
         codigoConsulta = consultarLabel.getText();
         
-        if (codigoS.equals("") || nombreS.equals("") || ciudadS.equals("") || carreraS.equals("") || calleS.equals("")
+        if (nombreS.equals("") || ciudadS.equals("") || carreraS.equals("") || calleS.equals("")
                 || telefonoS.equals("") || codigoConsulta.equals("")){
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
         }         else if(!validaciones.validarLetrasYNumerosEspacios(nombreS) || !validaciones.validarLetrasYNumerosEspacios(barrioS)) {
             JOptionPane.showMessageDialog(null, "Los campos nombre y barrio deben ser de solo letras, numeros y espacios.");
         }
-        else if(!validaciones.validarNumero(codigoS) || !validaciones.validarNumero(telefonoS)) {
+        else if( !validaciones.validarNumero(telefonoS)) {
             JOptionPane.showMessageDialog(null, "Los campos codigo y telefono solo pueden ser números.");
         }
         else if(!validaciones.validarLetrasEspacios(ciudadS)) {
@@ -299,21 +283,21 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ha ingresado caracteres invalidos, en carrera y calle solo se puede usar los caracteres espaciales '.' y '-', letras, numeros y espacios.");
         } else {
                        
-            if (nombreS.equals(sede.getNombre_sede()) && codigoS.equals(sede.getId_sede())
+            if (nombreS.equals(sede.getNombre_sede()) 
                     && ciudadS.equals(sede.getCiudad()) && carreraS.equals(sede.getCarrera())
                     && calleS.equals(sede.getCalle()) && barrioS.equals(sede.getBarrio())
                     && telefonoS.equals(sede.getTelefono())){                
                 JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
             } else {                
                 if(controladorSede.comprobar(codigoConsulta) == 1){
-                    int numFilas = controladorSede.actualizarSede(codigoConsulta, codigoS, nombreS, ciudadS,
+                    int numFilas = controladorSede.actualizarSede(codigoConsulta, nombreS, ciudadS,
                         carreraS, calleS, barrioS, telefonoS);
                 
                 switch (numFilas) {
                     case 1:
                         JOptionPane.showMessageDialog(null, "Los datos de la sede se han modificado exitosamente.");
 
-                        codigo.setText(null);
+
                         nombre.setText(null);
                         ciudad.setText(null);
                         carrera.setText(null);
@@ -391,8 +375,6 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
     private javax.swing.JLabel carreraLabel;
     private javax.swing.JTextField ciudad;
     private javax.swing.JLabel ciudadLabel1;
-    private javax.swing.JTextField codigo;
-    private javax.swing.JLabel codigoLabel;
     private javax.swing.JTextField consultarLabel;
     private javax.swing.JLabel ingresarCodigoLabel;
     private javax.swing.JLabel jLabel2;

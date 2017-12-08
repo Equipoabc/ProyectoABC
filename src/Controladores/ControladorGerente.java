@@ -60,11 +60,11 @@ public class ControladorGerente {
         return daoGerente.consultarDatosGerente(cedula);
     }
     
-    public int actualizarOperador(String cedulaBusqueda, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String cedula, String telefono, String celular, String email, String estado, String tipo) {
+    public int actualizarGerente(String cedulaBusqueda, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String telefono, String celular, String email, String estado, String tipo) {
         
-        return daoGerente.actualizarOperador(cedulaBusqueda, primerNombre, 
+        return daoGerente.actualizarGerente(cedulaBusqueda, primerNombre, 
                segundoNombre, primerApellido, segundoApellido,
-               cedula, telefono, celular, email, estado, tipo);
+               telefono, celular, email, estado, tipo);
     }
 
     public int comprobar(String cedula){

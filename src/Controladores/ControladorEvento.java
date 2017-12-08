@@ -49,9 +49,9 @@ public class ControladorEvento {
        return daoEvento.eliminarEvento(id_evento);        
     }
 
-    public int actualizarEvento(String codigoConsulta, String codigoS, String nombreS, String precioS, String cuposS, 
+    public int actualizarEvento(String codigoConsulta, String nombreS, String precioS, String cuposS, 
             String duracion, String lugarS, String temaS, String fechaS) {
-        return daoEvento.actualizarEvento(codigoConsulta, codigoS, nombreS, precioS, cuposS, duracion, lugarS, temaS, fechaS);
+        return daoEvento.actualizarEvento(codigoConsulta, nombreS, precioS, cuposS, duracion, lugarS, temaS, fechaS);
     }
 
     public int comprobar(String codigoConsulta) {
