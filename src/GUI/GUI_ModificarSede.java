@@ -360,7 +360,7 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
 
                 new GUI_CrearUsuario().setVisible(true);
             }
-        });
+        }); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
