@@ -2,6 +2,10 @@ package GUI;
 import Controladores.*;
 import javax.swing.*;
 import Logica.*;
+import com.itextpdf.text.DocumentException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GUI_Escarapelas extends javax.swing.JFrame {
     
@@ -164,7 +168,58 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarActionPerformed
+        String id_participante = cedula.getText();
+        String id_evento = codEvento.getText();
+        String nombre = "";
+        String nombreEvento = "";
+        String ced="";
+        String fec="";
+        Reportes certificado = new Reportes();
         
+        if (id_evento.equals("") || id_participante.equals("")) {
+            
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
+        } else if (!validaciones.validarNumero(id_evento) || !validaciones.validarNumero(id_participante)) {
+            
+            JOptionPane.showMessageDialog(null, "Los campos deben ser númericos.");
+        } else {
+            
+            participanteEvento = controladorParticipante.consultarPreinscripcion(id_participante, id_evento);
+            participante = controladorParticipante.consultarDatosParticipante(id_participante);
+            evento = controladorEvento.consultarDatosEvento(id_evento);
+            
+            if (participante == null) {
+                JOptionPane.showMessageDialog(null, "El participante no existe.");
+            }
+            else if (evento == null){
+                JOptionPane.showMessageDialog(null, "El evento no existe.");
+            }
+            else if (participanteEvento.getEstado_pago().equals("Invalido")){
+                JOptionPane.showMessageDialog(null, "El participante no ha realizado el pago.");
+            }
+            else if (participanteEvento == null){
+                nombre = participante.getPrimer_nombre()+" "+ participante.getSegundo_nombre()
+                        + " "+participante.getPrimer_apellido() + " "+ participante.getSegundo_apellido();
+                JOptionPane.showMessageDialog(null, "El participante "+ nombre +" no se"
+                        + " encuentra inscrito en el evento "+ evento.getNombre_evento() +".");
+            }
+            
+            else {
+                nombre = participante.getPrimer_nombre()+" "+ participante.getSegundo_nombre()
+                        + " "+participante.getPrimer_apellido() + " "+ participante.getSegundo_apellido();
+                ced = participante.getCedula_pa();
+                evento = controladorEvento.consultarDatosEvento(id_evento);
+                nombreEvento = evento.getNombre_evento();
+                fec = evento.getFecha();
+                try {
+                    certificado.imprimirEscarapela(nombre,ced,nombreEvento);
+                    JOptionPane.showMessageDialog(null, "La escarapela de "+nombre+" se ha generado correctamente.");
+                } catch (IOException | DocumentException ex) {
+                    Logger.getLogger(GUI_Certificados.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }       
     }//GEN-LAST:event_descargarActionPerformed
     
     private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed

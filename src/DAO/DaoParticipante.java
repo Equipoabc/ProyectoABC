@@ -240,7 +240,8 @@ public class DaoParticipante {
         validar = "SELECT id_participante FROM participantes_eventos WHERE id_participante = '" + id_participante + "' AND "
                 + "id_evento = '" + id_evento + "' ;";
         sql = "SELECT id_participante, id_evento, estado_pago, cedula_op "
-                + "FROM Participantes_eventos WHERE id_participante = '" + id_participante + "';";
+                + "FROM Participantes_eventos WHERE id_participante = '" + id_participante + "' AND "
+                + "id_evento = '" + id_evento + "';";
         try {
             
             Connection conn = conexion.getConnetion();
@@ -263,10 +264,9 @@ public class DaoParticipante {
                     
                     preInscripcion.setId_participante(consulta2.getString(1));
                     preInscripcion.setId_evento(consulta2.getString(2));
-                    preInscripcion.setEstado_Pago(consulta2.getString(3));
+                    preInscripcion.setEstado_Pago(consulta2.getString(3));                    
                     preInscripcion.setCedula_op(consulta2.getString(4));
-                }
-                
+                }               
                 return preInscripcion;
             }
         } catch (SQLException e) {

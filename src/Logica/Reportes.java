@@ -228,7 +228,7 @@ public class Reportes{
         ColumnText.showTextAligned(over, Element.ALIGN_CENTER, n, 200, 200, 0);
         
         //Se agrega la cedula del participante
-        Phrase nCedula = selector.process("Cedula:  "+cedula);
+        Phrase nCedula = selector.process("Cédula:  "+cedula);
         ColumnText.showTextAligned(over, Element.ALIGN_CENTER, nCedula, 200, 130, 0);
         
         //Se agrega el nombre del evento

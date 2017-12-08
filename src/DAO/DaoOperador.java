@@ -108,7 +108,7 @@ public class DaoOperador {
         
         validar = "SELECT cedula_op FROM Operadores WHERE cedula_op = '" + cedula + "';";
         sql = "SELECT primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cedula_op, fecha_nacimiento, email, telefono, "
-                + "celular, estado, pregunta, contrasena FROM Operadores WHERE cedula_op = '" + cedula + "';";
+                + "celular, estado, pregunta, respuesta, contrasena FROM Operadores WHERE cedula_op = '" + cedula + "';";
         
         try {
             
@@ -163,7 +163,8 @@ public class DaoOperador {
                     operador.setCelular(consulta2.getString(9));
                     operador.setEstado(consulta2.getString(10));
                     operador.setPregunta(consulta2.getString(11));
-                    operador.setContrasena(consulta2.getString(12));
+                    operador.setRespuesta(consulta2.getString(12));
+                    operador.setContrasena(consulta2.getString(13));
                 }
                 
                 return operador;
