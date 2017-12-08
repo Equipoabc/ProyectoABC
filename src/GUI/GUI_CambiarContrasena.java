@@ -23,10 +23,10 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
         
         initComponents();        
         this.setLocationRelativeTo(null);
-        operador = new Operador();
-        gerente = new Gerente();
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
+        operador = new Operador();
+        gerente = new Gerente();
         validaciones = new Validaciones();
         nuevaC.setVisible(false);
         nuevaCon.setVisible(false);
@@ -209,11 +209,10 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
   
     //Inicio escuchas
     private void cambiarPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarPassActionPerformed
-           
+                 
         String respuesta, cedulaBusqueda,nuevaContrasena, confirmar, validar = "";  
         respuesta = respuestaSeguridad.getText();
         cedulaBusqueda = consultarLabel.getText();
-        
         if(validaRespuesta == 0){
             if (operador != null){
                 if(respuesta.equals(operador.getRespuesta())){
@@ -262,6 +261,12 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
                             consultarLabel.setText(null);
                             nuevaCon.setText(null);
                             confirmarCon.setText(null);
+                            respuestaSeguridad.setText(null);
+                            pregunta.setText(null);
+                            nuevaC.setVisible(false);
+                            nuevaCon.setVisible(false);
+                            confirmarC.setVisible(false);
+                            confirmarCon.setVisible(false);
                             validaRespuesta = 0; 
                             break;
                         case 2:
@@ -283,6 +288,10 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
                             consultarLabel.setText(null);
                             nuevaCon.setText(null);
                             confirmarCon.setText(null);
+                            nuevaC.setVisible(false);
+                            nuevaCon.setVisible(false);
+                            confirmarC.setVisible(false);
+                            confirmarCon.setVisible(false);
                             validaRespuesta = 0; 
                             break;
                         case 2:
@@ -317,14 +326,17 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
     }//GEN-LAST:event_cambiarPassKeyPressed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-      
+        operador = new Operador();
+        gerente = new Gerente();      
         String cedula = consultarLabel.getText();
         if (cedula.equals("")) {
 
             JOptionPane.showMessageDialog(null, "El campo cédula de la consulta esta vacio.");
+            consultarLabel.setText(null);
         } else if (!validaciones.validarNumero(cedula)) {
 
             JOptionPane.showMessageDialog(null, "El campo cédula de la consulta debe ser numérico.");
+            consultarLabel.setText(null);
         } else {
 
             operador = controladorOperador.consultarDatosOperador(cedula);
