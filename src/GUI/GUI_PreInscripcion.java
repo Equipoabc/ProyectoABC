@@ -13,6 +13,8 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorParticipante controladorParticipante;
+    ControladorEvento controladorEvento;
+    Evento evento;
     String idOperador;
     
     public GUI_PreInscripcion(){
@@ -20,7 +22,9 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         controladorParticipante = new ControladorParticipante();
+        controladorEvento = new ControladorEvento();
         validaciones = new Validaciones();
+        evento = new Evento();
         fecha.setMaxSelectableDate(GetDateNow());
         fecha.getDateEditor().setEnabled(false);
     }
@@ -233,7 +237,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         segundoNom = segundoNombre.getText();
         primerAp = primerApellido.getText();
         segundoAp = segundoApellido.getText();
-        ced = cedula.getText();
+        ced = cedula.getText();        
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
         try {
@@ -249,7 +253,8 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         
         tel = telefono.getText();
         codigoEvento = codEvento.getText();
-        email = correo.getText();
+        email = correo.getText();        
+       evento = controladorEvento.consultarDatosEvento(codigoEvento);
         
         if (primerNom.equals("") || primerAp.equals("") || ced.equals("") || tel.equals("") || fechaNacimiento.equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios" + validar + ".");
@@ -264,8 +269,14 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         else if (periodo.getYears() < 15) {
             JOptionPane.showMessageDialog(null, "El participante debe ser mínimo de 15 años");
         }
+        else if(evento == null){
+            JOptionPane.showMessageDialog(null, "El evento que ingresó no existe.");
+        }
         else {
-            
+            if(Integer.parseInt(evento.getCupos()) <= 0){
+                 JOptionPane.showMessageDialog(null, "No hay cupos para el evento.");
+            }
+            else {
             int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
                     primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento, "Invalido");
             
@@ -282,6 +293,8 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
                     break;
                 case 2:
                 case 5:
+                    int cuposActuales = Integer.parseInt(evento.getCupos()) - 1;         
+                    controladorEvento.actualizarCupos(codigoEvento, Integer.toString(cuposActuales));
                     JOptionPane.showMessageDialog(null, "La pre-inscripción se ha realizado exitosamente.");
                     primerNombre.setText(null);
                     segundoNombre.setText(null);
@@ -296,6 +309,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Ocurrio un problema al realizar la pre-inscripción.");
                     break;
             }
+        }
         }
     }//GEN-LAST:event_crearParticipanteActionPerformed
     

@@ -149,26 +149,33 @@ public class GUI_Login extends javax.swing.JFrame {
             }
             else if(gen.getCedula_ge().equals(user)){
                 
-                if(gen.getContrasena().equals(cont)){
+                if(gen.getContrasena().equals(cont) && gen.getEstado().equals("Activo")){
                     
                     GUI_Gerente interfazGerente = new GUI_Gerente();
                     interfazGerente.setId(gen.getCedula_ge());
                     interfazGerente.setVisible(true);
                     this.dispose();
                 }
+                else if(gen.getEstado().equals("Inactivo"))
+                {
+                    JOptionPane.showMessageDialog(null, "El usuario no tiene permiso para acceder al sistema.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
                 else {
                     
                     JOptionPane.showMessageDialog(null, "Contraseña incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            else if(ope.getCedula_op().equals(user)){
+            else if(ope.getCedula_op().equals(user) ){
                 
-                if(ope.getContrasena().equals(cont)){
+                if(ope.getContrasena().equals(cont) && ope.getEstado().equals("Activo")){
                     
                     GUI_Operador interfazOperador = new GUI_Operador();
                     interfazOperador.setVisible(true);
                     interfazOperador.setId(ope.getCedula_op());
                     this.dispose();
+                }
+                else if(ope.getEstado().equals("Inactivo")) {
+                    JOptionPane.showMessageDialog(null, "El usuario no tiene permiso para acceder al sistema.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 else {
                     

@@ -57,4 +57,7 @@ public class ControladorEvento {
     public int comprobar(String codigoConsulta) {
         return daoEvento.comprobar(codigoConsulta);
     }
+    public void actualizarCupos(String codEvento, String cupos) {
+        daoEvento.actualizarCupos(codEvento,cupos);
+    }    
 }

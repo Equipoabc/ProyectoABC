@@ -400,6 +400,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         tel = telefono.getText();
         codigoEvento = codEvento.getText();
         email = correo.getText();
+        evento = controladorEvento.consultarDatosEvento(codigoEvento);
         
         if (primerNom.equals("") || primerAp.equals("") || ced.equals("") || tel.equals("") || fechaNacimiento.equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios" + validar + ".");
@@ -414,9 +415,16 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         else if (periodo.getYears() < 15) {
             JOptionPane.showMessageDialog(null, "El participante debe ser mínimo de 15 años");
         }
+        else if(evento == null){
+            JOptionPane.showMessageDialog(null, "El evento que ingresó no existe.");
+        }
         else {
             
-            int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
+            if(Integer.parseInt(evento.getCupos()) <= 0){
+                 JOptionPane.showMessageDialog(null, "No hay cupos para el evento.");
+            }
+            else {
+                int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
                     primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento, "Valido");
             
             switch (numFilas) {
@@ -432,6 +440,8 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                     break;
                 case 2:
                 case 5:
+                    int cuposActuales = Integer.parseInt(evento.getCupos()) - 1;         
+                    controladorEvento.actualizarCupos(codigoEvento, Integer.toString(cuposActuales));
                     JOptionPane.showMessageDialog(null, "La inscripción se ha realizado exitosamente.");
                     evento = controladorEvento.consultarDatosEvento(codigoEvento);
                     nombreEventoEditar.setText(evento.getNombre_evento());
@@ -465,6 +475,9 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Ocurrio un problema al realizar la inscripción.");
                     break;
             }
+            
+        }
+            
         }
     }
     

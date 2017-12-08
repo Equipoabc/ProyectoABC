@@ -23,7 +23,7 @@ public class DaoGerente {
         String sql;
         Gerente gerente = new Gerente();
 
-        sql = "SELECT cedula_ge, contrasena FROM Gerentes WHERE cedula_ge = '" + user + "';";
+        sql = "SELECT cedula_ge, contrasena, estado FROM Gerentes WHERE cedula_ge = '" + user + "';";
 
         try {
 
@@ -35,6 +35,7 @@ public class DaoGerente {
 
                 gerente.setCedula_ge(consulta.getString(1));
                 gerente.setContrasena(consulta.getString(2));
+                gerente.setEstado(consulta.getString(3));
             }
 
             return gerente;

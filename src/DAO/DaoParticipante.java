@@ -70,8 +70,8 @@ public class DaoParticipante {
                 "primer_apellido, segundo_apellido, email, telefono)  " +
                 " VALUES ('" + pa.getCedula_pa() + "', '" +
                 pa.getPrimer_nombre() +  "', '" + pa.getSegundo_nombre() +  "', '" +
-                pa.getPrimer_apellido() +  "', '" + pa.getSegundo_apellido() + "', '" 
-                + "', '" + pa.getEmail() +  "', '" +
+                pa.getPrimer_apellido() +  "', '" + pa.getSegundo_apellido() +
+                "', '" + pa.getEmail() +  "', '" +
                 pa.getTelefono() +   "')" ;
         
         // instrucción sql para ingresar una tupla en Participantes_eventos
@@ -134,6 +134,7 @@ public class DaoParticipante {
                 }
                 else if (validar.equals(pa.getCedula_pa())){
                     sentencia.executeUpdate(sql_guardarPar_Ev);
+                    
                     return 5;
                 }
                 

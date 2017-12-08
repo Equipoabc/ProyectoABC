@@ -27,7 +27,7 @@ public class DaoOperador {
         String sql;
         Operador operador = new Operador();
         
-        sql = "SELECT cedula_op, contrasena FROM Operadores WHERE cedula_op = '" + user + "';";
+        sql = "SELECT cedula_op, contrasena, estado FROM Operadores WHERE cedula_op = '" + user + "';";
         
         try {
             
@@ -39,6 +39,7 @@ public class DaoOperador {
                 
                 operador.setCedula_op(consulta.getString(1));
                 operador.setContrasena(consulta.getString(2));
+                operador.setEstado(consulta.getString(3));
             }
             
             return operador;
