@@ -6,6 +6,7 @@ import Logica.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -27,6 +28,12 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         evento = new Evento();
         fecha.setMaxSelectableDate(GetDateNow());
         fecha.getDateEditor().setEnabled(false);
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = controladorEvento.llenarCombo();
+        
+        for(int i=0; i < lista.size(); i++){
+            listaEventos.addItem(lista.get(i));
+        }
     }
     
     private Date GetDateNow() {
@@ -47,7 +54,6 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         botonCancelar = new javax.swing.JButton();
         correo = new javax.swing.JTextField();
         correoLabel = new javax.swing.JLabel();
-        codEvento = new javax.swing.JTextField();
         telefonoLabel = new javax.swing.JLabel();
         telefono = new javax.swing.JTextField();
         codEventoLabel = new javax.swing.JLabel();
@@ -64,6 +70,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         primerNombre = new javax.swing.JTextField();
         crearParticipante = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
+        listaEventos = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,11 +102,6 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         correoLabel.setText("Email:");
         jPanel1.add(correoLabel);
         correoLabel.setBounds(390, 170, 120, 30);
-
-        codEvento.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        codEvento.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(codEvento);
-        codEvento.setBounds(510, 300, 60, 20);
 
         telefonoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         telefonoLabel.setText("Teléfono:");
@@ -197,6 +199,14 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         jPanel1.add(fecha);
         fecha.setBounds(510, 120, 210, 20);
 
+        listaEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaEventosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listaEventos);
+        listaEventos.setBounds(510, 300, 140, 20);
+
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PreInscripcionFondo.png"))); // NOI18N
@@ -229,7 +239,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     private void crearParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearParticipanteActionPerformed
         
         String primerNom, segundoNom, primerAp, segundoAp, ced,
-                fechaNacimiento, tel, email, codigoEvento, validar = "";
+                fechaNacimiento, tel, email, validar = "";
         fechaNacimiento = "";
         LocalDate fechaNac = LocalDate.now();
         
@@ -252,7 +262,9 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         Period periodo = Period.between(fechaNac, ahora);
         
         tel = telefono.getText();
-        codigoEvento = codEvento.getText();
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String codigoEvento = partes[0];
         email = correo.getText();        
        evento = controladorEvento.consultarDatosEvento(codigoEvento);
         
@@ -302,7 +314,6 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
                     segundoApellido.setText(null);
                     cedula.setText(null);
                     telefono.setText(null);
-                    codEvento.setText(null);
                     correo.setText(null);
                     break;
                 default:
@@ -312,6 +323,10 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_crearParticipanteActionPerformed
+
+    private void listaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaEventosActionPerformed
     
     public static void main(String args[]){
         
@@ -329,7 +344,6 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelar;
     private javax.swing.JTextField cedula;
     private javax.swing.JLabel cedulaLabel;
-    private javax.swing.JTextField codEvento;
     private javax.swing.JLabel codEventoLabel;
     private javax.swing.JTextField correo;
     private javax.swing.JLabel correoLabel;
@@ -338,6 +352,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel fechaLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> listaEventos;
     private javax.swing.JTextField primerApellido;
     private javax.swing.JLabel primerApellidoLabel;
     private javax.swing.JTextField primerNombre;

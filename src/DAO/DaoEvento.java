@@ -8,6 +8,7 @@ package DAO;
 import java.sql.*;
 import Logica.*;
 import Conexion.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,7 +23,29 @@ public class DaoEvento {
         
         conexion = Main.conexion;
     }
-
+public ArrayList<String> llenarCombo(){
+    ArrayList<String> lista = new ArrayList<String>();
+    String sql = "SELECT id_evento, nombre_evento FROM eventos;";
+    try {
+        Connection conn = conexion.getConnetion();
+        Statement sentencia = conn.createStatement();
+        ResultSet consulta = sentencia.executeQuery(sql);
+        
+        while(consulta.next()){
+            
+                lista.add(consulta.getString(1)+" "+consulta.getString(2));
+            }
+        
+    } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error: " + e);
+        }
+    
+    return lista;
+}
     public int guardarEvento(Evento evento) {
         String sql_guardar, validar;
         validar = "SELECT id_evento FROM Eventos WHERE id_evento = '" + evento.getId_evento() + "';";

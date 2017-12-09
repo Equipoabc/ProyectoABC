@@ -6,6 +6,7 @@
 package Controladores;
 import DAO.*;
 import Logica.*;
+import java.util.ArrayList;
 
 public class ControladorSede {
 
@@ -15,6 +16,11 @@ public class ControladorSede {
         
         daoSede = new DaoSede();
     }
+    
+    public ArrayList<String> llenarCombo() {
+        return daoSede.llenarCombo();
+    }
+    
     public int insertarSede(String nom, String id, String ciu, String tel, String cra, String cl, String bar, String idGerente) {
         Sede sede = new Sede(); 
         

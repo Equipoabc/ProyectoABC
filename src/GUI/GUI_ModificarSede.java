@@ -10,6 +10,7 @@ import static GUI.GUI_ModificarEvento.parseFecha;
 import Logica.*;
 import Logica.Validaciones;
 import java.text.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class GUI_ModificarSede extends javax.swing.JFrame {
@@ -32,6 +33,12 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         controladorSede = new ControladorSede();
         validaciones = new Validaciones();
         botonAceptar.setEnabled(false);
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = controladorSede.llenarCombo();
+        
+        for(int i=0; i < lista.size(); i++){
+           listaSedes.addItem(lista.get(i));
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -50,7 +57,6 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         ciudad = new javax.swing.JTextField();
         ciudadLabel1 = new javax.swing.JLabel();
         primerNombreLabel = new javax.swing.JLabel();
-        consultarLabel = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
         nombre = new javax.swing.JTextField();
         botonAceptar = new javax.swing.JButton();
@@ -58,6 +64,7 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         barrio = new javax.swing.JTextField();
         calleLabel = new javax.swing.JLabel();
         carreraLabel = new javax.swing.JLabel();
+        listaSedes = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         primerNombreLabel5.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
@@ -125,11 +132,6 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         jPanel1.add(primerNombreLabel);
         primerNombreLabel.setBounds(340, 100, 170, 30);
 
-        consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(consultarLabel);
-        consultarLabel.setBounds(80, 220, 140, 20);
-
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
         botonConsultar.setBorder(null);
         botonConsultar.setBorderPainted(false);
@@ -143,7 +145,7 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonConsultar);
-        botonConsultar.setBounds(70, 250, 160, 70);
+        botonConsultar.setBounds(70, 260, 160, 60);
 
         nombre.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         nombre.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -189,6 +191,14 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         jPanel1.add(carreraLabel);
         carreraLabel.setBounds(340, 255, 100, 30);
 
+        listaSedes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaSedesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listaSedes);
+        listaSedes.setBounds(80, 220, 140, 30);
+
         jLabel2.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoModificarSede.png"))); // NOI18N
@@ -219,7 +229,10 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
 
         botonAceptar.setEnabled(true);
-        String codigoConsultar = consultarLabel.getText(), duracion;
+        String id_sede = (String) listaSedes.getSelectedItem();
+        String[] partes = id_sede.split(" ");
+        String codigoConsultar = partes[0];        
+        String  duracion;
         
         if (codigoConsultar.equals("")) {
             
@@ -251,13 +264,12 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
                 calle.setText(null);
                 barrio.setText(null);
                 telefono.setText(null);
-                consultarLabel.setText(null);
             }
         }      
     }//GEN-LAST:event_botonConsultarActionPerformed
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
 
-        String codigoConsulta, codigoS, nombreS, ciudadS, carreraS, calleS, barrioS, telefonoS;
+        String  codigoS, nombreS, ciudadS, carreraS, calleS, barrioS, telefonoS;
         
         nombreS = nombre.getText();
         ciudadS = ciudad.getText();
@@ -265,7 +277,9 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         calleS = calle.getText();
         barrioS = barrio.getText(); // Si null :v
         telefonoS = telefono.getText();
-        codigoConsulta = consultarLabel.getText();
+        String id_sede = (String) listaSedes.getSelectedItem();
+        String[] partes = id_sede.split(" ");
+        String codigoConsulta = partes[0]; 
         
         if (nombreS.equals("") || ciudadS.equals("") || carreraS.equals("") || calleS.equals("")
                 || telefonoS.equals("") || codigoConsulta.equals("")){
@@ -304,7 +318,6 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
                         calle.setText(null);
                         barrio.setText(null);
                         telefono.setText(null);
-                        consultarLabel.setText(null);
                         botonAceptar.setEnabled(false);
                         break;
                     case 2:
@@ -325,6 +338,10 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
     private void barrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barrioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_barrioActionPerformed
+
+    private void listaSedesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaSedesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaSedesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,11 +392,11 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
     private javax.swing.JLabel carreraLabel;
     private javax.swing.JTextField ciudad;
     private javax.swing.JLabel ciudadLabel1;
-    private javax.swing.JTextField consultarLabel;
     private javax.swing.JLabel ingresarCodigoLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> listaSedes;
     private javax.swing.JTextField nombre;
     private javax.swing.JLabel primerNombreLabel;
     private javax.swing.JLabel primerNombreLabel5;

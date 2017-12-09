@@ -6,6 +6,7 @@ import Logica.*;
 import com.itextpdf.text.DocumentException;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -34,6 +35,12 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         evento = new Evento();
         participante = new Participante();
         validaciones = new Validaciones();
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = controladorEvento.llenarCombo();
+        
+        for(int i=0; i < lista.size(); i++){
+            listaEventos.addItem(lista.get(i));
+        }        
         
     }
     
@@ -48,7 +55,6 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         botonCancelar = new javax.swing.JButton();
-        codEvento = new javax.swing.JTextField();
         codEventoLabel = new javax.swing.JLabel();
         cedula = new javax.swing.JTextField();
         nombreLabelEditar = new javax.swing.JLabel();
@@ -63,6 +69,7 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         continuarBoton = new javax.swing.JButton();
         nombreEventoLabel = new javax.swing.JLabel();
         precioLabel = new javax.swing.JLabel();
+        listaEventos = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,11 +91,6 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         });
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(620, 340, 140, 90);
-
-        codEvento.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        codEvento.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(codEvento);
-        codEvento.setBounds(470, 270, 150, 30);
 
         codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         codEventoLabel.setText("Ingresar código evento:");
@@ -179,6 +181,14 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         jPanel1.add(precioLabel);
         precioLabel.setBounds(120, 330, 90, 30);
 
+        listaEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaEventosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listaEventos);
+        listaEventos.setBounds(470, 280, 140, 20);
+
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrarPago.png"))); // NOI18N
@@ -211,7 +221,9 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         
         String id = cedula.getText();
-        String id_evento = codEvento.getText();
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String id_evento = partes[0];
         if (id_evento.equals("")) {
             
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios");
@@ -236,7 +248,9 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
     private void pagarEvento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarEvento1ActionPerformed
         
         String id = cedula.getText();
-        String id_evento = codEvento.getText();
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String id_evento = partes[0];
         if (id_evento.equals("") || id.equals("")) {
             
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios");
@@ -280,7 +294,6 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
                     }
                     else{
                         cedula.setText("");
-                        codEvento.setText("");
                     }
                     break;
                 case 6:
@@ -341,7 +354,6 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
                     dinero.setText("");
                     cambioLabel2.setText("");
                     cedula.setText("");
-                    codEvento.setText("");
                 } catch (IOException ex) {
                     Logger.getLogger(GUI_RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DocumentException ex) {
@@ -355,6 +367,10 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_continuarBotonActionPerformed
+
+    private void listaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaEventosActionPerformed
     
     public static void main(String args[]){
         
@@ -375,13 +391,13 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
     private javax.swing.JLabel cambioLabel2;
     private javax.swing.JTextField cedula;
     private javax.swing.JLabel cedulaLabel2;
-    private javax.swing.JTextField codEvento;
     private javax.swing.JLabel codEventoLabel;
     private javax.swing.JButton continuarBoton;
     private javax.swing.JTextField dinero;
     private javax.swing.JLabel dineroLabel;
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> listaEventos;
     private javax.swing.JLabel nombreEventoLabel;
     private javax.swing.JLabel nombreLabelEditar;
     private javax.swing.JButton pagarEvento1;

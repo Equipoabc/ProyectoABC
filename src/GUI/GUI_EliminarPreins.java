@@ -3,6 +3,7 @@ import Controladores.*;
 import javax.swing.*;
 import Logica.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class GUI_EliminarPreins extends javax.swing.JFrame {
     
@@ -23,6 +24,12 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
         validaciones = new Validaciones();
         participante = new Participante();
         evento = new Evento();
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = controladorEvento.llenarCombo();
+        
+        for(int i=0; i < lista.size(); i++){
+            listaEventos.addItem(lista.get(i));
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -31,11 +38,11 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         cancelar = new javax.swing.JButton();
-        codEvento = new javax.swing.JTextField();
         codEventoLabel = new javax.swing.JLabel();
         cedula = new javax.swing.JTextField();
         cedulaLabel = new javax.swing.JLabel();
         eliminar = new javax.swing.JButton();
+        listaEventos = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,16 +64,6 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
         });
         jPanel1.add(cancelar);
         cancelar.setBounds(390, 330, 140, 90);
-
-        codEvento.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        codEvento.setSelectionColor(new java.awt.Color(102, 102, 255));
-        codEvento.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                codEventoKeyPressed(evt);
-            }
-        });
-        jPanel1.add(codEvento);
-        codEvento.setBounds(300, 280, 150, 30);
 
         codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         codEventoLabel.setText("Ingresar código evento:");
@@ -108,6 +105,14 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
         jPanel1.add(eliminar);
         eliminar.setBounds(250, 330, 140, 90);
 
+        listaEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaEventosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listaEventos);
+        listaEventos.setBounds(300, 280, 150, 30);
+
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PreInscripcionFondo.png"))); // NOI18N
@@ -138,7 +143,9 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
     
     private void eliminar(){
-        String id_evento = codEvento.getText();
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String id_evento = partes[0];  
         String id_participante = cedula.getText();
         
         if (id_participante.equals("") || id_evento.equals("")) {
@@ -194,13 +201,13 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){eliminar();}
     }//GEN-LAST:event_cedulaKeyPressed
 
-    private void codEventoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codEventoKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){eliminar();}
-    }//GEN-LAST:event_codEventoKeyPressed
-
     private void eliminarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eliminarKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){eliminar();}
     }//GEN-LAST:event_eliminarKeyPressed
+
+    private void listaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaEventosActionPerformed
     
     public static void main(String args[]){
         
@@ -218,11 +225,11 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
     private javax.swing.JButton cancelar;
     private javax.swing.JTextField cedula;
     private javax.swing.JLabel cedulaLabel;
-    private javax.swing.JTextField codEvento;
     private javax.swing.JLabel codEventoLabel;
     private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> listaEventos;
     // End of variables declaration//GEN-END:variables
     
 }

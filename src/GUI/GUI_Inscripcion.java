@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -40,6 +41,12 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         validaciones = new Validaciones();
         fecha.setMaxSelectableDate(GetDateNow());
         fecha.getDateEditor().setEnabled(false);
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = controladorEvento.llenarCombo();
+        
+        for(int i=0; i < lista.size(); i++){
+            listaEventos.addItem(lista.get(i));
+        }
     }
     
     private static Date GetDateNow() {
@@ -59,7 +66,6 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         botonCancelar = new javax.swing.JButton();
         correo = new javax.swing.JTextField();
         correoLabel = new javax.swing.JLabel();
-        codEvento = new javax.swing.JTextField();
         telefonoLabel = new javax.swing.JLabel();
         telefono = new javax.swing.JTextField();
         codEventoLabel = new javax.swing.JLabel();
@@ -86,6 +92,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         cambioLabelEditar = new javax.swing.JLabel();
         consultarBoton = new javax.swing.JButton();
         continuarBoton = new javax.swing.JButton();
+        listaEventos = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,16 +130,6 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         jPanel1.add(correoLabel);
         correoLabel.setBounds(390, 170, 120, 30);
 
-        codEvento.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        codEvento.setSelectionColor(new java.awt.Color(102, 102, 255));
-        codEvento.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                codEventoKeyPressed(evt);
-            }
-        });
-        jPanel1.add(codEvento);
-        codEvento.setBounds(510, 300, 70, 20);
-
         telefonoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         telefonoLabel.setText("Teléfono:");
         jPanel1.add(telefonoLabel);
@@ -151,7 +148,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         codEventoLabel.setText("Código Evento:");
         jPanel1.add(codEventoLabel);
-        codEventoLabel.setBounds(390, 290, 200, 34);
+        codEventoLabel.setBounds(400, 290, 100, 34);
 
         fechaLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         fechaLabel.setText("Fecha Nacimiento:");
@@ -186,7 +183,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         segundoApellidoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoApellidoLabel.setText("Segundo Apellido:");
         jPanel1.add(segundoApellidoLabel);
-        segundoApellidoLabel.setBounds(40, 220, 250, 34);
+        segundoApellidoLabel.setBounds(40, 220, 110, 34);
 
         primerApellido.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerApellido.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -280,22 +277,22 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         precioLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         precioLabel1.setText("Precio:");
         jPanel1.add(precioLabel1);
-        precioLabel1.setBounds(80, 350, 110, 17);
+        precioLabel1.setBounds(80, 350, 110, 18);
 
         nombreEventoLabel2.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         nombreEventoLabel2.setText("Nombre Evento:");
         jPanel1.add(nombreEventoLabel2);
-        nombreEventoLabel2.setBounds(30, 320, 110, 17);
+        nombreEventoLabel2.setBounds(30, 320, 110, 18);
 
         dineroLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         dineroLabel.setText("Dinero:");
         jPanel1.add(dineroLabel);
-        dineroLabel.setBounds(80, 380, 50, 17);
+        dineroLabel.setBounds(80, 380, 50, 18);
 
         cambioLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cambioLabel.setText("Cambio:");
         jPanel1.add(cambioLabel);
-        cambioLabel.setBounds(80, 410, 50, 17);
+        cambioLabel.setBounds(80, 410, 50, 18);
 
         dinero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -303,7 +300,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(dinero);
-        dinero.setBounds(140, 380, 220, 19);
+        dinero.setBounds(140, 380, 220, 20);
 
         cambioLabelEditar.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(cambioLabelEditar);
@@ -324,7 +321,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(consultarBoton);
-        consultarBoton.setBounds(620, 290, 110, 44);
+        consultarBoton.setBounds(620, 290, 111, 45);
 
         continuarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         continuarBoton.setBorder(null);
@@ -343,6 +340,14 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         });
         jPanel1.add(continuarBoton);
         continuarBoton.setBounds(370, 380, 110, 50);
+
+        listaEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaEventosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listaEventos);
+        listaEventos.setBounds(500, 300, 100, 20);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -375,7 +380,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     
     private void crearParticipante(){
         String primerNom, segundoNom, primerAp, segundoAp, ced,
-                fechaNacimiento, tel, email, codigoEvento, validar = "";
+                fechaNacimiento, tel, email, validar = "";
         fechaNacimiento = "";
         LocalDate fechaNac = LocalDate.now();
         
@@ -398,7 +403,9 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         Period periodo = Period.between(fechaNac, ahora);
         
         tel = telefono.getText();
-        codigoEvento = codEvento.getText();
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String codigoEvento = partes[0];  
         email = correo.getText();
         evento = controladorEvento.consultarDatosEvento(codigoEvento);
         
@@ -467,7 +474,6 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                         segundoApellido.setText(null);
                         cedula.setText(null);
                         telefono.setText(null);
-                        codEvento.setText(null);
                         correo.setText(null);
                     }
                     break;
@@ -488,7 +494,9 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     
     private void consultar() {
         String id = cedula.getText();
-        String id_evento = codEvento.getText();
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String id_evento = partes[0];
         if (id_evento.equals("")) {
             
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios");
@@ -559,7 +567,6 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                     dinero.setText("");
                     cambioLabelEditar.setText("");
                     cedula.setText("");
-                    codEvento.setText("");
                     crearParticipante.setEnabled(true);
                     
                 } catch (IOException ex) {
@@ -575,7 +582,6 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                 segundoApellido.setText(null);
                 cedula.setText(null);
                 telefono.setText(null);
-                codEvento.setText(null);
                 correo.setText(null);
                 
             }
@@ -588,10 +594,6 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     private void continuarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarBotonActionPerformed
         continuar();
     }//GEN-LAST:event_continuarBotonActionPerformed
-
-    private void codEventoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codEventoKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){consultar();}
-    }//GEN-LAST:event_codEventoKeyPressed
 
     private void primerNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_primerNombreKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
@@ -640,6 +642,10 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     private void crearParticipanteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_crearParticipanteKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){crearParticipante();}
     }//GEN-LAST:event_crearParticipanteKeyPressed
+
+    private void listaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaEventosActionPerformed
     
     public static void main(String args[]){
         
@@ -659,7 +665,6 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel cambioLabelEditar;
     private javax.swing.JTextField cedula;
     private javax.swing.JLabel cedulaLabel;
-    private javax.swing.JTextField codEvento;
     private javax.swing.JLabel codEventoLabel;
     private javax.swing.JButton consultarBoton;
     private javax.swing.JButton continuarBoton;
@@ -672,6 +677,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel fechaLabel;
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> listaEventos;
     private javax.swing.JLabel nombreEventoEditar;
     private javax.swing.JLabel nombreEventoLabel2;
     private javax.swing.JLabel precioLabel1;

@@ -4,6 +4,7 @@ import javax.swing.*;
 import Logica.*;
 import com.itextpdf.text.DocumentException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +27,12 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
         participante = new Participante();
         evento = new Evento();
         validaciones = new Validaciones();
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = controladorEvento.llenarCombo();
+        
+        for(int i=0; i < lista.size(); i++){
+            listaEventos.addItem(lista.get(i));
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -33,7 +40,6 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        codEvento = new javax.swing.JTextField();
         codEventoLabel = new javax.swing.JLabel();
         cedula = new javax.swing.JTextField();
         cedulaLab = new javax.swing.JLabel();
@@ -46,17 +52,13 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
         cedulaLabel = new javax.swing.JLabel();
         eventoLabel = new javax.swing.JLabel();
         cedulaLabel6 = new javax.swing.JLabel();
+        listaEventos = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setLayout(null);
-
-        codEvento.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        codEvento.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(codEvento);
-        codEvento.setBounds(450, 260, 150, 30);
 
         codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         codEventoLabel.setText("Ingresar código evento:");
@@ -145,6 +147,14 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
         jPanel1.add(cedulaLabel6);
         cedulaLabel6.setBounds(450, 120, 200, 30);
 
+        listaEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaEventosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listaEventos);
+        listaEventos.setBounds(450, 250, 150, 30);
+
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoEscarapela.png"))); // NOI18N
@@ -169,7 +179,9 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
     
     private void descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarActionPerformed
         String id_participante = cedula.getText();
-        String id_evento = codEvento.getText();
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String id_evento = partes[0];
         String nombre = "";
         String nombreEvento = "";
         String ced="";
@@ -225,7 +237,9 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
     private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed
         // TODO add your handling code here:
         String id_participante = cedula.getText();
-        String id_evento = codEvento.getText();
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String id_evento = partes[0];
         
         if (id_evento.equals("")) {
             
@@ -260,7 +274,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El participante no existe.");
                 
                 cedula.setText(null);
-                codEvento.setText(null);
+            
             }
         }
     }//GEN-LAST:event_generarActionPerformed
@@ -271,6 +285,10 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void listaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaEventosActionPerformed
     
     public static void main(String args[]){
         
@@ -292,13 +310,13 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
     private javax.swing.JLabel cedulaLabel1;
     private javax.swing.JLabel cedulaLabel2;
     private javax.swing.JLabel cedulaLabel6;
-    private javax.swing.JTextField codEvento;
     private javax.swing.JLabel codEventoLabel;
     private javax.swing.JButton descargar;
     private javax.swing.JLabel eventoLabel;
     private javax.swing.JButton generar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> listaEventos;
     private javax.swing.JLabel nombreLabel;
     // End of variables declaration//GEN-END:variables
     

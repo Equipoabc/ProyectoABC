@@ -6,6 +6,7 @@
 package Controladores;
 import DAO.*;
 import Logica.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -59,5 +60,8 @@ public class ControladorEvento {
     }
     public void actualizarCupos(String codEvento, String cupos) {
         daoEvento.actualizarCupos(codEvento,cupos);
-    }    
+    }
+    public ArrayList<String> llenarCombo() {
+        return daoEvento.llenarCombo();
+    }     
 }

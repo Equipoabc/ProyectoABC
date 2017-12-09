@@ -12,6 +12,7 @@ import java.text.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -38,6 +39,13 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         validaciones = new Validaciones();
         fecha.setMinSelectableDate(GetDateNow());
         fecha.getDateEditor().setEnabled(false);
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = controladorEvento.llenarCombo();
+        
+        for(int i=0; i < lista.size(); i++){
+            listaEventos.addItem(lista.get(i));
+        }
+        
     }
     
     private Date GetDateNow() {
@@ -83,7 +91,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         primerNombreLabel1 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         segundoNombreLabel = new javax.swing.JLabel();
-        consultarLabel = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
         botonAceptar = new javax.swing.JButton();
@@ -94,6 +101,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         minutos = new javax.swing.JComboBox<>();
         primerNombreLabel11 = new javax.swing.JLabel();
         botonEliminar = new javax.swing.JButton();
+        listaEventos = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -170,11 +178,6 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         segundoNombreLabel.setText("Nombre:");
         jPanel1.add(segundoNombreLabel);
         segundoNombreLabel.setBounds(260, 170, 100, 30);
-
-        consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(consultarLabel);
-        consultarLabel.setBounds(50, 220, 140, 20);
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
         botonConsultar.setBorder(null);
@@ -269,6 +272,14 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         jPanel1.add(botonEliminar);
         botonEliminar.setBounds(60, 320, 120, 40);
 
+        listaEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaEventosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listaEventos);
+        listaEventos.setBounds(50, 220, 140, 20);
+
         fondo.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoModificarEvento.png"))); // NOI18N
@@ -299,7 +310,10 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         botonAceptar.setEnabled(true);
-        String id_evento = consultarLabel.getText(), duracion;
+        String duracion;
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String id_evento = partes[0];
         
         if (id_evento.equals("")) {
             
@@ -361,7 +375,11 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_botonConsultarActionPerformed
     
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        String codigoConsulta, fechaS = "", nombreS, precioS, cuposS, minutosS, duracion, horasS, lugarS, temaS = "", validar = "";
+        
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String codigoConsulta = partes[0];
+        String fechaS = "", nombreS, precioS, cuposS, minutosS, duracion, horasS, lugarS, temaS = "", validar = "";
         
         nombreS = nombre.getText();
         precioS = precio.getText();
@@ -376,8 +394,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         } catch(Exception e){
             validar = "\nDebe ingresar una fecha válida.";
         }
-        temaS = tema.getText();
-        codigoConsulta = consultarLabel.getText();
+        temaS = tema.getText();       
         
         if ( nombreS.equals("") || fechaS.equals("") || precioS.equals("") || lugarS.equals("")
                 || codigoConsulta.equals("")){
@@ -407,8 +424,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
                     
                     switch (numFilas) {
                         case 1:
-                            JOptionPane.showMessageDialog(null, "Los datos del evento se han modificado exitosamente.");
-                            consultarLabel.setText(null);                            
+                            JOptionPane.showMessageDialog(null, "Los datos del evento se han modificado exitosamente.");                                                   
                             nombre.setText(null);
                             precio.setText(null);
                             cupos.setValue(0);
@@ -434,7 +450,9 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
 
-        String id_evento = consultarLabel.getText();
+        String id_evento1 = (String) listaEventos.getSelectedItem();
+        String[] partes = id_evento1.split(" ");
+        String id_evento = partes[0];
         
         if (id_evento.equals("")){
             
@@ -474,6 +492,10 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     private void minutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_minutosActionPerformed
+
+    private void listaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaEventosActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -514,12 +536,12 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JButton botonEliminar;
-    private javax.swing.JTextField consultarLabel;
     private javax.swing.JSpinner cupos;
     private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel fondo;
     private javax.swing.JComboBox<String> horas;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> listaEventos;
     private javax.swing.JTextField lugar;
     private javax.swing.JComboBox<String> minutos;
     private javax.swing.JTextField nombre;
