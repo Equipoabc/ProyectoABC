@@ -26,6 +26,11 @@ public class ControladorReportesUsuarios {
         
         daoRegistros.consultarUsuarios(modeloTabla, tabla);
     }
+    
+    public void generarReporteUsuarios(String nombre){
+     daoRegistros.guardarReporteUsuarios(nombre);
+    }
+
 
     public void consultarUsuario(DefaultTableModel modeloTabla, JTable tabla, String busqueda){
         
