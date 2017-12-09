@@ -8,7 +8,13 @@ package DAO;
 import java.sql.*;
 import Logica.*;
 import Conexion.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -34,6 +40,29 @@ public ArrayList<String> llenarCombo(){
         while(consulta.next()){
             
                 lista.add(consulta.getString(1)+" "+consulta.getString(2));
+            }
+        
+    } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error: " + e);
+        }
+    
+    return lista;
+}
+public ArrayList<String> sacarEventos(){
+    ArrayList<String> lista = new ArrayList<String>();
+    String sql = "SELECT id_evento FROM eventos;";
+    try {
+        Connection conn = conexion.getConnetion();
+        Statement sentencia = conn.createStatement();
+        ResultSet consulta = sentencia.executeQuery(sql);
+        
+        while(consulta.next()){
+            
+                lista.add(consulta.getString(1));
             }
         
     } catch(SQLException e){
@@ -247,6 +276,106 @@ public ArrayList<String> llenarCombo(){
         }
         
         return 0;
+    }
+    
+    private Date GetDateNow() {
+        Calendar currentDate = Calendar.getInstance();
+        return currentDate.getTime();
+    }
+    
+    public void eliminarpreInscripciones(String codigoEvento){
+    
+        String sql;
+        sql = "DELETE FROM participantes_eventos WHERE  estado_pago = 'Invalido' AND id_evento = '" + 
+                codigoEvento + "';";
+           
+            try {
+
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            
+           sentencia.executeUpdate(sql);
+          
+          
+            
+        } catch (SQLException e) {
+            System.out.println("SQL error: " + e);
+        } catch (Exception e) {
+
+            System.out.println("Error" + e);
+        }
+        
+    }        
+    
+     
+    public boolean consultarFecha(String codigoEvento){
+
+        String sql = "SELECT fecha FROM Eventos WHERE id_evento = '" + codigoEvento + "';";
+        LocalDate fechaActual = LocalDate.now();
+        
+         try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                sql = consulta.getString(1);
+            }
+            String fecha = sql.replace("-","/") ;
+            
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDate fechaEvento = LocalDate.parse(fecha, fmt);
+            Period periodo = Period.between(fechaActual, fechaEvento);
+            if((periodo.getDays() <= 2) && (periodo.getMonths() == 0) && (periodo.getYears() == 0)){
+                return true;
+            }
+            else 
+                return false;
+           
+        } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error: " + e);
+        }
+        return false;
+    }
+    
+    public void liberarCupos(){
+        
+        int numeroEventos = 0;
+        String sql = "SELECT COUNT(*) FROM Eventos;";
+         try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            
+           while(consulta.next()){
+                
+                sql = consulta.getString(1);
+            }            
+            numeroEventos = Integer.parseInt(sql);
+            
+        } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e); 
+        } catch(Exception e){ 
+            
+            System.out.println("Error: " + e);
+        }   
+         ArrayList<String> lista = new ArrayList<String>();
+         lista = sacarEventos();
+        for(int i = 0; i < numeroEventos ; i++)
+        {
+          if(consultarFecha(lista.get(i))){
+              eliminarpreInscripciones(lista.get(i));
+          }  
+        }
     }
     
 }

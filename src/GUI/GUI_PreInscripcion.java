@@ -17,6 +17,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     ControladorEvento controladorEvento;
     Evento evento;
     String idOperador;
+    Participante participante;
     
     public GUI_PreInscripcion(){
         
@@ -30,10 +31,26 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         fecha.getDateEditor().setEnabled(false);
         ArrayList<String> lista = new ArrayList<String>();
         lista = controladorEvento.llenarCombo();
+        participante = new Participante();
         
         for(int i=0; i < lista.size(); i++){
             listaEventos.addItem(lista.get(i));
         }
+    }
+    
+    public static Date parseFecha(String fecha){ 
+        
+        fecha = fecha.replace("-","/") ; 
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); 
+        Date fechaDate = null; 
+        try {
+            fechaDate = formato.parse(fecha); 
+        } 
+        catch (ParseException ex) 
+        { 
+            System.out.println("Error: " + ex); 
+        } 
+        return fechaDate; 
     }
     
     private Date GetDateNow() {
@@ -71,6 +88,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         crearParticipante = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
         listaEventos = new javax.swing.JComboBox<>();
+        consultarBoton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -207,6 +225,21 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         jPanel1.add(listaEventos);
         listaEventos.setBounds(510, 300, 140, 20);
 
+        consultarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
+        consultarBoton.setBorder(null);
+        consultarBoton.setBorderPainted(false);
+        consultarBoton.setContentAreaFilled(false);
+        consultarBoton.setFocusPainted(false);
+        consultarBoton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarPeq.png"))); // NOI18N
+        consultarBoton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        consultarBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(consultarBoton);
+        consultarBoton.setBounds(140, 360, 140, 90);
+
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PreInscripcionFondo.png"))); // NOI18N
@@ -324,9 +357,43 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_crearParticipanteActionPerformed
 
+    private void consultarParticipante(){
+        String cedulaP;
+        cedulaP = cedula.getText();
+        if(cedulaP.equals("")){
+             JOptionPane.showMessageDialog(null, "No ha ingresado un número de cédula.");           
+        }
+        else if (!validaciones.validarNumero(cedulaP)){
+            JOptionPane.showMessageDialog(null, "La cedula debe ser un número.");
+            
+        }
+        else{
+        participante = controladorParticipante.consultarDatosParticipante(cedulaP);
+        
+        if(participante != null){
+                primerNombre.setText(participante.getPrimer_nombre());
+                segundoNombre.setText(participante.getSegundo_nombre());
+                primerApellido.setText(participante.getPrimer_apellido());
+                segundoApellido.setText(participante.getSegundo_apellido());
+                fecha.setDate(parseFecha(participante.getFecha_nacimiento()));
+                correo.setText(participante.getEmail());
+                telefono.setText(participante.getTelefono());
+               
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El participante no se encuentra registrado.");
+        }
+        }
+        
+    }
+    
     private void listaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEventosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaEventosActionPerformed
+
+    private void consultarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBotonActionPerformed
+        consultarParticipante();
+    }//GEN-LAST:event_consultarBotonActionPerformed
     
     public static void main(String args[]){
         
@@ -345,6 +412,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     private javax.swing.JTextField cedula;
     private javax.swing.JLabel cedulaLabel;
     private javax.swing.JLabel codEventoLabel;
+    private javax.swing.JButton consultarBoton;
     private javax.swing.JTextField correo;
     private javax.swing.JLabel correoLabel;
     private javax.swing.JButton crearParticipante;

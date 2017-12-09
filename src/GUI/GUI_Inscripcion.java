@@ -1,5 +1,6 @@
 package GUI;
 import Controladores.*;
+import static GUI.GUI_ModificarEvento.parseFecha;
 import java.text.*;
 import javax.swing.*;
 import Logica.*;
@@ -24,6 +25,8 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     String id_participante, nombre_participante;
     Evento evento;
     Participante participante;
+    int banderaAceptar;
+    DateFormat df = DateFormat.getDateInstance();
     
     public GUI_Inscripcion(){
         
@@ -41,12 +44,28 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         validaciones = new Validaciones();
         fecha.setMaxSelectableDate(GetDateNow());
         fecha.getDateEditor().setEnabled(false);
+        banderaAceptar = 0;
         ArrayList<String> lista = new ArrayList<String>();
         lista = controladorEvento.llenarCombo();
         
         for(int i=0; i < lista.size(); i++){
             listaEventos.addItem(lista.get(i));
         }
+    }
+    
+    public static Date parseFecha(String fecha){ 
+        
+        fecha = fecha.replace("-","/") ; 
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); 
+        Date fechaDate = null; 
+        try {
+            fechaDate = formato.parse(fecha); 
+        } 
+        catch (ParseException ex) 
+        { 
+            System.out.println("Error: " + ex); 
+        } 
+        return fechaDate; 
     }
     
     private static Date GetDateNow() {
@@ -93,6 +112,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         consultarBoton = new javax.swing.JButton();
         continuarBoton = new javax.swing.JButton();
         listaEventos = new javax.swing.JComboBox<>();
+        consultarBoton2 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -163,12 +183,12 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cedula);
-        cedula.setBounds(160, 280, 210, 20);
+        cedula.setBounds(150, 120, 210, 20);
 
         cedulaLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cedulaLabel.setText("Cédula:");
         jPanel1.add(cedulaLabel);
-        cedulaLabel.setBounds(40, 270, 200, 30);
+        cedulaLabel.setBounds(30, 110, 200, 30);
 
         segundoApellido.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoApellido.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -178,12 +198,12 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(segundoApellido);
-        segundoApellido.setBounds(160, 230, 210, 20);
+        segundoApellido.setBounds(150, 280, 210, 20);
 
         segundoApellidoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoApellidoLabel.setText("Segundo Apellido:");
         jPanel1.add(segundoApellidoLabel);
-        segundoApellidoLabel.setBounds(40, 220, 110, 34);
+        segundoApellidoLabel.setBounds(30, 270, 110, 34);
 
         primerApellido.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerApellido.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -193,12 +213,12 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(primerApellido);
-        primerApellido.setBounds(160, 190, 210, 20);
+        primerApellido.setBounds(150, 240, 210, 20);
 
         primerApellidoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerApellidoLabel.setText("Primer Apellido:");
         jPanel1.add(primerApellidoLabel);
-        primerApellidoLabel.setBounds(40, 180, 230, 34);
+        primerApellidoLabel.setBounds(30, 230, 230, 34);
 
         segundoNombre.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoNombre.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -208,17 +228,17 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(segundoNombre);
-        segundoNombre.setBounds(160, 150, 210, 20);
+        segundoNombre.setBounds(150, 200, 210, 20);
 
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNombreLabel.setText("Segundo Nombre:");
         jPanel1.add(segundoNombreLabel);
-        segundoNombreLabel.setBounds(40, 140, 230, 34);
+        segundoNombreLabel.setBounds(30, 190, 230, 34);
 
         primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel.setText("Primer Nombre:");
         jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(40, 110, 220, 30);
+        primerNombreLabel.setBounds(30, 160, 220, 30);
 
         primerNombre.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerNombre.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -228,7 +248,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(primerNombre);
-        primerNombre.setBounds(160, 110, 210, 20);
+        primerNombre.setBounds(150, 160, 210, 20);
 
         crearParticipante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         crearParticipante.setBorder(null);
@@ -321,7 +341,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(consultarBoton);
-        consultarBoton.setBounds(620, 290, 111, 45);
+        consultarBoton.setBounds(630, 300, 111, 45);
 
         continuarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         continuarBoton.setBorder(null);
@@ -348,6 +368,23 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         });
         jPanel1.add(listaEventos);
         listaEventos.setBounds(500, 300, 100, 20);
+
+        consultarBoton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consultar.png"))); // NOI18N
+        consultarBoton2.setBorder(null);
+        consultarBoton2.setContentAreaFilled(false);
+        consultarBoton2.setDefaultCapable(false);
+        consultarBoton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarBoton2ActionPerformed(evt);
+            }
+        });
+        consultarBoton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                consultarBoton2KeyPressed(evt);
+            }
+        });
+        jPanel1.add(consultarBoton2);
+        consultarBoton2.setBounds(220, 70, 110, 40);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -379,6 +416,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void crearParticipante(){
+       
         String primerNom, segundoNom, primerAp, segundoAp, ced,
                 fechaNacimiento, tel, email, validar = "";
         fechaNacimiento = "";
@@ -460,6 +498,8 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                     if(opcion == 0){
                         id_participante = ced;
                         dinero.setVisible(true);
+                        dinero.grabFocus();
+                        dinero.requestFocus();
                         dineroLabel.setVisible(true);
                         cambioLabel.setVisible(true);
                         cambioLabelEditar.setVisible(true);
@@ -475,6 +515,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                         cedula.setText(null);
                         telefono.setText(null);
                         correo.setText(null);
+                        banderaAceptar = 0;
                     }
                     break;
                 default:
@@ -487,9 +528,39 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
         }
     }
     
-    private void crearParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearParticipanteActionPerformed
+    private void consultarParticipante(){
+        String cedulaP;
+        cedulaP = cedula.getText();
+        if(cedulaP.equals("")){
+             JOptionPane.showMessageDialog(null, "No ha ingresado un número de cédula.");           
+        }
+        else if (!validaciones.validarNumero(cedulaP)){
+            JOptionPane.showMessageDialog(null, "La cedula debe ser un número.");
+            
+        }
+        else{
+        participante = controladorParticipante.consultarDatosParticipante(cedulaP);
         
-        crearParticipante();
+        if(participante != null){
+                primerNombre.setText(participante.getPrimer_nombre());
+                segundoNombre.setText(participante.getSegundo_nombre());
+                primerApellido.setText(participante.getPrimer_apellido());
+                segundoApellido.setText(participante.getSegundo_apellido());
+                fecha.setDate(parseFecha(participante.getFecha_nacimiento()));
+                correo.setText(participante.getEmail());
+                telefono.setText(participante.getTelefono());
+               
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El participante no se encuentra registrado.");
+        }
+        }
+        
+    }
+    
+    private void crearParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearParticipanteActionPerformed
+      crearParticipante();
+     
     }//GEN-LAST:event_crearParticipanteActionPerformed
     
     private void consultar() {
@@ -583,6 +654,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
                 cedula.setText(null);
                 telefono.setText(null);
                 correo.setText(null);
+                banderaAceptar = 0;
                 
             }
             else{
@@ -646,6 +718,14 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     private void listaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEventosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaEventosActionPerformed
+
+    private void consultarBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBoton2ActionPerformed
+        consultarParticipante();
+    }//GEN-LAST:event_consultarBoton2ActionPerformed
+
+    private void consultarBoton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_consultarBoton2KeyPressed
+        consultarParticipante();
+    }//GEN-LAST:event_consultarBoton2KeyPressed
     
     public static void main(String args[]){
         
@@ -667,6 +747,7 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel cedulaLabel;
     private javax.swing.JLabel codEventoLabel;
     private javax.swing.JButton consultarBoton;
+    private javax.swing.JButton consultarBoton2;
     private javax.swing.JButton continuarBoton;
     private javax.swing.JTextField correo;
     private javax.swing.JLabel correoLabel;

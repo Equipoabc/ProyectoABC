@@ -285,6 +285,8 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
                             "Imprimir recibo", JOptionPane.OK_CANCEL_OPTION);
                     if(opcion == 0){
                         dinero.setVisible(true);
+                        dinero.grabFocus();
+                        dinero.requestFocus();
                         dineroLabel.setVisible(true);
                         cambioLabel1.setVisible(true);
                         cambioLabel2.setVisible(true);

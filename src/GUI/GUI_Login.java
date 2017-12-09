@@ -8,7 +8,8 @@ public class GUI_Login extends javax.swing.JFrame {
     
     ControladorAdministrador controladorAdministrador;
     ControladorGerente controladorGerente;
-    ControladorOperador controladorOperador;  
+    ControladorOperador controladorOperador;
+    ControladorEvento controladorEvento;
     
     public GUI_Login(){
         
@@ -17,6 +18,7 @@ public class GUI_Login extends javax.swing.JFrame {
         controladorAdministrador = new ControladorAdministrador();
         controladorGerente = new ControladorGerente();
         controladorOperador = new ControladorOperador();
+        controladorEvento = new ControladorEvento();
     }
     
     @SuppressWarnings("unchecked")
@@ -119,6 +121,7 @@ public class GUI_Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void iniciarSesion(){
+        controladorEvento.liberarCupos();
         String user, cont;
         user = usuario.getText();
         cont = pass.getText();
@@ -229,6 +232,8 @@ public class GUI_Login extends javax.swing.JFrame {
                 
                 GUI_Login ventana = new GUI_Login();
                 ventana.setVisible(true);
+                
+                
             }
         });
     }

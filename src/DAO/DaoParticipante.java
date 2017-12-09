@@ -65,14 +65,17 @@ public class DaoParticipante {
         int numFilas, numFilas2;
         numFilas2 = 0;
         
+        System.out.println(pa.getSegundo_apellido());
+        
         // instrucción sql para ingresar una tupla en participantes
         sql_guardar = "INSERT INTO Participantes (cedula_pa, primer_nombre, segundo_nombre, " +
-                "primer_apellido, segundo_apellido, email, telefono)  " +
+                "primer_apellido, segundo_apellido, email, telefono, fecha_nacimiento)  " +
                 " VALUES ('" + pa.getCedula_pa() + "', '" +
                 pa.getPrimer_nombre() +  "', '" + pa.getSegundo_nombre() +  "', '" +
                 pa.getPrimer_apellido() +  "', '" + pa.getSegundo_apellido() +
                 "', '" + pa.getEmail() +  "', '" +
-                pa.getTelefono() +   "')" ;
+                pa.getTelefono() + "', '" + pa.getFecha_nacimiento() +  "')" ;
+        System.out.println(sql_guardar);
         
         // instrucción sql para ingresar una tupla en Participantes_eventos
         sql_guardarPar_Ev = "INSERT INTO Participantes_eventos (id_participante, id_evento, estado_pago, " +

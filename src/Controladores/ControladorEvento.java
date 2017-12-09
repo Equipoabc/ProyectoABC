@@ -63,5 +63,8 @@ public class ControladorEvento {
     }
     public ArrayList<String> llenarCombo() {
         return daoEvento.llenarCombo();
-    }     
+    }
+    public void liberarCupos(){
+        daoEvento.liberarCupos();
+    }
 }
