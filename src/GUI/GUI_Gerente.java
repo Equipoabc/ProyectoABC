@@ -140,9 +140,6 @@ public class GUI_Gerente extends javax.swing.JFrame {
     
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
-        GUI_ReportesEventos vSede = new GUI_ReportesEventos();
-        vSede.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
     
     private void registrarSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSedeActionPerformed

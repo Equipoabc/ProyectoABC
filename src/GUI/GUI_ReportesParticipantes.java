@@ -6,10 +6,6 @@
 package GUI;
 
 import Controladores.ControladorReportesParticipantes;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -89,11 +85,6 @@ public class GUI_ReportesParticipantes extends javax.swing.JFrame {
         });
 
         exportar.setText("Exportar");
-        exportar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exportarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,28 +148,6 @@ public class GUI_ReportesParticipantes extends javax.swing.JFrame {
             controladorReportesParticipantes.consultarParticipante(modeloTabla, tabla, busqueda);
         }
     }//GEN-LAST:event_buscarActionPerformed
-
-    private void exportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportarActionPerformed
-        // TODO add your handling code here:
-        
-        String busqueda;
-        busqueda = campoDeBusqueda.getText();
-       
-        if(busqueda.equals("")){
-            
-        Date fechaActual;
-        fechaActual = GUI_ReportesUsuarios.GetDateNow();
-        String fecha = "";
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        try {
-            fecha = new SimpleDateFormat("dd-MM-YYYY").format(fechaActual);
-        } catch(Exception e){
-            System.out.println(e);
-        }
-        controladorReportesParticipantes.generarReporteParticipantes("Reporte de Participantes " + fecha);
-            JOptionPane.showMessageDialog(null, "Reporte guardado con éxito!");
-        }
-    }//GEN-LAST:event_exportarActionPerformed
 
     /**
      * @param args the command line arguments

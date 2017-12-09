@@ -11,7 +11,6 @@ import java.io.*;
 import java.util.*;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.ss.usermodel.BorderStyle;
 
 public class Reportes{
     
@@ -40,8 +39,10 @@ public class Reportes{
      * @param datos  Es un arreglo de arreglos con los datos especificos del reporte
      * @param nombre Nombre del archivo excel que e genera
      */
-    public static void generarReporte(String[] cabecera, String[][] datos, String nombre){
-        try{
+    public static void generarReporte(ArrayList<String> cabecera , ArrayList<ArrayList<String>> datos, String nombre){
+        
+        try {
+            
             //Se crea el archivo
             String archivo = rutaRaiz+"\\Reportes\\"+nombre+".xls" ;
             HSSFWorkbook libro = new HSSFWorkbook();
@@ -49,39 +50,29 @@ public class Reportes{
             
             //Se crean fuentes para las cabeceras
             HSSFCellStyle estilo = libro.createCellStyle();
-            HSSFFont fuente = libro.createFont();
+            HSSFFont fuente=libro.createFont();
             fuente.setBold(true);
             estilo.setFont(fuente);
-            estilo.setBorderLeft(BorderStyle.MEDIUM);
-            estilo.setBorderRight(BorderStyle.MEDIUM);            
-            estilo.setBorderTop(BorderStyle.MEDIUM);              
-            estilo.setBorderBottom(BorderStyle.MEDIUM);
             
             //Se crean las cabeceras
             HSSFRow rowhead = hoja.createRow((short)0);
-            for (int i = 0; i < cabecera.length; i++) {
+            for (int i = 0; i < cabecera.size(); i++) {
                 
                 //Se inserta el valor en una celda de esa fila
-                rowhead.createCell(i).setCellValue(cabecera[i]);
+                rowhead.createCell(i).setCellValue(cabecera.get(i));
                 
                 //Se le cambia el formato de texto a la celda
                 rowhead.getCell(i).setCellStyle(estilo);
-                
             }
             
             //Se insertan datos
-            for(int i = 1; i < datos.length; i++){
+            for(int i = 1; i<datos.size(); i++){
                 
-                //Se crea una fila
                 HSSFRow row = hoja.createRow((short)i);
-                for(int j = 0; j < datos[i].length; j++){
-                    
-                    //Se insertan los datos en la fila
-                    HSSFCell celdaAux = row.createCell(j);
-                    celdaAux.setCellValue(datos[i][j]);
-                    
+                
+                for(int j = 0; j<datos.get(i).size(); j++){
+                    row.createCell(j).setCellValue(datos.get(i).get(j));
                 }
-                hoja.autoSizeColumn(i-1);
             }
             //Se cierra el archivo y se termina de crear
             try (FileOutputStream salida = new FileOutputStream(archivo)) {

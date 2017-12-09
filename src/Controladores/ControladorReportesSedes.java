@@ -25,10 +25,6 @@ public class ControladorReportesSedes {
         
         daoReportesSedes.consultarSedes(modeloTabla, tabla);
     }
-    
-    public void generarReporteSedes(String nombre){
-     daoReportesSedes.guardarReporteSedes(nombre);
-    }
 
     public void consultarSede(DefaultTableModel modeloTabla, JTable tabla, String busqueda) {
         
