@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
 import java.sql.*;
@@ -16,11 +11,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- *
- * @author Luis
- */
-
 public class DaoEvento {
     
     Conexiones conexion;
@@ -29,62 +19,68 @@ public class DaoEvento {
         
         conexion = Main.conexion;
     }
-public ArrayList<String> llenarCombo(){
-    ArrayList<String> lista = new ArrayList<String>();
-    String sql = "SELECT id_evento, nombre_evento FROM eventos;";
-    try {
-        Connection conn = conexion.getConnetion();
-        Statement sentencia = conn.createStatement();
-        ResultSet consulta = sentencia.executeQuery(sql);
-        
-        while(consulta.next()){
+    public ArrayList<String> llenarCombo(){
+        ArrayList<String> lista = new ArrayList<String>();
+        String sql = "SELECT id_evento, nombre_evento FROM eventos;";
+        try {
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
             
+            while(consulta.next()){
+                
                 lista.add(consulta.getString(1)+" "+consulta.getString(2));
             }
-        
-    } catch(SQLException e){
             
-            System.out.println("SQL error: " + e); 
-        } catch(Exception e){ 
+        } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
             
             System.out.println("Error: " + e);
         }
-    
-    return lista;
-}
-public ArrayList<String> sacarEventos(){
-    ArrayList<String> lista = new ArrayList<String>();
-    String sql = "SELECT id_evento FROM eventos;";
-    try {
-        Connection conn = conexion.getConnetion();
-        Statement sentencia = conn.createStatement();
-        ResultSet consulta = sentencia.executeQuery(sql);
         
-        while(consulta.next()){
+        return lista;
+    }
+    public ArrayList<String> sacarEventos(){
+        
+        ArrayList<String> lista = new ArrayList<String>();
+        String sql = "SELECT id_evento FROM eventos;";
+        
+        try {
             
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
                 lista.add(consulta.getString(1));
             }
-        
-    } catch(SQLException e){
             
-            System.out.println("SQL error: " + e); 
-        } catch(Exception e){ 
+        } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
             
             System.out.println("Error: " + e);
         }
-    
-    return lista;
-}
+        
+        return lista;
+    }
     public int guardarEvento(Evento evento) {
+        
         String sql_guardar, validar;
         validar = "SELECT id_evento FROM Eventos WHERE id_evento = '" + evento.getId_evento() + "';";
-        int numFilas;  
+        int numFilas;
         
-        sql_guardar = "INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, duracion, tema, cupos, cedula_ge) " + 
-                "VALUES ('" + evento.getId_evento() + "', '" + evento.getNombre_evento() +  "', '" + evento.getFecha() +  "', " + 
-                evento.getPrecio() +  ", '" + evento.getLugar() +  "', '" + evento.getDuracion() + "', '" +  evento.getTema() +  "', " 
-                + evento.getCupos() +  ", '" + evento.getCedula_ge() +  "')" ;
-     
+        sql_guardar = "INSERT INTO Eventos (id_evento, nombre_evento, fecha, precio, lugar, "
+                + "duracion, tema, cupos, cedula_ge) " + "VALUES ('" + evento.getId_evento() + "', '" +
+                evento.getNombre_evento() +  "', '" + evento.getFecha() +  "', " +
+                evento.getPrecio() +  ", '" + evento.getLugar() +  "', '" + evento.getDuracion() +
+                "', '" +  evento.getTema() +  "', " + evento.getCupos() +  ", '" + evento.getCedula_ge() +
+                "')" ;
+        
         try {
             
             Connection conn = conexion.getConnetion();
@@ -92,7 +88,7 @@ public ArrayList<String> sacarEventos(){
             ResultSet consulta = sentencia.executeQuery(validar);
             
             while(consulta.next()){
-            
+                
                 validar = consulta.getString(1);
             }
             
@@ -102,50 +98,50 @@ public ArrayList<String> sacarEventos(){
             }
             
             else {
-            
+                
                 numFilas = sentencia.executeUpdate(sql_guardar);
                 return numFilas;
             }
         } catch(SQLException e){
             
-            System.out.println("SQL error: " + e); 
-        } catch(Exception e){ 
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
             
             System.out.println("Error: " + e);
         }
         
-        return -1;  
+        return -1;
     }
-
+    
     public Evento consultarDatosEvento(String id_evento) {
         String sql, validar;
         Evento evento = new Evento();
-
+        
         validar = "SELECT id_evento FROM eventos WHERE id_evento = '" + id_evento + "';";
         sql = "SELECT nombre_evento, fecha, precio, lugar, duracion, tema, cupos, cedula_ge "
                 + "FROM Eventos WHERE id_evento = '" + id_evento + "';";
-
+        
         try {
-
+            
             Connection conn = conexion.getConnetion();
             Statement sentencia = conn.createStatement();
             ResultSet consulta = sentencia.executeQuery(validar);
-
+            
             while (consulta.next()) {
-
+                
                 validar = consulta.getString(1);
             }
             
             if (!validar.equals(id_evento)) {
-
+                
                 return null;
-            } 
+            }
             else {
-
+                
                 ResultSet consulta2 = sentencia.executeQuery(sql);
-
+                
                 while (consulta2.next()) {
-
+                    
                     evento.setNombre_evento(consulta2.getString(1));
                     evento.setFecha(consulta2.getString(2));
                     evento.setPrecio(consulta2.getString(3));
@@ -157,20 +153,21 @@ public ArrayList<String> sacarEventos(){
                     
                 }
                 evento.setId_evento(validar);
-
+                
                 return evento;
             }
         } catch (SQLException e) {
             System.out.println("SQL error: " + e);
         } catch (Exception e) {
-
+            
             System.out.println("Error" + e);
         }
         return null;
     }
-
-
+    
+    
     public int eliminarEvento(String id_evento) {
+        
         String sql;
         sql = "DELETE FROM eventos WHERE id_evento = '" + id_evento + "';";
         
@@ -181,35 +178,34 @@ public ArrayList<String> sacarEventos(){
             numFilas = sentencia.executeUpdate(sql);
             return numFilas;
         }
-            catch (SQLException e) {
+        catch (SQLException e) {
             System.out.println("SQL error: " + e);
-            } 
-            catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println("Error" + e);
         }
         return -1;
     }
-
-    public int actualizarEvento(String codigoConsulta,String nombreS, String precioS, String cuposS, 
+    
+    public int actualizarEvento(String codigoConsulta,String nombreS, String precioS, String cuposS,
             String duracion, String lugarS, String temaS, String fechaS) {
-
+        
         String sql_guardar, validar;
-
         validar = "SELECT id_evento FROM Eventos WHERE id_evento = '" + codigoConsulta + "';";
         sql_guardar = "UPDATE Eventos SET nombre_evento = '"
                 + nombreS + "', precio = '" + precioS + "', lugar = '"
                 + lugarS + "', duracion = '" + duracion + "', tema = '"
                 + temaS + "', cupos = '" + cuposS + "', fecha = '"
                 + fechaS + "' WHERE id_evento = '" + codigoConsulta + "';";
-
+        
         try {
-
+            
             Connection conn = conexion.getConnetion();
             Statement sentencia = conn.createStatement();
             ResultSet consulta = sentencia.executeQuery(validar);
-
+            
             while (consulta.next()) {
-
+                
                 validar = consulta.getString(1);
             }
             
@@ -219,35 +215,34 @@ public ArrayList<String> sacarEventos(){
         } catch (SQLException e) {
             System.out.println("SQL error: " + e);
         } catch (Exception e) {
-
+            
             System.out.println("Error" + e);
         }
-
+        
         return -1;
     }
     public void actualizarCupos(String codEvento, String cupos){
         String sql;
-        sql  = "UPDATE Eventos SET cupos = '"
-                + cupos + "' WHERE id_evento = '" + codEvento + "';";
+        sql  = "UPDATE Eventos SET cupos = '" + cupos + "' WHERE id_evento = '" + codEvento + "';";
         
-            try {
-
+        try {
+            
             Connection conn = conexion.getConnetion();
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql);
-          
+            
             
         } catch (SQLException e) {
             System.out.println("SQL error: " + e);
         } catch (Exception e) {
-
+            
             System.out.println("Error" + e);
         }
         
     }
     public int comprobar(String id){
         
-        String sql;        
+        String sql;
         sql = "SELECT id_evento FROM Eventos WHERE id_evento = '" + id + "';";
         
         try {
@@ -269,8 +264,8 @@ public ArrayList<String> sacarEventos(){
             
         } catch(SQLException e){
             
-            System.out.println("SQL error: " + e); 
-        } catch(Exception e){ 
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
             
             System.out.println("Error: " + e);
         }
@@ -278,42 +273,32 @@ public ArrayList<String> sacarEventos(){
         return 0;
     }
     
-    private Date GetDateNow() {
-        Calendar currentDate = Calendar.getInstance();
-        return currentDate.getTime();
-    }
-    
     public void eliminarpreInscripciones(String codigoEvento){
-    
+        
         String sql;
-        sql = "DELETE FROM participantes_eventos WHERE  estado_pago = 'Invalido' AND id_evento = '" + 
+        sql = "DELETE FROM participantes_eventos WHERE  estado_pago = 'Invalido' AND id_evento = '" +
                 codigoEvento + "';";
-           
-            try {
-
+        
+        try {
+            
             Connection conn = conexion.getConnetion();
             Statement sentencia = conn.createStatement();
-            
-           sentencia.executeUpdate(sql);
-          
-          
+            sentencia.executeUpdate(sql);
             
         } catch (SQLException e) {
             System.out.println("SQL error: " + e);
         } catch (Exception e) {
-
+            
             System.out.println("Error" + e);
         }
-        
-    }        
+    }
     
-     
     public boolean consultarFecha(String codigoEvento){
-
+        
         String sql = "SELECT fecha FROM Eventos WHERE id_evento = '" + codigoEvento + "';";
         LocalDate fechaActual = LocalDate.now();
         
-         try {
+        try {
             
             Connection con = conexion.getConnetion();
             Statement sentencia = con.createStatement();
@@ -331,13 +316,13 @@ public ArrayList<String> sacarEventos(){
             if((periodo.getDays() <= 2) && (periodo.getMonths() == 0) && (periodo.getYears() == 0)){
                 return true;
             }
-            else 
+            else
                 return false;
-           
+            
         } catch(SQLException e){
             
-            System.out.println("SQL error: " + e); 
-        } catch(Exception e){ 
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
             
             System.out.println("Error: " + e);
         }
@@ -348,33 +333,35 @@ public ArrayList<String> sacarEventos(){
         
         int numeroEventos = 0;
         String sql = "SELECT COUNT(*) FROM Eventos;";
-         try {
+        try {
             
             Connection con = conexion.getConnetion();
             Statement sentencia = con.createStatement();
             ResultSet consulta = sentencia.executeQuery(sql);
             
             
-           while(consulta.next()){
+            while(consulta.next()){
                 
                 sql = consulta.getString(1);
-            }            
+            }
             numeroEventos = Integer.parseInt(sql);
             
         } catch(SQLException e){
             
-            System.out.println("SQL error: " + e); 
-        } catch(Exception e){ 
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
             
             System.out.println("Error: " + e);
-        }   
-         ArrayList<String> lista = new ArrayList<String>();
-         lista = sacarEventos();
+        }
+        
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = sacarEventos();
+        
         for(int i = 0; i < numeroEventos ; i++)
         {
-          if(consultarFecha(lista.get(i))){
-              eliminarpreInscripciones(lista.get(i));
-          }  
+            if(consultarFecha(lista.get(i))){
+                eliminarpreInscripciones(lista.get(i));
+            }
         }
     }
     

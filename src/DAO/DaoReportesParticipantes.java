@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 import Conexion.*;
 import Logica.Main;
@@ -11,10 +6,6 @@ import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.*;
 
-/**
- *
- * @author Iván
- */
 public class DaoReportesParticipantes {
 
     Conexiones conexion;
@@ -24,9 +15,7 @@ public class DaoReportesParticipantes {
         conexion = Main.conexion;
     }    
     
-    
     public void guardarReporteParticipantes(String nombre){
-        
         
         String[] cabecera = new String[7];
       
@@ -37,7 +26,6 @@ public class DaoReportesParticipantes {
         cabecera[4]="Fecha de nacimiento";
         cabecera[5]="Telefono";
         cabecera[6]="E-mail";
-        
         
         String sql;
 
@@ -82,12 +70,9 @@ public class DaoReportesParticipantes {
             
             System.out.println("Error: " + e);
         }
-        
-        
+             
     }
-    
-    
-    
+           
     public void consultarParticipantes(DefaultTableModel modeloTabla, JTable tabla) {
         
         String sql;

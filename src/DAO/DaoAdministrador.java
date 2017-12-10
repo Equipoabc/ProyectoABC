@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 import java.sql.*;
 import Logica.*;
 import Conexion.*;
-
-/**
- *
- * @author Luis
- */
 
 public class DaoAdministrador {
     
@@ -26,7 +16,7 @@ public class DaoAdministrador {
         
         String sql;
         Administrador administrador = new Administrador();
-
+        
         sql = "SELECT usuario, contrasena FROM Administradores WHERE usuario = '" + user + "';";
         
         try {
@@ -44,8 +34,8 @@ public class DaoAdministrador {
             return administrador;
         } catch(SQLException e){
             
-            System.out.println("SQL error: " + e); 
-        } catch(Exception e){ 
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
             
             System.out.println("Error: " + e);
         }

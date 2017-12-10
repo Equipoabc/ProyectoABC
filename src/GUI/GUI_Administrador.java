@@ -1,4 +1,3 @@
-
 package GUI;
 
 public class GUI_Administrador extends javax.swing.JFrame {

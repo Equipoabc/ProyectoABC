@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controladores;
 import DAO.*;
 import javax.swing.JTable;
 import javax.swing.table.*;
-
-/**
- *
- * @author Iván
- */
 
 public class ControladorReportesUsuarios {
     
@@ -28,10 +18,10 @@ public class ControladorReportesUsuarios {
     }
     
     public void generarReporteUsuarios(String nombre){
-     daoRegistros.guardarReporteUsuarios(nombre);
+        daoRegistros.guardarReporteUsuarios(nombre);
     }
-
-
+    
+    
     public void consultarUsuario(DefaultTableModel modeloTabla, JTable tabla, String busqueda){
         
         daoRegistros.consultarUsuarios(modeloTabla, tabla, busqueda);

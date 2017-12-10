@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 import Controladores.ControladorReportesParticipantes;
@@ -12,14 +7,10 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Iván
- */
 public class GUI_ReportesParticipantes extends javax.swing.JFrame {
-
+    
     DefaultTableModel modeloTabla;
-    ControladorReportesParticipantes controladorReportesParticipantes; 
+    ControladorReportesParticipantes controladorReportesParticipantes;
     /**
      * Creates new form GUI_ReportesParticipantes
      */
@@ -29,16 +20,16 @@ public class GUI_ReportesParticipantes extends javax.swing.JFrame {
         campoDeBusqueda.setText("");
         controladorReportesParticipantes = new ControladorReportesParticipantes();
         modeloTabla = new DefaultTableModel() {
-
+            
             @Override
             public boolean isCellEditable(int fila, int columna) {
-
+                
                 return false;
             }
         };
-
+        
         tabla.setModel(modeloTabla);
-
+        
         modeloTabla.addColumn("Primer nombre"); // primer_nombre
         modeloTabla.addColumn("Segundo nombre"); // segundo_nombre
         modeloTabla.addColumn("Primer apellido"); // primer_apellido
@@ -46,10 +37,10 @@ public class GUI_ReportesParticipantes extends javax.swing.JFrame {
         modeloTabla.addColumn("Fecha nacimiento"); // fecha_nacimiento
         modeloTabla.addColumn("Telefono");  // telefono
         modeloTabla.addColumn("Email"); // email
-
+        
         tabla.getTableHeader().setReorderingAllowed(false);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,48 +129,48 @@ public class GUI_ReportesParticipantes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
- 
+        
         String busqueda;
         busqueda = campoDeBusqueda.getText();
-
+        
         while (modeloTabla.getRowCount() != 0) {
-
+            
             modeloTabla.removeRow(0);
         }
-
+        
         if (busqueda.equals("")) {
-
+            
             controladorReportesParticipantes.consultarParticipantes(modeloTabla, tabla);
         } else {
-
+            
             controladorReportesParticipantes.consultarParticipante(modeloTabla, tabla, busqueda);
         }
     }//GEN-LAST:event_buscarActionPerformed
-
+    
     private void exportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportarActionPerformed
         // TODO add your handling code here:
         
         String busqueda;
         busqueda = campoDeBusqueda.getText();
-       
+        
         if(busqueda.equals("")){
             
-        Date fechaActual;
-        fechaActual = GUI_ReportesUsuarios.GetDateNow();
-        String fecha = "";
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        try {
-            fecha = new SimpleDateFormat("dd-MM-YYYY").format(fechaActual);
-        } catch(Exception e){
-            System.out.println(e);
-        }
-        controladorReportesParticipantes.generarReporteParticipantes("Reporte de Participantes " + fecha);
+            Date fechaActual;
+            fechaActual = GUI_ReportesUsuarios.GetDateNow();
+            String fecha = "";
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            try {
+                fecha = new SimpleDateFormat("dd-MM-YYYY").format(fechaActual);
+            } catch(Exception e){
+                System.out.println(e);
+            }
+            controladorReportesParticipantes.generarReporteParticipantes("Reporte de Participantes " + fecha);
             JOptionPane.showMessageDialog(null, "Reporte guardado con éxito!");
         }
     }//GEN-LAST:event_exportarActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -187,8 +178,8 @@ public class GUI_ReportesParticipantes extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -206,7 +197,7 @@ public class GUI_ReportesParticipantes extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI_ReportesParticipantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -214,7 +205,7 @@ public class GUI_ReportesParticipantes extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
     private javax.swing.JTextField campoDeBusqueda;

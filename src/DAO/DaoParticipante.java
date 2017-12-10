@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 import java.sql.*;
 import Logica.*;
@@ -17,7 +12,6 @@ public class DaoParticipante {
         conexion = Main.conexion;
     }
     
-    
     public int actualizarParticipante(String codigoConsulta, String primerNombreS,
             String segundoNombreS, String primerApellidoS, String segundoApellidoS, String correoS,
             String telefonoS) {
@@ -27,8 +21,8 @@ public class DaoParticipante {
         validar = "SELECT cedula_pa FROM Participantes WHERE cedula_pa = '" + codigoConsulta + "';";
         sql_guardar = "UPDATE Participantes SET primer_nombre = '"
                 + primerNombreS + "', segundo_nombre = '" + segundoNombreS + "', primer_apellido = '"
-                + primerApellidoS + "', segundo_apellido = '" + segundoApellidoS +  "', telefono = '" + telefonoS + "', email = '"
-                + correoS + "' WHERE cedula_pa = '" + codigoConsulta + "';";
+                + primerApellidoS + "', segundo_apellido = '" + segundoApellidoS +  "', telefono = '" +
+                telefonoS + "', email = '" + correoS + "' WHERE cedula_pa = '" + codigoConsulta + "';";
         
         try {
             
@@ -41,8 +35,8 @@ public class DaoParticipante {
                 validar = consulta.getString(1);
             }
             int numFilas = sentencia.executeUpdate(sql_guardar);
-                return numFilas;
-          
+            return numFilas;
+            
         } catch (SQLException e) {
             System.out.println("SQL error: " + e);
         } catch (Exception e) {
@@ -59,8 +53,8 @@ public class DaoParticipante {
         String sql_guardar, validar, validarEvento, validarPago;
         validar = "SELECT cedula_pa FROM Participantes WHERE cedula_pa = '" + pa.getCedula_pa() + "';";
         validarEvento = "SELECT id_evento FROM Eventos WHERE id_evento = '" + codEvento + "';";
-        validarPago = "SELECT estado_pago FROM Participantes_Eventos WHERE id_participante = '" + pa.getCedula_pa() + "' and "
-                + "id_evento = '" + codEvento + "';";
+        validarPago = "SELECT estado_pago FROM Participantes_Eventos WHERE id_participante = '" +
+                pa.getCedula_pa() + "' and " + "id_evento = '" + codEvento + "';";
         String sql_guardarPar_Ev;
         int numFilas, numFilas2;
         numFilas2 = 0;
@@ -73,7 +67,7 @@ public class DaoParticipante {
                 pa.getPrimer_apellido() +  "', '" + pa.getSegundo_apellido() +
                 "', '" + pa.getEmail() +  "', '" +
                 pa.getTelefono() + "', '" + pa.getFecha_nacimiento() +  "')" ;
-        System.out.println(sql_guardar);
+        //System.out.println(sql_guardar);
         
         // instrucción sql para ingresar una tupla en Participantes_eventos
         sql_guardarPar_Ev = "INSERT INTO Participantes_eventos (id_participante, id_evento, estado_pago, " +
@@ -81,6 +75,8 @@ public class DaoParticipante {
                 " VALUES ('" + pa.getCedula_pa() + "', '" +
                 codEvento +  "', '" + pa.getEstado_pago() +  "', '" +
                 pa.getCedula_op() +   "')" ;
+        
+        System.out.println(sql_guardarPar_Ev);
         
         //ejecución de las consultas
         try {
@@ -232,8 +228,8 @@ public class DaoParticipante {
         String sql, validar;
         Participantes_Eventos preInscripcion = new Participantes_Eventos();
         
-        validar = "SELECT id_participante FROM participantes_eventos WHERE id_participante = '" + id_participante + "' AND "
-                + "id_evento = '" + id_evento + "' ;";
+        validar = "SELECT id_participante FROM participantes_eventos WHERE id_participante = '" +
+                id_participante + "' AND " + "id_evento = '" + id_evento + "' ;";
         sql = "SELECT id_participante, id_evento, estado_pago, cedula_op "
                 + "FROM Participantes_eventos WHERE id_participante = '" + id_participante + "' AND "
                 + "id_evento = '" + id_evento + "';";
@@ -259,9 +255,9 @@ public class DaoParticipante {
                     
                     preInscripcion.setId_participante(consulta2.getString(1));
                     preInscripcion.setId_evento(consulta2.getString(2));
-                    preInscripcion.setEstado_Pago(consulta2.getString(3));                    
+                    preInscripcion.setEstado_Pago(consulta2.getString(3));
                     preInscripcion.setCedula_op(consulta2.getString(4));
-                }               
+                }
                 return preInscripcion;
             }
         } catch (SQLException e) {
@@ -277,10 +273,11 @@ public class DaoParticipante {
         String sql, validar, validarPago;
         int numFilas;
         
-        sql = "UPDATE participantes_eventos SET estado_pago = 'Valido' WHERE id_participante = '"+ id + "' and id_evento = '"+ id_evento + "';";
+        sql = "UPDATE participantes_eventos SET estado_pago = 'Valido' WHERE id_participante = '"+ id +
+                "' and id_evento = '"+ id_evento + "';";
         validar = "SELECT cedula_pa FROM Participantes WHERE cedula_pa = '" + id + "';";
-        validarPago = "SELECT estado_pago FROM Participantes_Eventos WHERE id_participante = '" + id + "' and "
-                + "id_evento = '" + id_evento + "';";
+        validarPago = "SELECT estado_pago FROM Participantes_Eventos WHERE id_participante = '" + id +
+                "' and " + "id_evento = '" + id_evento + "';";
         
         try {
             Connection conn= conexion.getConnetion();

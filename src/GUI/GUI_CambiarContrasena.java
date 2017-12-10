@@ -21,7 +21,7 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
     
     public GUI_CambiarContrasena(){
         
-        initComponents();        
+        initComponents();
         this.setLocationRelativeTo(null);
         controladorOperador = new ControladorOperador();
         controladorGerente = new ControladorGerente();
@@ -33,8 +33,8 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
         confirmarC.setVisible(false);
         confirmarCon.setVisible(false);
         validaRespuesta = 0;
-
-    } 
+        
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -206,11 +206,10 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
-  
-    //Inicio escuchas
+    
     private void cambiarPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarPassActionPerformed
-                 
-        String respuesta, cedulaBusqueda,nuevaContrasena, confirmar, validar = "";  
+        
+        String respuesta, cedulaBusqueda,nuevaContrasena, confirmar, validar = "";
         respuesta = respuestaSeguridad.getText();
         cedulaBusqueda = consultarLabel.getText();
         if(validaRespuesta == 0){
@@ -219,36 +218,36 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
                     nuevaC.setVisible(true);
                     nuevaCon.setVisible(true);
                     confirmarC.setVisible(true);
-                    confirmarCon.setVisible(true); 
+                    confirmarCon.setVisible(true);
                     validaRespuesta = 1;
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Respuesta incorrecta.");
                 }
-            }          
+            }
             else if (gerente != null){
-                    if(respuesta.equals(gerente.getRespuesta())){
-                        nuevaC.setVisible(true);
-                        nuevaCon.setVisible(true);
-                        confirmarC.setVisible(true);
-                        confirmarCon.setVisible(true); 
-                        validaRespuesta = 1;
-                    }
-                    else {
+                if(respuesta.equals(gerente.getRespuesta())){
+                    nuevaC.setVisible(true);
+                    nuevaCon.setVisible(true);
+                    confirmarC.setVisible(true);
+                    confirmarCon.setVisible(true);
+                    validaRespuesta = 1;
+                }
+                else {
                     JOptionPane.showMessageDialog(null, "Respuesta incorrecta.");
-                    }
-            }             
+                }
+            }
         }
-       
+        
         else if(validaRespuesta == 1){
             nuevaContrasena = nuevaCon.getText();
             confirmar = confirmarCon.getText();
             
             if(!validaciones.validarLetrasYNumeros(nuevaContrasena) || nuevaContrasena.length() < 8) {
-            JOptionPane.showMessageDialog(null, "El campos contraseña debe tener minimo 8 caracteres validos");
+                JOptionPane.showMessageDialog(null, "El campos contraseña debe tener minimo 8 caracteres validos");
             }
             else if(!nuevaContrasena.equals(confirmar)){
-            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");   
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
             }
             else{
                 
@@ -267,7 +266,7 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
                             nuevaCon.setVisible(false);
                             confirmarC.setVisible(false);
                             confirmarCon.setVisible(false);
-                            validaRespuesta = 0; 
+                            validaRespuesta = 0;
                             break;
                         case 2:
                             JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar la contraseña.");
@@ -292,7 +291,7 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
                             nuevaCon.setVisible(false);
                             confirmarC.setVisible(false);
                             confirmarCon.setVisible(false);
-                            validaRespuesta = 0; 
+                            validaRespuesta = 0;
                             break;
                         case 2:
                             JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar la contraseña.");
@@ -300,56 +299,56 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
                         default:
                             JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar la contraseña.");
                             break;
-                    }                    
+                    }
                 }
                 
             }
-          
+            
         }
-  
+        
     }//GEN-LAST:event_cambiarPassActionPerformed
-
+    
     private void nuevaConKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nuevaConKeyPressed
-     
+        
     }//GEN-LAST:event_nuevaConKeyPressed
-
+    
     private void confirmarConKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_confirmarConKeyPressed
-       
+        
     }//GEN-LAST:event_confirmarConKeyPressed
-
+    
     private void respuestaSeguridadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_respuestaSeguridadKeyPressed
- 
+        
     }//GEN-LAST:event_respuestaSeguridadKeyPressed
-
+    
     private void cambiarPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cambiarPassKeyPressed
-     
+        
     }//GEN-LAST:event_cambiarPassKeyPressed
-
+    
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         operador = new Operador();
-        gerente = new Gerente();      
+        gerente = new Gerente();
         String cedula = consultarLabel.getText();
         if (cedula.equals("")) {
-
+            
             JOptionPane.showMessageDialog(null, "El campo cédula de la consulta esta vacio.");
             consultarLabel.setText(null);
         } else if (!validaciones.validarNumero(cedula)) {
-
+            
             JOptionPane.showMessageDialog(null, "El campo cédula de la consulta debe ser numérico.");
             consultarLabel.setText(null);
         } else {
-
+            
             operador = controladorOperador.consultarDatosOperador(cedula);
-            gerente = controladorGerente.consultarDatosGerente(cedula);      
-
+            gerente = controladorGerente.consultarDatosGerente(cedula);
+            
             if (operador != null ){
-
+                
                 pregunta.setText(operador.getPregunta());
-
+                
             } else if (gerente != null) {
                 pregunta.setText(gerente.getPregunta());
             } else {
-
+                
                 JOptionPane.showMessageDialog(null, "El usuario no existe.");
                 consultarLabel.setText(null);
             }

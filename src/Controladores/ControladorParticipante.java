@@ -11,10 +11,11 @@ public class ControladorParticipante {
         daoParticipante = new DaoParticipante();
     }
     
-    public int  insertarParticipante(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String cedula, String fechaNacimiento, String telefono, String email, String idOperador, String codEvento, String estado_pago){
-                
-        Participante pa = new Participante();
+    public int  insertarParticipante(String primerNombre, String segundoNombre, 
+            String primerApellido, String segundoApellido, String cedula, String fechaNacimiento, 
+            String telefono, String email, String idOperador, String codEvento, String estado_pago){
         
+        Participante pa = new Participante();
         pa.setCedula_pa(cedula);
         pa.setFecha_nacimiento(fechaNacimiento);
         pa.setPrimer_nombre(primerNombre);
@@ -25,7 +26,7 @@ public class ControladorParticipante {
         pa.setEmail(email);
         pa.setEstado_pago(estado_pago);
         pa.setCedula_op(idOperador);
-                
+        
         int result = daoParticipante.guardarParticipante(pa, codEvento);
         return result;
     }
@@ -58,5 +59,5 @@ public class ControladorParticipante {
     public int comprobar(String codigoConsulta) {
         
         return daoParticipante.comprobar(codigoConsulta);
-    }    
+    }
 }
