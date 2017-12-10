@@ -25,6 +25,10 @@ public class ControladorReportesEventos {
         
         daoReportesEventos.consultarEventos(modeloTabla, tabla);
     }
+    
+     public void generarReporteEventos(String nombre){
+     daoReportesEventos.guardarReporteEventos(nombre);
+    }
 
     public void consultarEvento(DefaultTableModel modeloTabla, JTable tabla, String busqueda) {
         

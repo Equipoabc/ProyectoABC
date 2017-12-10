@@ -6,6 +6,10 @@
 package GUI;
 
 import Controladores.ControladorReportesSedes;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -165,6 +169,24 @@ public class GUI_ReportesSedes extends javax.swing.JFrame {
 
     private void exportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportarActionPerformed
         // TODO add your handling code here:
+        
+        String busqueda;
+        busqueda = campoDeBusqueda.getText();
+       
+        if(busqueda.equals("")){
+            
+        Date fechaActual;
+        fechaActual = GUI_ReportesUsuarios.GetDateNow();
+        String fecha = "";
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try {
+            fecha = new SimpleDateFormat("dd-MM-YYYY").format(fechaActual);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        controladorReportesSedes.generarReporteSedes("Reporte Sedes " + fecha);
+            JOptionPane.showMessageDialog(null, "Reporte guardado con éxito!");
+        }
     }//GEN-LAST:event_exportarActionPerformed
 
     /**

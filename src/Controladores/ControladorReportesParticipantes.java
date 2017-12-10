@@ -20,6 +20,10 @@ public class ControladorReportesParticipantes {
         daoReportesParticipantes = new DaoReportesParticipantes();
     } 
     
+    public void generarReporteParticipantes(String nombre){
+     daoReportesParticipantes.guardarReporteParticipantes(nombre);
+    }
+    
     public void consultarParticipantes(DefaultTableModel modeloTabla, JTable tabla) {
        
         daoReportesParticipantes.consultarParticipantes(modeloTabla, tabla);

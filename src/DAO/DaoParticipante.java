@@ -65,8 +65,6 @@ public class DaoParticipante {
         int numFilas, numFilas2;
         numFilas2 = 0;
         
-        System.out.println(pa.getSegundo_apellido());
-        
         // instrucción sql para ingresar una tupla en participantes
         sql_guardar = "INSERT INTO Participantes (cedula_pa, primer_nombre, segundo_nombre, " +
                 "primer_apellido, segundo_apellido, email, telefono, fecha_nacimiento)  " +

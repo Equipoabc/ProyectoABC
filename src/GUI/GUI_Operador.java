@@ -210,6 +210,10 @@ public class GUI_Operador extends javax.swing.JFrame {
     
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
+        
+        GUI_ReportesParticipantes vReportes = new GUI_ReportesParticipantes();
+        vReportes.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
     
     private void modificarParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarParticipanteActionPerformed
