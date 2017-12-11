@@ -40,6 +40,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         botonCancelar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         tema = new javax.swing.JTextField();
         primerNombreLabel8 = new javax.swing.JLabel();
         primerNombreLabel6 = new javax.swing.JLabel();
@@ -63,8 +64,10 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(750, 500));
         jPanel1.setLayout(null);
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
@@ -80,7 +83,14 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(320, 290, 160, 70);
+        botonCancelar.setBounds(370, 380, 160, 70);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Crear Evento");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 50, 200, 50);
 
         tema.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         tema.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -90,22 +100,22 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tema);
-        tema.setBounds(400, 250, 180, 20);
+        tema.setBounds(460, 310, 180, 25);
 
         primerNombreLabel8.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel8.setText("Tema:");
         jPanel1.add(primerNombreLabel8);
-        primerNombreLabel8.setBounds(330, 240, 120, 30);
+        primerNombreLabel8.setBounds(390, 300, 120, 30);
 
         primerNombreLabel6.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel6.setText("Minutos");
         jPanel1.add(primerNombreLabel6);
-        primerNombreLabel6.setBounds(580, 150, 80, 30);
+        primerNombreLabel6.setBounds(640, 220, 80, 30);
 
         primerNombreLabel5.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel5.setText("Duración:");
         jPanel1.add(primerNombreLabel5);
-        primerNombreLabel5.setBounds(330, 140, 70, 40);
+        primerNombreLabel5.setBounds(390, 200, 70, 40);
 
         lugar.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         lugar.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -115,12 +125,12 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lugar);
-        lugar.setBounds(400, 200, 180, 20);
+        lugar.setBounds(460, 260, 180, 25);
 
         primerNombreLabel3.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel3.setText("Lugar:");
         jPanel1.add(primerNombreLabel3);
-        primerNombreLabel3.setBounds(330, 180, 130, 50);
+        primerNombreLabel3.setBounds(390, 240, 130, 50);
 
         precio.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         precio.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -130,17 +140,17 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(precio);
-        precio.setBounds(110, 250, 180, 20);
+        precio.setBounds(150, 310, 180, 25);
 
         primerNombreLabel2.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel2.setText("Precio:");
         jPanel1.add(primerNombreLabel2);
-        primerNombreLabel2.setBounds(50, 250, 180, 30);
+        primerNombreLabel2.setBounds(90, 310, 180, 30);
 
         primerNombreLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel1.setText("Fecha:");
         jPanel1.add(primerNombreLabel1);
-        primerNombreLabel1.setBounds(50, 200, 170, 30);
+        primerNombreLabel1.setBounds(90, 260, 170, 30);
 
         nombre.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         nombre.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -150,17 +160,17 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(nombre);
-        nombre.setBounds(110, 150, 180, 20);
+        nombre.setBounds(150, 210, 180, 25);
 
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNombreLabel.setText("Nombre:");
         jPanel1.add(segundoNombreLabel);
-        segundoNombreLabel.setBounds(50, 150, 180, 30);
+        segundoNombreLabel.setBounds(90, 210, 180, 30);
 
         primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel.setText("Código:");
         jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(50, 90, 50, 50);
+        primerNombreLabel.setBounds(90, 150, 50, 50);
 
         codigo.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         codigo.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -170,7 +180,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(codigo);
-        codigo.setBounds(110, 100, 90, 20);
+        codigo.setBounds(150, 160, 180, 25);
 
         crearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         crearEvento.setBorder(null);
@@ -190,7 +200,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearEvento);
-        crearEvento.setBounds(170, 290, 160, 70);
+        crearEvento.setBounds(220, 380, 160, 70);
 
         fecha.setBackground(new java.awt.Color(255, 255, 255));
         fecha.setForeground(new java.awt.Color(102, 102, 255));
@@ -206,7 +216,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(fecha);
-        fecha.setBounds(110, 200, 180, 20);
+        fecha.setBounds(150, 260, 180, 25);
 
         cupos.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         cupos.setAutoscrolls(true);
@@ -217,7 +227,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cupos);
-        cupos.setBounds(400, 100, 60, 30);
+        cupos.setBounds(460, 160, 60, 30);
 
         horas.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         horas.setForeground(new java.awt.Color(102, 102, 255));
@@ -229,7 +239,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(horas);
-        horas.setBounds(400, 140, 60, 30);
+        horas.setBounds(460, 210, 60, 30);
 
         minutos.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         minutos.setForeground(new java.awt.Color(102, 102, 255));
@@ -241,35 +251,35 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(minutos);
-        minutos.setBounds(520, 140, 50, 30);
+        minutos.setBounds(580, 210, 53, 30);
 
         horasLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         horasLabel.setText("Cupos:");
         jPanel1.add(horasLabel);
-        horasLabel.setBounds(330, 100, 140, 30);
+        horasLabel.setBounds(390, 160, 140, 30);
 
         primerNombreLabel7.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel7.setText("Horas");
         jPanel1.add(primerNombreLabel7);
-        primerNombreLabel7.setBounds(470, 150, 50, 30);
+        primerNombreLabel7.setBounds(530, 220, 50, 30);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEventoFondo.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         fondo.setFocusable(false);
         jPanel1.add(fondo);
-        fondo.setBounds(0, 0, 681, 390);
+        fondo.setBounds(0, 0, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -423,6 +433,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private javax.swing.JComboBox<String> horas;
     private javax.swing.JLabel horasLabel;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField lugar;
     private javax.swing.JComboBox<String> minutos;

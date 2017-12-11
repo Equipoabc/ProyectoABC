@@ -15,6 +15,14 @@ public class GUI_Gerente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         modificarSede = new javax.swing.JButton();
         reportes = new javax.swing.JButton();
         registrarSede = new javax.swing.JButton();
@@ -24,57 +32,113 @@ public class GUI_Gerente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 500));
+        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(750, 500));
         jPanel1.setLayout(null);
 
-        modificarSede.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarSedeMed.png"))); // NOI18N
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("  Bienvenido ");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(10, 240, 200, 50);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Administrador");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(20, 280, 190, 50);
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel3.setText("<html><body> <center>  Modificar<br>Evento </center></body></html>");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(430, 180, 110, 90);
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel5.setText("<html><body> <center>  Reportes y<br>Consultas </center></body></html>");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(590, 180, 140, 90);
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel7.setText("<html><body> <center>  Registrar<br>Sede </center></body></html>");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(340, 310, 110, 90);
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel8.setText("<html><body> <center> Modificar<br>Sede </center></body></html>");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(520, 310, 120, 90);
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel9.setText("<html><body> <center>  Crear<br>Evento </center></body></html>");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(270, 180, 90, 90);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Gerente");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 40, 200, 50);
+
+        modificarSede.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         modificarSede.setBorder(null);
         modificarSede.setBorderPainted(false);
         modificarSede.setContentAreaFilled(false);
         modificarSede.setFocusPainted(false);
-        modificarSede.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarSedePeq.png"))); // NOI18N
-        modificarSede.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarSede.png"))); // NOI18N
         modificarSede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarSedeActionPerformed(evt);
             }
         });
         jPanel1.add(modificarSede);
-        modificarSede.setBounds(430, 280, 180, 110);
+        modificarSede.setBounds(480, 300, 180, 110);
 
-        reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepMed.png"))); // NOI18N
+        reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         reportes.setBorder(null);
         reportes.setBorderPainted(false);
         reportes.setContentAreaFilled(false);
         reportes.setFocusPainted(false);
-        reportes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepPeq.png"))); // NOI18N
-        reportes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonRepl.png"))); // NOI18N
         reportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportesActionPerformed(evt);
             }
         });
         jPanel1.add(reportes);
-        reportes.setBounds(550, 150, 180, 110);
+        reportes.setBounds(560, 170, 180, 110);
         reportes.getAccessibleContext().setAccessibleName("Reportes y Consultas");
 
-        registrarSede.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarSedeMed.png"))); // NOI18N
+        registrarSede.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         registrarSede.setBorder(null);
         registrarSede.setBorderPainted(false);
         registrarSede.setContentAreaFilled(false);
         registrarSede.setFocusPainted(false);
-        registrarSede.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarSedePeq.png"))); // NOI18N
-        registrarSede.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegistrarSede.png"))); // NOI18N
         registrarSede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarSedeActionPerformed(evt);
             }
         });
         jPanel1.add(registrarSede);
-        registrarSede.setBounds(170, 280, 180, 110);
+        registrarSede.setBounds(300, 300, 180, 110);
 
-        CerrarSesion.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        CerrarSesion.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        CerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         CerrarSesion.setText("Cerrar Sesión");
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -82,53 +146,49 @@ public class GUI_Gerente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(CerrarSesion);
-        CerrarSesion.setBounds(660, 380, 110, 50);
+        CerrarSesion.setBounds(610, 40, 120, 50);
 
-        crearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEventoMed.png"))); // NOI18N
+        crearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         crearEvento.setBorder(null);
         crearEvento.setBorderPainted(false);
         crearEvento.setContentAreaFilled(false);
         crearEvento.setFocusPainted(false);
-        crearEvento.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEventoPeq.png"))); // NOI18N
-        crearEvento.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CrearEvento.png"))); // NOI18N
         crearEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearEventoActionPerformed(evt);
             }
         });
         jPanel1.add(crearEvento);
-        crearEvento.setBounds(40, 150, 180, 110);
+        crearEvento.setBounds(220, 170, 180, 110);
 
-        modificarEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarEventoMed.png"))); // NOI18N
+        modificarEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         modificarEvento.setBorder(null);
         modificarEvento.setBorderPainted(false);
         modificarEvento.setContentAreaFilled(false);
         modificarEvento.setFocusPainted(false);
-        modificarEvento.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarEventoPeq.png"))); // NOI18N
-        modificarEvento.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ModificarEvento.png"))); // NOI18N
         modificarEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarEventoActionPerformed(evt);
             }
         });
         jPanel1.add(modificarEvento);
-        modificarEvento.setBounds(290, 150, 180, 110);
+        modificarEvento.setBounds(390, 170, 180, 110);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGerente.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 791, 446);
+        jLabel2.setBounds(0, -10, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -223,7 +283,15 @@ public class GUI_Gerente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JButton crearEvento;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificarEvento;
     private javax.swing.JButton modificarSede;

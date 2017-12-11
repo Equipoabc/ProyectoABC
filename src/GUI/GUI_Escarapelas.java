@@ -40,6 +40,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         codEventoLabel = new javax.swing.JLabel();
         cedula = new javax.swing.JTextField();
         cedulaLab = new javax.swing.JLabel();
@@ -60,15 +61,22 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Escarapelas");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 30, 200, 50);
+
         codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         codEventoLabel.setText("Ingresar código evento:");
         jPanel1.add(codEventoLabel);
-        codEventoLabel.setBounds(450, 210, 190, 34);
+        codEventoLabel.setBounds(460, 200, 190, 34);
 
         cedula.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         cedula.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(cedula);
-        cedula.setBounds(450, 160, 150, 30);
+        cedula.setBounds(460, 150, 150, 30);
 
         cedulaLab.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cedulaLab.setText("Nombre:");
@@ -88,7 +96,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(descargar);
-        descargar.setBounds(390, 350, 140, 90);
+        descargar.setBounds(400, 350, 140, 90);
 
         generar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GenerarMed.png"))); // NOI18N
         generar.setBorder(null);
@@ -103,7 +111,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(generar);
-        generar.setBounds(450, 280, 140, 90);
+        generar.setBounds(460, 270, 140, 90);
 
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         cancelar.setBorder(null);
@@ -118,7 +126,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(520, 350, 140, 90);
+        cancelar.setBounds(530, 350, 140, 90);
 
         cedulaLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cedulaLabel1.setText("Cédula:");
@@ -145,7 +153,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
         cedulaLabel6.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         cedulaLabel6.setText("Ingresar cédula:");
         jPanel1.add(cedulaLabel6);
-        cedulaLabel6.setBounds(450, 120, 200, 30);
+        cedulaLabel6.setBounds(460, 110, 200, 30);
 
         listaEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,15 +161,18 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(listaEventos);
-        listaEventos.setBounds(450, 250, 150, 30);
+        listaEventos.setBounds(460, 240, 150, 30);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoEscarapela.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setFocusable(false);
+        jLabel2.setMaximumSize(new java.awt.Dimension(750, 500));
+        jLabel2.setMinimumSize(new java.awt.Dimension(750, 500));
+        jLabel2.setPreferredSize(new java.awt.Dimension(750, 500));
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 760, 450);
+        jLabel2.setBounds(-10, -20, 770, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -315,6 +326,7 @@ public class GUI_Escarapelas extends javax.swing.JFrame {
     private javax.swing.JLabel eventoLabel;
     private javax.swing.JButton generar;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listaEventos;
     private javax.swing.JLabel nombreLabel;

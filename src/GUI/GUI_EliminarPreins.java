@@ -37,6 +37,7 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         cancelar = new javax.swing.JButton();
         codEventoLabel = new javax.swing.JLabel();
         cedula = new javax.swing.JTextField();
@@ -46,9 +47,17 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
         jPanel1.setLayout(null);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Eliminar Preinscripción");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 50, 320, 50);
 
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         cancelar.setBorder(null);
@@ -63,12 +72,12 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(390, 330, 140, 90);
+        cancelar.setBounds(380, 350, 140, 90);
 
         codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         codEventoLabel.setText("Ingresar código evento:");
         jPanel1.add(codEventoLabel);
-        codEventoLabel.setBounds(300, 230, 190, 34);
+        codEventoLabel.setBounds(290, 240, 180, 34);
 
         cedula.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         cedula.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -78,12 +87,12 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cedula);
-        cedula.setBounds(300, 180, 150, 30);
+        cedula.setBounds(300, 190, 150, 30);
 
         cedulaLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         cedulaLabel.setText("Ingresar cédula:");
         jPanel1.add(cedulaLabel);
-        cedulaLabel.setBounds(300, 140, 200, 30);
+        cedulaLabel.setBounds(310, 150, 200, 30);
 
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EliminarMed.png"))); // NOI18N
         eliminar.setBorder(null);
@@ -103,7 +112,7 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
             }
         });
         jPanel1.add(eliminar);
-        eliminar.setBounds(250, 330, 140, 90);
+        eliminar.setBounds(240, 350, 140, 90);
 
         listaEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,25 +120,28 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
             }
         });
         jPanel1.add(listaEventos);
-        listaEventos.setBounds(300, 280, 150, 30);
+        listaEventos.setBounds(300, 290, 150, 30);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PreInscripcionFondo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setFocusable(false);
+        jLabel2.setMaximumSize(new java.awt.Dimension(750, 500));
+        jLabel2.setMinimumSize(new java.awt.Dimension(750, 500));
+        jLabel2.setPreferredSize(new java.awt.Dimension(750, 500));
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 760, 450);
+        jLabel2.setBounds(0, 0, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -228,6 +240,7 @@ public class GUI_EliminarPreins extends javax.swing.JFrame {
     private javax.swing.JLabel codEventoLabel;
     private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listaEventos;
     // End of variables declaration//GEN-END:variables

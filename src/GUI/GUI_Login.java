@@ -3,6 +3,7 @@ import Controladores.*;
 import Logica.*;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class GUI_Login extends javax.swing.JFrame {
     
@@ -19,6 +20,10 @@ public class GUI_Login extends javax.swing.JFrame {
         controladorGerente = new ControladorGerente();
         controladorOperador = new ControladorOperador();
         controladorEvento = new ControladorEvento();
+        usuario.setBorder(new EmptyBorder(0,5,0,2));
+        pass.setBorder(new EmptyBorder(0,5,0,2));
+          
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -32,6 +37,10 @@ public class GUI_Login extends javax.swing.JFrame {
         pass = new javax.swing.JPasswordField();
         botonIniciarSesion = new javax.swing.JButton();
         botonOlvide = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,31 +52,31 @@ public class GUI_Login extends javax.swing.JFrame {
         TxtUsuario.setFont(new java.awt.Font("Cambria", 2, 20)); // NOI18N
         TxtUsuario.setText("Usuario:");
         jPanel1.add(TxtUsuario);
-        TxtUsuario.setBounds(420, 70, 120, 40);
+        TxtUsuario.setBounds(480, 130, 120, 40);
 
-        usuario.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        usuario.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         usuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 usuarioKeyPressed(evt);
             }
         });
         jPanel1.add(usuario);
-        usuario.setBounds(420, 110, 200, 25);
+        usuario.setBounds(490, 180, 170, 30);
 
         TxtPass.setBackground(new java.awt.Color(255, 255, 255));
         TxtPass.setFont(new java.awt.Font("Cambria", 2, 20)); // NOI18N
         TxtPass.setText("Contraseña:");
         jPanel1.add(TxtPass);
-        TxtPass.setBounds(420, 120, 200, 70);
+        TxtPass.setBounds(470, 220, 190, 40);
 
-        pass.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        pass.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         pass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 passKeyPressed(evt);
             }
         });
         jPanel1.add(pass);
-        pass.setBounds(420, 180, 200, 25);
+        pass.setBounds(490, 270, 170, 30);
 
         botonIniciarSesion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botonIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IngresarMed.png"))); // NOI18N
@@ -88,7 +97,7 @@ public class GUI_Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonIniciarSesion);
-        botonIniciarSesion.setBounds(430, 220, 150, 70);
+        botonIniciarSesion.setBounds(500, 310, 150, 70);
 
         botonOlvide.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         botonOlvide.setText("Olvidé mi contraseña");
@@ -98,23 +107,43 @@ public class GUI_Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonOlvide);
-        botonOlvide.setBounds(500, 300, 160, 30);
+        botonOlvide.setBounds(550, 380, 160, 30);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/campo.png"))); // NOI18N
+        jLabel4.setText("jLabel3");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(460, 260, 240, 50);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/campo.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(460, 170, 240, 50);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/loginF.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(420, 90, 290, 340);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/campo.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(470, 160, 210, 50);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gif1.gif"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(fondo);
-        fondo.setBounds(0, 0, 682, 384);
+        fondo.setBounds(0, 0, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -243,6 +272,10 @@ public class GUI_Login extends javax.swing.JFrame {
     private javax.swing.JButton botonIniciarSesion;
     private javax.swing.JLabel botonOlvide;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField usuario;

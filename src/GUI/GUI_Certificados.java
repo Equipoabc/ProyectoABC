@@ -41,6 +41,7 @@ public class GUI_Certificados extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         codEventoLabel = new javax.swing.JLabel();
         cedula = new javax.swing.JTextField();
         descargar = new javax.swing.JButton();
@@ -58,15 +59,22 @@ public class GUI_Certificados extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Certificados");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 40, 200, 50);
+
         codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         codEventoLabel.setText("Ingresar código evento:");
         jPanel1.add(codEventoLabel);
-        codEventoLabel.setBounds(530, 210, 190, 34);
+        codEventoLabel.setBounds(540, 210, 190, 34);
 
         cedula.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         cedula.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(cedula);
-        cedula.setBounds(530, 160, 150, 30);
+        cedula.setBounds(540, 160, 150, 25);
 
         descargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DescargarMed.png"))); // NOI18N
         descargar.setBorder(null);
@@ -86,7 +94,7 @@ public class GUI_Certificados extends javax.swing.JFrame {
             }
         });
         jPanel1.add(descargar);
-        descargar.setBounds(480, 350, 140, 90);
+        descargar.setBounds(490, 350, 140, 90);
 
         generar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GenerarMed.png"))); // NOI18N
         generar.setBorder(null);
@@ -106,7 +114,7 @@ public class GUI_Certificados extends javax.swing.JFrame {
             }
         });
         jPanel1.add(generar);
-        generar.setBounds(540, 280, 140, 90);
+        generar.setBounds(550, 270, 140, 90);
 
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         cancelar.setBorder(null);
@@ -126,20 +134,20 @@ public class GUI_Certificados extends javax.swing.JFrame {
         cedulaLabel3.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         cedulaLabel3.setText("Ingresar cédula:");
         jPanel1.add(cedulaLabel3);
-        cedulaLabel3.setBounds(530, 120, 200, 30);
+        cedulaLabel3.setBounds(540, 120, 200, 30);
 
         nombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(nombreLabel);
-        nombreLabel.setBounds(140, 260, 230, 30);
+        nombreLabel.setBounds(140, 290, 230, 30);
 
         fecha.setFont(new java.awt.Font("Cambria", 2, 8)); // NOI18N
         jPanel1.add(fecha);
-        fecha.setBounds(350, 300, 80, 20);
+        fecha.setBounds(370, 330, 80, 20);
 
         eventoLabel.setFont(new java.awt.Font("Cambria", 2, 8)); // NOI18N
         eventoLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(eventoLabel);
-        eventoLabel.setBounds(220, 300, 80, 20);
+        eventoLabel.setBounds(240, 330, 80, 20);
 
         listaEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +155,7 @@ public class GUI_Certificados extends javax.swing.JFrame {
             }
         });
         jPanel1.add(listaEventos);
-        listaEventos.setBounds(530, 250, 150, 30);
+        listaEventos.setBounds(540, 250, 150, 25);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -155,7 +163,7 @@ public class GUI_Certificados extends javax.swing.JFrame {
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setFocusable(false);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 760, 450);
+        jLabel2.setBounds(0, -10, 760, 460);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -324,6 +332,7 @@ public class GUI_Certificados extends javax.swing.JFrame {
     private javax.swing.JLabel fecha;
     private javax.swing.JButton generar;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listaEventos;
     private javax.swing.JLabel nombreLabel;

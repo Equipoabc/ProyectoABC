@@ -64,6 +64,7 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         cedulaLabel2 = new javax.swing.JLabel();
         dinero = new javax.swing.JTextField();
         dineroLabel = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         cambioLabel1 = new javax.swing.JLabel();
         cambioLabel2 = new javax.swing.JLabel();
         continuarBoton = new javax.swing.JButton();
@@ -73,6 +74,7 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
         jPanel1.setLayout(null);
@@ -90,21 +92,21 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(620, 340, 140, 90);
+        botonCancelar.setBounds(380, 370, 140, 90);
 
-        codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         codEventoLabel.setText("Ingresar código evento:");
         jPanel1.add(codEventoLabel);
-        codEventoLabel.setBounds(460, 220, 190, 34);
+        codEventoLabel.setBounds(110, 140, 190, 34);
 
-        cedula.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
+        cedula.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cedula.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(cedula);
-        cedula.setBounds(470, 180, 150, 30);
+        cedula.setBounds(110, 270, 150, 25);
 
-        nombreLabelEditar.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        nombreLabelEditar.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(nombreLabelEditar);
-        nombreLabelEditar.setBounds(200, 280, 260, 30);
+        nombreLabelEditar.setBounds(560, 150, 180, 30);
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consultar.png"))); // NOI18N
         botonConsultar.setBorder(null);
@@ -119,7 +121,7 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonConsultar);
-        botonConsultar.setBounds(620, 240, 140, 90);
+        botonConsultar.setBounds(270, 150, 140, 90);
 
         pagarEvento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PagarMed.png"))); // NOI18N
         pagarEvento1.setBorder(null);
@@ -134,30 +136,41 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             }
         });
         jPanel1.add(pagarEvento1);
-        pagarEvento1.setBounds(470, 340, 140, 90);
+        pagarEvento1.setBounds(250, 370, 140, 90);
 
-        precioNumeroLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        precioNumeroLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(precioNumeroLabel);
-        precioNumeroLabel.setBounds(200, 330, 260, 30);
+        precioNumeroLabel.setBounds(560, 190, 180, 30);
 
-        cedulaLabel2.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        cedulaLabel2.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cedulaLabel2.setText("Ingresar cédula:");
         jPanel1.add(cedulaLabel2);
-        cedulaLabel2.setBounds(480, 130, 200, 30);
-        jPanel1.add(dinero);
-        dinero.setBounds(100, 120, 190, 20);
+        cedulaLabel2.setBounds(110, 230, 200, 30);
 
-        dineroLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        dinero.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        jPanel1.add(dinero);
+        dinero.setBounds(110, 310, 150, 25);
+
+        dineroLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         dineroLabel.setText("Dinero:");
         jPanel1.add(dineroLabel);
-        dineroLabel.setBounds(30, 110, 70, 30);
+        dineroLabel.setBounds(40, 310, 70, 30);
 
-        cambioLabel1.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Registrar Pago");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 40, 200, 50);
+
+        cambioLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cambioLabel1.setText("Cambio:");
         jPanel1.add(cambioLabel1);
-        cambioLabel1.setBounds(30, 160, 70, 30);
+        cambioLabel1.setBounds(40, 350, 70, 30);
+
+        cambioLabel2.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(cambioLabel2);
-        cambioLabel2.setBounds(110, 160, 180, 30);
+        cambioLabel2.setBounds(110, 350, 150, 30);
 
         continuarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         continuarBoton.setBorder(null);
@@ -169,17 +182,17 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             }
         });
         jPanel1.add(continuarBoton);
-        continuarBoton.setBounds(300, 150, 130, 53);
+        continuarBoton.setBounds(280, 300, 130, 53);
 
-        nombreEventoLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        nombreEventoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         nombreEventoLabel.setText("Nombre Evento:");
         jPanel1.add(nombreEventoLabel);
-        nombreEventoLabel.setBounds(60, 280, 130, 30);
+        nombreEventoLabel.setBounds(450, 150, 130, 30);
 
-        precioLabel.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        precioLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         precioLabel.setText("Precio:");
         jPanel1.add(precioLabel);
-        precioLabel.setBounds(120, 330, 90, 30);
+        precioLabel.setBounds(450, 190, 90, 30);
 
         listaEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,25 +200,29 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             }
         });
         jPanel1.add(listaEventos);
-        listaEventos.setBounds(470, 280, 140, 20);
+        listaEventos.setBounds(110, 180, 150, 25);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrarPago.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         fondo.setFocusable(false);
+        fondo.setMaximumSize(new java.awt.Dimension(750, 500));
+        fondo.setMinimumSize(new java.awt.Dimension(750, 500));
+        fondo.setPreferredSize(new java.awt.Dimension(750, 500));
+        fondo.setRequestFocusEnabled(false);
         jPanel1.add(fondo);
-        fondo.setBounds(0, 0, 760, 450);
+        fondo.setBounds(0, -10, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -398,6 +415,7 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
     private javax.swing.JTextField dinero;
     private javax.swing.JLabel dineroLabel;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listaEventos;
     private javax.swing.JLabel nombreEventoLabel;

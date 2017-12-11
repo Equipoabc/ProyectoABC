@@ -45,6 +45,7 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
         primerAp = new javax.swing.JTextField();
         primerApellidoLabel = new javax.swing.JLabel();
         segundoNomb = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         segundoNombreLabel = new javax.swing.JLabel();
         primerNombreLabel = new javax.swing.JLabel();
         primerNomb = new javax.swing.JTextField();
@@ -55,6 +56,7 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
         jPanel1.setLayout(null);
@@ -72,47 +74,47 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(490, 320, 140, 90);
+        botonCancelar.setBounds(400, 370, 140, 90);
 
         correo.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         correo.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(correo);
-        correo.setBounds(550, 170, 180, 20);
+        correo.setBounds(420, 290, 150, 25);
 
         correoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         correoLabel.setText("Email:");
         jPanel1.add(correoLabel);
-        correoLabel.setBounds(490, 165, 120, 30);
+        correoLabel.setBounds(300, 290, 120, 20);
 
         telefonoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         telefonoLabel.setText("Teléfono:");
         jPanel1.add(telefonoLabel);
-        telefonoLabel.setBounds(487, 215, 70, 30);
+        telefonoLabel.setBounds(300, 330, 70, 20);
 
         tel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         tel.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(tel);
-        tel.setBounds(550, 220, 180, 20);
+        tel.setBounds(420, 330, 150, 25);
 
         segundoAp.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoAp.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(segundoAp);
-        segundoAp.setBounds(320, 270, 150, 20);
+        segundoAp.setBounds(420, 250, 150, 25);
 
         segundoApellidoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoApellidoLabel.setText("Segundo Apellido:");
         jPanel1.add(segundoApellidoLabel);
-        segundoApellidoLabel.setBounds(210, 270, 250, 34);
+        segundoApellidoLabel.setBounds(300, 244, 250, 30);
 
         primerAp.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerAp.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerAp);
-        primerAp.setBounds(320, 220, 150, 20);
+        primerAp.setBounds(420, 210, 150, 25);
 
         primerApellidoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerApellidoLabel.setText("Primer Apellido:");
         jPanel1.add(primerApellidoLabel);
-        primerApellidoLabel.setBounds(210, 220, 230, 34);
+        primerApellidoLabel.setBounds(300, 204, 230, 30);
 
         segundoNomb.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoNomb.setSelectionColor(new java.awt.Color(102, 102, 255));
@@ -122,22 +124,29 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(segundoNomb);
-        segundoNomb.setBounds(320, 170, 150, 20);
+        segundoNomb.setBounds(420, 170, 150, 25);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Modificar Participante");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 40, 320, 50);
 
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNombreLabel.setText("Segundo Nombre:");
         jPanel1.add(segundoNombreLabel);
-        segundoNombreLabel.setBounds(210, 170, 230, 34);
+        segundoNombreLabel.setBounds(300, 164, 230, 40);
 
         primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel.setText("Primer Nombre:");
         jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(210, 120, 100, 30);
+        primerNombreLabel.setBounds(300, 130, 100, 30);
 
         primerNomb.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerNomb.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerNomb);
-        primerNomb.setBounds(320, 120, 150, 20);
+        primerNomb.setBounds(420, 130, 150, 25);
 
         botonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         botonAceptar.setBorder(null);
@@ -152,17 +161,17 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonAceptar);
-        botonAceptar.setBounds(350, 320, 140, 90);
+        botonAceptar.setBounds(240, 370, 140, 90);
 
         primerNombreLabel4.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel4.setText("Ingresar Cédula:");
         jPanel1.add(primerNombreLabel4);
-        primerNombreLabel4.setBounds(60, 170, 100, 40);
+        primerNombreLabel4.setBounds(90, 190, 100, 40);
 
         consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(consultarLabel);
-        consultarLabel.setBounds(40, 210, 140, 20);
+        consultarLabel.setBounds(70, 230, 140, 25);
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
         botonConsultar.setBorder(null);
@@ -177,25 +186,28 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonConsultar);
-        botonConsultar.setBounds(30, 240, 160, 70);
+        botonConsultar.setBounds(60, 260, 160, 70);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoModificarPart.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         fondo.setFocusable(false);
+        fondo.setMaximumSize(new java.awt.Dimension(750, 500));
+        fondo.setMinimumSize(new java.awt.Dimension(750, 500));
+        fondo.setPreferredSize(new java.awt.Dimension(750, 500));
         jPanel1.add(fondo);
-        fondo.setBounds(0, 0, 760, 450);
+        fondo.setBounds(0, -10, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -333,6 +345,7 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
     private javax.swing.JTextField correo;
     private javax.swing.JLabel correoLabel;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField primerAp;
     private javax.swing.JLabel primerApellidoLabel;

@@ -78,10 +78,12 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         cedula = new javax.swing.JTextField();
         cedulaLabel = new javax.swing.JLabel();
         segundoApellido = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         segundoApellidoLabel = new javax.swing.JLabel();
         primerApellido = new javax.swing.JTextField();
         primerApellidoLabel = new javax.swing.JLabel();
         segundoNombre = new javax.swing.JTextField();
+        cedulaLabel1 = new javax.swing.JLabel();
         segundoNombreLabel = new javax.swing.JLabel();
         primerNombreLabel = new javax.swing.JLabel();
         primerNombre = new javax.swing.JTextField();
@@ -92,8 +94,11 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 500));
+        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(750, 500));
         jPanel1.setLayout(null);
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
@@ -109,87 +114,99 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(570, 350, 140, 90);
+        botonCancelar.setBounds(380, 370, 140, 90);
 
         correo.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         correo.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(correo);
-        correo.setBounds(510, 180, 210, 20);
+        correo.setBounds(520, 260, 150, 25);
 
         correoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         correoLabel.setText("Email:");
         jPanel1.add(correoLabel);
-        correoLabel.setBounds(390, 170, 120, 30);
+        correoLabel.setBounds(400, 250, 120, 40);
 
         telefonoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         telefonoLabel.setText("Teléfono:");
         jPanel1.add(telefonoLabel);
-        telefonoLabel.setBounds(390, 230, 130, 30);
+        telefonoLabel.setBounds(400, 280, 130, 40);
 
         telefono.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         telefono.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(telefono);
-        telefono.setBounds(510, 240, 210, 20);
+        telefono.setBounds(520, 290, 150, 25);
 
         codEventoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         codEventoLabel.setText("Código Evento:");
         jPanel1.add(codEventoLabel);
-        codEventoLabel.setBounds(390, 290, 200, 34);
+        codEventoLabel.setBounds(400, 310, 200, 40);
 
         fechaLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         fechaLabel.setText("Fecha Nacimiento:");
         jPanel1.add(fechaLabel);
-        fechaLabel.setBounds(390, 110, 220, 40);
+        fechaLabel.setBounds(400, 220, 220, 40);
 
         cedula.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         cedula.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(cedula);
-        cedula.setBounds(160, 350, 210, 20);
+        cedula.setBounds(210, 170, 150, 25);
 
         cedulaLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        cedulaLabel.setText("Cédula:");
+        cedulaLabel.setText("Verifique si el participante se encuentra registrado en el sistema.");
         jPanel1.add(cedulaLabel);
-        cedulaLabel.setBounds(40, 350, 200, 30);
+        cedulaLabel.setBounds(80, 120, 430, 30);
 
         segundoApellido.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoApellido.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(segundoApellido);
-        segundoApellido.setBounds(160, 290, 210, 20);
+        segundoApellido.setBounds(200, 320, 150, 25);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Preinscripción");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 40, 200, 50);
 
         segundoApellidoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoApellidoLabel.setText("Segundo Apellido:");
         jPanel1.add(segundoApellidoLabel);
-        segundoApellidoLabel.setBounds(40, 290, 250, 34);
+        segundoApellidoLabel.setBounds(80, 320, 130, 20);
 
         primerApellido.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerApellido.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerApellido);
-        primerApellido.setBounds(160, 230, 210, 20);
+        primerApellido.setBounds(200, 290, 150, 25);
 
         primerApellidoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerApellidoLabel.setText("Primer Apellido:");
         jPanel1.add(primerApellidoLabel);
-        primerApellidoLabel.setBounds(40, 230, 230, 34);
+        primerApellidoLabel.setBounds(80, 290, 230, 34);
 
         segundoNombre.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         segundoNombre.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(segundoNombre);
-        segundoNombre.setBounds(160, 170, 210, 20);
+        segundoNombre.setBounds(200, 260, 150, 25);
+
+        cedulaLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        cedulaLabel1.setText("No. de Cédula:");
+        jPanel1.add(cedulaLabel1);
+        cedulaLabel1.setBounds(90, 170, 200, 30);
 
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNombreLabel.setText("Segundo Nombre:");
         jPanel1.add(segundoNombreLabel);
-        segundoNombreLabel.setBounds(40, 170, 230, 34);
+        segundoNombreLabel.setBounds(80, 260, 230, 34);
 
         primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel.setText("Primer Nombre:");
         jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(40, 110, 220, 30);
+        primerNombreLabel.setBounds(80, 230, 220, 30);
 
         primerNombre.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         primerNombre.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(primerNombre);
-        primerNombre.setBounds(160, 110, 210, 20);
+        primerNombre.setBounds(200, 230, 150, 25);
 
         crearParticipante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         crearParticipante.setBorder(null);
@@ -204,7 +221,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearParticipante);
-        crearParticipante.setBounds(430, 350, 140, 90);
+        crearParticipante.setBounds(240, 370, 140, 90);
 
         fecha.setBackground(new java.awt.Color(255, 255, 255));
         fecha.setForeground(new java.awt.Color(102, 102, 255));
@@ -215,7 +232,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
         fecha.setRequestFocusEnabled(false);
         fecha.setVerifyInputWhenFocusTarget(false);
         jPanel1.add(fecha);
-        fecha.setBounds(510, 120, 210, 20);
+        fecha.setBounds(520, 230, 150, 25);
 
         listaEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,40 +240,40 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(listaEventos);
-        listaEventos.setBounds(510, 300, 140, 20);
+        listaEventos.setBounds(520, 320, 150, 25);
 
-        consultarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
+        consultarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
         consultarBoton.setBorder(null);
         consultarBoton.setBorderPainted(false);
         consultarBoton.setContentAreaFilled(false);
         consultarBoton.setFocusPainted(false);
-        consultarBoton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarPeq.png"))); // NOI18N
-        consultarBoton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        consultarBoton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarPeq.png"))); // NOI18N
+        consultarBoton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consultar.png"))); // NOI18N
         consultarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarBotonActionPerformed(evt);
             }
         });
         jPanel1.add(consultarBoton);
-        consultarBoton.setBounds(140, 360, 140, 90);
+        consultarBoton.setBounds(370, 140, 140, 90);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PreInscripcionFondo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setFocusable(false);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 760, 450);
+        jLabel2.setBounds(0, -10, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -411,6 +428,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelar;
     private javax.swing.JTextField cedula;
     private javax.swing.JLabel cedulaLabel;
+    private javax.swing.JLabel cedulaLabel1;
     private javax.swing.JLabel codEventoLabel;
     private javax.swing.JButton consultarBoton;
     private javax.swing.JTextField correo;
@@ -419,6 +437,7 @@ public class GUI_PreInscripcion extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel fechaLabel;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listaEventos;
     private javax.swing.JTextField primerApellido;

@@ -41,6 +41,7 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
         respuestaSeguridad = new javax.swing.JTextField();
         respuestaLabel12 = new javax.swing.JLabel();
@@ -57,9 +58,18 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(750, 500));
         jPanel1.setLayout(null);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Cambiar Contraseña");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 50, 280, 50);
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         botonCancelar.setBorder(null);
@@ -74,9 +84,9 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(350, 310, 150, 70);
+        botonCancelar.setBounds(370, 380, 150, 70);
 
-        respuestaSeguridad.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        respuestaSeguridad.setFont(new java.awt.Font("Cambria", 2, 16)); // NOI18N
         respuestaSeguridad.setSelectionColor(new java.awt.Color(102, 102, 255));
         respuestaSeguridad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -84,14 +94,14 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
             }
         });
         jPanel1.add(respuestaSeguridad);
-        respuestaSeguridad.setBounds(440, 160, 180, 20);
+        respuestaSeguridad.setBounds(470, 200, 200, 25);
 
-        respuestaLabel12.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        respuestaLabel12.setFont(new java.awt.Font("Cambria", 2, 16)); // NOI18N
         respuestaLabel12.setText("Respuesta:");
         jPanel1.add(respuestaLabel12);
-        respuestaLabel12.setBounds(300, 160, 150, 20);
+        respuestaLabel12.setBounds(300, 200, 170, 20);
 
-        confirmarCon.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        confirmarCon.setFont(new java.awt.Font("Cambria", 2, 16)); // NOI18N
         confirmarCon.setSelectionColor(new java.awt.Color(102, 102, 255));
         confirmarCon.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -99,18 +109,18 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
             }
         });
         jPanel1.add(confirmarCon);
-        confirmarCon.setBounds(440, 250, 180, 20);
+        confirmarCon.setBounds(470, 290, 200, 25);
 
         pregunta.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         jPanel1.add(pregunta);
-        pregunta.setBounds(440, 130, 140, 20);
+        pregunta.setBounds(470, 160, 140, 20);
 
-        confirmarC.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        confirmarC.setFont(new java.awt.Font("Cambria", 2, 16)); // NOI18N
         confirmarC.setText("Confirmar Contraseña:");
         jPanel1.add(confirmarC);
-        confirmarC.setBounds(300, 250, 150, 20);
+        confirmarC.setBounds(300, 290, 170, 20);
 
-        nuevaCon.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        nuevaCon.setFont(new java.awt.Font("Cambria", 2, 16)); // NOI18N
         nuevaCon.setSelectionColor(new java.awt.Color(102, 102, 255));
         nuevaCon.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -118,12 +128,12 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
             }
         });
         jPanel1.add(nuevaCon);
-        nuevaCon.setBounds(440, 220, 180, 20);
+        nuevaCon.setBounds(470, 250, 200, 25);
 
-        nuevaC.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        nuevaC.setFont(new java.awt.Font("Cambria", 2, 16)); // NOI18N
         nuevaC.setText("Nueva Contraseña:");
         jPanel1.add(nuevaC);
-        nuevaC.setBounds(300, 220, 160, 20);
+        nuevaC.setBounds(300, 250, 180, 20);
 
         cambiarPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         cambiarPass.setBorder(null);
@@ -143,17 +153,17 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cambiarPass);
-        cambiarPass.setBounds(190, 310, 160, 70);
+        cambiarPass.setBounds(210, 380, 160, 70);
 
-        primerNombreLabel4.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        primerNombreLabel4.setFont(new java.awt.Font("Cambria", 2, 16)); // NOI18N
         primerNombreLabel4.setText("Ingresar Cédula:");
         jPanel1.add(primerNombreLabel4);
-        primerNombreLabel4.setBounds(90, 130, 100, 40);
+        primerNombreLabel4.setBounds(90, 190, 120, 40);
 
         consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(consultarLabel);
-        consultarLabel.setBounds(70, 170, 140, 20);
+        consultarLabel.setBounds(80, 230, 130, 25);
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
         botonConsultar.setBorder(null);
@@ -168,31 +178,31 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonConsultar);
-        botonConsultar.setBounds(60, 200, 160, 70);
+        botonConsultar.setBounds(60, 260, 160, 70);
 
-        preguntaLabel12.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        preguntaLabel12.setFont(new java.awt.Font("Cambria", 2, 16)); // NOI18N
         preguntaLabel12.setText("Pregunta:");
         jPanel1.add(preguntaLabel12);
-        preguntaLabel12.setBounds(300, 130, 140, 20);
+        preguntaLabel12.setBounds(300, 160, 160, 20);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoCambiarC.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         fondo.setFocusable(false);
         jPanel1.add(fondo);
-        fondo.setBounds(-10, 0, 710, 384);
+        fondo.setBounds(0, 0, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -376,6 +386,7 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
     private javax.swing.JPasswordField confirmarCon;
     private javax.swing.JTextField consultarLabel;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nuevaC;
     private javax.swing.JPasswordField nuevaCon;

@@ -58,6 +58,7 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         ciudadLabel1 = new javax.swing.JLabel();
         primerNombreLabel = new javax.swing.JLabel();
         botonConsultar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         botonAceptar = new javax.swing.JButton();
         calle = new javax.swing.JTextField();
@@ -73,6 +74,7 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
         jPanel1.setLayout(null);
@@ -90,37 +92,37 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(460, 360, 190, 80);
+        botonCancelar.setBounds(350, 360, 190, 80);
 
         ingresarCodigoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         ingresarCodigoLabel.setText("Ingresar Código:");
         jPanel1.add(ingresarCodigoLabel);
-        ingresarCodigoLabel.setBounds(100, 180, 100, 40);
+        ingresarCodigoLabel.setBounds(110, 170, 100, 40);
 
         telefono.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         telefono.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(telefono);
-        telefono.setBounds(450, 340, 170, 20);
+        telefono.setBounds(450, 300, 150, 25);
 
         telefonoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         telefonoLabel.setText("Teléfono:");
         jPanel1.add(telefonoLabel);
-        telefonoLabel.setBounds(340, 333, 130, 30);
+        telefonoLabel.setBounds(340, 300, 130, 30);
 
         carrera.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         carrera.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(carrera);
-        carrera.setBounds(450, 260, 170, 20);
+        carrera.setBounds(450, 240, 150, 25);
 
         barrioLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         barrioLabel.setText("Barrio:");
         jPanel1.add(barrioLabel);
-        barrioLabel.setBounds(340, 295, 100, 30);
+        barrioLabel.setBounds(340, 270, 100, 30);
 
         ciudad.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         ciudad.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(ciudad);
-        ciudad.setBounds(450, 180, 170, 20);
+        ciudad.setBounds(450, 180, 150, 25);
 
         ciudadLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         ciudadLabel1.setText("Ciudad:");
@@ -130,7 +132,7 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
         primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel.setText("Nombre:");
         jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(340, 100, 170, 30);
+        primerNombreLabel.setBounds(340, 150, 170, 30);
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
         botonConsultar.setBorder(null);
@@ -145,12 +147,19 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonConsultar);
-        botonConsultar.setBounds(70, 260, 160, 60);
+        botonConsultar.setBounds(80, 250, 160, 60);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Modificar Sede");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(140, 40, 200, 50);
 
         nombre.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         nombre.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(nombre);
-        nombre.setBounds(450, 100, 170, 20);
+        nombre.setBounds(450, 150, 150, 25);
 
         botonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         botonAceptar.setBorder(null);
@@ -165,12 +174,12 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonAceptar);
-        botonAceptar.setBounds(320, 370, 160, 60);
+        botonAceptar.setBounds(220, 370, 160, 60);
 
         calle.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         calle.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(calle);
-        calle.setBounds(450, 220, 170, 20);
+        calle.setBounds(450, 210, 150, 25);
 
         barrio.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         barrio.addActionListener(new java.awt.event.ActionListener() {
@@ -179,17 +188,17 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
             }
         });
         jPanel1.add(barrio);
-        barrio.setBounds(450, 300, 170, 21);
+        barrio.setBounds(450, 270, 150, 25);
 
         calleLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         calleLabel.setText("Calle:");
         jPanel1.add(calleLabel);
-        calleLabel.setBounds(340, 220, 100, 30);
+        calleLabel.setBounds(340, 210, 100, 30);
 
         carreraLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         carreraLabel.setText("Carrera:");
         jPanel1.add(carreraLabel);
-        carreraLabel.setBounds(340, 255, 100, 30);
+        carreraLabel.setBounds(340, 240, 100, 30);
 
         listaSedes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,24 +206,24 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
             }
         });
         jPanel1.add(listaSedes);
-        listaSedes.setBounds(80, 220, 140, 30);
+        listaSedes.setBounds(90, 210, 140, 30);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoModificarSede.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 790, 450);
+        jLabel2.setBounds(0, -10, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -395,6 +404,7 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
     private javax.swing.JLabel ingresarCodigoLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listaSedes;
     private javax.swing.JTextField nombre;
