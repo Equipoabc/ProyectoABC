@@ -20,6 +20,11 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
     Evento evento;
     String id_participante, nombre_participante;
     Participante participante;
+    String idNombre;
+    
+    public void setId(String id) {
+        this.idNombre = id;
+    }
     
     public GUI_RegistrarPago(){
         
@@ -231,6 +236,8 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Operador oper = new GUI_Operador();
+        oper.setId(idNombre);
+        oper.personalizarBienvenida();
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed

@@ -1,11 +1,27 @@
 package GUI;
 
-public class GUI_Administrador extends javax.swing.JFrame {
+import Controladores.ControladorOperador;
+import Logica.Operador;
+
+public class GUI_ReportesOperador extends javax.swing.JFrame {
     
-    public GUI_Administrador(){
+    String idNombre;
+    
+    public void setId(String id) {
+        this.idNombre = id;
+    }
+    
+    public GUI_ReportesOperador(){
         
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+     public void personalizarBienvenida(){
+        Operador gerente = new Operador();
+        ControladorOperador controladorGerente = new ControladorOperador();
+        gerente = controladorGerente.consultarDatosOperador(idNombre);
+        jLabel1.setText(gerente.getPrimer_nombre());
     }
     
     /**
@@ -21,10 +37,8 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         modificarUsuario = new javax.swing.JButton();
         reportes = new javax.swing.JButton();
-        crearUsuario = new javax.swing.JButton();
         CerrarSesion = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -37,32 +51,25 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 23)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel5.setText("<html><body> <center>  Reportes y<br>Consultas </center></body></html>");
+        jLabel5.setText("<html><body> <center>  Reportes\n<br>Eventos</center></body></html>");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(590, 250, 130, 90);
+        jLabel5.setBounds(320, 260, 130, 90);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 23)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel3.setText("<html><body> <center>  Modificar<br>Usuario </center></body></html>");
+        jLabel3.setText("<html><body> <center>  Reportes<br>Participantes </center></body></html>");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(430, 250, 110, 90);
+        jLabel3.setBounds(490, 260, 150, 90);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Administrador");
+        jLabel6.setText("Operador");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(140, 50, 200, 50);
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel2.setText("<html><body> <center>  Crear<br>Usuario </center></body></html>");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(268, 250, 90, 90);
 
         modificarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         modificarUsuario.setBorder(null);
@@ -75,7 +82,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(modificarUsuario);
-        modificarUsuario.setBounds(400, 240, 160, 110);
+        modificarUsuario.setBounds(470, 250, 160, 110);
 
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         reportes.setBorder(null);
@@ -88,39 +95,26 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reportes);
-        reportes.setBounds(570, 240, 160, 110);
+        reportes.setBounds(290, 250, 160, 110);
         reportes.getAccessibleContext().setAccessibleName("Reportes y Consultas");
-
-        crearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
-        crearUsuario.setBorder(null);
-        crearUsuario.setBorderPainted(false);
-        crearUsuario.setContentAreaFilled(false);
-        crearUsuario.setFocusPainted(false);
-        crearUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearUsuarioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(crearUsuario);
-        crearUsuario.setBounds(230, 240, 160, 110);
 
         CerrarSesion.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         CerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        CerrarSesion.setText("Cerrar Sesión");
+        CerrarSesion.setText("Regresar");
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CerrarSesionMouseClicked(evt);
             }
         });
         jPanel1.add(CerrarSesion);
-        CerrarSesion.setBounds(610, 60, 120, 30);
+        CerrarSesion.setBounds(640, 60, 90, 30);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Administrador");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(40, 280, 200, 50);
+        jLabel1.setBounds(20, 280, 190, 50);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
@@ -153,29 +147,28 @@ public class GUI_Administrador extends javax.swing.JFrame {
     
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         
-        GUI_ReportesAdmin interfazReportesAdmin = new GUI_ReportesAdmin();
-        interfazReportesAdmin.setVisible(true);
+        GUI_ReportesEventos repEventos= new GUI_ReportesEventos();
+        repEventos.setTipo("op");
+        repEventos.setId(idNombre);
+        repEventos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
-    
-    private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
         
-        GUI_CrearUsuario interfazCrearUsuario = new GUI_CrearUsuario();
-        interfazCrearUsuario.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_crearUsuarioActionPerformed
-    
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         
-        GUI_Login interfazLogin = new GUI_Login();
+        GUI_Operador interfazLogin = new GUI_Operador();
+        interfazLogin.setId(idNombre);
+        interfazLogin.personalizarBienvenida();
         interfazLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_CerrarSesionMouseClicked
     
     private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
         
-        GUI_ModificarUsuario interfazModificarUsuario = new GUI_ModificarUsuario();
-        interfazModificarUsuario.setVisible(true);
+        GUI_ReportesParticipantes repParticipantes= new GUI_ReportesParticipantes();
+        repParticipantes.setTipo("op");
+        repParticipantes.setId(idNombre);
+        repParticipantes.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarUsuarioActionPerformed
     
@@ -218,10 +211,8 @@ public class GUI_Administrador extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
-    private javax.swing.JButton crearUsuario;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

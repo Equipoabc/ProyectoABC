@@ -15,6 +15,7 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
     ControladorEvento controladorEvento;
     String id;
     
+    
     public GUI_CrearEvento(){
         
         initComponents();
@@ -288,6 +289,8 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Gerente gerenteLogin = new GUI_Gerente();
+        gerenteLogin.setId(this.id);
+                    gerenteLogin.personalizarBienvenida();
         gerenteLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed

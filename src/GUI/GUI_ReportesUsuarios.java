@@ -13,15 +13,28 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
     DefaultTableModel modeloTabla;
     ControladorReportesUsuarios controladorRegistros;
     DaoReportesUsuarios daoR;
+    String tipo;
+    String idNombre;
+    
+    public void setId(String id) {
+        this.idNombre = id;
+    }
+    
+    public void setTipo(String ti){
+        this.tipo = ti;
+    }
     
     static Date GetDateNow() {
         Calendar currentDate = Calendar.getInstance();
         return currentDate.getTime();
     }
     
+     
+    
     public GUI_ReportesUsuarios(){
         
         initComponents();
+        
         this.setLocationRelativeTo(null);
         fieldBuscar.setText("");
         controladorRegistros = new ControladorReportesUsuarios();
@@ -60,15 +73,38 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        buttonBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDatos = new javax.swing.JTable();
         txtBuscar = new javax.swing.JLabel();
         fieldBuscar = new javax.swing.JTextField();
-        buttonBuscar = new javax.swing.JButton();
         buttonExportar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 500));
+        setPreferredSize(new java.awt.Dimension(750, 500));
+        setResizable(false);
 
+        jPanel1.setLayout(null);
+
+        buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
+        buttonBuscar.setBorderPainted(false);
+        buttonBuscar.setContentAreaFilled(false);
+        buttonBuscar.setFocusPainted(false);
+        buttonBuscar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarPeq.png"))); // NOI18N
+        buttonBuscar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consultar.png"))); // NOI18N
+        buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonBuscar);
+        buttonBuscar.setBounds(580, 130, 130, 40);
+
+        tableDatos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(108, 101, 247), 2, true));
         tableDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -80,72 +116,79 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableDatos.setGridColor(new java.awt.Color(108, 101, 247));
+        tableDatos.setSelectionBackground(new java.awt.Color(108, 101, 247));
         jScrollPane1.setViewportView(tableDatos);
 
-        txtBuscar.setText("Cedula");
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(30, 180, 700, 200);
+
+        txtBuscar.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        txtBuscar.setText("No. Cédula:");
+        jPanel1.add(txtBuscar);
+        txtBuscar.setBounds(320, 140, 70, 20);
 
         fieldBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldBuscarActionPerformed(evt);
             }
         });
+        jPanel1.add(fieldBuscar);
+        fieldBuscar.setBounds(401, 140, 160, 23);
 
-        buttonBuscar.setText("Buscar");
-        buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBuscarActionPerformed(evt);
-            }
-        });
-
-        buttonExportar.setText("Exportar");
+        buttonExportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ExportarMed.png"))); // NOI18N
+        buttonExportar.setBorderPainted(false);
+        buttonExportar.setContentAreaFilled(false);
+        buttonExportar.setFocusPainted(false);
+        buttonExportar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ExportarPeq.png"))); // NOI18N
+        buttonExportar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Exportar.png"))); // NOI18N
         buttonExportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExportarActionPerformed(evt);
             }
         });
+        jPanel1.add(buttonExportar);
+        buttonExportar.setBounds(440, 400, 130, 50);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(txtBuscar)
-                .addGap(18, 18, 18)
-                .addComponent(fieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonBuscar)
-                .addGap(49, 49, 49)
-                .addComponent(buttonExportar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonBuscar)
-                    .addComponent(fieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscar)
-                    .addComponent(buttonExportar))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
+        cancelar.setBorder(null);
+        cancelar.setBorderPainted(false);
+        cancelar.setContentAreaFilled(false);
+        cancelar.setFocusPainted(false);
+        cancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarPeq.png"))); // NOI18N
+        cancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cancelar);
+        cancelar.setBounds(590, 400, 130, 50);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Reportes Usuarios");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(130, 50, 280, 50);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(750, 500));
+        jLabel1.setMinimumSize(new java.awt.Dimension(750, 500));
+        jLabel1.setPreferredSize(new java.awt.Dimension(750, 500));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -196,6 +239,37 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_buttonExportarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+
+        switch (this.tipo) {
+            case "op":
+                GUI_ReportesOperador oper = new GUI_ReportesOperador();
+                oper.setId(idNombre);
+                    oper.personalizarBienvenida();
+                oper.setVisible(true);
+                this.dispose();
+                break;
+            case "ge":
+                {
+                    GUI_ReportesGerente interfazLogin = new GUI_ReportesGerente();
+                     interfazLogin.setId(idNombre);
+                    interfazLogin.personalizarBienvenida();
+                    interfazLogin.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+            case "admin":
+                {
+                    GUI_ReportesAdmin interfazLogin = new GUI_ReportesAdmin();
+                    interfazLogin.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+            default:
+                break;
+        }
+    }//GEN-LAST:event_cancelarActionPerformed
     
     /**
      * @param args the command line arguments
@@ -237,7 +311,10 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBuscar;
     private javax.swing.JButton buttonExportar;
+    private javax.swing.JButton cancelar;
     private javax.swing.JTextField fieldBuscar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableDatos;

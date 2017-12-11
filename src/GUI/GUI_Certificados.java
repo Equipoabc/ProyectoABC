@@ -18,6 +18,11 @@ public class GUI_Certificados extends javax.swing.JFrame {
     Participantes_Eventos participanteEvento;
     Participante participante;
     Evento evento;
+    String idNombre;
+    
+    public void setId(String id) {
+        this.idNombre = id;
+    }
     
     public GUI_Certificados(){
         
@@ -289,6 +294,8 @@ public class GUI_Certificados extends javax.swing.JFrame {
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         
         GUI_Operador oper = new GUI_Operador();
+        oper.setId(idNombre);
+        oper.personalizarBienvenida();
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed

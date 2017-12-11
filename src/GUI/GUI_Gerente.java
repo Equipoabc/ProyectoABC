@@ -1,13 +1,18 @@
 package GUI;
 
+import Controladores.ControladorGerente;
+import Logica.Gerente;
+
 public class GUI_Gerente extends javax.swing.JFrame {
     
     String id;
+    
     
     public GUI_Gerente(){
         
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -33,7 +38,6 @@ public class GUI_Gerente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 500));
-        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
         jPanel1.setMinimumSize(new java.awt.Dimension(750, 500));
@@ -43,7 +47,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("  Bienvenido ");
+        jLabel4.setText("  Bienvenido(a) ");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(10, 240, 200, 50);
 
@@ -51,7 +55,6 @@ public class GUI_Gerente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Administrador");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(20, 280, 190, 50);
 
@@ -200,7 +203,9 @@ public class GUI_Gerente extends javax.swing.JFrame {
     
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
-        GUI_ReportesEventos vSede = new GUI_ReportesEventos();
+        GUI_ReportesGerente vSede = new GUI_ReportesGerente();
+        vSede.setId(id);
+        vSede.personalizarBienvenida();
         vSede.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
@@ -223,6 +228,7 @@ public class GUI_Gerente extends javax.swing.JFrame {
     private void modificarSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarSedeActionPerformed
         // TODO add your handling code here:
         GUI_ModificarSede interfazModificarSede = new GUI_ModificarSede();
+        interfazModificarSede.setId(id);
         interfazModificarSede.setVisible(true);
         this.dispose();
         
@@ -235,10 +241,20 @@ public class GUI_Gerente extends javax.swing.JFrame {
         interfazCrearEvento.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_crearEventoActionPerformed
-    
+   
+    public void personalizarBienvenida(){
+        Gerente gerente = new Gerente();
+        ControladorGerente controladorGerente = new ControladorGerente();
+        
+        
+        gerente = controladorGerente.consultarDatosGerente(id);
+        System.out.println(gerente);
+        jLabel1.setText(gerente.getPrimer_nombre());
+    }
     private void modificarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEventoActionPerformed
         // TODO add your handling code here:
         GUI_ModificarEvento interfazModificarEvento = new GUI_ModificarEvento();
+        interfazModificarEvento.setId(id);
         interfazModificarEvento.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarEventoActionPerformed

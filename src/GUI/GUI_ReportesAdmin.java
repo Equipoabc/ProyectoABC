@@ -1,8 +1,8 @@
 package GUI;
 
-public class GUI_Administrador extends javax.swing.JFrame {
+public class GUI_ReportesAdmin extends javax.swing.JFrame {
     
-    public GUI_Administrador(){
+    public GUI_ReportesAdmin(){
         
         initComponents();
         this.setLocationRelativeTo(null);
@@ -28,6 +28,8 @@ public class GUI_Administrador extends javax.swing.JFrame {
         CerrarSesion = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        reportes1 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -37,18 +39,18 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 23)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel5.setText("<html><body> <center>  Reportes y<br>Consultas </center></body></html>");
+        jLabel5.setText("<html><body> <center>  Reportes\n<br>Eventos</center></body></html>");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(590, 250, 130, 90);
+        jLabel5.setBounds(310, 330, 130, 90);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 23)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel3.setText("<html><body> <center>  Modificar<br>Usuario </center></body></html>");
+        jLabel3.setText("<html><body> <center>  Reportes<br>Participantes </center></body></html>");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(430, 250, 110, 90);
+        jLabel3.setBounds(490, 180, 160, 90);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
@@ -58,11 +60,11 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jLabel6.setBounds(140, 50, 200, 50);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 23)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel2.setText("<html><body> <center>  Crear<br>Usuario </center></body></html>");
+        jLabel2.setText("<html><body> <center>  Reportes<br>Usuarios </center></body></html>");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(268, 250, 90, 90);
+        jLabel2.setBounds(310, 180, 94, 90);
 
         modificarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         modificarUsuario.setBorder(null);
@@ -75,7 +77,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(modificarUsuario);
-        modificarUsuario.setBounds(400, 240, 160, 110);
+        modificarUsuario.setBounds(470, 170, 160, 110);
 
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         reportes.setBorder(null);
@@ -88,7 +90,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reportes);
-        reportes.setBounds(570, 240, 160, 110);
+        reportes.setBounds(280, 320, 160, 110);
         reportes.getAccessibleContext().setAccessibleName("Reportes y Consultas");
 
         crearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
@@ -102,18 +104,18 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearUsuario);
-        crearUsuario.setBounds(230, 240, 160, 110);
+        crearUsuario.setBounds(280, 170, 160, 110);
 
         CerrarSesion.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         CerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        CerrarSesion.setText("Cerrar Sesión");
+        CerrarSesion.setText("Regresar");
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CerrarSesionMouseClicked(evt);
             }
         });
         jPanel1.add(CerrarSesion);
-        CerrarSesion.setBounds(610, 60, 120, 30);
+        CerrarSesion.setBounds(640, 60, 90, 30);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
@@ -128,6 +130,26 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jLabel4.setText("  Bienvenido ");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(40, 240, 200, 50);
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 23)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel7.setText("<html><body> <center>  Reportes<br>Sedes </center></body></html>");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(500, 330, 130, 90);
+
+        reportes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        reportes1.setBorder(null);
+        reportes1.setBorderPainted(false);
+        reportes1.setContentAreaFilled(false);
+        reportes1.setFocusPainted(false);
+        reportes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportes1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(reportes1);
+        reportes1.setBounds(470, 320, 160, 110);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
@@ -153,31 +175,42 @@ public class GUI_Administrador extends javax.swing.JFrame {
     
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         
-        GUI_ReportesAdmin interfazReportesAdmin = new GUI_ReportesAdmin();
-        interfazReportesAdmin.setVisible(true);
+        GUI_ReportesEventos repEventos= new GUI_ReportesEventos();
+        repEventos.setTipo("admin");
+        repEventos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
     
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
         
-        GUI_CrearUsuario interfazCrearUsuario = new GUI_CrearUsuario();
-        interfazCrearUsuario.setVisible(true);
+        GUI_ReportesUsuarios repUsuarios= new GUI_ReportesUsuarios();
+        repUsuarios.setTipo("admin");
+        repUsuarios.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_crearUsuarioActionPerformed
     
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         
-        GUI_Login interfazLogin = new GUI_Login();
+        GUI_Administrador interfazLogin = new GUI_Administrador();
         interfazLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_CerrarSesionMouseClicked
     
     private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
         
-        GUI_ModificarUsuario interfazModificarUsuario = new GUI_ModificarUsuario();
-        interfazModificarUsuario.setVisible(true);
+        GUI_ReportesParticipantes repParticipantes= new GUI_ReportesParticipantes();
+        repParticipantes.setTipo("admin");
+        repParticipantes.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarUsuarioActionPerformed
+
+    private void reportes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportes1ActionPerformed
+        // TODO add your handling code here:
+        GUI_ReportesSedes repSedes= new GUI_ReportesSedes();
+        repSedes.setTipo("admin");
+        repSedes.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_reportes1ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -226,8 +259,10 @@ public class GUI_Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificarUsuario;
     private javax.swing.JButton reportes;
+    private javax.swing.JButton reportes1;
     // End of variables declaration//GEN-END:variables
 }

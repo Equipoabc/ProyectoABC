@@ -27,6 +27,11 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     Participante participante;
     int banderaAceptar;
     DateFormat df = DateFormat.getDateInstance();
+    String idNombre;
+    
+    public void setId(String id) {
+        this.idNombre = id;
+    }
     
     public GUI_Inscripcion(){
         
@@ -447,6 +452,8 @@ public class GUI_Inscripcion extends javax.swing.JFrame {
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Operador oper = new GUI_Operador();
+        oper.setId(idOperador);
+        oper.personalizarBienvenida();
         oper.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed

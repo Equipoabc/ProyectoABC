@@ -23,6 +23,16 @@ public class GUI_ReportesSedes extends javax.swing.JFrame {
      */
     DefaultTableModel modeloTabla;
     ControladorReportesSedes controladorReportesSedes;
+    String tipo;
+    String idNombre;
+    
+    public void setId(String id) {
+        this.idNombre = id;
+    }
+    
+    public void setTipo(String ti){
+        this.tipo = ti;
+    }
     
     public GUI_ReportesSedes() {
         initComponents();
@@ -65,16 +75,35 @@ public class GUI_ReportesSedes extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
         campoDeBusqueda = new javax.swing.JTextField();
         exportar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 500));
+        setResizable(false);
 
-        buscar.setText("Buscar");
+        jPanel1.setMinimumSize(new java.awt.Dimension(750, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(750, 500));
+        jPanel1.setLayout(null);
+
+        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
+        buscar.setBorderPainted(false);
+        buscar.setContentAreaFilled(false);
+        buscar.setFocusPainted(false);
+        buscar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarPeq.png"))); // NOI18N
+        buscar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consultar.png"))); // NOI18N
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarActionPerformed(evt);
             }
         });
+        jPanel1.add(buscar);
+        buscar.setBounds(550, 120, 130, 70);
 
+        tabla.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(108, 101, 247), 2, true));
+        tabla.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -86,60 +115,77 @@ public class GUI_ReportesSedes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabla.setGridColor(new java.awt.Color(108, 101, 247));
+        tabla.setSelectionBackground(new java.awt.Color(108, 101, 247));
         jScrollPane1.setViewportView(tabla);
 
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 190, 710, 170);
+
+        campoDeBusqueda.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         campoDeBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoDeBusquedaActionPerformed(evt);
             }
         });
+        jPanel1.add(campoDeBusqueda);
+        campoDeBusqueda.setBounds(390, 140, 150, 25);
 
-        exportar.setText("Exportar");
+        exportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ExportarMed.png"))); // NOI18N
+        exportar.setBorderPainted(false);
+        exportar.setContentAreaFilled(false);
+        exportar.setFocusPainted(false);
+        exportar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ExportarPeq.png"))); // NOI18N
+        exportar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Exportar.png"))); // NOI18N
         exportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exportarActionPerformed(evt);
             }
         });
+        jPanel1.add(exportar);
+        exportar.setBounds(430, 390, 150, 50);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(campoDeBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(exportar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoDeBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exportar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
+        cancelar.setBorder(null);
+        cancelar.setBorderPainted(false);
+        cancelar.setContentAreaFilled(false);
+        cancelar.setFocusPainted(false);
+        cancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarPeq.png"))); // NOI18N
+        cancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cancelar);
+        cancelar.setBounds(570, 390, 130, 50);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Reportes Sedes");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(130, 50, 280, 50);
+
+        txtBuscar.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        txtBuscar.setText("Código Sede:");
+        jPanel1.add(txtBuscar);
+        txtBuscar.setBounds(300, 140, 90, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -189,6 +235,37 @@ public class GUI_ReportesSedes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exportarActionPerformed
 
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+
+        switch (this.tipo) {
+            case "op":
+                GUI_ReportesOperador oper = new GUI_ReportesOperador();
+                oper.setId(idNombre);
+                    oper.personalizarBienvenida();
+                oper.setVisible(true);
+                this.dispose();
+                break;
+            case "ge":
+                {
+                    GUI_ReportesGerente interfazLogin = new GUI_ReportesGerente();
+                     interfazLogin.setId(idNombre);
+                    interfazLogin.personalizarBienvenida();
+                    interfazLogin.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+            case "admin":
+                {
+                    GUI_ReportesAdmin interfazLogin = new GUI_ReportesAdmin();
+                    interfazLogin.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+            default:
+                break;
+        }
+    }//GEN-LAST:event_cancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -227,9 +304,13 @@ public class GUI_ReportesSedes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
     private javax.swing.JTextField campoDeBusqueda;
+    private javax.swing.JButton cancelar;
     private javax.swing.JButton exportar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
+    private javax.swing.JLabel txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

@@ -190,6 +190,8 @@ public class GUI_RegistrarSede extends javax.swing.JFrame {
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Gerente gerenteLogin = new GUI_Gerente();
+        gerenteLogin.setId(this.idGerente);
+                    gerenteLogin.personalizarBienvenida();
         gerenteLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed

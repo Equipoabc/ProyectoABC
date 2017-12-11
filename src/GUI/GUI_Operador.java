@@ -1,8 +1,14 @@
 package GUI;
 
+
+import Controladores.ControladorOperador;
+import Logica.Operador;
+
+
 public class GUI_Operador extends javax.swing.JFrame {
     
     String cedula;
+    
     
     public GUI_Operador(){
         cedula = "";
@@ -43,7 +49,6 @@ public class GUI_Operador extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
         jPanel1.setLayout(null);
@@ -52,7 +57,6 @@ public class GUI_Operador extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Administrador");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(20, 280, 190, 50);
 
@@ -66,9 +70,9 @@ public class GUI_Operador extends javax.swing.JFrame {
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("  Bienvenido ");
+        jLabel12.setText("  Bienvenido(a) ");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(40, 240, 200, 50);
+        jLabel12.setBounds(20, 240, 200, 50);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
@@ -247,7 +251,6 @@ public class GUI_Operador extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel2.setPreferredSize(new java.awt.Dimension(750, 500));
         jPanel1.add(jLabel2);
         jLabel2.setBounds(-20, -10, 793, 510);
 
@@ -268,6 +271,7 @@ public class GUI_Operador extends javax.swing.JFrame {
     private void registrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarPagoActionPerformed
         // TODO add your handling code here:
         GUI_RegistrarPago pago = new GUI_RegistrarPago();
+        pago.setId(cedula);
         pago.setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_registrarPagoActionPerformed
@@ -275,6 +279,7 @@ public class GUI_Operador extends javax.swing.JFrame {
     private void eliminarPreinscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPreinscripcionActionPerformed
         // TODO add your handling code here:
         GUI_EliminarPreins eliminarPre = new GUI_EliminarPreins();
+        eliminarPre.setId(cedula);
         eliminarPre.setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_eliminarPreinscripcionActionPerformed
@@ -289,7 +294,9 @@ public class GUI_Operador extends javax.swing.JFrame {
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
         
-        GUI_ReportesParticipantes vReportes = new GUI_ReportesParticipantes();
+        GUI_ReportesOperador vReportes = new GUI_ReportesOperador();
+        vReportes.setId(cedula);
+        vReportes.personalizarBienvenida();
         vReportes.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
@@ -313,6 +320,7 @@ public class GUI_Operador extends javax.swing.JFrame {
     private void escarapelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escarapelasActionPerformed
         // TODO add your handling code here:
         GUI_Escarapelas escarapelas = new GUI_Escarapelas();
+        escarapelas.setId(cedula);
         escarapelas.setVisible(true);
         this.dispose();          
     }//GEN-LAST:event_escarapelasActionPerformed
@@ -324,10 +332,16 @@ public class GUI_Operador extends javax.swing.JFrame {
         preInscripcion.setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_preInscripcionActionPerformed
-    
+    public void personalizarBienvenida(){
+        Operador operador = new Operador();
+        ControladorOperador controladorOperador = new ControladorOperador();        
+        operador = controladorOperador.consultarDatosOperador(cedula); 
+        jLabel1.setText(operador.getPrimer_nombre());
+    }    
     private void certificadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_certificadosActionPerformed
         // TODO add your handling code here:
         GUI_Certificados certificados = new GUI_Certificados();
+        certificados.setId(cedula);
         certificados.setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_certificadosActionPerformed

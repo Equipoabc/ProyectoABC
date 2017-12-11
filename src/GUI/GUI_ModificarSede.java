@@ -23,6 +23,11 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
     Gerente gerente;
     Sede sede;
     ControladorSede controladorSede;
+    String idNombre;
+    
+    public void setId(String id) {
+        this.idNombre = id;
+    }
 
     public GUI_ModificarSede() {
 
@@ -232,6 +237,8 @@ public class GUI_ModificarSede extends javax.swing.JFrame {
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
 
         GUI_Gerente gerenteGUI = new GUI_Gerente();
+        gerenteGUI.setId(this.idNombre);
+                    gerenteGUI.personalizarBienvenida();
         gerenteGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed

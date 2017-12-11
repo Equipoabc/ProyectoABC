@@ -14,6 +14,11 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
     String idOperador;
     DateFormat df = DateFormat.getDateInstance();
     Participante participante;
+    String idNombre;
+    
+    public void setId(String id) {
+        this.idNombre = id;
+    }
     
     public GUI_ModificarParticipante() {
         
@@ -216,6 +221,8 @@ public class GUI_ModificarParticipante extends javax.swing.JFrame {
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
         GUI_Operador operador = new GUI_Operador();
+        operador.setId(idOperador);
+        operador.personalizarBienvenida();
         operador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed

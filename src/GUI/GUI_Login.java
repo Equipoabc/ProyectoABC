@@ -182,9 +182,9 @@ public class GUI_Login extends javax.swing.JFrame {
             else if(gen.getCedula_ge().equals(user)){
                 
                 if(gen.getContrasena().equals(cont) && gen.getEstado().equals("Activo")){
-                    
                     GUI_Gerente interfazGerente = new GUI_Gerente();
                     interfazGerente.setId(gen.getCedula_ge());
+                    interfazGerente.personalizarBienvenida();
                     interfazGerente.setVisible(true);
                     this.dispose();
                 }
@@ -202,8 +202,9 @@ public class GUI_Login extends javax.swing.JFrame {
                 if(ope.getContrasena().equals(cont) && ope.getEstado().equals("Activo")){
                     
                     GUI_Operador interfazOperador = new GUI_Operador();
-                    interfazOperador.setVisible(true);
+                    interfazOperador.setVisible(true);                    
                     interfazOperador.setId(ope.getCedula_op());
+                    interfazOperador.personalizarBienvenida();
                     this.dispose();
                 }
                 else if(ope.getEstado().equals("Inactivo")) {
