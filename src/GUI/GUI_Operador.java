@@ -75,54 +75,60 @@ public class GUI_Operador extends javax.swing.JFrame {
         jLabel12.setBounds(20, 240, 200, 50);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(108, 101, 247));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Inscripción");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(420, 140, 110, 80);
+        jLabel3.setBounds(410, 140, 130, 80);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("<html><body> <center>  Modificar<br>Participante </center></body></html>");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(586, 150, 110, 70);
+        jLabel4.setBounds(576, 140, 120, 80);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("<html><body> <center>  Eliminar<br>Preinscripción </center></body></html>");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(260, 250, 140, 80);
+        jLabel5.setBounds(250, 250, 130, 80);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("<html><body> <center>  Registrar<br>Pago </center></body></html>");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(430, 250, 90, 90);
+        jLabel6.setBounds(410, 250, 130, 80);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Certificados");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(580, 250, 120, 90);
+        jLabel7.setBounds(570, 250, 130, 80);
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Escarapelas");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(340, 360, 130, 90);
+        jLabel8.setBounds(330, 360, 130, 80);
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("<html><body> <center>  Reportes y<br>Consultas </center></body></html>");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(510, 360, 110, 90);
+        jLabel9.setBounds(490, 360, 130, 80);
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -130,7 +136,7 @@ public class GUI_Operador extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Preinscripción");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(230, 140, 170, 90);
+        jLabel10.setBounds(250, 140, 130, 80);
 
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
         reportes.setBorder(null);

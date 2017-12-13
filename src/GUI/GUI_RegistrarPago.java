@@ -4,6 +4,7 @@ import java.text.*;
 import javax.swing.*;
 import Logica.*;
 import com.itextpdf.text.DocumentException;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -79,7 +80,6 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
         jPanel1.setLayout(null);
@@ -153,6 +153,11 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         cedulaLabel2.setBounds(110, 230, 200, 30);
 
         dinero.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        dinero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dineroKeyPressed(evt);
+            }
+        });
         jPanel1.add(dinero);
         dinero.setBounds(110, 310, 150, 25);
 
@@ -212,9 +217,6 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         fondo.setFocusable(false);
-        fondo.setMaximumSize(new java.awt.Dimension(750, 500));
-        fondo.setMinimumSize(new java.awt.Dimension(750, 500));
-        fondo.setPreferredSize(new java.awt.Dimension(750, 500));
         fondo.setRequestFocusEnabled(false);
         jPanel1.add(fondo);
         fondo.setBounds(0, -10, 750, 500);
@@ -335,8 +337,7 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
         
     }//GEN-LAST:event_pagarEvento1ActionPerformed
     
-    private void continuarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarBotonActionPerformed
-        
+    public void continuar(){
         Reportes recibo = new Reportes();
         String cod_evento = evento.getId_evento();
         String nombre_evento = evento.getNombre_evento();
@@ -392,11 +393,22 @@ public class GUI_RegistrarPago extends javax.swing.JFrame {
             }
             
         }
+    }
+    private void continuarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarBotonActionPerformed
+        
+        continuar();
     }//GEN-LAST:event_continuarBotonActionPerformed
 
     private void listaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEventosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaEventosActionPerformed
+
+    private void dineroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dineroKeyPressed
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            continuar();
+        }
+    }//GEN-LAST:event_dineroKeyPressed
     
     public static void main(String args[]){
         

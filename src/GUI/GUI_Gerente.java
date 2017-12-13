@@ -59,39 +59,44 @@ public class GUI_Gerente extends javax.swing.JFrame {
         jLabel1.setBounds(20, 280, 190, 50);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("<html><body> <center>  Modificar<br>Evento </center></body></html>");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(430, 180, 110, 90);
+        jLabel3.setBounds(410, 180, 140, 90);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("<html><body> <center>  Reportes y<br>Consultas </center></body></html>");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(590, 180, 140, 90);
+        jLabel5.setBounds(580, 180, 140, 90);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("<html><body> <center>  Registrar<br>Sede </center></body></html>");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(340, 310, 110, 90);
+        jLabel7.setBounds(320, 310, 140, 90);
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("<html><body> <center> Modificar<br>Sede </center></body></html>");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(520, 310, 120, 90);
+        jLabel8.setBounds(500, 310, 140, 90);
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("<html><body> <center>  Crear<br>Evento </center></body></html>");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(270, 180, 90, 90);
+        jLabel9.setBounds(240, 180, 140, 90);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N

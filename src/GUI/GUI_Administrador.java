@@ -37,18 +37,20 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("<html><body> <center>  Reportes y<br>Consultas </center></body></html>");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(590, 250, 130, 90);
+        jLabel5.setBounds(580, 250, 140, 90);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("<html><body> <center>  Modificar<br>Usuario </center></body></html>");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(430, 250, 110, 90);
+        jLabel3.setBounds(410, 250, 140, 90);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
@@ -58,11 +60,12 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jLabel6.setBounds(140, 50, 200, 50);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 26)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("<html><body> <center>  Crear<br>Usuario </center></body></html>");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(268, 250, 90, 90);
+        jLabel2.setBounds(238, 250, 150, 90);
 
         modificarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         modificarUsuario.setBorder(null);
