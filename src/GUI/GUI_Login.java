@@ -221,7 +221,7 @@ public class GUI_Login extends javax.swing.JFrame {
             }
         }
         else {
-            JOptionPane.showMessageDialog(null, "No ingresaste algún campo.\nVerifique sus datos.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se ingresó un campo.\nVerifique sus datos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     

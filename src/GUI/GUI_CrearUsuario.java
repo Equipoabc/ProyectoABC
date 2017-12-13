@@ -160,7 +160,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         jPanel1.add(passLabel9);
         passLabel9.setBounds(410, 200, 160, 20);
 
-        correo.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
+        correo.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         correo.setSelectionColor(new java.awt.Color(102, 102, 255));
         correo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -404,13 +404,13 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
         }
         else if(!validaciones.validarLetras(primerNombre) || !validaciones.validarLetras(segundoNombre) || !validaciones.validarLetras(primerApellido) ||
                 !validaciones.validarLetras(segundoApellido)) {
-            JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras");
+            JOptionPane.showMessageDialog(null, "Los campos del nombre deben ser de solo letras.");
         }
         else if(!validaciones.validarNumero(cedula) || !validaciones.validarNumero(telefono) || !validaciones.validarNumero(celular)) {
-            JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y celular deben ser de solo numeros");
+            JOptionPane.showMessageDialog(null, "Los campos de cédula, teléfono y celular deben ser numéricos.");
         }
         else if(!validaciones.validarLetrasYNumeros(contrasena) || contrasena.length() < 8) {
-            JOptionPane.showMessageDialog(null, "El campos contraseña debe tener minimo 8 caracteres validos");
+            JOptionPane.showMessageDialog(null, "El campo contraseña debe tener mínimo 8 caracteres válidos.");
         }
         else if (periodo.getYears() < 18) {
             JOptionPane.showMessageDialog(null, "El usuario tiene que ser mayor de edad.");
@@ -447,7 +447,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "El operador ya se encuentra registrado.");
                         break;
                     default:
-                        JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el operador.");
+                        JOptionPane.showMessageDialog(null, "Ocurrió un problema al guardar el operador.");
                         break;
                 }
             }
@@ -469,7 +469,7 @@ public class GUI_CrearUsuario extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "El gerente ya se encuentra registrado.");
                         break;
                     default:
-                        JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el gerente.");
+                        JOptionPane.showMessageDialog(null, "Ocurrió un problema al guardar el gerente.");
                         break;
                 }
             }

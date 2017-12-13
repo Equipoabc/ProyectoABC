@@ -323,13 +323,13 @@ public class GUI_CrearEvento extends javax.swing.JFrame {
         }
         else if(!validaciones.validarLetrasYNumerosEspacios(nom) || !validaciones.validarLetrasYNumerosEspacios(lug) ||
                 !validaciones.validarLetrasYNumerosEspacios(tem)) {
-            JOptionPane.showMessageDialog(null, "Caracteres invalidos.");
+            JOptionPane.showMessageDialog(null, "Caracteres inválidos.");
         }
         else if(validaciones.validarNumero(nom) || validaciones.validarNumero(lug) || validaciones.validarNumero(tem)) {
             JOptionPane.showMessageDialog(null, "Los campos nombre, lugar y tema no pueden ser solo números.");
         }
         else if(cupo.equals("0") || (hora.equals("0") && min.equals("0"))) {
-            JOptionPane.showMessageDialog(null, "Los campos cupo y duración no pueden quedar en 0");
+            JOptionPane.showMessageDialog(null, "Los campos cupos y duración no pueden quedar sin datos.");
         }
         else {
             int numFilas = controladorEvento.insertarEvento(cod, nom, date, prec, cupo, hora, min, dur, lug, tem, id);

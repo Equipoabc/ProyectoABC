@@ -16,7 +16,7 @@ public class Reportes{
     
     //Nombre se usuario para crear carpetas
     static final String  usuario = System.getProperty("user.name");
-    static final String rutaRaiz = "C:\\Users\\"+"Lenovo"+"\\Documents\\ABC Eventos";
+    static final String rutaRaiz = "C:\\Users\\"+usuario+"\\Documents\\ABC Eventos";
     
     public static void crearCarpetas(){
         

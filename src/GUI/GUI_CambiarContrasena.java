@@ -254,10 +254,10 @@ public class GUI_CambiarContrasena extends javax.swing.JFrame {
             confirmar = confirmarCon.getText();
             
             if(!validaciones.validarLetrasYNumeros(nuevaContrasena) || nuevaContrasena.length() < 8) {
-                JOptionPane.showMessageDialog(null, "El campos contraseña debe tener minimo 8 caracteres validos");
+                JOptionPane.showMessageDialog(null, "El campo contraseña debe tener mínimo 8 caracteres válidos.");
             }
             else if(!nuevaContrasena.equals(confirmar)){
-                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
             }
             else{
                 

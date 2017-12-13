@@ -333,10 +333,10 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         
         if (id_evento.equals("")) {
             
-            JOptionPane.showMessageDialog(null, "El campo de la consulta esta vacio.");
+            JOptionPane.showMessageDialog(null, "El campo de la consulta se encuentra vacío.");
         } else if (!validaciones.validarNumero(id_evento)) {
             
-            JOptionPane.showMessageDialog(null, "El campo consultar debe ser numerico.");
+            JOptionPane.showMessageDialog(null, "El campo consultar debe ser numérico.");
         } else {
             
             evento = controladorEvento.consultarDatosEvento(id_evento);
@@ -371,8 +371,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
                 }
                 lugar.setText(evento.getLugar());
                 tema.setText(evento.getTema());
-                
-                JOptionPane.showMessageDialog(null, "Los datos del evento se han cargado exitosamente.");
+                             
                 
             } else {
                 
@@ -418,12 +417,12 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
         } else if(Integer.parseInt(cuposS) < 0){
             JOptionPane.showMessageDialog(null, "No se pueden asignar cupos negativos a un evento.");
         } else if (!validaciones.validarLetras(temaS)){
-            JOptionPane.showMessageDialog(null, "El campo tema deben ser de solo letras.");
+            JOptionPane.showMessageDialog(null, "El campo tema solo debe contener letras.");
         } else if(!validaciones.validarLetrasYNumerosEspacios(nombreS)){
-            JOptionPane.showMessageDialog(null, "El campo nombre deben ser de solo letras, numeros y espacios.");
+            JOptionPane.showMessageDialog(null, "El campo nombre solo debe contener letras, números y espacios.");
         } else if ( !validaciones.validarNumero(codigoConsulta)
                 || !validaciones.validarNumero(precioS) || !validaciones.validarNumero(cuposS)) {
-            JOptionPane.showMessageDialog(null, "Los campos de codigo, precio y cupos deben ser de solo numeros.");
+            JOptionPane.showMessageDialog(null, "Los campos de código, precio y cupos deben ser numéricos.");
         } else {
             
             if(controladorEvento.comprobar(codigoConsulta) == 1){
@@ -433,7 +432,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
                         && precioS.equals(evento.getPrecio()) && cuposS.equals(evento.getCupos())
                         && duracion.equals(evento.getDuracion()) && lugarS.equals(evento.getLugar())
                         && temaS.equals(evento.getTema()) && fechaS.equals(evento.getFecha())){
-                    JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
+                    JOptionPane.showMessageDialog(null, "No se ha modificado ningún campo.");
                 } else {
                     int numFilas = controladorEvento.actualizarEvento(codigoConsulta, nombreS, precioS, cuposS,
                             duracion, lugarS, temaS, fechaS);
@@ -475,7 +474,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No ha ingresado ningún evento.");
         } else if (!validaciones.validarNumero(id_evento)){
             
-            JOptionPane.showMessageDialog(null, "El campo debe ser numerico.");
+            JOptionPane.showMessageDialog(null, "El campo debe ser numérico.");
         } else {
             
             evento = controladorEvento.consultarDatosEvento(id_evento);
@@ -483,7 +482,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
             if(evento != null){
                 
                 int opcion = 5;
-                opcion = JOptionPane.showConfirmDialog(null, "Está seguro que desea borrar este evento: \n" + evento.getNombre_evento() + "?", "Confirmar eliminación", JOptionPane.OK_CANCEL_OPTION);
+                opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea borrar este evento: \n" + evento.getNombre_evento() + "?", "Confirmar eliminación", JOptionPane.OK_CANCEL_OPTION);
                 
                 if(opcion == 0){
                     
@@ -495,7 +494,7 @@ public class GUI_ModificarEvento extends javax.swing.JFrame {
                     }
                     else{
                         
-                        JOptionPane.showMessageDialog(null, "Hubo un error eliminando el evento.");
+                        JOptionPane.showMessageDialog(null, "Ocurrió un error al eliminar el evento.");
                     }
                 }
             } else {
