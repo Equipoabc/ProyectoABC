@@ -214,7 +214,6 @@ public class GUI_ReportesParticipantes extends javax.swing.JFrame {
                 System.out.println(e);
             }
             controladorReportesParticipantes.generarReporteParticipantes("Reporte de Participantes " + fecha);
-            JOptionPane.showMessageDialog(null, "Reporte guardado con éxito!");
         }
     }//GEN-LAST:event_exportarActionPerformed
 

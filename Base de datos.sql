@@ -386,3 +386,15 @@ VALUES ('3450982176', '108', 'Invalido', '1010144900');
 
 INSERT INTO Participantes_Eventos (id_participante, id_evento, estado_pago, cedula_op)
 VALUES ('3450982176', '109', 'Valido', '1010144900');
+
+CREATE OR REPLACE FUNCTION modificarCupos() RETURNS TRIGGER AS $$
+BEGIN
+    IF(TG_OP = 'DELETE') THEN
+        UPDATE eventos SET cupos = cupos + 1 WHERE id_evento = OLD.id_evento;
+    END IF;
+RETURN NULL;
+END    
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER cupos AFTER DELETE
+ON participantes_eventos FOR EACH ROW EXECUTE PROCEDURE modificarCupos();

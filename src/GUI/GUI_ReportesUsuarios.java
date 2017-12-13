@@ -235,7 +235,6 @@ public class GUI_ReportesUsuarios extends javax.swing.JFrame {
             System.out.println(e);
         }
         controladorRegistros.generarReporteUsuarios("Reporte " + fecha);
-            JOptionPane.showMessageDialog(null, "Reporte guardado con éxito!");
         }
         
     }//GEN-LAST:event_buttonExportarActionPerformed

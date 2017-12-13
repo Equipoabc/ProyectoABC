@@ -225,7 +225,6 @@ public class GUI_ReportesEventos extends javax.swing.JFrame {
             System.out.println(e);
         }
         controladorReportesEventos.generarReporteEventos("Reporte Eventos " + fecha);
-            JOptionPane.showMessageDialog(null, "Reporte guardado con éxito!");
         }
     }//GEN-LAST:event_exportarActionPerformed
 

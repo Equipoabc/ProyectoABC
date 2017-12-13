@@ -231,7 +231,6 @@ public class GUI_ReportesSedes extends javax.swing.JFrame {
             System.out.println(e);
         }
         controladorReportesSedes.generarReporteSedes("Reporte Sedes " + fecha);
-            JOptionPane.showMessageDialog(null, "Reporte guardado con éxito!");
         }
     }//GEN-LAST:event_exportarActionPerformed
 

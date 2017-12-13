@@ -6,9 +6,8 @@ import com.itextpdf.text.pdf.*;
 
 //Librerias para exportar en Excel
 import  org.apache.poi.hssf.usermodel.*;
-
 import java.io.*;
-import java.util.*;
+import javax.swing.JOptionPane;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.ss.usermodel.BorderStyle;
@@ -40,7 +39,7 @@ public class Reportes{
      * @param datos  Es un arreglo de arreglos con los datos especificos del reporte
      * @param nombre Nombre del archivo excel que e genera
      */
-    public static void generarReporte(String[] cabecera, String[][] datos, String nombre){
+   public static void generarReporte(String[] cabecera, String[][] datos, String nombre){
         try{
             //Se crea el archivo
             String archivo = rutaRaiz+"\\Reportes\\"+nombre+".xls" ;
@@ -81,15 +80,22 @@ public class Reportes{
                     celdaAux.setCellValue(datos[i][j]);
                     
                 }
+                HSSFRow rowAux = hoja.createRow((short)datos.length);
+                HSSFCell celdaAux = rowAux.createCell(0);
+                celdaAux.setCellValue("TOTAL DE REGISTROS: "+(datos.length-1));
+                rowAux.getCell(0).setCellStyle(estilo);
                 hoja.autoSizeColumn(i-1);
             }
+            
             //Se cierra el archivo y se termina de crear
             try (FileOutputStream salida = new FileOutputStream(archivo)) {
                 libro.write(salida);
+                JOptionPane.showMessageDialog(null, "Reporte guardado con éxito!");
             }
             System.out.println("Archivo generado");
             
         } catch ( IOException ex ) {
+            JOptionPane.showMessageDialog(null, "El archivo esta siendo usado por otra aplicación. Por favor cierre la aplicación o intente más tarde.","Error", JOptionPane.ERROR_MESSAGE);
             System.out.println(ex);
         }
         
